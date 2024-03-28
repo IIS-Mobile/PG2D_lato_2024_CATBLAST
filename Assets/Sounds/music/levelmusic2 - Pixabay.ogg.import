@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c77f0svco1bfc"
+path="res://.godot/imported/levelmusic2 - Pixabay.ogg-19dbe09b66774b8421c026285ee3140b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/music/levelmusic2 - Pixabay.ogg"
+dest_files=["res://.godot/imported/levelmusic2 - Pixabay.ogg-19dbe09b66774b8421c026285ee3140b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
