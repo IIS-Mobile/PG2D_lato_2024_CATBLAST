@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cymvkxn77feai"
+path="res://.godot/imported/intro sound - moodmode.ogg-b0c7432d08baa61b62d729bdc75536de.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/music/intro sound - moodmode.ogg"
+dest_files=["res://.godot/imported/intro sound - moodmode.ogg-b0c7432d08baa61b62d729bdc75536de.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

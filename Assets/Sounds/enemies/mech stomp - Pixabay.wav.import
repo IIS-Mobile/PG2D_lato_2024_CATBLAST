@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://34df8448yu56"
+path="res://.godot/imported/mech stomp - Pixabay.wav-7f44f4127a175a582aad8b6b649f2f2f.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/enemies/mech stomp - Pixabay.wav"
+dest_files=["res://.godot/imported/mech stomp - Pixabay.wav-7f44f4127a175a582aad8b6b649f2f2f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

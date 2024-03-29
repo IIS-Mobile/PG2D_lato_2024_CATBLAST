@@ -1,80 +1,81 @@
-[gd_scene load_steps=32 format=3 uid="uid://dmpuglts6my21"]
+[gd_scene load_steps=33 format=3 uid="uid://dmpuglts6my21"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_movement.gd" id="1_341yb"]
-[ext_resource type="Texture2D" uid="uid://go30iisf4q5d" path="res://Assets/Arts/player-animations/jump/main_jump 72x90.png" id="4_lqqx3"]
-[ext_resource type="Texture2D" uid="uid://1iiubpbbtm5v" path="res://Assets/Arts/player-animations/run/player run 72x90.png" id="5_7nlmi"]
-[ext_resource type="Texture2D" uid="uid://3d14twsc2ic1" path="res://Assets/Arts/player-animations/idle/main_idle_72x72.png" id="6_gyp1e"]
+[ext_resource type="Texture2D" uid="uid://3d14twsc2ic1" path="res://Assets/Arts/Animations/player-animations/idle/main_idle_72x72.png" id="2_k77aa"]
+[ext_resource type="Texture2D" uid="uid://go30iisf4q5d" path="res://Assets/Arts/Animations/player-animations/jump/main_jump 72x90.png" id="3_7a2fi"]
+[ext_resource type="Texture2D" uid="uid://1iiubpbbtm5v" path="res://Assets/Arts/Animations/player-animations/run/player run 72x90.png" id="4_de38g"]
+[ext_resource type="PackedScene" uid="uid://bayfga7evi546" path="res://Scenes/paralaxbackground.tscn" id="5_ksvj2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bnmsg"]
-atlas = ExtResource("6_gyp1e")
+atlas = ExtResource("2_k77aa")
 region = Rect2(0, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j4fwj"]
-atlas = ExtResource("6_gyp1e")
+atlas = ExtResource("2_k77aa")
 region = Rect2(72, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3k2yv"]
-atlas = ExtResource("6_gyp1e")
+atlas = ExtResource("2_k77aa")
 region = Rect2(144, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ckoxr"]
-atlas = ExtResource("6_gyp1e")
+atlas = ExtResource("2_k77aa")
 region = Rect2(216, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ofbvd"]
-atlas = ExtResource("6_gyp1e")
+atlas = ExtResource("2_k77aa")
 region = Rect2(288, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m0pyi"]
-atlas = ExtResource("6_gyp1e")
+atlas = ExtResource("2_k77aa")
 region = Rect2(360, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r3ixo"]
-atlas = ExtResource("6_gyp1e")
+atlas = ExtResource("2_k77aa")
 region = Rect2(432, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7mp8b"]
-atlas = ExtResource("6_gyp1e")
+atlas = ExtResource("2_k77aa")
 region = Rect2(504, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xln18"]
-atlas = ExtResource("4_lqqx3")
+atlas = ExtResource("3_7a2fi")
 region = Rect2(0, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jwfgy"]
-atlas = ExtResource("4_lqqx3")
+atlas = ExtResource("3_7a2fi")
 region = Rect2(144, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mb8dt"]
-atlas = ExtResource("5_7nlmi")
+atlas = ExtResource("4_de38g")
 region = Rect2(0, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_swykd"]
-atlas = ExtResource("5_7nlmi")
+atlas = ExtResource("4_de38g")
 region = Rect2(72, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p8ivv"]
-atlas = ExtResource("5_7nlmi")
+atlas = ExtResource("4_de38g")
 region = Rect2(144, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ct7d4"]
-atlas = ExtResource("5_7nlmi")
+atlas = ExtResource("4_de38g")
 region = Rect2(216, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nesqg"]
-atlas = ExtResource("5_7nlmi")
+atlas = ExtResource("4_de38g")
 region = Rect2(288, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m2bcy"]
-atlas = ExtResource("5_7nlmi")
+atlas = ExtResource("4_de38g")
 region = Rect2(360, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryeq2"]
-atlas = ExtResource("5_7nlmi")
+atlas = ExtResource("4_de38g")
 region = Rect2(432, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_anl8n"]
-atlas = ExtResource("5_7nlmi")
+atlas = ExtResource("4_de38g")
 region = Rect2(504, 0, 72, 90)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_328ho"]
@@ -323,3 +324,5 @@ autoplay = "Idle"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../AnimationPlayer")
+
+[node name="Background" parent="." instance=ExtResource("5_ksvj2")]

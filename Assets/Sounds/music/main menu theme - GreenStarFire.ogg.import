@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dvam1l3tg8r2u"
+path="res://.godot/imported/main menu theme - GreenStarFire.ogg-f6535ec2f286844b08376e417a9effee.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/music/main menu theme - GreenStarFire.ogg"
+dest_files=["res://.godot/imported/main menu theme - GreenStarFire.ogg-f6535ec2f286844b08376e417a9effee.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
