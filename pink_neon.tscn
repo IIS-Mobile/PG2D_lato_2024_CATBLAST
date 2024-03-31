@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1qxk2wkfx44j"]
+
+[ext_resource type="TileSet" uid="uid://dcj0gfqbjw4oo" path="res://Assets/Arts/Tiles/world.tres" id="1_qsf66"]
+
+[sub_resource type="Gradient" id="Gradient_ppg7w"]
+offsets = PackedFloat32Array(0.671233, 1)
+colors = PackedColorArray(0.980968, 0.000905628, 0.997753, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_asw7a"]
+gradient = SubResource("Gradient_ppg7w")
+fill = 1
+fill_from = Vector2(0.504274, 0.5)
+fill_to = Vector2(0.790598, 0.128205)
+
+[node name="PinkNeon" type="StaticBody2D"]
+position = Vector2(448, 406)
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(16, 74)
+tile_set = ExtResource("1_qsf66")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65535, 458753, 1879048198, -65536, 262145, 1879048198, 1, 458753, 1879048198, 0, 262145, 1879048198, 65537, 458753, 1879048198, 65536, 262145, 1879048198, 131073, 458753, 1879048198, 131072, 262145, 1879048198)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = 1
+position = Vector2(25, 85)
+scale = Vector2(0.03, 0.06)
+energy = 1.69
+range_z_max = 3
+range_layer_min = -5
+texture = SubResource("GradientTexture2D_asw7a")
+offset = Vector2(-3.52, -71.14)
+texture_scale = 34.71
