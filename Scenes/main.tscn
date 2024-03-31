@@ -6,19 +6,19 @@
 script = ExtResource("1_05y0p")
 
 [node name="Play" type="Button" parent="."]
-offset_left = 171.0
-offset_top = 307.0
-offset_right = 212.0
-offset_bottom = 338.0
+offset_left = 425.0
+offset_top = 73.0
+offset_right = 466.0
+offset_bottom = 104.0
 rotation = 0.00265048
 scale = Vector2(6.46874, 4.94585)
 text = "Play"
 
 [node name="Quit" type="Button" parent="."]
-offset_left = 666.0
-offset_top = 316.0
-offset_right = 708.0
-offset_bottom = 347.0
+offset_left = 420.0
+offset_top = 268.0
+offset_right = 462.0
+offset_bottom = 299.0
 rotation = 0.00265048
 scale = Vector2(6.46874, 4.94585)
 tooltip_text = "This is quit"

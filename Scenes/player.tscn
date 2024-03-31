@@ -295,6 +295,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 3
 position = Vector2(-1, 0)
 script = ExtResource("1_341yb")
 
@@ -326,3 +327,4 @@ autoplay = "Idle"
 root_node = NodePath("../AnimationPlayer")
 
 [node name="Background" parent="." instance=ExtResource("5_ksvj2")]
+layer = -5

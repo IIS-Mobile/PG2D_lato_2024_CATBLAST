@@ -11,8 +11,7 @@ size = Vector2(556.625, 7)
 
 [node name="Player" parent="." instance=ExtResource("1_jvvmn")]
 visibility_layer = 520
-z_index = 3
-position = Vector2(102, 229)
+position = Vector2(18, 212)
 
 [node name="MainPlatform" type="StaticBody2D" parent="."]
 position = Vector2(33, 523)
@@ -21,12 +20,6 @@ position = Vector2(33, 523)
 position = Vector2(2131.5, 114)
 scale = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_33dv3")
-
-[node name="StreetLamp2" parent="." instance=ExtResource("2_ggu1l")]
-position = Vector2(111, 48)
-
-[node name="StreetLamp" parent="." instance=ExtResource("2_ggu1l")]
-position = Vector2(17, 47)
 
 [node name="WorldTiles" type="TileMap" parent="."]
 visibility_layer = 8
@@ -48,6 +41,22 @@ layer_4/z_index = 4
 layer_4/tile_data = PackedInt32Array(2359339, 131073, 2, 2424875, 131073, 3, 2359337, 131073, 2, 2424873, 131073, 3, 2359335, 131073, 2, 2424871, 131073, 3, 2359341, 131073, 2, 2424877, 131073, 3, 2359346, 1, 0, 2424882, 1, 1, 2359347, 65537, 0, 2424883, 65537, 1, 2359356, 131073, 0, 2424892, 131073, 1, 2359355, 65537, 0, 2424891, 65537, 1, 2359354, 65537, 0, 2424890, 65537, 1, 2359353, 65537, 0, 2424889, 65537, 1, 2359352, 65537, 0, 2424888, 65537, 1, 2359351, 65537, 0, 2424887, 65537, 1, 2359350, 65537, 0, 2424886, 65537, 1, 2359349, 65537, 0, 2424885, 65537, 1, 2359348, 65537, 0, 2424884, 65537, 1, 2359321, 327681, 11, 2424857, 327681, 12, 2359322, 393217, 11, 2424858, 393217, 12, 2359323, 458753, 11, 2424859, 458753, 12, 1835017, 196608, 9, 1835018, 262144, 9, 1835016, 196608, 9, 1835015, 196608, 9, 1835014, 196608, 9, 1835013, 196608, 9, 1835012, 196608, 9, 1835011, 196608, 9, 1835010, 131072, 9, 2097185, 524288, 7, 2162721, 524288, 8, 2097186, 786432, 7, 2162722, 786432, 8, 2097179, 655360, 7, 2162715, 655360, 8, 2097180, 720896, 7, 2162716, 720896, 8, 2097181, 524288, 7, 2162717, 524288, 8, 2097182, 524288, 7, 2162718, 524288, 8, 2097184, 524288, 7, 2162720, 524288, 8, 2097183, 524288, 7, 2162719, 524288, 8, 1835050, 720896, 7, 1835051, 720896, 7, 1835052, 786432, 7, 1835039, 655360, 7, 1835040, 720896, 7, 1835041, 720896, 7, 1835042, 720896, 7, 1835043, 720896, 7, 1835044, 720896, 7, 1835045, 720896, 7, 1835046, 720896, 7, 1835047, 720896, 7, 1835048, 720896, 7, 1835049, 720896, 7)
 
 [node name="SubstractWorldLight" type="DirectionalLight2D" parent="."]
-visible = false
 energy = 0.26
 blend_mode = 1
+
+[node name="StreetLamp" parent="." instance=ExtResource("2_ggu1l")]
+light_mask = 1023
+visibility_layer = 1023
+position = Vector2(234, 498.245)
+
+[node name="StreetLamp2" parent="." instance=ExtResource("2_ggu1l")]
+light_mask = 1023
+visibility_layer = 1023
+position = Vector2(932, 498.175)
+scale = Vector2(-1, 1)
+
+[node name="StreetLamp3" parent="." instance=ExtResource("2_ggu1l")]
+light_mask = 1023
+visibility_layer = 1023
+position = Vector2(1026, 498.26)
+scale = Vector2(-1, 1)
