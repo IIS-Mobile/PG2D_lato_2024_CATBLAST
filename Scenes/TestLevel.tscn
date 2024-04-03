@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://brsqxww2th1yf"]
+[gd_scene load_steps=7 format=3 uid="uid://cvpvpsvi64wit"]
 
-[ext_resource type="PackedScene" uid="uid://c1qxk2wkfx44j" path="res://pink_neon.tscn" id="1_638po"]
+[ext_resource type="PackedScene" path="res://pink_neon.tscn" id="1_638po"]
+[ext_resource type="PackedScene" uid="uid://dkfbae7sgq1mv" path="res://Scenes/SimpleEnemy.tscn" id="1_fh6g2"]
 [ext_resource type="PackedScene" uid="uid://dmpuglts6my21" path="res://Scenes/player.tscn" id="2_6h82v"]
-[ext_resource type="TileSet" uid="uid://dcj0gfqbjw4oo" path="res://Assets/Arts/Tiles/world.tres" id="3_nobln"]
-[ext_resource type="PackedScene" uid="uid://c5yj3p0tq8rr7" path="res://Scenes/street_lamp.tscn" id="4_3orsa"]
+[ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="3_nobln"]
+[ext_resource type="PackedScene" path="res://Scenes/street_lamp.tscn" id="4_3orsa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33dv3"]
 size = Vector2(556.625, 7)
 
 [node name="TestLevel" type="Node2D"]
+
+[node name="SimpleEnemy" parent="." instance=ExtResource("1_fh6g2")]
+position = Vector2(810, 533)
 
 [node name="PinkNeon" parent="." instance=ExtResource("1_638po")]
 
