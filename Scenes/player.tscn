@@ -763,3 +763,4 @@ polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 3
 disabled = true
 
 [connection signal="body_entered" from="Sprite2D/WeaponArea2D" to="." method="_on_weapon_area_2d_body_entered"]
+[connection signal="body_shape_entered" from="Sprite2D/WeaponArea2D" to="." method="_on_weapon_area_2d_body_shape_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvpvpsvi64wit"]
+[gd_scene load_steps=11 format=3 uid="uid://cvpvpsvi64wit"]
 
 [ext_resource type="PackedScene" uid="uid://c1qxk2wkfx44j" path="res://pink_neon.tscn" id="1_638po"]
 [ext_resource type="PackedScene" uid="uid://dkfbae7sgq1mv" path="res://Scenes/SimpleEnemy.tscn" id="1_fh6g2"]
@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="3_nobln"]
 [ext_resource type="PackedScene" uid="uid://c5yj3p0tq8rr7" path="res://Scenes/street_lamp.tscn" id="4_3orsa"]
 [ext_resource type="Shader" path="res://Scenes/TestLevel.gdshader" id="6_yt2ig"]
+[ext_resource type="Texture2D" uid="uid://dtyphtcp5wdpf" path="res://icon.svg" id="7_ehfdi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33dv3"]
 size = Vector2(556.625, 7)
@@ -15,6 +16,9 @@ shader = ExtResource("6_yt2ig")
 shader_parameter/r_displacement = Vector2(2, 0)
 shader_parameter/g_displacement = Vector2(0, 0)
 shader_parameter/b_displacement = Vector2(-3, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbvhr"]
+size = Vector2(7.16914, 10.6322)
 
 [node name="TestLevel" type="Node2D"]
 
@@ -84,3 +88,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Enemy" type="CharacterBody2D" parent="." groups=["enemy"]]
+position = Vector2(751, 581)
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+position = Vector2(9, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_ehfdi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+position = Vector2(8.5, 1.5)
+scale = Vector2(5.44, 3.48)
+shape = SubResource("RectangleShape2D_tbvhr")
+
+[node name="Enemy2" type="CharacterBody2D" parent="." groups=["enemy"]]
+position = Vector2(905, 458)
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy2"]
+position = Vector2(9, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_ehfdi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2"]
+position = Vector2(8.5, 1.5)
+scale = Vector2(5.44, 3.48)
+shape = SubResource("RectangleShape2D_tbvhr")

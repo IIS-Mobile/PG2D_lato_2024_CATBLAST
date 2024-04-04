@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2eog0"]
 size = Vector2(13.587, 12.251)
 
-[node name="SimpleEnemy" type="Node2D" groups=["enemy"]]
+[node name="SimpleEnemy" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 scale = Vector2(0.3, 0.3)
