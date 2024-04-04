@@ -477,6 +477,7 @@ shape = SubResource("CapsuleShape2D_vjnxw")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(315.61, 253.653)
 scale = Vector2(0.260762, 0.260713)
+offset = Vector2(0, -35)
 zoom = Vector2(3, 3)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
