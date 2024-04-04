@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED = 700.0
-const JUMP_VELOCITY = -600.0
+const SPEED = 500.0
+const JUMP_VELOCITY = -500.0
 
 @onready var anim = get_node("AnimationPlayer")
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -32,7 +32,7 @@ func _physics_process(delta):
 		anim.play("Attack")
 	if direction:
 		velocity.x = direction * SPEED
-		if( velocity.y== 0) and anim.current_animation != "Attack":
+		if( velocity.y == 0) and anim.current_animation != "Attack":
 			anim.play("Run")
 		
 	else:

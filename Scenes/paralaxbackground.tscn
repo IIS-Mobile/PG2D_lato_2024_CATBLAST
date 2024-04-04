@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://bayfga7evi546"]
 
 [ext_resource type="Texture2D" uid="uid://c35cbe0tpjcx5" path="res://Assets/Arts/Tiles/Sidescroller Shooter - Central City/Background/Base Color.png" id="1_67uaj"]
-[ext_resource type="TileSet" uid="uid://dcj0gfqbjw4oo" path="res://Assets/Arts/Tiles/world.tres" id="2_uq70o"]
+[ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="2_uq70o"]
 
 [node name="Background" type="ParallaxBackground"]
 layer = 0
 
 [node name="BaseColorLayer" type="ParallaxLayer" parent="."]
-motion_mirroring = Vector2(480, 0)
+motion_mirroring = Vector2(480, 480)
 
 [node name="BaseColor" type="Sprite2D" parent="BaseColorLayer"]
 modulate = Color(0, 3.32549, 0.545098, 1)
