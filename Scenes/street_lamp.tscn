@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5yj3p0tq8rr7"]
 
-[ext_resource type="TileSet" uid="uid://dcj0gfqbjw4oo" path="res://Assets/Arts/Tiles/world.tres" id="1_as2fn"]
+[ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="1_as2fn"]
 [ext_resource type="Texture2D" uid="uid://cr7u0awwr0fhh" path="res://Assets/Arts/Textures/lamp_light_texture.png" id="2_mvgdp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2r7r1"]

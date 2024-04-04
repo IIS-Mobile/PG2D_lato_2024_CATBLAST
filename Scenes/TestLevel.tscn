@@ -1,13 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvpvpsvi64wit"]
+[gd_scene load_steps=9 format=3 uid="uid://cvpvpsvi64wit"]
 
 [ext_resource type="PackedScene" uid="uid://c1qxk2wkfx44j" path="res://pink_neon.tscn" id="1_638po"]
 [ext_resource type="PackedScene" uid="uid://dkfbae7sgq1mv" path="res://Scenes/SimpleEnemy.tscn" id="1_fh6g2"]
 [ext_resource type="PackedScene" uid="uid://dmpuglts6my21" path="res://Scenes/player.tscn" id="2_6h82v"]
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="3_nobln"]
 [ext_resource type="PackedScene" uid="uid://c5yj3p0tq8rr7" path="res://Scenes/street_lamp.tscn" id="4_3orsa"]
+[ext_resource type="Shader" path="res://Scenes/TestLevel.gdshader" id="6_yt2ig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33dv3"]
 size = Vector2(556.625, 7)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ivkmq"]
+shader = ExtResource("6_yt2ig")
+shader_parameter/r_displacement = Vector2(2, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-3, 0)
 
 [node name="TestLevel" type="Node2D"]
 
@@ -67,3 +74,13 @@ light_mask = 1023
 visibility_layer = 1023
 position = Vector2(1026, 498.26)
 scale = Vector2(-1, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_ivkmq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

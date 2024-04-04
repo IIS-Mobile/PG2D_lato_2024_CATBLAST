@@ -309,7 +309,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_qgshm"]
 resource_name = "Idle"
-length = 0.4
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -318,7 +318,7 @@ tracks/0/path = NodePath("../AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3]
@@ -467,7 +467,6 @@ position = Vector2(319, 263.56)
 scale = Vector2(0.997509, 0.968)
 sprite_frames = SubResource("SpriteFrames_328ho")
 animation = &"Attack"
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(318, 267.56)
@@ -478,7 +477,7 @@ shape = SubResource("CapsuleShape2D_vjnxw")
 position = Vector2(315.61, 253.653)
 scale = Vector2(0.260762, 0.260713)
 offset = Vector2(0, -35)
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Camera2D")
