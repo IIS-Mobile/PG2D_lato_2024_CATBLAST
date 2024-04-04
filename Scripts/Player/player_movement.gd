@@ -14,9 +14,11 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if (Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_up")) and is_on_floor() :
 		velocity.y = JUMP_VELOCITY
-		anim.play("Jump")
+		if anim.current_animation != "Attack":
+			anim.play("Jump")
+
 		
 
 	# Get the input direction and handle the movement/deceleration.
@@ -26,15 +28,17 @@ func _physics_process(delta):
 		get_node("AnimatedSprite2D").flip_h = true
 	elif direction == 1 :
 		get_node("AnimatedSprite2D").flip_h = false
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		anim.play("Attack")
 	if direction:
 		velocity.x = direction * SPEED
-		if( velocity.y== 0):
+		if( velocity.y== 0) and anim.current_animation != "Attack":
 			anim.play("Run")
 		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		if( velocity.y== 0):
+		if( velocity.y== 0) and anim.current_animation != "Attack":
 			anim.play("Idle")
-	if(velocity.y > 0):
+	if(velocity.y > 0) and anim.current_animation != "Attack":
 		anim.play("Fall")
 	move_and_slide()
