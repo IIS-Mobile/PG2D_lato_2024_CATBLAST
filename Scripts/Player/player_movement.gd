@@ -30,7 +30,7 @@ func _physics_process(delta):
 	elif direction == 1 :
 		get_node("AnimatedSprite2D").flip_h = false
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		if(dir == true) :
+		if(dir == false) :
 			anim.play("Attack")
 		else:
 			anim.play("attack_left")
@@ -46,3 +46,10 @@ func _physics_process(delta):
 	if(velocity.y > 0) and anim.current_animation != "Attack"and anim.current_animation != "attack_left":
 		anim.play("Fall")
 	move_and_slide()
+
+
+func _on_weapon_area_2d_body_entered(body):
+	if body.is_in_group("enemy"):
+		print("Hit enemy")
+		body.queue_free()
+	pass # Replace with function body.

@@ -761,3 +761,5 @@ position = Vector2(637, -1)
 scale = Vector2(-1, 1)
 polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 353, 294, 328, 295, 342, 275, 345, 251, 329, 241, 294, 244)
 disabled = true
+
+[connection signal="body_entered" from="Sprite2D/WeaponArea2D" to="." method="_on_weapon_area_2d_body_entered"]

@@ -19,7 +19,7 @@ shader_parameter/b_displacement = Vector2(-3, 0)
 [node name="TestLevel" type="Node2D"]
 
 [node name="SimpleEnemy" parent="." instance=ExtResource("1_fh6g2")]
-position = Vector2(810, 533)
+position = Vector2(810, 581)
 
 [node name="PinkNeon" parent="." instance=ExtResource("1_638po")]
 
