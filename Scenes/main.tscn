@@ -1,10 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://doewd1xob6x63"]
+[gd_scene load_steps=16 format=3 uid="uid://doewd1xob6x63"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_05y0p"]
 [ext_resource type="Texture2D" uid="uid://d1wlvrndak0j5" path="res://Assets/Arts/Ultimate Pixel 3.2/Animated Tablets/blue/Tablet.png" id="2_g36fc"]
+[ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="2_l6iag"]
 [ext_resource type="FontFile" uid="uid://c33jywaea07wv" path="res://Assets/Arts/Ultimate Pixel 3.2/Cyberphont/Cyberphont beta/Cyberphont_pixels.ttf" id="3_50abr"]
 [ext_resource type="Texture2D" uid="uid://iy7ecswsckof" path="res://Assets/Arts/Ultimate Pixel 3.2/Text ScreenPads/blue/scalable_Text_screen.png" id="3_qxc77"]
 [ext_resource type="FontFile" uid="uid://dyqoacn20kknd" path="res://Assets/Arts/Ultimate Pixel 3.2/Cyberphont/Cyberphont 2.0/Cyberphont 2.0.ttf" id="5_5wc46"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_exq0e"]
+shader = ExtResource("2_l6iag")
+shader_parameter/amount = 1.471
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ue2v"]
 texture = ExtResource("2_g36fc")
@@ -43,7 +48,7 @@ Button/colors/icon_pressed_color = Color(0, 0.552941, 0.984314, 1)
 Button/constants/h_separation = 5
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
-Button/font_sizes/font_size = 12
+Button/font_sizes/font_size = 50
 Button/fonts/font = ExtResource("3_50abr")
 Button/styles/disabled = SubResource("StyleBoxTexture_abocp")
 Button/styles/focus = SubResource("StyleBoxTexture_4v58w")
@@ -54,38 +59,50 @@ Button/styles/pressed = SubResource("StyleBoxTexture_8pqne")
 [node name="Main" type="Node2D"]
 script = ExtResource("1_05y0p")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_exq0e")
+offset_left = -9.0
+offset_top = -6.0
+offset_right = 31.0
+offset_bottom = 34.0
+scale = Vector2(29.6821, 17.0937)
+
 [node name="Panel" type="Panel" parent="."]
 texture_filter = 3
-offset_right = 1159.0
-offset_bottom = 647.0
+offset_left = 87.0
+offset_top = 49.0
+offset_right = 1246.0
+offset_bottom = 696.0
+scale = Vector2(0.826351, 0.826186)
 theme = SubResource("Theme_4ql4f")
 
 [node name="Control" type="Control" parent="Panel"]
 layout_mode = 3
 anchors_preset = 0
+offset_top = -1.21038
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 38.7896
 theme = SubResource("Theme_ktn46")
 
 [node name="Play" type="Button" parent="Panel/Control"]
 texture_filter = 3
 layout_mode = 0
-offset_left = 425.0
-offset_top = 73.0
-offset_right = 466.0
-offset_bottom = 104.0
+offset_left = 399.346
+offset_top = 79.8852
+offset_right = 699.346
+offset_bottom = 379.885
 rotation = 0.00265048
-scale = Vector2(6.46874, 4.94585)
+scale = Vector2(1.23925, 0.544463)
 text = "Play"
 
 [node name="Quit" type="Button" parent="Panel/Control"]
 layout_mode = 0
-offset_left = 420.0
-offset_top = 268.0
-offset_right = 462.0
-offset_bottom = 299.0
+offset_left = 401.766
+offset_top = 285.65
+offset_right = 701.766
+offset_bottom = 585.65
 rotation = 0.00265048
-scale = Vector2(6.46874, 4.94585)
+scale = Vector2(1.239, 0.544)
 tooltip_text = "This is quit"
 text = "Quit"
 

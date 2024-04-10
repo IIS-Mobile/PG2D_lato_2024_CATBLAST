@@ -22,14 +22,15 @@ size = Vector2(7.16914, 10.6322)
 
 [node name="TestLevel" type="Node2D"]
 
+[node name="Player" parent="." instance=ExtResource("2_6h82v")]
+visibility_layer = 520
+position = Vector2(18, 212)
+scale = Vector2(0.998066, 1)
+
 [node name="SimpleEnemy" parent="." instance=ExtResource("1_fh6g2")]
 position = Vector2(810, 581)
 
 [node name="PinkNeon" parent="." instance=ExtResource("1_638po")]
-
-[node name="Player" parent="." instance=ExtResource("2_6h82v")]
-visibility_layer = 520
-position = Vector2(18, 212)
 
 [node name="MainPlatform" type="StaticBody2D" parent="."]
 position = Vector2(33, 523)

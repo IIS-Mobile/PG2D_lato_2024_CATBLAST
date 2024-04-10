@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://dmpuglts6my21"]
+[gd_scene load_steps=65 format=3 uid="uid://dmpuglts6my21"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_movement.gd" id="1_341yb"]
 [ext_resource type="Texture2D" uid="uid://dybi3nvmc3s8s" path="res://Assets/Arts/Animations/player-animations/attack_r/Attack_placeholder.png" id="2_5fn28"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b107myecroshd" path="res://Assets/Arts/Animations/player-animations/idle/main_katana_idle_72x90.png" id="4_v14h0"]
 [ext_resource type="Texture2D" uid="uid://bo5udsbjlqg1c" path="res://Assets/Arts/Animations/player-animations/run/player_run_main2.png" id="5_kd4ec"]
 [ext_resource type="PackedScene" uid="uid://bayfga7evi546" path="res://Scenes/paralaxbackground.tscn" id="5_ksvj2"]
+[ext_resource type="PackedScene" uid="uid://doewd1xob6x63" path="res://Scenes/main.tscn" id="7_m2yut"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hsffx"]
 atlas = ExtResource("2_dl8vb")
@@ -693,6 +694,18 @@ z_index = 3
 position = Vector2(-1, 0)
 script = ExtResource("1_341yb")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+visibility_layer = 256
+position = Vector2(315.61, 253.653)
+scale = Vector2(0.260762, 0.260713)
+offset = Vector2(0, -35)
+zoom = Vector2(2, 2)
+
+[node name="Main" parent="Camera2D" instance=ExtResource("7_m2yut")]
+z_index = 6
+position = Vector2(-1068.45, -788.81)
+scale = Vector2(1.81534, 2.05716)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(319, 263.56)
 scale = Vector2(0.998, 0.968)
@@ -704,12 +717,6 @@ frame = 1
 position = Vector2(318, 267.56)
 scale = Vector2(0.260762, 0.260713)
 shape = SubResource("CapsuleShape2D_vjnxw")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(315.61, 253.653)
-scale = Vector2(0.260762, 0.260713)
-offset = Vector2(0, -35)
-zoom = Vector2(2, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Camera2D")

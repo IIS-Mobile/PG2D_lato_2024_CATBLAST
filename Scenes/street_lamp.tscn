@@ -25,7 +25,7 @@ color = Color(1, 0.984314, 0.0509804, 1)
 energy = 0.7
 range_z_min = -5
 range_layer_min = -5
-range_layer_max = 9
+range_layer_max = 4
 texture = ExtResource("2_mvgdp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
