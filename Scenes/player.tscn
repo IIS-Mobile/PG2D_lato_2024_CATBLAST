@@ -702,6 +702,7 @@ offset = Vector2(0, -35)
 zoom = Vector2(2, 2)
 
 [node name="Main" parent="Camera2D" instance=ExtResource("7_m2yut")]
+visible = false
 z_index = 6
 position = Vector2(-1068.45, -788.81)
 scale = Vector2(1.81534, 2.05716)
