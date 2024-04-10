@@ -55,6 +55,7 @@ Button/styles/pressed = SubResource("StyleBoxTexture_8pqne")
 script = ExtResource("1_05y0p")
 
 [node name="Panel" type="Panel" parent="."]
+texture_filter = 3
 offset_right = 1159.0
 offset_bottom = 647.0
 theme = SubResource("Theme_4ql4f")
@@ -67,6 +68,8 @@ offset_bottom = 40.0
 theme = SubResource("Theme_ktn46")
 
 [node name="Play" type="Button" parent="Panel/Control"]
+texture_filter = 3
+layout_mode = 0
 offset_left = 425.0
 offset_top = 73.0
 offset_right = 466.0
@@ -76,6 +79,7 @@ scale = Vector2(6.46874, 4.94585)
 text = "Play"
 
 [node name="Quit" type="Button" parent="Panel/Control"]
+layout_mode = 0
 offset_left = 420.0
 offset_top = 268.0
 offset_right = 462.0
