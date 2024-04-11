@@ -41,7 +41,7 @@ func _physics_process(delta):
 		get_node("AnimatedSprite2D").flip_h = true
 	elif direction == 1 :
 		get_node("AnimatedSprite2D").flip_h = false
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if Input.is_action_just_pressed("Attack"):
 		playsound(katanaSweep)
 		if(dir == false) :
 			anim.play("Attack")
