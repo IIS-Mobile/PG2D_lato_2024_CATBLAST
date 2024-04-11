@@ -739,6 +739,7 @@ layer = -5
 
 [node name="Attack_R" type="CollisionPolygon2D" parent="Sprite2D/WeaponArea2D"]
 visible = false
+position = Vector2(0, -1)
 polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 353, 294, 328, 295, 342, 275, 345, 251, 329, 241, 294, 244)
 disabled = true
 
