@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://doewd1xob6x63"]
+[gd_scene load_steps=17 format=3 uid="uid://doewd1xob6x63"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_05y0p"]
 [ext_resource type="Texture2D" uid="uid://d1wlvrndak0j5" path="res://Assets/Arts/Ultimate Pixel 3.2/Animated Tablets/blue/Tablet.png" id="2_g36fc"]
 [ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="2_l6iag"]
+[ext_resource type="AudioStream" uid="uid://blb85uuhc3n38" path="res://Assets/Sounds/music/main menu theme - GreenStarFire.ogg" id="2_lb3jg"]
 [ext_resource type="FontFile" uid="uid://c33jywaea07wv" path="res://Assets/Arts/Ultimate Pixel 3.2/Cyberphont/Cyberphont beta/Cyberphont_pixels.ttf" id="3_50abr"]
 [ext_resource type="Texture2D" uid="uid://iy7ecswsckof" path="res://Assets/Arts/Ultimate Pixel 3.2/Text ScreenPads/blue/scalable_Text_screen.png" id="3_qxc77"]
 [ext_resource type="FontFile" uid="uid://dyqoacn20kknd" path="res://Assets/Arts/Ultimate Pixel 3.2/Cyberphont/Cyberphont 2.0/Cyberphont 2.0.ttf" id="5_5wc46"]
@@ -59,6 +60,14 @@ Button/styles/pressed = SubResource("StyleBoxTexture_8pqne")
 [node name="Main" type="Node2D"]
 script = ExtResource("1_05y0p")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_lb3jg")
+volume_db = -20.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(3.8147e-05, 0)
+volume_db = -5.0
+
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_exq0e")
 offset_left = -9.0
@@ -106,5 +115,7 @@ scale = Vector2(1.239, 0.544)
 tooltip_text = "This is quit"
 text = "Quit"
 
+[connection signal="mouse_entered" from="Panel/Control/Play" to="." method="_on_hover"]
 [connection signal="pressed" from="Panel/Control/Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="Panel/Control/Quit" to="." method="_on_hover"]
 [connection signal="pressed" from="Panel/Control/Quit" to="." method="_on_quit_pressed"]
