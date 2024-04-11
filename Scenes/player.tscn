@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://dmpuglts6my21"]
+[gd_scene load_steps=66 format=3 uid="uid://dmpuglts6my21"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_movement.gd" id="1_341yb"]
 [ext_resource type="Texture2D" uid="uid://dybi3nvmc3s8s" path="res://Assets/Arts/Animations/player-animations/attack_r/Attack_placeholder.png" id="2_5fn28"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bo5udsbjlqg1c" path="res://Assets/Arts/Animations/player-animations/run/player_run_main2.png" id="5_kd4ec"]
 [ext_resource type="PackedScene" uid="uid://bayfga7evi546" path="res://Scenes/paralaxbackground.tscn" id="5_ksvj2"]
 [ext_resource type="PackedScene" uid="uid://doewd1xob6x63" path="res://Scenes/main.tscn" id="7_m2yut"]
+[ext_resource type="AudioStream" uid="uid://b40hpqeqgv85y" path="res://Assets/Sounds/music/levelmusic - drmseq.ogg" id="9_its5w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hsffx"]
 atlas = ExtResource("2_dl8vb")
@@ -747,6 +748,17 @@ position = Vector2(637, -1)
 scale = Vector2(-1, 1)
 polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 353, 294, 328, 295, 342, 275, 345, 251, 329, 241, 294, 244)
 disabled = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_its5w")
+volume_db = -25.0
+autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="Sprite2D/WeaponArea2D" to="." method="_on_weapon_area_2d_body_entered"]
 [connection signal="body_shape_entered" from="Sprite2D/WeaponArea2D" to="." method="_on_weapon_area_2d_body_shape_entered"]
