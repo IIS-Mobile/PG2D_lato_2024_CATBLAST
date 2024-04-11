@@ -35,7 +35,7 @@ func _ready():
 	audio_player = $AudioStreamPlayer2D
 	
 func _physics_process(delta):
-	if Input.is_action_pressed("dash"):
+	if Input.is_action_pressed("Dash"):
 		dash()
 	# Add the gravity.
 	if not is_on_floor():
