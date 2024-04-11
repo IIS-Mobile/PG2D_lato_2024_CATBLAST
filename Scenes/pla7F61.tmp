@@ -785,16 +785,12 @@ one_shot = true
 show_behind_parent = true
 position = Vector2(1, 10)
 emitting = false
-amount = 120
+amount = 40
 process_material = SubResource("ParticleProcessMaterial_u3wnw")
 
 [node name="dash_again_timer" type="Timer" parent="."]
-
-[node name="GhostSpawnTimer" type="Timer" parent="."]
-wait_time = 0.05
 
 [connection signal="body_entered" from="Sprite2D/WeaponArea2D" to="." method="_on_weapon_area_2d_body_entered"]
 [connection signal="body_shape_entered" from="Sprite2D/WeaponArea2D" to="." method="_on_weapon_area_2d_body_shape_entered"]
 [connection signal="timeout" from="GhostTimer" to="." method="_on_ghost_timer_timeout"]
 [connection signal="timeout" from="dash_again_timer" to="." method="_on_dash_again_timer_timeout"]
-[connection signal="timeout" from="GhostSpawnTimer" to="." method="_on_ghost_spawn_timer_timeout"]
