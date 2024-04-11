@@ -58,6 +58,7 @@ Button/styles/normal = SubResource("StyleBoxTexture_7foau")
 Button/styles/pressed = SubResource("StyleBoxTexture_8pqne")
 
 [node name="Main" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_05y0p")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -77,6 +78,7 @@ offset_bottom = 34.0
 scale = Vector2(29.6821, 17.0937)
 
 [node name="Panel" type="Panel" parent="."]
+process_mode = 3
 texture_filter = 3
 offset_left = 87.0
 offset_top = 49.0
@@ -86,6 +88,7 @@ scale = Vector2(0.826351, 0.826186)
 theme = SubResource("Theme_4ql4f")
 
 [node name="Control" type="Control" parent="Panel"]
+process_mode = 1
 layout_mode = 3
 anchors_preset = 0
 offset_top = -1.21038
