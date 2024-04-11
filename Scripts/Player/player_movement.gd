@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 500.0
+const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
 
 @onready var katanaSweep: AudioStream = load("res://Assets/Sounds/player/katana sweep - Samuel Manzanero Recio.wav")
@@ -11,7 +11,22 @@ const JUMP_VELOCITY = -500.0
 @onready var anim = get_node("AnimationPlayer")
 
 
+@export var ghost_node : PackedScene
+@onready var ghost_timer = $GhostTimer
 
+func add_ghost():
+	var ghost = ghost_node.instantiate()
+	ghost.set_property(position,$AnimatedSprite2D.scale)
+	get_tree().current_scene.add_child(ghost)
+
+	
+func dash():
+	ghost_timer.start()
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,"position",position+velocity * 1.5,0.45)
+	await tween.finished
+	ghost_timer.stop()
+	
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var audio_player: AudioStreamPlayer2D
@@ -20,12 +35,15 @@ func _ready():
 	audio_player = $AudioStreamPlayer2D
 	
 func _physics_process(delta):
+	if Input.is_action_pressed("dash"):
+		dash()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("Jump") and is_on_floor() :
+		
 		velocity.y = JUMP_VELOCITY
 		if anim.current_animation != "Attack"and anim.current_animation != "attack_left":
 			anim.play("Jump")
@@ -77,3 +95,7 @@ func playsound(sound):
 	audio_player.pitch_scale = options[random_index]
 	audio_player.stream = sound
 	audio_player.play()
+
+
+func _on_ghost_timer_timeout():
+	add_ghost()
