@@ -50,6 +50,7 @@ func _physics_process(delta):
 			ghost_timer.start()
 			$dash_again_timer.start()
 			velocity.y = DASH_UP
+			velocity.x = 0
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -79,6 +80,7 @@ func _physics_process(delta):
 			anim.play("attack_left")
 	if direction:
 		if dashing:
+			velocity.y = 0
 			velocity.x = direction * DASH_SPEED
 		else:
 			velocity.x = direction * SPEED
