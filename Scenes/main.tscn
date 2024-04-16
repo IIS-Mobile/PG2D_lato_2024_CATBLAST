@@ -1,12 +1,12 @@
 [gd_scene load_steps=17 format=3 uid="uid://doewd1xob6x63"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_05y0p"]
-[ext_resource type="Texture2D" uid="uid://d1wlvrndak0j5" path="res://Assets/Arts/Ultimate Pixel 3.2/Animated Tablets/blue/Tablet.png" id="2_g36fc"]
+[ext_resource type="Texture2D" uid="uid://d1wlvrndak0j5" path="res://Assets/Arts/Gui/Animated Tablets/blue/Tablet.png" id="2_g36fc"]
 [ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="2_l6iag"]
 [ext_resource type="AudioStream" uid="uid://blb85uuhc3n38" path="res://Assets/Sounds/music/main menu theme - GreenStarFire.ogg" id="2_lb3jg"]
-[ext_resource type="FontFile" uid="uid://c33jywaea07wv" path="res://Assets/Arts/Ultimate Pixel 3.2/Cyberphont/Cyberphont beta/Cyberphont_pixels.ttf" id="3_50abr"]
-[ext_resource type="Texture2D" uid="uid://iy7ecswsckof" path="res://Assets/Arts/Ultimate Pixel 3.2/Text ScreenPads/blue/scalable_Text_screen.png" id="3_qxc77"]
-[ext_resource type="FontFile" uid="uid://dyqoacn20kknd" path="res://Assets/Arts/Ultimate Pixel 3.2/Cyberphont/Cyberphont 2.0/Cyberphont 2.0.ttf" id="5_5wc46"]
+[ext_resource type="FontFile" uid="uid://c33jywaea07wv" path="res://Assets/Arts/Gui/Cyberphont/Cyberphont beta/Cyberphont_pixels.ttf" id="3_50abr"]
+[ext_resource type="Texture2D" uid="uid://iy7ecswsckof" path="res://Assets/Arts/Gui/Text ScreenPads/blue/scalable_Text_screen.png" id="3_qxc77"]
+[ext_resource type="FontFile" uid="uid://dyqoacn20kknd" path="res://Assets/Arts/Gui/Cyberphont/Cyberphont 2.0/Cyberphont 2.0.ttf" id="5_5wc46"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_exq0e"]
 shader = ExtResource("2_l6iag")
