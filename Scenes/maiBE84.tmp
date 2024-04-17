@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://gg5d0kkcpoey" path="res://Scenes/UI/pause_menu.tscn" id="4_ti4mb"]
 [ext_resource type="PackedScene" uid="uid://dudwfr5a2vkg" path="res://Scenes/TestLevel.tscn" id="8_ddylw"]
 
-[node name="GameManager" type="Node2D"]
+[node name="Main" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_gejnf")
 
@@ -22,5 +22,4 @@ process_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_ti4mb")]
-game_manager = NodePath("../..")
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_ti4mb")]
