@@ -1,19 +1,19 @@
 [gd_scene load_steps=17 format=3 uid="uid://doewd1xob6x63"]
 
-[ext_resource type="Script" path="res://Scripts/main.gd" id="1_05y0p"]
-[ext_resource type="Texture2D" uid="uid://d1wlvrndak0j5" path="res://Assets/Arts/Gui/Animated Tablets/blue/Tablet.png" id="2_g36fc"]
+[ext_resource type="Script" path="res://Scripts/GUI/main.gd" id="1_gejnf"]
 [ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="2_l6iag"]
 [ext_resource type="AudioStream" uid="uid://blb85uuhc3n38" path="res://Assets/Sounds/music/main menu theme - GreenStarFire.ogg" id="2_lb3jg"]
-[ext_resource type="FontFile" uid="uid://c33jywaea07wv" path="res://Assets/Arts/Gui/Cyberphont/Cyberphont beta/Cyberphont_pixels.ttf" id="3_50abr"]
-[ext_resource type="Texture2D" uid="uid://iy7ecswsckof" path="res://Assets/Arts/Gui/Text ScreenPads/blue/scalable_Text_screen.png" id="3_qxc77"]
-[ext_resource type="FontFile" uid="uid://dyqoacn20kknd" path="res://Assets/Arts/Gui/Cyberphont/Cyberphont 2.0/Cyberphont 2.0.ttf" id="5_5wc46"]
+[ext_resource type="Texture2D" uid="uid://d1wlvrndak0j5" path="res://Assets/Arts/Gui/Animated Tablets/blue/Tablet.png" id="4_b8wvr"]
+[ext_resource type="FontFile" uid="uid://c33jywaea07wv" path="res://Assets/Arts/Gui/Cyberphont/Cyberphont beta/Cyberphont_pixels.ttf" id="5_3lale"]
+[ext_resource type="Texture2D" uid="uid://iy7ecswsckof" path="res://Assets/Arts/Gui/Text ScreenPads/blue/scalable_Text_screen.png" id="6_80b61"]
+[ext_resource type="FontFile" uid="uid://dyqoacn20kknd" path="res://Assets/Arts/Gui/Cyberphont/Cyberphont 2.0/Cyberphont 2.0.ttf" id="7_ggnmw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_exq0e"]
 shader = ExtResource("2_l6iag")
 shader_parameter/amount = 1.471
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ue2v"]
-texture = ExtResource("2_g36fc")
+texture = ExtResource("4_b8wvr")
 
 [sub_resource type="Theme" id="Theme_4ql4f"]
 Panel/styles/panel = SubResource("StyleBoxTexture_5ue2v")
@@ -25,13 +25,13 @@ Panel/styles/panel = SubResource("StyleBoxTexture_5ue2v")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gt4nm"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7foau"]
-texture = ExtResource("3_qxc77")
+texture = ExtResource("6_80b61")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8pqne"]
-texture = ExtResource("3_qxc77")
+texture = ExtResource("6_80b61")
 
 [sub_resource type="Theme" id="Theme_ktn46"]
-default_font = ExtResource("5_5wc46")
+default_font = ExtResource("7_ggnmw")
 default_font_size = 0
 Button/colors/font_color = Color(0.501961, 0.956863, 1, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
@@ -50,7 +50,7 @@ Button/constants/h_separation = 5
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 50
-Button/fonts/font = ExtResource("3_50abr")
+Button/fonts/font = ExtResource("5_3lale")
 Button/styles/disabled = SubResource("StyleBoxTexture_abocp")
 Button/styles/focus = SubResource("StyleBoxTexture_4v58w")
 Button/styles/hover = SubResource("StyleBoxTexture_gt4nm")
@@ -59,7 +59,7 @@ Button/styles/pressed = SubResource("StyleBoxTexture_8pqne")
 
 [node name="Main" type="Node2D"]
 process_mode = 3
-script = ExtResource("1_05y0p")
+script = ExtResource("1_gejnf")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_lb3jg")
