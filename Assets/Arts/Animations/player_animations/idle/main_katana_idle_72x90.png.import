@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dybi3nvmc3s8s"
-path="res://.godot/imported/Attack_placeholder.png-7077ff56ac3634181a673ce05a1f7257.ctex"
+uid="uid://b107myecroshd"
+path="res://.godot/imported/main_katana_idle_72x90.png-0f653a0db39d3fe00db695ddd4d95b1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Arts/Animations/player-animations/attack_r/Attack_placeholder.png"
-dest_files=["res://.godot/imported/Attack_placeholder.png-7077ff56ac3634181a673ce05a1f7257.ctex"]
+source_file="res://Assets/Arts/Animations/player_animations/idle/main_katana_idle_72x90.png"
+dest_files=["res://.godot/imported/main_katana_idle_72x90.png-0f653a0db39d3fe00db695ddd4d95b1f.ctex"]
 
 [params]
 

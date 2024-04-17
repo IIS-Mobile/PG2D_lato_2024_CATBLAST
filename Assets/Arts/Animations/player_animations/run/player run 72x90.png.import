@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b107myecroshd"
-path="res://.godot/imported/main_katana_idle_72x90.png-d54e88385430822e15d412b8117e90a7.ctex"
+uid="uid://1iiubpbbtm5v"
+path="res://.godot/imported/player run 72x90.png-5aa50105f2a99e6cd4ea2be4e4c02f8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Arts/Animations/player-animations/idle/main_katana_idle_72x90.png"
-dest_files=["res://.godot/imported/main_katana_idle_72x90.png-d54e88385430822e15d412b8117e90a7.ctex"]
+source_file="res://Assets/Arts/Animations/player_animations/run/player run 72x90.png"
+dest_files=["res://.godot/imported/player run 72x90.png-5aa50105f2a99e6cd4ea2be4e4c02f8f.ctex"]
 
 [params]
 

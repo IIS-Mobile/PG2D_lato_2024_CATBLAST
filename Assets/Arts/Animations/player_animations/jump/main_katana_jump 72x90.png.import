@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo5udsbjlqg1c"
-path="res://.godot/imported/player_run_main2.png-6b7a0c15255719e378951a54a07a200b.ctex"
+uid="uid://dmvbrs1pxtheg"
+path="res://.godot/imported/main_katana_jump 72x90.png-c132be6b7e8c66b113ea6ecace3329e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Arts/Animations/player-animations/run/player_run_main2.png"
-dest_files=["res://.godot/imported/player_run_main2.png-6b7a0c15255719e378951a54a07a200b.ctex"]
+source_file="res://Assets/Arts/Animations/player_animations/jump/main_katana_jump 72x90.png"
+dest_files=["res://.godot/imported/main_katana_jump 72x90.png-c132be6b7e8c66b113ea6ecace3329e0.ctex"]
 
 [params]
 
