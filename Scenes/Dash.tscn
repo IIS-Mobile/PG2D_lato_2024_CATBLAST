@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8gt0h1g6mdpr"]
 
-[ext_resource type="Texture2D" uid="uid://wqyfwn7x2fyb" path="res://Assets/Arts/Animations/player-animations/idle/dash.png" id="1_w4lvr"]
+[ext_resource type="Texture2D" uid="uid://wqyfwn7x2fyb" path="res://Assets/Arts/Animations/player_animations/idle/player_dash.png" id="1_w4lvr"]
 [ext_resource type="Script" path="res://Scripts/Player/Dash.gd" id="2_le41g"]
 
 [node name="Sprite2D" type="Sprite2D"]
