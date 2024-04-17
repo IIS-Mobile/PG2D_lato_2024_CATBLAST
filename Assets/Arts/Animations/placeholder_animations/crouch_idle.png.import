@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmvbrs1pxtheg"
-path="res://.godot/imported/main_katana_jump 72x90.png-c132be6b7e8c66b113ea6ecace3329e0.ctex"
+uid="uid://bi730ect0pfhf"
+path="res://.godot/imported/crouch_idle.png-2cabed65412e662670e8d0f5de89bf76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Arts/Animations/player_animations/jump/main_katana_jump 72x90.png"
-dest_files=["res://.godot/imported/main_katana_jump 72x90.png-c132be6b7e8c66b113ea6ecace3329e0.ctex"]
+source_file="res://Assets/Arts/Animations/placeholder_animations/crouch_idle.png"
+dest_files=["res://.godot/imported/crouch_idle.png-2cabed65412e662670e8d0f5de89bf76.ctex"]
 
 [params]
 

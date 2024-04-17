@@ -1,20 +1,20 @@
 [gd_scene load_steps=72 format=3 uid="uid://dmpuglts6my21"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_movement.gd" id="1_341yb"]
-[ext_resource type="Texture2D" uid="uid://dybi3nvmc3s8s" path="res://Assets/Arts/Animations/player_animations/attack/Attack_placeholder.png" id="2_5fn28"]
-[ext_resource type="Texture2D" uid="uid://ci8ylvh8xr8aj" path="res://Assets/Arts/Animations/player_animations/attack/Attack_main_120x120.png" id="2_dl8vb"]
+[ext_resource type="Texture2D" uid="uid://dybi3nvmc3s8s" path="res://Assets/Arts/Animations/placeholder_animations/katana_attack.png" id="2_5fn28"]
+[ext_resource type="Texture2D" uid="uid://ci8ylvh8xr8aj" path="res://Assets/Arts/Animations/player_animations/attack/player_attack.png" id="2_dl8vb"]
 [ext_resource type="PackedScene" uid="uid://b8gt0h1g6mdpr" path="res://Scenes/Dash.tscn" id="2_pehe5"]
-[ext_resource type="Texture2D" uid="uid://dmvbrs1pxtheg" path="res://Assets/Arts/Animations/player_animations/jump/main_katana_jump 72x90.png" id="3_eyvv4"]
+[ext_resource type="Texture2D" uid="uid://dmvbrs1pxtheg" path="res://Assets/Arts/Animations/player_animations/jump/player_jump.png" id="3_eyvv4"]
 [ext_resource type="Shader" path="res://Shaders/katana_color.gdshader" id="4_sgta2"]
-[ext_resource type="Texture2D" uid="uid://b107myecroshd" path="res://Assets/Arts/Animations/player_animations/idle/main_katana_idle_72x90.png" id="4_v14h0"]
-[ext_resource type="Texture2D" uid="uid://bo5udsbjlqg1c" path="res://Assets/Arts/Animations/player_animations/run/player_run_main2.png" id="5_kd4ec"]
+[ext_resource type="Texture2D" uid="uid://b107myecroshd" path="res://Assets/Arts/Animations/player_animations/idle/player_idle.png" id="4_v14h0"]
+[ext_resource type="Texture2D" uid="uid://bo5udsbjlqg1c" path="res://Assets/Arts/Animations/player_animations/run/player_run.png" id="5_kd4ec"]
 [ext_resource type="PackedScene" uid="uid://bayfga7evi546" path="res://Scenes/paralaxbackground.tscn" id="5_ksvj2"]
 [ext_resource type="PackedScene" uid="uid://doewd1xob6x63" path="res://Scenes/main.tscn" id="7_m2yut"]
 [ext_resource type="AudioStream" uid="uid://b40hpqeqgv85y" path="res://Assets/Sounds/music/levelmusic - drmseq.ogg" id="9_its5w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yvufx"]
 shader = ExtResource("4_sgta2")
-shader_parameter/color_tint = null
+shader_parameter/color_tint = Color(0, 0.827451, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hsffx"]
 atlas = ExtResource("2_dl8vb")

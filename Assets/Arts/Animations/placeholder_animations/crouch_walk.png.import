@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1iiubpbbtm5v"
-path="res://.godot/imported/player run 72x90.png-5aa50105f2a99e6cd4ea2be4e4c02f8f.ctex"
+uid="uid://hswbnd0av32g"
+path="res://.godot/imported/crouch_walk.png-93ccfcb24b25de3860fb43971e226037.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Arts/Animations/player_animations/run/player run 72x90.png"
-dest_files=["res://.godot/imported/player run 72x90.png-5aa50105f2a99e6cd4ea2be4e4c02f8f.ctex"]
+source_file="res://Assets/Arts/Animations/placeholder_animations/crouch_walk.png"
+dest_files=["res://.godot/imported/crouch_walk.png-93ccfcb24b25de3860fb43971e226037.ctex"]
 
 [params]
 

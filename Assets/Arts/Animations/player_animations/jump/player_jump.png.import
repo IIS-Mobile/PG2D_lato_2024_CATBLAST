@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wqyfwn7x2fyb"
-path="res://.godot/imported/dash.png-fe876dc17e9539634b15ab6f4a12c1cd.ctex"
+uid="uid://dmvbrs1pxtheg"
+path="res://.godot/imported/player_jump.png-2e7754bafb0a873f03c0ef0f784ada3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Arts/Animations/player_animations/idle/dash.png"
-dest_files=["res://.godot/imported/dash.png-fe876dc17e9539634b15ab6f4a12c1cd.ctex"]
+source_file="res://Assets/Arts/Animations/player_animations/jump/player_jump.png"
+dest_files=["res://.godot/imported/player_jump.png-2e7754bafb0a873f03c0ef0f784ada3c.ctex"]
 
 [params]
 
