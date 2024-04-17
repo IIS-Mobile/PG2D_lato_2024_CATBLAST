@@ -2,6 +2,8 @@ extends Node2D
 
 class_name GameManager
 
+signal toggle_game_paused(is_paused: bool)
+
 @onready var menuMusic: AudioStream = load("res://Assets/Sounds/music/main menu theme - GreenStarFire.ogg")
 @onready var confirmSound: AudioStream = load("res://Assets/Sounds/ui/button yes - phoenix_the_maker.wav")
 @onready var hoverSound: AudioStream = load("res://Assets/Sounds/ui/hover button - Pixabay.wav")
@@ -10,7 +12,6 @@ class_name GameManager
 var audio_player: AudioStreamPlayer2D
 var music_player: AudioStreamPlayer
 
-signal toggle_game_paused(is_paused: bool)
 var game_paused : bool = false :
 	get:
 		return game_paused
