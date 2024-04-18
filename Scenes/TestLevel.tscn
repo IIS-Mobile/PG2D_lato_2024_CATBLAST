@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dudwfr5a2vkg"]
 
-[ext_resource type="PackedScene" path="res://Scenes/pink_neon.tscn" id="1_638po"]
-[ext_resource type="PackedScene" path="res://Scenes/SimpleEnemy.tscn" id="1_fh6g2"]
+[ext_resource type="PackedScene" uid="uid://c1qxk2wkfx44j" path="res://Scenes/pink_neon.tscn" id="1_638po"]
+[ext_resource type="PackedScene" uid="uid://dkfbae7sgq1mv" path="res://Scenes/SimpleEnemy.tscn" id="1_fh6g2"]
 [ext_resource type="PackedScene" uid="uid://dmpuglts6my21" path="res://Scenes/player.tscn" id="2_6h82v"]
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="3_nobln"]
 [ext_resource type="PackedScene" uid="uid://c5yj3p0tq8rr7" path="res://Scenes/street_lamp.tscn" id="4_3orsa"]
