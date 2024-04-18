@@ -1,0 +1,53 @@
+[gd_scene load_steps=12 format=3 uid="uid://d1rxkgas26uuw"]
+
+[ext_resource type="SpriteFrames" uid="uid://d0fomfwn70u8c" path="res://Scenes/Enemies/drone_sprite_frames.tres" id="1_cqrf5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yqu8t"]
+radius = 19.0
+height = 42.0
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_d7ulg"]
+
+[sub_resource type="BBNode" id="BBNode_wkncy"]
+saved_value = NodePath("AnimatedSprite2D")
+resource_name = "AnimatedSprite2D"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_0vald"]
+animation_player = SubResource("BBNode_wkncy")
+animation_name = &"idle"
+
+[sub_resource type="BTWait" id="BTWait_7yvkr"]
+duration = 5.0
+
+[sub_resource type="BBNode" id="BBNode_c72u6"]
+saved_value = NodePath("AnimatedSprite2D")
+resource_name = "AnimatedSprite2D"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_h3807"]
+animation_player = SubResource("BBNode_c72u6")
+animation_name = &"shoot"
+
+[sub_resource type="BTSequence" id="BTSequence_iasbu"]
+children = [SubResource("BTPlayAnimation_0vald"), SubResource("BTWait_7yvkr"), SubResource("BTPlayAnimation_h3807")]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_5iirp"]
+blackboard_plan = SubResource("BlackboardPlan_d7ulg")
+root_task = SubResource("BTSequence_iasbu")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_dxcb2"]
+
+[node name="Drone" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_cqrf5")
+animation = &"idle"
+frame_progress = 0.451493
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -3)
+shape = SubResource("CapsuleShape2D_yqu8t")
+
+[node name="BTPlayer" type="BTPlayer" parent="."]
+behavior_tree = SubResource("BehaviorTree_5iirp")
+update_mode = 0
+blackboard_plan = SubResource("BlackboardPlan_dxcb2")
