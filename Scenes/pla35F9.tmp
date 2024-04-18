@@ -8,7 +8,7 @@
 [ext_resource type="Shader" path="res://Shaders/katana_color.gdshader" id="4_sgta2"]
 [ext_resource type="Texture2D" uid="uid://b107myecroshd" path="res://Assets/Arts/Animations/player_animations/idle/player_idle.png" id="4_v14h0"]
 [ext_resource type="Texture2D" uid="uid://bo5udsbjlqg1c" path="res://Assets/Arts/Animations/player_animations/run/player_run.png" id="5_kd4ec"]
-[ext_resource type="PackedScene" path="res://Scenes/paralaxbackground.tscn" id="5_ksvj2"]
+[ext_resource type="PackedScene" uid="uid://bayfga7evi546" path="res://Scenes/paralaxbackground.tscn" id="5_ksvj2"]
 [ext_resource type="AudioStream" uid="uid://omka4tugmk4c" path="res://Assets/Sounds/player/katana sweep - Samuel Manzanero Recio.wav" id="9_aq6sx"]
 [ext_resource type="AudioStream" uid="uid://b40hpqeqgv85y" path="res://Assets/Sounds/music/levelmusic - drmseq.ogg" id="9_its5w"]
 [ext_resource type="AudioStream" uid="uid://bhaqkxo4x6i53" path="res://Assets/Sounds/player/footstep - Pixabay.wav" id="10_b44pa"]
@@ -429,7 +429,7 @@ tracks/3/keys = {
 tracks/4/type = "audio"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../PlayerSounds")
+tracks/4/path = NodePath("../AudioStreamPlayer2D")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -544,7 +544,7 @@ tracks/1/keys = {
 tracks/2/type = "audio"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../PlayerSounds")
+tracks/2/path = NodePath("../AudioStreamPlayer2D")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -553,7 +553,7 @@ tracks/2/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("10_buie0")
 }],
-"times": PackedFloat32Array(-0.06)
+"times": PackedFloat32Array(0)
 }
 tracks/2/use_blend = true
 
@@ -663,7 +663,7 @@ tracks/1/keys = {
 tracks/2/type = "audio"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../PlayerSounds")
+tracks/2/path = NodePath("../AudioStreamPlayer2D")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -735,7 +735,7 @@ tracks/3/keys = {
 tracks/4/type = "audio"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../PlayerSounds")
+tracks/4/path = NodePath("../AudioStreamPlayer2D")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -832,7 +832,7 @@ scale = Vector2(-1, 1)
 polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 353, 294, 328, 295, 342, 275, 345, 251, 329, 241, 294, 244)
 disabled = true
 
-[node name="PlayerSounds" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-317, -269)
 volume_db = -10.0
 
@@ -855,7 +855,6 @@ amount = 120
 process_material = SubResource("ParticleProcessMaterial_u3wnw")
 
 [node name="dash_again_timer" type="Timer" parent="."]
-wait_time = 5.0
 
 [node name="GhostSpawnTimer" type="Timer" parent="."]
 wait_time = 0.05
