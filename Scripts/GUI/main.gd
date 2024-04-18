@@ -29,7 +29,6 @@ func _ready():
 	music_player = $AudioStreamPlayer
 	music_player.stream = menuMusic
 	music_player.play()
-	#$CanvasLayer/PauseMenu/Play.grab_focus()
 #
 #func _on_play_pressed():
 	#$AudioStreamPlayer.stop()

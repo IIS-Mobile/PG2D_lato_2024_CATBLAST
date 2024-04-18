@@ -8,7 +8,7 @@
 [ext_resource type="Shader" path="res://Shaders/katana_color.gdshader" id="4_sgta2"]
 [ext_resource type="Texture2D" uid="uid://b107myecroshd" path="res://Assets/Arts/Animations/player_animations/idle/player_idle.png" id="4_v14h0"]
 [ext_resource type="Texture2D" uid="uid://bo5udsbjlqg1c" path="res://Assets/Arts/Animations/player_animations/run/player_run.png" id="5_kd4ec"]
-[ext_resource type="PackedScene" uid="uid://bayfga7evi546" path="res://Scenes/paralaxbackground.tscn" id="5_ksvj2"]
+[ext_resource type="PackedScene" path="res://Scenes/paralaxbackground.tscn" id="5_ksvj2"]
 [ext_resource type="AudioStream" uid="uid://omka4tugmk4c" path="res://Assets/Sounds/player/katana sweep - Samuel Manzanero Recio.wav" id="9_aq6sx"]
 [ext_resource type="AudioStream" uid="uid://b40hpqeqgv85y" path="res://Assets/Sounds/music/levelmusic - drmseq.ogg" id="9_its5w"]
 [ext_resource type="AudioStream" uid="uid://bhaqkxo4x6i53" path="res://Assets/Sounds/player/footstep - Pixabay.wav" id="10_b44pa"]
@@ -855,6 +855,7 @@ amount = 120
 process_material = SubResource("ParticleProcessMaterial_u3wnw")
 
 [node name="dash_again_timer" type="Timer" parent="."]
+wait_time = 5.0
 
 [node name="GhostSpawnTimer" type="Timer" parent="."]
 wait_time = 0.05
