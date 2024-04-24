@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dudwfr5a2vkg"]
+[gd_scene load_steps=10 format=3 uid="uid://dudwfr5a2vkg"]
 
 [ext_resource type="PackedScene" path="res://Scenes/pink_neon.tscn" id="1_638po"]
 [ext_resource type="PackedScene" path="res://Scenes/SimpleEnemy.tscn" id="1_fh6g2"]
@@ -6,12 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://c5yj3p0tq8rr7" path="res://Scenes/street_lamp.tscn" id="4_3orsa"]
 [ext_resource type="PackedScene" uid="uid://bvnrskhtu5gb3" path="res://Scenes/WomanNeonScene.tscn" id="6_bn17l"]
 [ext_resource type="Shader" path="res://Shaders/TestLevel.gdshader" id="6_yt2ig"]
+[ext_resource type="Texture2D" uid="uid://c0c4jryp6o8jp" path="res://Assets/Arts/Tiles/My Tiles/collision_marks.png" id="7_62wlp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ivkmq"]
 shader = ExtResource("6_yt2ig")
 shader_parameter/r_displacement = Vector2(2, 0)
 shader_parameter/g_displacement = Vector2(0, 0)
 shader_parameter/b_displacement = Vector2(-3, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_olh8m"]
+size = Vector2(50, 31)
 
 [node name="TestLevel" type="Node2D"]
 
@@ -130,7 +134,7 @@ position = Vector2(1133, 583)
 [node name="SimpleEnemy5" parent="." groups=["enemy"] instance=ExtResource("1_fh6g2")]
 z_index = 3
 texture_filter = 3
-position = Vector2(1326, 668)
+position = Vector2(1326, 667)
 
 [node name="SimpleEnemy6" parent="." groups=["enemy"] instance=ExtResource("1_fh6g2")]
 z_index = 3
@@ -151,3 +155,18 @@ offset_right = 190.0
 offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(320, 545)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(-1, 8.49998)
+scale = Vector2(0.958333, 0.645834)
+texture = ExtResource("7_62wlp")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
+position = Vector2(-320, -545)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2(320, 553.5)
+shape = SubResource("RectangleShape2D_olh8m")
