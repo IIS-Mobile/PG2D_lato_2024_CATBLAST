@@ -157,7 +157,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(320, 545)
+position = Vector2(320, 544)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
 position = Vector2(-1, 8.49998)
