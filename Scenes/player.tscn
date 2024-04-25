@@ -1077,11 +1077,11 @@ wait_time = 0.05
 
 [node name="CrouchRaycast_1" type="RayCast2D" parent="."]
 position = Vector2(-12, 3)
-target_position = Vector2(0, -25)
+target_position = Vector2(0, -27)
 
 [node name="CrouchRaycast_2" type="RayCast2D" parent="."]
 position = Vector2(14, 3)
-target_position = Vector2(0, -25)
+target_position = Vector2(0, -27)
 
 [connection signal="body_entered" from="Sprite2D/WeaponArea2D" to="." method="_on_weapon_area_2d_body_entered"]
 [connection signal="body_shape_entered" from="Sprite2D/WeaponArea2D" to="." method="_on_weapon_area_2d_body_shape_entered"]
