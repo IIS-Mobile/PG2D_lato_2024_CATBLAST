@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://dmpuglts6my21"]
+[gd_scene load_steps=96 format=3 uid="uid://dmpuglts6my21"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_movement.gd" id="1_341yb"]
 [ext_resource type="Texture2D" uid="uid://dybi3nvmc3s8s" path="res://Assets/Arts/Animations/placeholder_animations/katana_attack.png" id="2_5fn28"]
@@ -7,12 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://dmvbrs1pxtheg" path="res://Assets/Arts/Animations/player_animations/jump/player_jump.png" id="3_eyvv4"]
 [ext_resource type="Shader" path="res://Shaders/katana_color.gdshader" id="4_sgta2"]
 [ext_resource type="Texture2D" uid="uid://b107myecroshd" path="res://Assets/Arts/Animations/player_animations/idle/player_idle.png" id="4_v14h0"]
+[ext_resource type="Texture2D" uid="uid://cfy7tx5o0bhue" path="res://Assets/Arts/Animations/player_animations/crouch/player_crouch_idle.png" id="5_dly5m"]
 [ext_resource type="Texture2D" uid="uid://bo5udsbjlqg1c" path="res://Assets/Arts/Animations/player_animations/run/player_run.png" id="5_kd4ec"]
-[ext_resource type="PackedScene" path="res://Scenes/paralaxbackground.tscn" id="5_ksvj2"]
+[ext_resource type="PackedScene" uid="uid://bayfga7evi546" path="res://Scenes/paralaxbackground.tscn" id="5_ksvj2"]
+[ext_resource type="Texture2D" uid="uid://cv7x0e166nkn0" path="res://Assets/Arts/Animations/player_animations/crouch/player_crouch_walk.png" id="6_l3y7b"]
 [ext_resource type="AudioStream" uid="uid://omka4tugmk4c" path="res://Assets/Sounds/player/katana sweep - Samuel Manzanero Recio.wav" id="9_aq6sx"]
-[ext_resource type="AudioStream" uid="uid://b40hpqeqgv85y" path="res://Assets/Sounds/music/levelmusic - drmseq.ogg" id="9_its5w"]
 [ext_resource type="AudioStream" uid="uid://bhaqkxo4x6i53" path="res://Assets/Sounds/player/footstep - Pixabay.wav" id="10_b44pa"]
 [ext_resource type="AudioStream" uid="uid://bpn8pktpauoge" path="res://Assets/Sounds/player/jump - Soundsnap and Friends.wav" id="10_buie0"]
+[ext_resource type="Shape2D" uid="uid://bg7jxk4f6nboq" path="res://Assets/Collisions/player_standing_cshape.tres" id="11_ry7ov"]
+[ext_resource type="AudioStream" uid="uid://tpg5hvfsw3sc" path="res://Assets/Sounds/player/crouching footstep - Pixabay.wav" id="13_y0wou"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yvufx"]
 shader = ExtResource("4_sgta2")
@@ -49,6 +52,78 @@ region = Rect2(720, 0, 120, 120)
 [sub_resource type="AtlasTexture" id="AtlasTexture_p2wbo"]
 atlas = ExtResource("2_dl8vb")
 region = Rect2(840, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41hbk"]
+atlas = ExtResource("5_dly5m")
+region = Rect2(0, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsecj"]
+atlas = ExtResource("5_dly5m")
+region = Rect2(72, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0waeb"]
+atlas = ExtResource("5_dly5m")
+region = Rect2(144, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhetj"]
+atlas = ExtResource("5_dly5m")
+region = Rect2(216, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnwx1"]
+atlas = ExtResource("5_dly5m")
+region = Rect2(288, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4x37"]
+atlas = ExtResource("5_dly5m")
+region = Rect2(360, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2xd1"]
+atlas = ExtResource("5_dly5m")
+region = Rect2(432, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6a7jt"]
+atlas = ExtResource("5_dly5m")
+region = Rect2(504, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0wb7"]
+atlas = ExtResource("6_l3y7b")
+region = Rect2(0, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foyp3"]
+atlas = ExtResource("6_l3y7b")
+region = Rect2(72, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j0aw"]
+atlas = ExtResource("6_l3y7b")
+region = Rect2(144, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eox5u"]
+atlas = ExtResource("6_l3y7b")
+region = Rect2(216, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlrai"]
+atlas = ExtResource("6_l3y7b")
+region = Rect2(288, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiflt"]
+atlas = ExtResource("6_l3y7b")
+region = Rect2(360, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_is3qt"]
+atlas = ExtResource("6_l3y7b")
+region = Rect2(432, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dab8"]
+atlas = ExtResource("6_l3y7b")
+region = Rect2(504, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvb5u"]
+atlas = ExtResource("6_l3y7b")
+region = Rect2(576, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcoer"]
+atlas = ExtResource("6_l3y7b")
+region = Rect2(648, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fc0aw"]
 atlas = ExtResource("3_eyvv4")
@@ -233,6 +308,79 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_41hbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsecj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0waeb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhetj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnwx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4x37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2xd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6a7jt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2xd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4x37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnwx1")
+}],
+"loop": true,
+"name": &"Crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0wb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foyp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j0aw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eox5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlrai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiflt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_is3qt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dab8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvb5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcoer")
+}],
+"loop": true,
+"name": &"Crouch_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_fc0aw")
 }],
 "loop": true,
@@ -370,10 +518,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vjnxw"]
-radius = 61.0
-height = 192.0
-
 [sub_resource type="Animation" id="Animation_l4yaa"]
 resource_name = "Attack"
 length = 0.55
@@ -441,6 +585,81 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0.07)
 }
 tracks/4/use_blend = false
+
+[sub_resource type="Animation" id="Animation_nn1bs"]
+resource_name = "Crouch"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Crouch"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_ti0k0"]
+resource_name = "Crouch_walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Crouch_walk"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PlayerSounds")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_y0wou")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_y0wou")
+}],
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_v7el4"]
 resource_name = "Death"
@@ -751,6 +970,8 @@ tracks/4/use_blend = true
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lrkoh"]
 _data = {
 "Attack": SubResource("Animation_l4yaa"),
+"Crouch": SubResource("Animation_nn1bs"),
+"Crouch_walk": SubResource("Animation_ti0k0"),
 "Death": SubResource("Animation_v7el4"),
 "Fall": SubResource("Animation_xgduq"),
 "Idle": SubResource("Animation_qgshm"),
@@ -798,16 +1019,15 @@ animation = &"Attack"
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -1.44)
+position = Vector2(1, -1)
 scale = Vector2(0.260762, 0.260713)
-shape = SubResource("CapsuleShape2D_vjnxw")
+shape = ExtResource("11_ry7ov")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Camera2D")
 libraries = {
 "": SubResource("AnimationLibrary_lrkoh")
 }
-autoplay = "Idle"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../AnimationPlayer")
@@ -836,11 +1056,6 @@ disabled = true
 position = Vector2(-317, -269)
 volume_db = -10.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_its5w")
-volume_db = -25.0
-autoplay = true
-
 [node name="GhostTimer" type="Timer" parent="."]
 wait_time = 0.15
 
@@ -859,6 +1074,14 @@ wait_time = 5.0
 
 [node name="GhostSpawnTimer" type="Timer" parent="."]
 wait_time = 0.05
+
+[node name="CrouchRaycast_1" type="RayCast2D" parent="."]
+position = Vector2(-12, 3)
+target_position = Vector2(0, -25)
+
+[node name="CrouchRaycast_2" type="RayCast2D" parent="."]
+position = Vector2(14, 3)
+target_position = Vector2(0, -25)
 
 [connection signal="body_entered" from="Sprite2D/WeaponArea2D" to="." method="_on_weapon_area_2d_body_entered"]
 [connection signal="body_shape_entered" from="Sprite2D/WeaponArea2D" to="." method="_on_weapon_area_2d_body_shape_entered"]
