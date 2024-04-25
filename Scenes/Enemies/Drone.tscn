@@ -1,6 +1,98 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1rxkgas26uuw"]
+[gd_scene load_steps=18 format=3 uid="uid://d1rxkgas26uuw"]
 
 [ext_resource type="SpriteFrames" uid="uid://d0fomfwn70u8c" path="res://Scenes/Enemies/drone_sprite_frames.tres" id="1_cqrf5"]
+
+[sub_resource type="Animation" id="Animation_2p6ya"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_smqfg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_4noel"]
+resource_name = "shoot"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"shoot"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_js414"]
+_data = {
+"RESET": SubResource("Animation_smqfg"),
+"idle": SubResource("Animation_2p6ya"),
+"shoot": SubResource("Animation_4noel")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yqu8t"]
 radius = 19.0
@@ -8,27 +100,35 @@ height = 42.0
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_d7ulg"]
 
-[sub_resource type="BBNode" id="BBNode_wkncy"]
-saved_value = NodePath("AnimatedSprite2D")
-resource_name = "AnimatedSprite2D"
+[sub_resource type="BBNode" id="BBNode_t8kda"]
+saved_value = NodePath("AnimatedSprite2D/AnimationPlayer")
+resource_name = "AnimatedSprite2D/AnimationPlayer"
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_0vald"]
-animation_player = SubResource("BBNode_wkncy")
+animation_player = SubResource("BBNode_t8kda")
 animation_name = &"idle"
 
 [sub_resource type="BTWait" id="BTWait_7yvkr"]
 duration = 5.0
 
 [sub_resource type="BBNode" id="BBNode_c72u6"]
-saved_value = NodePath("AnimatedSprite2D")
-resource_name = "AnimatedSprite2D"
+saved_value = NodePath("AnimatedSprite2D/AnimationPlayer")
+resource_name = "AnimatedSprite2D/AnimationPlayer"
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_h3807"]
 animation_player = SubResource("BBNode_c72u6")
 animation_name = &"shoot"
 
+[sub_resource type="BBNode" id="BBNode_p7nyq"]
+saved_value = NodePath("AnimatedSprite2D/AnimationPlayer")
+resource_name = "AnimatedSprite2D/AnimationPlayer"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_ieqad"]
+animation_player = SubResource("BBNode_p7nyq")
+animation_name = &"shoot"
+
 [sub_resource type="BTSequence" id="BTSequence_iasbu"]
-children = [SubResource("BTPlayAnimation_0vald"), SubResource("BTWait_7yvkr"), SubResource("BTPlayAnimation_h3807")]
+children = [SubResource("BTPlayAnimation_0vald"), SubResource("BTWait_7yvkr"), SubResource("BTPlayAnimation_h3807"), SubResource("BTAwaitAnimation_ieqad")]
 
 [sub_resource type="BehaviorTree" id="BehaviorTree_5iirp"]
 blackboard_plan = SubResource("BlackboardPlan_d7ulg")
@@ -41,7 +141,13 @@ root_task = SubResource("BTSequence_iasbu")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_cqrf5")
 animation = &"idle"
-frame_progress = 0.451493
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_js414")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -3)

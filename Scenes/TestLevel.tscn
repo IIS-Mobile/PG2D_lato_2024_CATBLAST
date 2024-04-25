@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dudwfr5a2vkg"]
+[gd_scene load_steps=10 format=3 uid="uid://dudwfr5a2vkg"]
 
 [ext_resource type="PackedScene" uid="uid://c1qxk2wkfx44j" path="res://Scenes/pink_neon.tscn" id="1_638po"]
 [ext_resource type="PackedScene" uid="uid://dkfbae7sgq1mv" path="res://Scenes/SimpleEnemy.tscn" id="1_fh6g2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c5yj3p0tq8rr7" path="res://Scenes/street_lamp.tscn" id="4_3orsa"]
 [ext_resource type="PackedScene" uid="uid://bvnrskhtu5gb3" path="res://Scenes/WomanNeonScene.tscn" id="6_bn17l"]
 [ext_resource type="Shader" path="res://Shaders/TestLevel.gdshader" id="6_yt2ig"]
+[ext_resource type="PackedScene" uid="uid://d1rxkgas26uuw" path="res://Scenes/Enemies/Drone.tscn" id="8_bkcjp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ivkmq"]
 shader = ExtResource("6_yt2ig")
@@ -157,3 +158,6 @@ offset_right = 190.0
 offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Drone" parent="." instance=ExtResource("8_bkcjp")]
+position = Vector2(342, 568)
