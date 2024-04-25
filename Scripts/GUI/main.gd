@@ -4,13 +4,11 @@ class_name GameManager
 
 signal toggle_game_paused(is_paused: bool)
 
-@onready var menuMusic: AudioStream = load("res://Assets/Sounds/music/main menu theme - GreenStarFire.ogg")
 @onready var confirmSound: AudioStream = load("res://Assets/Sounds/ui/button yes - phoenix_the_maker.wav")
 @onready var hoverSound: AudioStream = load("res://Assets/Sounds/ui/hover button - Pixabay.wav")
 @onready var pause_menu  =$"."
 
 var audio_player: AudioStreamPlayer2D
-var music_player: AudioStreamPlayer
 
 var game_paused : bool = false :
 	get:
@@ -26,9 +24,8 @@ func _input(event : InputEvent):
 
 func _ready():
 	audio_player = $AudioStreamPlayer2D
-	music_player = $AudioStreamPlayer
-	music_player.stream = menuMusic
-	music_player.play()
+	randomize()
+	SoundtrackPlayer.play_soundtrack(SOUNDTRACKPLAYER_CLASS.THEMES.PEACE)
 #
 #func _on_play_pressed():
 	#$AudioStreamPlayer.stop()
@@ -48,4 +45,3 @@ func _ready():
 func _on_hover():
 	audio_player.stream = hoverSound
 	audio_player.play()
-

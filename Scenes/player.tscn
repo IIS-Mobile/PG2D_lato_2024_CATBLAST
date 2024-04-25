@@ -12,10 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://bayfga7evi546" path="res://Scenes/paralaxbackground.tscn" id="5_ksvj2"]
 [ext_resource type="Texture2D" uid="uid://cv7x0e166nkn0" path="res://Assets/Arts/Animations/player_animations/crouch/player_crouch_walk.png" id="6_l3y7b"]
 [ext_resource type="AudioStream" uid="uid://omka4tugmk4c" path="res://Assets/Sounds/player/katana sweep - Samuel Manzanero Recio.wav" id="9_aq6sx"]
-[ext_resource type="AudioStream" uid="uid://b40hpqeqgv85y" path="res://Assets/Sounds/music/levelmusic - drmseq.ogg" id="9_its5w"]
 [ext_resource type="AudioStream" uid="uid://bhaqkxo4x6i53" path="res://Assets/Sounds/player/footstep - Pixabay.wav" id="10_b44pa"]
 [ext_resource type="AudioStream" uid="uid://bpn8pktpauoge" path="res://Assets/Sounds/player/jump - Soundsnap and Friends.wav" id="10_buie0"]
 [ext_resource type="Shape2D" uid="uid://bg7jxk4f6nboq" path="res://Assets/Collisions/player_standing_cshape.tres" id="11_ry7ov"]
+[ext_resource type="AudioStream" uid="uid://tpg5hvfsw3sc" path="res://Assets/Sounds/player/crouching footstep - Pixabay.wav" id="13_y0wou"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yvufx"]
 shader = ExtResource("4_sgta2")
@@ -641,6 +641,25 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PlayerSounds")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_y0wou")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_y0wou")
+}],
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_v7el4"]
 resource_name = "Death"
@@ -997,6 +1016,7 @@ position = Vector2(2, -5.44003)
 scale = Vector2(0.998, 0.968)
 sprite_frames = SubResource("SpriteFrames_328ho")
 animation = &"Attack"
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
@@ -1035,11 +1055,6 @@ disabled = true
 [node name="PlayerSounds" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-317, -269)
 volume_db = -10.0
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_its5w")
-volume_db = -25.0
-autoplay = true
 
 [node name="GhostTimer" type="Timer" parent="."]
 wait_time = 0.15
