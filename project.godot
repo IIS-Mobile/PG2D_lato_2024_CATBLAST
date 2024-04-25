@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SoundtrackPlayer="*res://Scenes/soundtrack_player.tscn"
+
 [display]
 
 window/stretch/mode="canvas_items"
