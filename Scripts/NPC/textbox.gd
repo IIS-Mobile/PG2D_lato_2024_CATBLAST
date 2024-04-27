@@ -30,7 +30,7 @@ func dialogue_begin():
 	queue_text("Pressing Interact as the letters pop up makes the whole text appear at once.")
 	queue_text("Player is free to move around and interrupt the dialogue if he wanders too far away.")
 	queue_text("To be able to start the dialogue again, the player must leave NPC's dialogue range.")
-	queue_text("Mangusta shall perish.")
+	queue_text("Mangusta will perish.")
 
 func _ready():
 	audio_player = $LetterSound
