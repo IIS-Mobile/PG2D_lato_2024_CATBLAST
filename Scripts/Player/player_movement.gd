@@ -22,7 +22,7 @@ var standing_cshape = preload("res://Assets/Collisions/player_standing_cshape.tr
 var crouching_cshape = preload("res://Assets/Collisions/player_crouching_cshape.tres")
 func add_ghost():
 	var ghost = ghost_node.instantiate()
-	ghost.set_property(global_position,$AnimatedSprite2D.scale)
+	ghost.set_property(global_position, $AnimatedSprite2D.scale)
 	get_tree().current_scene.add_child(ghost)
 
 
@@ -37,6 +37,7 @@ var audio_player: AudioStreamPlayer2D
 
 func _ready():
 	audio_player = $PlayerSounds
+	
 func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	#Handle dash
@@ -44,6 +45,7 @@ func _physics_process(delta):
 		if direction:
 			dash()
 			dashing = true
+			# mozna tu wrzucic animacje dasha
 			can_dash = false
 			ghost_timer.start()
 			$dash_again_timer.start()
