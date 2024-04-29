@@ -5,11 +5,10 @@ extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_player_in_dialogue_range = false
-var is_player_talking = false
 
 func _process(delta):
-	if is_player_in_dialogue_range and Input.is_action_just_pressed("Interact") and not is_player_talking:
-		is_player_talking = true
+	if is_player_in_dialogue_range and Input.is_action_just_pressed("Interact") and not GlobalVariables.IS_PLAYER_TALKING:
+		GlobalVariables.IS_PLAYER_TALKING = true
 		$Textbox.dialogue_begin()
 
 func _physics_process(delta):
@@ -25,8 +24,7 @@ func _on_chat_detection_area_body_entered(body):
 func _on_chat_detection_area_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	if body.is_in_group("player"):
 		is_player_in_dialogue_range = false
-		$Textbox.text_queue.clear()
-		$Textbox.hide_textbox()
-		$Textbox.sound_timer.stop()
+		#$Textbox.text_queue.clear()
+		#$Textbox.hide_textbox()
+		#$Textbox.sound_timer.stop()
 		print("Player left dialogue range")
-		is_player_talking = false

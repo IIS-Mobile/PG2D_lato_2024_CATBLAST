@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://biadu3gqtlvao"]
+[gd_scene load_steps=17 format=3 uid="uid://dgoam2f5xpmgo"]
 
 [ext_resource type="Script" path="res://Scripts/NPC/npc.gd" id="1_hq0fk"]
 [ext_resource type="Texture2D" uid="uid://bi730ect0pfhf" path="res://Assets/Arts/Animations/placeholder_animations/crouch_idle.png" id="1_vcyal"]
-[ext_resource type="PackedScene" uid="uid://dee6ofnbfd188" path="res://Scenes/textbox.tscn" id="3_jwlgb"]
+[ext_resource type="PackedScene" uid="uid://c3ml4t1h75tj0" path="res://Scenes/textbox.tscn" id="3_jwlgb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h205t"]
 atlas = ExtResource("1_vcyal")

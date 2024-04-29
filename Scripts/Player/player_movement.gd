@@ -39,58 +39,64 @@ func _ready():
 	audio_player = $PlayerSounds
 	
 func _physics_process(delta):
-	var direction = Input.get_axis("ui_left", "ui_right")
-	#Handle dash
-	if Input.is_action_just_pressed("Dash") and can_dash:
-		if direction:
-			dash()
-			dashing = true
-			# mozna tu wrzucic animacje dasha
-			can_dash = false
-			ghost_timer.start()
-			$dash_again_timer.start()
-		elif  Input.is_action_pressed("Jump"):
-			dash()
-			dashing = true
-			can_dash = false
-			ghost_timer.start()
-			$dash_again_timer.start()
-			velocity.y = DASH_UP
-			velocity.x = 0
-	#Crouch
-	if Input.is_action_pressed("Crouch") and is_on_floor():
-		
-		crouch()
-	elif Input.is_action_just_released("Crouch") or !is_on_floor():
-		if above_head_is_empty():
+	if GlobalVariables.PLAYER_CONTROLS_ENABLED:
+		var direction = Input.get_axis("ui_left", "ui_right")
+		#Handle dash
+		if Input.is_action_just_pressed("Dash") and can_dash:
+			if direction:
+				dash()
+				dashing = true
+				# mozna tu wrzucic animacje dasha
+				can_dash = false
+				ghost_timer.start()
+				$dash_again_timer.start()
+			elif  Input.is_action_pressed("Jump"):
+				dash()
+				dashing = true
+				can_dash = false
+				ghost_timer.start()
+				$dash_again_timer.start()
+				velocity.y = DASH_UP
+				velocity.x = 0
+		#Crouch
+		if Input.is_action_pressed("Crouch") and is_on_floor():
+			
+			crouch()
+		elif Input.is_action_just_released("Crouch") or !is_on_floor():
+			if above_head_is_empty():
+				stand()
+			else: 
+				if stuck_under_object != true:
+					stuck_under_object = true
+		# Add the gravity.
+		if stuck_under_object and above_head_is_empty():
 			stand()
-		else: 
-			if stuck_under_object != true:
-				stuck_under_object = true
-	# Add the gravity.
-	if stuck_under_object and above_head_is_empty():
-		stand()
-		stuck_under_object = false
-	if not is_on_floor():
-		velocity.y += gravity * delta
+			stuck_under_object = false
+		if not is_on_floor():
+			velocity.y += gravity * delta
 
 
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		
+		var dir = get_node("AnimatedSprite2D").flip_h
+		if direction == -1:
+			get_node("AnimatedSprite2D").flip_h = true
+		elif direction == 1 :
+			get_node("AnimatedSprite2D").flip_h = false
+			# Handle jump.
+
+		update_animations(direction,dir)
+		move_and_slide()
+	else:
+		anim.play("Idle")
 	
-	var dir = get_node("AnimatedSprite2D").flip_h
-	if direction == -1:
-		get_node("AnimatedSprite2D").flip_h = true
-	elif direction == 1 :
-		get_node("AnimatedSprite2D").flip_h = false
-		# Handle jump.
 	
-	update_animations(direction,dir)
-	move_and_slide()
 func above_head_is_empty() -> bool:
 	var result = !crouch_raycast1.is_colliding() and !crouch_raycast2.is_colliding()
 	return result
+	
 func update_animations(direction,dir):
 	if Input.is_action_just_pressed("Jump") and is_on_floor() and (!is_crouching and above_head_is_empty()) :
 		velocity.y = JUMP_VELOCITY

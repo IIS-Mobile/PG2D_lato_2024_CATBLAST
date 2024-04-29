@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dudwfr5a2vkg"]
+[gd_scene load_steps=10 format=3 uid="uid://dudwfr5a2vkg"]
 
+[ext_resource type="Script" path="res://Scripts/Levels/TestLevel.gd" id="1_8ygb6"]
 [ext_resource type="PackedScene" uid="uid://c1qxk2wkfx44j" path="res://Scenes/pink_neon.tscn" id="1_638po"]
 [ext_resource type="PackedScene" uid="uid://dkfbae7sgq1mv" path="res://Scenes/SimpleEnemy.tscn" id="1_fh6g2"]
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="3_nobln"]
 [ext_resource type="PackedScene" uid="uid://c5yj3p0tq8rr7" path="res://Scenes/street_lamp.tscn" id="4_3orsa"]
 [ext_resource type="PackedScene" uid="uid://bvnrskhtu5gb3" path="res://Scenes/WomanNeonScene.tscn" id="6_bn17l"]
 [ext_resource type="Shader" path="res://Shaders/TestLevel.gdshader" id="6_yt2ig"]
-[ext_resource type="PackedScene" uid="uid://biadu3gqtlvao" path="res://Scenes/npc.tscn" id="7_0wo3m"]
+[ext_resource type="PackedScene" uid="uid://dgoam2f5xpmgo" path="res://Scenes/npc.tscn" id="7_0wo3m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ivkmq"]
 shader = ExtResource("6_yt2ig")
@@ -15,6 +16,7 @@ shader_parameter/g_displacement = Vector2(0, 0)
 shader_parameter/b_displacement = Vector2(-3, 0)
 
 [node name="TestLevel" type="Node2D"]
+script = ExtResource("1_8ygb6")
 
 [node name="WorldTiles" type="TileMap" parent="."]
 visibility_layer = 8
