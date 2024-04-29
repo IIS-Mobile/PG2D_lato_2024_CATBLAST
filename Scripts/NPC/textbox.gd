@@ -33,7 +33,7 @@ func dialogue_begin():
 	queue_text("Pressing Interact as the letters pop up makes the whole text appear at once.")
 	queue_text("Player is no longer free to move around.")
 	queue_text("In fact, he cannot do anything except pushing the dialogue forward.")
-	queue_text("To be able to start the dialogue again, the player must leave NPC's dialogue range.")
+	queue_text("Player doesn't have to leave the NPC's dialogue range to be able to talk anymore.")
 	queue_text("Mangusta will perish.")
 
 func _ready():
