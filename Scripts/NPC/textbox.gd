@@ -3,6 +3,7 @@ extends CanvasLayer
 const CHAR_READ_RATE = 0.05
 
 @onready var textbox_container = $TextboxContainer
+@onready var choice_box = $YesNoDialogueChoice
 @onready var start_symbol = $TextboxContainer/MarginContainer/HBoxContainer/Start
 @onready var end_symbol = $TextboxContainer/MarginContainer/HBoxContainer/End
 @onready var label = $TextboxContainer/MarginContainer/HBoxContainer/Label
@@ -18,17 +19,20 @@ enum State {
 	FINISHED
 }
 
+
 var sound_timer: Timer
 var audio_player: AudioStreamPlayer2D
 var current_state = State.READY
 var text_queue = []
 
 func dialogue_begin():
+	GlobalVariables.PLAYER_CONTROLS_ENABLED = false
 	print("Starting state: State.READY")
 	hide_textbox()
 	queue_text("This is an NPC dialogue test.")
 	queue_text("Pressing Interact as the letters pop up makes the whole text appear at once.")
-	queue_text("Player is free to move around and interrupt the dialogue if he wanders too far away.")
+	queue_text("Player is no longer free to move around.")
+	queue_text("In fact, he cannot do anything except pushing the dialogue forward.")
 	queue_text("To be able to start the dialogue again, the player must leave NPC's dialogue range.")
 	queue_text("Mangusta will perish.")
 
@@ -60,6 +64,8 @@ func _process(delta):
 			if Input.is_action_just_pressed("Interact"):
 				change_state(State.READY)
 				hide_textbox()
+				if text_queue.is_empty():
+					choice_box.window_summon()
 				
 
 func queue_text(next_text):
