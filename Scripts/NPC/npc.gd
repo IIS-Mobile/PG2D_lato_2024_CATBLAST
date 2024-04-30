@@ -19,7 +19,7 @@ func _physics_process(delta):
 func _on_chat_detection_area_body_entered(body):
 	if body.is_in_group("player"):
 		is_player_in_dialogue_range = true
-		print("Player entered dialogue range")
+		print("Player entered dialogue range and can talk")
 
 func _on_chat_detection_area_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	if body.is_in_group("player"):

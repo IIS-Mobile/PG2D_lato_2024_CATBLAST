@@ -173,4 +173,4 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="npc" parent="." instance=ExtResource("7_0wo3m")]
-position = Vector2(603, 432)
+position = Vector2(603, 433)
