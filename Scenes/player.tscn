@@ -1070,7 +1070,6 @@ amount = 120
 process_material = SubResource("ParticleProcessMaterial_u3wnw")
 
 [node name="dash_again_timer" type="Timer" parent="."]
-wait_time = 5.0
 
 [node name="GhostSpawnTimer" type="Timer" parent="."]
 wait_time = 0.05
