@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
-const DASH_SPEED = 1500
+const DASH_SPEED = 1200
 const DASH_UP = -600
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
+const DOUBLE_JUMP_VELOCITY = -400.0
 
 @onready var katanaSlashMetal: AudioStream = load("res://Assets/Sounds/player/slash against metal - mixkit.wav")
 @onready var dashSound: AudioStream = load("res://Assets/Sounds/player/dash - danlew69.wav")
@@ -18,6 +19,7 @@ var dashing = false
 var can_dash = true
 var is_crouching = false
 var stuck_under_object = false
+var has_double_jumped = false
 var standing_cshape = preload("res://Assets/Collisions/player_standing_cshape.tres")
 var crouching_cshape = preload("res://Assets/Collisions/player_crouching_cshape.tres")
 func add_ghost():
@@ -39,6 +41,7 @@ func _ready():
 	audio_player = $PlayerSounds
 	
 func _physics_process(delta):
+
 	if GlobalVariables.PLAYER_CONTROLS_ENABLED:
 		var direction = Input.get_axis("ui_left", "ui_right")
 		#Handle dash
@@ -50,17 +53,8 @@ func _physics_process(delta):
 				can_dash = false
 				ghost_timer.start()
 				$dash_again_timer.start()
-			elif  Input.is_action_pressed("Jump"):
-				dash()
-				dashing = true
-				can_dash = false
-				ghost_timer.start()
-				$dash_again_timer.start()
-				velocity.y = DASH_UP
-				velocity.x = 0
 		#Crouch
 		if Input.is_action_pressed("Crouch") and is_on_floor():
-			
 			crouch()
 		elif Input.is_action_just_released("Crouch") or !is_on_floor():
 			if above_head_is_empty():
@@ -72,10 +66,10 @@ func _physics_process(delta):
 		if stuck_under_object and above_head_is_empty():
 			stand()
 			stuck_under_object = false
+
 		if not is_on_floor():
 			velocity.y += gravity * delta
-
-
+				
 
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
@@ -89,7 +83,7 @@ func _physics_process(delta):
 
 		update_animations(direction,dir)
 		move_and_slide()
-	else:
+	elif not GlobalVariables.PLAYER_CONTROLS_ENABLED:
 		anim.play("Idle")
 	
 	
@@ -98,11 +92,11 @@ func above_head_is_empty() -> bool:
 	return result
 	
 func update_animations(direction,dir):
-	if Input.is_action_just_pressed("Jump") and is_on_floor() and (!is_crouching and above_head_is_empty()) :
+	if Input.is_action_pressed("Jump") and is_on_floor() and (!is_crouching and above_head_is_empty()) :
 		velocity.y = JUMP_VELOCITY
-		if anim.current_animation != "Attack"and anim.current_animation != "attack_left":
+		if anim.current_animation != "Attack" and anim.current_animation != "attack_left":
 			anim.play("Jump")
-
+			#print("Jump")
 		
 	if Input.is_action_just_pressed("Attack"):
 		if is_crouching == false:
@@ -110,6 +104,16 @@ func update_animations(direction,dir):
 				anim.play("Attack")
 			else:
 				anim.play("attack_left")
+	
+	if Input.is_action_just_pressed("Jump") and not has_double_jumped and not is_on_floor():
+		velocity.y = DOUBLE_JUMP_VELOCITY
+		anim.play("Jump")
+		#print("Doublejump")
+		has_double_jumped = true
+	
+	if is_on_floor():
+		has_double_jumped = false
+		
 	if direction:
 		if dashing:
 			velocity.y = 0
