@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://dmpuglts6my21"]
+[gd_scene load_steps=97 format=3 uid="uid://dmpuglts6my21"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_movement.gd" id="1_341yb"]
 [ext_resource type="Texture2D" uid="uid://dybi3nvmc3s8s" path="res://Assets/Arts/Animations/placeholder_animations/katana_attack.png" id="2_5fn28"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://bpn8pktpauoge" path="res://Assets/Sounds/player/jump - Soundsnap and Friends.wav" id="10_buie0"]
 [ext_resource type="Shape2D" uid="uid://bg7jxk4f6nboq" path="res://Assets/Collisions/player_standing_cshape.tres" id="11_ry7ov"]
 [ext_resource type="AudioStream" uid="uid://tpg5hvfsw3sc" path="res://Assets/Sounds/player/crouching footstep - Pixabay.wav" id="13_y0wou"]
+[ext_resource type="PackedScene" uid="uid://2xi8ldx06rmb" path="res://Scenes/player_ui.tscn" id="17_dys1h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yvufx"]
 shader = ExtResource("4_sgta2")
@@ -1081,6 +1082,8 @@ target_position = Vector2(0, -27)
 [node name="CrouchRaycast_2" type="RayCast2D" parent="."]
 position = Vector2(14, 3)
 target_position = Vector2(0, -27)
+
+[node name="Player UI" parent="." instance=ExtResource("17_dys1h")]
 
 [connection signal="body_entered" from="Sprite2D/WeaponArea2D" to="." method="_on_weapon_area_2d_body_entered"]
 [connection signal="body_shape_entered" from="Sprite2D/WeaponArea2D" to="." method="_on_weapon_area_2d_body_shape_entered"]
