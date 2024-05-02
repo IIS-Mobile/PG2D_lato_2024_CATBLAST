@@ -14,13 +14,14 @@ script = ExtResource("1_gejnf")
 stream = ExtResource("2_lb3jg")
 volume_db = -20.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_ti4mb")]
-game_manager = NodePath("../..")
-
 [node name="Player" parent="." instance=ExtResource("5_8iwyy")]
 process_mode = 1
 
 [node name="TestLevel" parent="." instance=ExtResource("8_ddylw")]
 process_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_ti4mb")]
+game_manager = NodePath("../..")

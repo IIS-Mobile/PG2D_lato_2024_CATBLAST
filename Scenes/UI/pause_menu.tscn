@@ -2,9 +2,9 @@
 
 [ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="1_cqo7l"]
 [ext_resource type="Script" path="res://Scripts/GUI/pause_menu.gd" id="1_mbdmb"]
-[ext_resource type="Texture2D" uid="uid://d1wlvrndak0j5" path="res://Assets/Arts/Gui/Animated Tablets/blue/Tablet.png" id="2_x5g13"]
+[ext_resource type="Texture2D" uid="uid://d1wlvrndak0j5" path="res://Assets/Arts/Gui/Animated Tablets/Tablet.png" id="2_x5g13"]
 [ext_resource type="FontFile" uid="uid://c33jywaea07wv" path="res://Assets/Arts/Gui/Cyberphont/Cyberphont beta/Cyberphont_pixels.ttf" id="3_nghtd"]
-[ext_resource type="Texture2D" uid="uid://iy7ecswsckof" path="res://Assets/Arts/Gui/Text ScreenPads/blue/scalable_Text_screen.png" id="4_8c7u8"]
+[ext_resource type="Texture2D" uid="uid://iy7ecswsckof" path="res://Assets/Arts/Gui/Text ScreenPads/scalable_Text_screen.png" id="4_8c7u8"]
 [ext_resource type="FontFile" uid="uid://dyqoacn20kknd" path="res://Assets/Arts/Gui/Cyberphont/Cyberphont 2.0/Cyberphont 2.0.ttf" id="5_4pbly"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_exq0e"]
