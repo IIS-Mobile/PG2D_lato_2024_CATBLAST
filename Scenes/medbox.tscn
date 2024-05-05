@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://curi4fmo2javc"]
+
+[ext_resource type="Texture2D" uid="uid://b30g8n778iyb8" path="res://Assets/Arts/Tiles/My Tiles/props-02.png" id="1_w14ly"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3hg5k"]
+texture = ExtResource("1_w14ly")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vrthd"]
+sources/0 = SubResource("TileSetAtlasSource_3hg5k")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ccde"]
+size = Vector2(32, 48)
+
+[node name="Medbox" type="StaticBody2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+z_index = 2
+tile_set = SubResource("TileSet_vrthd")
+format = 2
+layer_0/name = "normal"
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 131072, 0, 2, 1, 65536, 0, 65537, 65536, 1, 131073, 65536, 2)
+layer_1/name = "exhausted"
+layer_1/modulate = Color(1, 1, 1, 0)
+layer_1/tile_data = PackedInt32Array(0, 131072, 1, 1, 196608, 1)
+
+[node name="Healbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Healbox"]
+position = Vector2(16, 24)
+shape = SubResource("RectangleShape2D_8ccde")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)

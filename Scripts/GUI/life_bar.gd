@@ -9,7 +9,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-	$health_points.size.x = hp_point_width * GlobalVariables.CURRENT_HEALTH;
-	
+	if GlobalVariables.CURRENT_HEALTH > 0:
+		$health_points.size.x = hp_point_width * GlobalVariables.CURRENT_HEALTH;
+	else:
+		$health_points.texture = null
+
 	pass

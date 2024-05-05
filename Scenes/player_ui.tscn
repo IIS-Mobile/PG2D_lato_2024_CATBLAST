@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://2xi8ldx06rmb"]
 
-[ext_resource type="Shader" path="res://Scenes/cast_shadow.gdshader" id="1_ser3x"]
+[ext_resource type="Shader" path="res://Shaders/cast_shadow.gdshader" id="1_uccv4"]
 [ext_resource type="Texture2D" uid="uid://swsdw366mw1y" path="res://Assets/Arts/Gui/Lifebars/lifebar2.png" id="2_k7y56"]
-[ext_resource type="Script" path="res://Scenes/Life.gd" id="3_801r1"]
+[ext_resource type="Script" path="res://Scripts/GUI/life_bar.gd" id="3_6heob"]
 [ext_resource type="Texture2D" uid="uid://dfdgvqgduav0e" path="res://Assets/Arts/Gui/Lifebars/health.png" id="4_n3sxd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ekmh2"]
-shader = ExtResource("1_ser3x")
+shader = ExtResource("1_uccv4")
 shader_parameter/deform = Vector2(0, 0)
 shader_parameter/offset = Vector2(1, 0)
 shader_parameter/modulate = Color(0.0941176, 0.615686, 0.662745, 1)
@@ -26,13 +26,14 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("3_801r1")
+script = ExtResource("3_6heob")
 
 [node name="health_points" type="TextureRect" parent="Life"]
+modulate = Color(100, 100, 100, 1)
 layout_mode = 0
 offset_left = 157.0
 offset_top = 69.0
-offset_right = 162.0
+offset_right = 163.0
 offset_bottom = 76.0
 scale = Vector2(4, 4)
 texture = ExtResource("4_n3sxd")
