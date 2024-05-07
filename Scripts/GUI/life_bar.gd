@@ -1,16 +1,24 @@
 extends Control
 
 var hp_point_width: int = 6
+var previous_health: int = GlobalVariables.CURRENT_HEALTH
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@onready var animated_lifebar = $AnimatedLifebar
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if animated_lifebar.is_playing():
+		$Lifebar.visible = false
+		animated_lifebar.visible = true
+	else:
+		$Lifebar.visible = true
+		animated_lifebar.visible = false
+		
+	if previous_health > GlobalVariables.CURRENT_HEALTH:
+		animated_lifebar.play("Glitch")
+	
 	if GlobalVariables.CURRENT_HEALTH > 0:
+		previous_health = GlobalVariables.CURRENT_HEALTH
 		$health_points.size.x = hp_point_width * GlobalVariables.CURRENT_HEALTH;
+		$health_points.visible = true;
 	else:
 		$health_points.texture = null
-	pass
