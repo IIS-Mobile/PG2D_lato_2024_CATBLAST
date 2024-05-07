@@ -13,6 +13,8 @@ position = Vector2(-967.246, -498.232)
 tile_set = ExtResource("1_as2fn")
 format = 2
 layer_0/tile_data = PackedInt32Array(2031674, 1, 9, 2097210, 1, 10, 2162746, 1, 10, 2228282, 1, 10, 2293818, 1, 11, 2359354, 1, 12, 2424890, 1, 13, 2031675, 65537, 9, 2031676, 131073, 9, 2031677, 196609, 9)
+layer_1/modulate = Color(1, 1, 1, 0.533333)
+layer_1/tile_data = PackedInt32Array(2031675, 131082, 0, 2031676, 131082, 0, 2031677, 131082, 0)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 z_index = 2

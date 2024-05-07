@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://curi4fmo2javc"]
+[gd_scene load_steps=6 format=3 uid="uid://curi4fmo2javc"]
 
 [ext_resource type="Script" path="res://Scripts/Global/medbox.gd" id="1_rtjk0"]
 [ext_resource type="Texture2D" uid="uid://b30g8n778iyb8" path="res://Assets/Arts/Tiles/My Tiles/props-02.png" id="1_w14ly"]
@@ -10,15 +10,6 @@ size = Vector2(36, 45)
 [sub_resource type="Curve" id="Curve_6ctg2"]
 _data = [Vector2(0, 0.328804), 0.0, 0.0, 0, 0, Vector2(0.280347, 0.639674), 0.0, 0.0, 0, 0, Vector2(0.549133, 0.865761), 0.0, 0.0, 0, 0, Vector2(0.843575, 0.992647), 0.0, 0.0, 0, 0]
 point_count = 4
-
-[sub_resource type="Gradient" id="Gradient_beqc1"]
-offsets = PackedFloat32Array(0, 0.506739)
-colors = PackedColorArray(3.36915e-07, 0.685231, 0.275958, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nj2fx"]
-gradient = SubResource("Gradient_beqc1")
-fill = 1
-fill_from = Vector2(0.478632, 0.431624)
 
 [node name="Medbox" type="StaticBody2D"]
 script = ExtResource("1_rtjk0")
@@ -61,12 +52,6 @@ tangential_accel_max = 100.0
 scale_amount_min = 0.4
 scale_amount_max = 0.7
 scale_amount_curve = SubResource("Curve_6ctg2")
-
-[node name="Light" type="PointLight2D" parent="."]
-position = Vector2(17, 11.375)
-scale = Vector2(0.851563, 0.511719)
-energy = 2.0
-texture = SubResource("GradientTexture2D_nj2fx")
 
 [connection signal="body_entered" from="Healbox" to="." method="_on_healbox_body_entered"]
 [connection signal="body_exited" from="Healbox" to="." method="_on_healbox_body_exited"]

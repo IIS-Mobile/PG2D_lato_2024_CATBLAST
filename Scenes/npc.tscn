@@ -100,7 +100,6 @@ frame_progress = 0.179631
 [node name="chat_detection_area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
-position = Vector2(0, 29.5)
 shape = SubResource("RectangleShape2D_uire7")
 
 [node name="Textbox" parent="." instance=ExtResource("3_jwlgb")]
@@ -109,5 +108,6 @@ shape = SubResource("RectangleShape2D_uire7")
 position = Vector2(-1, 11)
 shape = SubResource("CapsuleShape2D_tkxr7")
 
+[connection signal="area_exited" from="chat_detection_area" to="." method="_on_chat_detection_area_area_exited"]
 [connection signal="body_entered" from="chat_detection_area" to="." method="_on_chat_detection_area_body_entered"]
 [connection signal="body_shape_exited" from="chat_detection_area" to="." method="_on_chat_detection_area_body_shape_exited"]

@@ -40,7 +40,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_srywr"]
 radius = 1.95652
-height = 4.21093
+height = 4.81249
 
 [sub_resource type="Animation" id="Animation_dvuf8"]
 resource_name = "Idle"
@@ -106,7 +106,7 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_caped"]
 radius = 18.0
-height = 42.0
+height = 48.0
 
 [node name="SimpleEnemy" type="Node2D"]
 

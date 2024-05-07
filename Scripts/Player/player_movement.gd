@@ -185,10 +185,4 @@ func _on_hurtbox_area_entered(area):
 		if GlobalVariables.CURRENT_HEALTH != 0:
 			GlobalVariables.CURRENT_HEALTH -= 1;
 			print("Getting hit", GlobalVariables.CURRENT_HEALTH)
-	
-		
-	if area.name == "Healbox":
-		if GlobalVariables.CURRENT_HEALTH < GlobalVariables.MAX_HEALTH:
-			GlobalVariables.CURRENT_HEALTH += 1;
-			print("Getting health", GlobalVariables.CURRENT_HEALTH)
 	pass # Replace with function body.
