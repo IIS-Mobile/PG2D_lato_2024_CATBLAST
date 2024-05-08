@@ -49,7 +49,7 @@ func _physics_process(delta):
 	print(anim.current_animation)
 	is_dead = GlobalVariables.CURRENT_HEALTH == 0
 	is_hurt = anim.current_animation == "Hurt"
-	is_attacking = anim.current_animation == "Attack" or anim.current_animation == "attack_left" or anim.current_animation == "Attack_Jump" or anim.current_animation == "Attack_Run"
+	is_attacking = anim.current_animation == "Attack" or anim.current_animation == "attack_left" or anim.current_animation == "Attack_Jump" or anim.current_animation == "Attack_Run" or anim.current_animation == "Attack_Run_L" or anim.current_animation == "Attack_Jump_L"
 	is_interaction = anim.current_animation == "Interact"
 	
 	if GlobalVariables.CURRENT_HEALTH == 0:
@@ -128,7 +128,8 @@ func update_animations(direction,dir):
 		if !is_attacking:
 			anim.play("Jump")
 			#print("Jump")
-		
+	#if velocity.x == 0 and velocity.y == 0 and is_attacking:
+		#anim.play("Attack")
 	if Input.is_action_just_pressed("Attack") and !is_interaction and !is_hurt:
 		if is_crouching == false:
 			if(dir == false) :
@@ -142,10 +143,10 @@ func update_animations(direction,dir):
 						anim.play("Attack")
 			else:
 				if(velocity.y != 0):
-					anim.play("Attack_Jump")
+					anim.play("Attack_Jump_L")
 				else:
 					if(velocity.x != 0):
-						anim.play("Attack_Run")
+						anim.play("Attack_Run_L")
 					else :
 						anim.play("attack_left")
 	
@@ -167,20 +168,20 @@ func update_animations(direction,dir):
 				velocity.x = direction * SPEED*0.5
 			else:
 				velocity.x = direction * SPEED
-			if( velocity.y == 0) and !anim.current_animation == "Attack_Run":
+			if( velocity.y == 0) and !anim.current_animation == "Attack_Run" and !anim.current_animation == "Attack_Run_L":
 				
 				if(is_crouching):
 					anim.play("Crouch_walk")
-				elif anim.current_animation !="Hurt" :
+				elif anim.current_animation !="Hurt" and anim.current_animation != "Attack_Run"  and !anim.current_animation == "Attack_Run_L" :
 					anim.play("Run")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if( velocity.y== 0) and anim.current_animation != "Attack" and anim.current_animation != "attack_left":
 			if is_crouching:
 				anim.play("Crouch")
-			elif !is_interaction and !is_hurt and anim.current_animation != "Interact": 
+			elif !is_interaction and !is_hurt and anim.current_animation != "Interact" and !is_attacking: 
 				anim.play("Idle")
-	if(velocity.y > 0) and !anim.current_animation == "Attack_Jump" and !is_hurt:
+	if(velocity.y > 0) and !anim.current_animation == "Attack_Jump" and !anim.current_animation == "Attack_Jump_L" and !is_hurt:
 		anim.play("Fall")
 func is_anim_playing() -> bool:
 	if (anim.current_animation != "Idle"):
