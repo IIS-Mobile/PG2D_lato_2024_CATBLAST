@@ -118,7 +118,7 @@ func is_idle() -> bool:
 	return false	
 func update_animations(direction,dir):
 	print(anim.current_animation)
-	if Input.is_action_pressed("Interact") and is_idle():
+	if Input.is_action_pressed("Interact") and (is_idle() or anim.current_animation == "Run"):
 		#GlobalVariables.PLAYER_CONTROLS_ENABLED = false;
 		#print("x")
 		anim.play("Interact")
@@ -145,7 +145,7 @@ func update_animations(direction,dir):
 	if is_on_floor():
 		has_double_jumped = false
 		
-	if direction and is_interaction == false and !is_hurt:
+	if direction and anim.current_animation != "Interact" and !is_hurt:
 		if dashing:
 			velocity.y = 0
 			velocity.x = direction * DASH_SPEED
