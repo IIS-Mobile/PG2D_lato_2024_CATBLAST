@@ -22,6 +22,11 @@ var stuck_under_object = false
 var has_double_jumped = false
 var standing_cshape = preload("res://Assets/Collisions/player_standing_cshape.tres")
 var crouching_cshape = preload("res://Assets/Collisions/player_crouching_cshape.tres")
+var is_attacking;
+var is_interaction;
+var is_dead;
+var is_hurt;
+var is_dying = false
 func add_ghost():
 	var ghost = ghost_node.instantiate()
 	ghost.set_property(global_position, $AnimatedSprite2D.scale)
@@ -41,7 +46,20 @@ func _ready():
 	audio_player = $PlayerSounds
 	
 func _physics_process(delta):
-
+	print(anim.current_animation)
+	is_dead = GlobalVariables.CURRENT_HEALTH == 0
+	is_hurt = anim.current_animation == "Hurt"
+	is_attacking = anim.current_animation == "Attack" or anim.current_animation == "attack_left"
+	is_interaction = anim.current_animation == "Interact"
+	
+	if GlobalVariables.CURRENT_HEALTH == 0:
+		if !is_dying:
+			anim.play("Death")
+		is_dying = true
+		if anim.current_animation != "Death":
+			GlobalVariables.CURRENT_HEALTH = GlobalVariables.MAX_HEALTH
+			get_tree().reload_current_scene()
+		
 	if GlobalVariables.PLAYER_CONTROLS_ENABLED:
 		var direction = Input.get_axis("ui_left", "ui_right")
 		#Handle dash
@@ -53,52 +71,65 @@ func _physics_process(delta):
 				can_dash = false
 				ghost_timer.start()
 				$dash_again_timer.start()
+		if is_dead:
+			anim.play("Dead")
+		else:
 		#Crouch
-		if Input.is_action_pressed("Crouch") and is_on_floor():
-			crouch()
-		elif Input.is_action_just_released("Crouch") or !is_on_floor():
-			if above_head_is_empty():
+			if Input.is_action_pressed("Crouch") and is_on_floor() and !is_interaction and is_idle():
+				crouch()
+			elif Input.is_action_just_released("Crouch") or !is_on_floor():
+				if above_head_is_empty():
+					stand()
+				else: 
+					if stuck_under_object != true:
+						stuck_under_object = true
+			# Add the gravity.
+			if stuck_under_object and above_head_is_empty():
 				stand()
-			else: 
-				if stuck_under_object != true:
-					stuck_under_object = true
-		# Add the gravity.
-		if stuck_under_object and above_head_is_empty():
-			stand()
-			stuck_under_object = false
+				stuck_under_object = false
 
-		if not is_on_floor():
-			velocity.y += gravity * delta
-				
+			if not is_on_floor():
+				velocity.y += gravity * delta
+					
 
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
-		
-		var dir = get_node("AnimatedSprite2D").flip_h
-		if direction == -1:
-			get_node("AnimatedSprite2D").flip_h = true
-		elif direction == 1 :
-			get_node("AnimatedSprite2D").flip_h = false
-			# Handle jump.
+			# Get the input direction and handle the movement/deceleration.
+			# As good practice, you should replace UI actions with custom gameplay actions.
+			
+			var dir = get_node("AnimatedSprite2D").flip_h
+			if !is_interaction and !is_hurt:
+				if direction == -1 :
+					get_node("AnimatedSprite2D").flip_h = true
+				elif direction == 1:
+					get_node("AnimatedSprite2D").flip_h = false
+				# Handle jump.
 
-		update_animations(direction,dir)
-		move_and_slide()
+			update_animations(direction,dir)
+			move_and_slide()
 	elif not GlobalVariables.PLAYER_CONTROLS_ENABLED:
 		anim.play("Idle")
-	
+	#
 	
 func above_head_is_empty() -> bool:
 	var result = !crouch_raycast1.is_colliding() and !crouch_raycast2.is_colliding()
 	return result
-	
+func is_idle() -> bool:
+	if anim.current_animation == "Idle":
+		return true
+	return false	
 func update_animations(direction,dir):
-	if Input.is_action_pressed("Jump") and is_on_floor() and (!is_crouching and above_head_is_empty()) :
+	print(anim.current_animation)
+	if Input.is_action_pressed("Interact") and (is_idle() or anim.current_animation == "Run"):
+		#GlobalVariables.PLAYER_CONTROLS_ENABLED = false;
+		#print("x")
+		anim.play("Interact")
+		
+	if Input.is_action_pressed("Jump") and is_on_floor() and (!is_crouching and above_head_is_empty()) and !is_interaction and !is_hurt:
 		velocity.y = JUMP_VELOCITY
 		if anim.current_animation != "Attack" and anim.current_animation != "attack_left":
 			anim.play("Jump")
 			#print("Jump")
 		
-	if Input.is_action_just_pressed("Attack"):
+	if Input.is_action_just_pressed("Attack") and !is_interaction and !is_hurt:
 		if is_crouching == false:
 			if(dir == false) :
 				anim.play("Attack")
@@ -114,7 +145,7 @@ func update_animations(direction,dir):
 	if is_on_floor():
 		has_double_jumped = false
 		
-	if direction:
+	if direction and anim.current_animation != "Interact" and !is_hurt:
 		if dashing:
 			velocity.y = 0
 			velocity.x = direction * DASH_SPEED
@@ -124,21 +155,22 @@ func update_animations(direction,dir):
 			else:
 				velocity.x = direction * SPEED
 			if( velocity.y == 0) and anim.current_animation != "Attack"  and anim.current_animation != "attack_left":
+				
 				if(is_crouching):
 					anim.play("Crouch_walk")
-				else :
+				elif anim.current_animation !="Hurt" :
 					anim.play("Run")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if( velocity.y== 0) and anim.current_animation != "Attack" and anim.current_animation != "attack_left":
 			if is_crouching:
 				anim.play("Crouch")
-			else : 
+			elif !is_interaction and !is_hurt and anim.current_animation != "Interact": 
 				anim.play("Idle")
-	if(velocity.y > 0) and anim.current_animation != "Attack" and anim.current_animation != "attack_left":
+	if(velocity.y > 0) and !is_attacking and !is_hurt:
 		anim.play("Fall")
 func is_anim_playing() -> bool:
-	if (anim.current_animation == "Attack" || anim.current_animation == "attack_left"):
+	if (anim.current_animation != "Idle"):
 		return true
 	return false
 func crouch():
@@ -183,6 +215,7 @@ func _on_ghost_spawn_timer_timeout():
 func _on_hurtbox_area_entered(area):
 	if area.name == "Hitbox":
 		if GlobalVariables.CURRENT_HEALTH != 0:
+			anim.play("Hurt")
 			GlobalVariables.CURRENT_HEALTH -= 1;
 			print("Getting hit", GlobalVariables.CURRENT_HEALTH)
 	pass # Replace with function body.

@@ -27,20 +27,7 @@ func _ready():
 	randomize()
 	SoundtrackPlayer.play_soundtrack(SOUNDTRACKPLAYER_CLASS.THEMES.PEACE)
 #
-#func _on_play_pressed():
-	#$AudioStreamPlayer.stop()
-	#audio_player.stream = confirmSound
-	#audio_player.play()
-	#
-	#get_tree().change_scene_to_file("res://Scenes/TestLevel.tscn")
-#
-#func pauseMenu():
-	#var current_value : bool = get_tree().paused
-	#get_tree().paused = !current_value
-	#if get_tree().paused:
-		#pause_menu.hide()
-	#else:
-		#pause_menu.show()
+
 
 func _on_hover():
 	audio_player.stream = hoverSound
