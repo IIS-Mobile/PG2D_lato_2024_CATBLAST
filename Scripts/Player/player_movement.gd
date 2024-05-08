@@ -154,6 +154,7 @@ func stand():
 	is_crouching = false;	
 	cshape.shape = standing_cshape
 	cshape.position.y = -1
+	
 func _on_weapon_area_2d_body_entered(body):
 	if body.is_in_group("enemy"):
 		print("Hit enemy")
@@ -177,3 +178,11 @@ func _on_dash_again_timer_timeout():
 func _on_ghost_spawn_timer_timeout():
 	if dashing:
 		add_ghost()
+
+
+func _on_hurtbox_area_entered(area):
+	if area.name == "Hitbox":
+		if GlobalVariables.CURRENT_HEALTH != 0:
+			GlobalVariables.CURRENT_HEALTH -= 1;
+			print("Getting hit", GlobalVariables.CURRENT_HEALTH)
+	pass # Replace with function body.

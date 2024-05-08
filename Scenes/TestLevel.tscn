@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dudwfr5a2vkg"]
+[gd_scene load_steps=12 format=3 uid="uid://dudwfr5a2vkg"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/TestLevel.gd" id="1_8ygb6"]
 [ext_resource type="PackedScene" uid="uid://c1qxk2wkfx44j" path="res://Scenes/pink_neon.tscn" id="1_638po"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bvnrskhtu5gb3" path="res://Scenes/WomanNeonScene.tscn" id="6_bn17l"]
 [ext_resource type="Shader" path="res://Shaders/TestLevel.gdshader" id="6_yt2ig"]
 [ext_resource type="PackedScene" uid="uid://dgoam2f5xpmgo" path="res://Scenes/npc.tscn" id="7_0wo3m"]
+[ext_resource type="PackedScene" uid="uid://curi4fmo2javc" path="res://Scenes/medbox.tscn" id="8_mnmam"]
+[ext_resource type="PackedScene" uid="uid://ccpfutqal1mee" path="res://Scenes/barbed_wire.tscn" id="9_ktp6b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ivkmq"]
 shader = ExtResource("6_yt2ig")
@@ -157,6 +159,15 @@ texture_filter = 3
 position = Vector2(1467, 364)
 rotation = 3.14159
 scale = Vector2(1, -1)
+
+[node name="barbed_wire" parent="." instance=ExtResource("9_ktp6b")]
+position = Vector2(1360, 592)
+
+[node name="Medbox" parent="." instance=ExtResource("8_mnmam")]
+position = Vector2(1832, 560)
+
+[node name="Medbox2" parent="." instance=ExtResource("8_mnmam")]
+position = Vector2(1250.73, 560.005)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
