@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1rxkgas26uuw"]
+[gd_scene load_steps=23 format=3 uid="uid://d1rxkgas26uuw"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/drone.gd" id="1_ecsgm"]
 [ext_resource type="Texture2D" uid="uid://cpkulf7m2gntj" path="res://Assets/Arts/Animations/drone_animations/drone_idle.png" id="2_lf7iw"]
@@ -7,63 +7,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymvw2"]
 size = Vector2(3.62319, 3.62612)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p3doo"]
-atlas = ExtResource("2_lf7iw")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_joi6w"]
-atlas = ExtResource("2_lf7iw")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4gu5r"]
-atlas = ExtResource("2_lf7iw")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y5vca"]
-atlas = ExtResource("2_lf7iw")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_86r8o"]
-atlas = ExtResource("3_l5frq")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_888ln"]
-atlas = ExtResource("3_l5frq")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_64pef"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p3doo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_joi6w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4gu5r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y5vca")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_86r8o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_888ln")
-}],
-"loop": true,
-"name": &"shoot",
-"speed": 5.0
-}]
-
-[sub_resource type="Animation" id="Animation_dvuf8"]
-resource_name = "Idle"
+[sub_resource type="Animation" id="Animation_sl2v7"]
+resource_name = "idle"
 length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
@@ -91,7 +36,7 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_rp1t2"]
+[sub_resource type="Animation" id="Animation_fxg6c"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -118,11 +63,122 @@ tracks/1/keys = {
 "values": [0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_knq5b"]
-_data = {
-"Idle": SubResource("Animation_dvuf8"),
-"RESET": SubResource("Animation_rp1t2")
+[sub_resource type="Animation" id="Animation_43hx6"]
+resource_name = "shoot"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"shoot"]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ha7mj"]
+_data = {
+"RESET": SubResource("Animation_fxg6c"),
+"idle": SubResource("Animation_sl2v7"),
+"shoot": SubResource("Animation_43hx6")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tin4k"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2lopo"]
+animation = &"shoot"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s803i"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kqwma"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k7b4q"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pcrp5"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_urws7"]
+states/End/position = Vector2(622, 100)
+states/Start/position = Vector2(177, 100)
+states/idle/node = SubResource("AnimationNodeAnimation_tin4k")
+states/idle/position = Vector2(308, 100)
+states/shoot/node = SubResource("AnimationNodeAnimation_2lopo")
+states/shoot/position = Vector2(424, 100)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_s803i"), "idle", "shoot", SubResource("AnimationNodeStateMachineTransition_kqwma"), "shoot", "End", SubResource("AnimationNodeStateMachineTransition_k7b4q"), "shoot", "idle", SubResource("AnimationNodeStateMachineTransition_pcrp5")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksnwq"]
+atlas = ExtResource("2_lf7iw")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6imr"]
+atlas = ExtResource("2_lf7iw")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epas0"]
+atlas = ExtResource("2_lf7iw")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndp1y"]
+atlas = ExtResource("2_lf7iw")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snnti"]
+atlas = ExtResource("3_l5frq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivhfm"]
+atlas = ExtResource("3_l5frq")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5l1ra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksnwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6imr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epas0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndp1y")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snnti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivhfm")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
 
 [node name="Drone" type="CharacterBody2D"]
 script = ExtResource("1_ecsgm")
@@ -132,12 +188,20 @@ position = Vector2(1.58946e-06, -5)
 scale = Vector2(9.2, 9.97405)
 shape = SubResource("RectangleShape2D_ymvw2")
 
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ha7mj")
+}
+tree_root = SubResource("AnimationNodeStateMachine_urws7")
+anim_player = NodePath("../AnimatedSprite2D/AnimationPlayer")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_64pef")
+sprite_frames = SubResource("SpriteFrames_5l1ra")
 animation = &"idle"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_knq5b")
+"": SubResource("AnimationLibrary_ha7mj")
 }
-autoplay = "Idle"
+autoplay = "idle"
