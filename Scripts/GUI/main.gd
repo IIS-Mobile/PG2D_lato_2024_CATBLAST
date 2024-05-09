@@ -21,7 +21,6 @@ func _input(event : InputEvent):
 		game_paused = !game_paused
 
 func _ready():
-	audio_player = $AudioStreamPlayer2D
 	randomize()
 	SoundtrackPlayer.play_soundtrack(SOUNDTRACKPLAYER_CLASS.THEMES.PEACE)
 #

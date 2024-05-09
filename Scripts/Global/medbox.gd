@@ -40,6 +40,6 @@ func _on_healbox_body_entered(body):
 
 func _on_healbox_body_exited(body):
 	if body.is_in_group("player"):
-		is_player_in_medbox_range = true
+		is_player_in_medbox_range = false
 	pass # Replace with function body.
 
