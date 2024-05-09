@@ -199,8 +199,8 @@ func _on_weapon_area_2d_body_entered(body):
 	if body.is_in_group("enemy"):
 		print("Hit enemy")
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_METAL)
-		body.queue_free()
-	pass 
+		body.get_parent().queue_free()
+	pass
 
 func _on_ghost_timer_timeout():
 	dashing = false
