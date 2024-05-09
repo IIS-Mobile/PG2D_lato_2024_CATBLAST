@@ -25,6 +25,10 @@ var is_interaction;
 var is_dead;
 var is_hurt;
 var is_dying = false
+
+func _ready():
+	print(self.get_path())
+
 func add_ghost():
 	var ghost = ghost_node.instantiate()
 	ghost.set_property(global_position, $AnimatedSprite2D.scale)

@@ -7,14 +7,13 @@ var player = null
 var bullet = preload("res://Scenes/Enemies/bullet.tscn")
 
 func _ready():
-	player = get_node("/root/TestLevel/Player")
+	player = get_node("/root/GameManager/Player")
 
 func _physics_process(delta):
-	if player:
-		var direction = (player.global_position - global_position).normalized()
-		get_node("AnimatedSprite2D").flip_h = direction.x > 0
-		velocity.x = direction.x * SPEED
-		# velocity.y = direction.y * SPEED
+	var direction = (player.global_position - global_position).normalized()
+	get_node("AnimatedSprite2D").flip_h = direction.x > 0
+	velocity.x = direction.x * SPEED
+	# velocity.y = direction.y * SPEED
 	
 	if randf() < 0.01:
 		spawn_bullet()
