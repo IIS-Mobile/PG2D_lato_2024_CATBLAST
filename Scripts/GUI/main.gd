@@ -23,8 +23,6 @@ func _input(event : InputEvent):
 func _ready():
 	randomize()
 	SoundtrackPlayer.play_soundtrack(SOUNDTRACKPLAYER_CLASS.THEMES.PEACE)
-#
-
 
 func _on_hover():
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HOVER)
