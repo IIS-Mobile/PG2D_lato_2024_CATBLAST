@@ -83,6 +83,7 @@ horizontal_alignment = 3
 [node name="LetterTimer" type="Timer" parent="."]
 
 [node name="YesNoDialogueChoice" parent="." instance=ExtResource("3_ttkmc")]
+visible = false
 offset_top = 364.0
 offset_right = 130.0
 offset_bottom = 425.0
