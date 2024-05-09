@@ -6,8 +6,6 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
 const DOUBLE_JUMP_VELOCITY = -400.0
 
-@onready var katanaSlashMetal: AudioStream = load("res://Assets/Sounds/player/slash against metal - mixkit.wav")
-@onready var dashSound: AudioStream = load("res://Assets/Sounds/player/dash - danlew69.wav")
 @onready var cshape = $CollisionShape2D
 @onready var anim = get_node("AnimationPlayer")
 @onready var particles = $GPUParticles2D
@@ -36,14 +34,10 @@ func add_ghost():
 func dash():
 	particles.emitting = true
 	$GhostSpawnTimer.start()
-	playsound(dashSound)
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.DASH)
 	
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var audio_player: AudioStreamPlayer2D
-
-func _ready():
-	audio_player = $PlayerSounds
 	
 func _physics_process(delta):
 	print(anim.current_animation)
@@ -204,14 +198,9 @@ func stand():
 func _on_weapon_area_2d_body_entered(body):
 	if body.is_in_group("enemy"):
 		print("Hit enemy")
-		playsound(katanaSlashMetal)
+		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_METAL)
 		body.queue_free()
 	pass 
-
-func playsound(sound):
-	audio_player.stream = sound
-	audio_player.play()
-
 
 func _on_ghost_timer_timeout():
 	dashing = false

@@ -6,6 +6,7 @@ extends StaticBody2D
 
 var particles_display_time = 1.2
 var current_display_time = 0.0
+var sound_effect_played = false
 
 func _ready():
 	particles.emitting = false
@@ -14,6 +15,9 @@ func _ready():
 func _process(delta):
 	if is_player_in_medbox_range and not is_medbox_exhausted and Input.is_action_just_pressed("Interact") and GlobalVariables.CURRENT_HEALTH < GlobalVariables.MAX_HEALTH:
 		GlobalVariables.CURRENT_HEALTH += heal_value
+		if not sound_effect_played:
+			SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HEAL)
+			sound_effect_played = true
 		particles.emitting = true
 		is_medbox_exhausted = true
 	if is_medbox_exhausted:
@@ -26,6 +30,7 @@ func _process(delta):
 		current_display_time += delta
 		if current_display_time >= particles_display_time:
 			particles.emitting = false
+	
 	pass
 
 func _on_healbox_body_entered(body):

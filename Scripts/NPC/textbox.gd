@@ -11,8 +11,6 @@ const CHAR_READ_RATE = 0.05
 @onready var dialogue_tween = get_tree().create_tween()
 @onready var end_symbol_tween = get_tree().create_tween()
 
-@onready var letters_pop_sound: AudioStream = load("res://Assets/Sounds/ui/dialogue letters sound effect - floraphonic.wav")
-
 enum State {
 	READY,
 	READING,
@@ -106,11 +104,7 @@ func change_state(next_state):
 			print("Changing state to: State.READING")
 		State.FINISHED:
 			print("Changing state to: State.FINISHED")
-	
-func playsound(sound):
-	audio_player.stream = sound
-	audio_player.play()
 
 
 func _on_timer_timeout():
-	playsound(letters_pop_sound)
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.LETTERS_POP)
