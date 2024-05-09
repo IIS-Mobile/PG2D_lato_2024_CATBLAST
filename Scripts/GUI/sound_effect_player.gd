@@ -7,29 +7,24 @@ const HOVER_PATH = "res://Assets/Sounds/ui/hover button - Pixabay.wav"
 const LETTERS_POP_PATH = "res://Assets/Sounds/ui/dialogue letters sound effect - floraphonic.wav"
 const HEAL_PATH = "res://Assets/Sounds/player/heal up - Pixabay.mp3"
 
-enum SOUNDS {
-	SLASH_METAL,
-	DASH,
-	CONFIRM,
-	HOVER,
-	LETTERS_POP,
-	HEAL
-}
+enum SOUNDS { SLASH_METAL, DASH, CONFIRM, HOVER, LETTERS_POP, HEAL }
 
 var PLAYSOUND = {
-	SOUNDS.SLASH_METAL:		load(KATANA_SLASH_PATH),
-	SOUNDS.DASH:			load(DASH_PATH),
-	SOUNDS.CONFIRM:			load(CONFIRM_PATH),
-	SOUNDS.HOVER:			load(HOVER_PATH),
-	SOUNDS.LETTERS_POP:		load(LETTERS_POP_PATH),
-	SOUNDS.HEAL: 			load(HEAL_PATH)
+	SOUNDS.SLASH_METAL: load(KATANA_SLASH_PATH),
+	SOUNDS.DASH: load(DASH_PATH),
+	SOUNDS.CONFIRM: load(CONFIRM_PATH),
+	SOUNDS.HOVER: load(HOVER_PATH),
+	SOUNDS.LETTERS_POP: load(LETTERS_POP_PATH),
+	SOUNDS.HEAL: load(HEAL_PATH)
 }
 
 @onready var audio_player = $AudioStreamPlayer
 var volume_delta = 20
 
+
 func _ready():
 	audio_player.volume_db -= volume_delta
+
 
 func playsound(sound):
 	print(sound)

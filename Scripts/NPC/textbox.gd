@@ -11,17 +11,13 @@ const CHAR_READ_RATE = 0.05
 @onready var dialogue_tween = get_tree().create_tween()
 @onready var end_symbol_tween = get_tree().create_tween()
 
-enum State {
-	READY,
-	READING,
-	FINISHED
-}
-
+enum State { READY, READING, FINISHED }
 
 var sound_timer: Timer
 var audio_player: AudioStreamPlayer2D
 var current_state = State.READY
 var text_queue = []
+
 
 func dialogue_begin():
 	GlobalVariables.PLAYER_CONTROLS_ENABLED = false
@@ -34,6 +30,7 @@ func dialogue_begin():
 	queue_text("Player doesn't have to leave the NPC's dialogue range to be able to talk anymore.")
 	queue_text("Mangusta will perish.")
 
+
 func _ready():
 	audio_player = $LetterSound
 	sound_timer = $LetterTimer
@@ -44,6 +41,7 @@ func _ready():
 	end_symbol_tween.tween_property(end_symbol, "position", Vector2(1048, 70), 0.2)
 	end_symbol_tween.set_loops(9999)
 	hide_textbox()
+
 
 func _process(delta):
 	end_symbol_tween.set_loops(9999)
@@ -64,10 +62,11 @@ func _process(delta):
 				hide_textbox()
 				if text_queue.is_empty():
 					choice_box.window_summon()
-				
+
 
 func queue_text(next_text):
 	text_queue.push_back(next_text)
+
 
 func hide_textbox():
 	start_symbol.text = ""
@@ -75,9 +74,11 @@ func hide_textbox():
 	label.text = ""
 	textbox_container.hide()
 
+
 func show_textbox():
 	start_symbol.text = "*"
 	textbox_container.show()
+
 
 func display_text():
 	dialogue_tween = get_tree().create_tween()
@@ -86,15 +87,23 @@ func display_text():
 	label.visible_characters = 0
 	change_state(State.READING)
 	show_textbox()
-	dialogue_tween.tween_property(label, "visible_characters", len(next_text), len(next_text) * CHAR_READ_RATE).from(0).finished
+	(
+		dialogue_tween
+		. tween_property(
+			label, "visible_characters", len(next_text), len(next_text) * CHAR_READ_RATE
+		)
+		. from(0)
+		. finished
+	)
 	dialogue_tween.connect("finished", on_tween_finished)
 	sound_timer.start()
-	
-	
+
+
 func on_tween_finished():
 	end_symbol.text = "v"
 	change_state(State.FINISHED)
-	
+
+
 func change_state(next_state):
 	current_state = next_state
 	match current_state:
