@@ -1,10 +1,70 @@
-[gd_scene load_steps=18 format=3 uid="uid://d1rxkgas26uuw"]
+[gd_scene load_steps=15 format=3 uid="uid://d1rxkgas26uuw"]
 
-[ext_resource type="SpriteFrames" uid="uid://d0fomfwn70u8c" path="res://Scenes/Enemies/drone_sprite_frames.tres" id="1_cqrf5"]
+[ext_resource type="Script" path="res://Scripts/Enemies/drone.gd" id="1_ecsgm"]
+[ext_resource type="Texture2D" uid="uid://cpkulf7m2gntj" path="res://Assets/Arts/Animations/drone_animations/drone_idle.png" id="2_lf7iw"]
+[ext_resource type="Texture2D" uid="uid://b5g4rxduvjmbd" path="res://Assets/Arts/Animations/drone_animations/drone_shot.png" id="3_l5frq"]
 
-[sub_resource type="Animation" id="Animation_2p6ya"]
-resource_name = "idle"
-length = 0.4
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymvw2"]
+size = Vector2(3.62319, 3.62612)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3doo"]
+atlas = ExtResource("2_lf7iw")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joi6w"]
+atlas = ExtResource("2_lf7iw")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gu5r"]
+atlas = ExtResource("2_lf7iw")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5vca"]
+atlas = ExtResource("2_lf7iw")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86r8o"]
+atlas = ExtResource("3_l5frq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_888ln"]
+atlas = ExtResource("3_l5frq")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_64pef"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3doo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joi6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gu5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5vca")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86r8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_888ln")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_dvuf8"]
+resource_name = "Idle"
+length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -25,13 +85,13 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_smqfg"]
+[sub_resource type="Animation" id="Animation_rp1t2"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -55,105 +115,29 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3]
+"values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_4noel"]
-resource_name = "shoot"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"shoot"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_js414"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_knq5b"]
 _data = {
-"RESET": SubResource("Animation_smqfg"),
-"idle": SubResource("Animation_2p6ya"),
-"shoot": SubResource("Animation_4noel")
+"Idle": SubResource("Animation_dvuf8"),
+"RESET": SubResource("Animation_rp1t2")
 }
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yqu8t"]
-radius = 19.0
-height = 42.0
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_d7ulg"]
-
-[sub_resource type="BBNode" id="BBNode_t8kda"]
-saved_value = NodePath("AnimatedSprite2D/AnimationPlayer")
-resource_name = "AnimatedSprite2D/AnimationPlayer"
-
-[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_0vald"]
-animation_player = SubResource("BBNode_t8kda")
-animation_name = &"idle"
-
-[sub_resource type="BTWait" id="BTWait_7yvkr"]
-duration = 5.0
-
-[sub_resource type="BBNode" id="BBNode_c72u6"]
-saved_value = NodePath("AnimatedSprite2D/AnimationPlayer")
-resource_name = "AnimatedSprite2D/AnimationPlayer"
-
-[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_h3807"]
-animation_player = SubResource("BBNode_c72u6")
-animation_name = &"shoot"
-
-[sub_resource type="BBNode" id="BBNode_p7nyq"]
-saved_value = NodePath("AnimatedSprite2D/AnimationPlayer")
-resource_name = "AnimatedSprite2D/AnimationPlayer"
-
-[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_ieqad"]
-animation_player = SubResource("BBNode_p7nyq")
-animation_name = &"shoot"
-
-[sub_resource type="BTSequence" id="BTSequence_iasbu"]
-children = [SubResource("BTPlayAnimation_0vald"), SubResource("BTWait_7yvkr"), SubResource("BTPlayAnimation_h3807"), SubResource("BTAwaitAnimation_ieqad")]
-
-[sub_resource type="BehaviorTree" id="BehaviorTree_5iirp"]
-blackboard_plan = SubResource("BlackboardPlan_d7ulg")
-root_task = SubResource("BTSequence_iasbu")
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_dxcb2"]
 
 [node name="Drone" type="CharacterBody2D"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("1_cqrf5")
-animation = &"idle"
-frame = 3
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_js414")
-}
+script = ExtResource("1_ecsgm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -3)
-shape = SubResource("CapsuleShape2D_yqu8t")
+position = Vector2(1.58946e-06, -5)
+scale = Vector2(9.2, 9.97405)
+shape = SubResource("RectangleShape2D_ymvw2")
 
-[node name="BTPlayer" type="BTPlayer" parent="."]
-behavior_tree = SubResource("BehaviorTree_5iirp")
-update_mode = 0
-blackboard_plan = SubResource("BlackboardPlan_dxcb2")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_64pef")
+animation = &"idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_knq5b")
+}
+autoplay = "Idle"

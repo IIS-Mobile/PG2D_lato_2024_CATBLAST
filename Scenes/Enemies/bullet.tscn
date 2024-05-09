@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ok4bn0iseo8x"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/bullet.gd" id="1_1iumi"]
+[ext_resource type="Texture2D" uid="uid://bryjy8xoe33yw" path="res://Assets/Arts/Animations/drone_animations/bullet_placeholder.png" id="2_pp7et"]
+
+[node name="Bullet" type="CharacterBody2D"]
+script = ExtResource("1_1iumi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.90735e-06, 1.90735e-06)
+scale = Vector2(0.22549, 0.22549)
+texture = ExtResource("2_pp7et")

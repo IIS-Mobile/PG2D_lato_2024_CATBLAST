@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://dmpuglts6my21" path="res://Scenes/player.tscn" id="2_6h82v"]
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="3_nobln"]
 [ext_resource type="PackedScene" uid="uid://c5yj3p0tq8rr7" path="res://Scenes/street_lamp.tscn" id="4_3orsa"]
-[ext_resource type="PackedScene" uid="uid://bvnrskhtu5gb3" path="res://Scenes/WomanNeonScene.tscn" id="6_bn17l"]
+[ext_resource type="PackedScene" path="res://Scenes/WomanNeonScene.tscn" id="6_bn17l"]
 [ext_resource type="Shader" path="res://Shaders/TestLevel.gdshader" id="6_yt2ig"]
-[ext_resource type="PackedScene" uid="uid://d1rxkgas26uuw" path="res://Scenes/Enemies/Drone.tscn" id="8_bkcjp"]
+[ext_resource type="PackedScene" uid="uid://d1rxkgas26uuw" path="res://Scenes/Enemies/drone.tscn" id="8_bkcjp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ivkmq"]
 shader = ExtResource("6_yt2ig")
