@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SoundtrackPlayer="*res://Scenes/soundtrack_player.tscn"
 GlobalVariables="*res://Scripts/Global/global_variables.gd"
+SoundEffectPlayer="*res://Scenes/sound_effect_player.tscn"
 
 [display]
 
