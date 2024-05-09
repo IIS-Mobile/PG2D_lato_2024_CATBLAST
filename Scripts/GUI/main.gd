@@ -4,8 +4,6 @@ class_name GameManager
 
 signal toggle_game_paused(is_paused: bool)
 
-@onready var confirmSound: AudioStream = load("res://Assets/Sounds/ui/button yes - phoenix_the_maker.wav")
-@onready var hoverSound: AudioStream = load("res://Assets/Sounds/ui/hover button - Pixabay.wav")
 @onready var pause_menu  =$"."
 
 var audio_player: AudioStreamPlayer2D
@@ -30,5 +28,4 @@ func _ready():
 
 
 func _on_hover():
-	audio_player.stream = hoverSound
-	audio_player.play()
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HOVER)
