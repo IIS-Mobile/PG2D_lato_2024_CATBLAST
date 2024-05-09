@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://dgoam2f5xpmgo"]
+
+[ext_resource type="Script" path="res://Scripts/NPC/npc.gd" id="1_hq0fk"]
+[ext_resource type="Texture2D" uid="uid://k4tl06j0mo1a" path="res://Assets/Arts/Animations/enemy_animations/idle/Mangusta_idle.png" id="2_wft5f"]
+[ext_resource type="PackedScene" uid="uid://c3ml4t1h75tj0" path="res://Scenes/textbox.tscn" id="3_jwlgb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4o5v"]
+atlas = ExtResource("2_wft5f")
+region = Rect2(0, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qicj"]
+atlas = ExtResource("2_wft5f")
+region = Rect2(72, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iogrn"]
+atlas = ExtResource("2_wft5f")
+region = Rect2(144, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugivn"]
+atlas = ExtResource("2_wft5f")
+region = Rect2(216, 0, 72, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_whd4u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4o5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qicj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iogrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugivn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qicj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uire7"]
+size = Vector2(161.5, 1)
+
+[node name="npc" type="CharacterBody2D"]
+script = ExtResource("1_hq0fk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_whd4u")
+animation = &"idle"
+frame_progress = 0.751216
+
+[node name="chat_detection_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
+shape = SubResource("RectangleShape2D_uire7")
+
+[node name="Textbox" parent="." instance=ExtResource("3_jwlgb")]
+
+[connection signal="area_exited" from="chat_detection_area" to="." method="_on_chat_detection_area_area_exited"]
+[connection signal="body_entered" from="chat_detection_area" to="." method="_on_chat_detection_area_body_entered"]
+[connection signal="body_shape_exited" from="chat_detection_area" to="." method="_on_chat_detection_area_body_shape_exited"]

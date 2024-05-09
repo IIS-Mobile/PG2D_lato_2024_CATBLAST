@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7o5nslhfk653"]
+
+[ext_resource type="Script" path="res://Scripts/NPC/yes_no_choice_panel.gd" id="1_i5450"]
+
+[node name="YesNoDialogueChoice" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_i5450")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Control" type="Control" parent="Panel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="YesButton" type="Button" parent="Panel/Control"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 22.0
+offset_right = 27.0
+offset_bottom = 30.0
+
+[node name="NoButton" type="Button" parent="Panel/Control"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 8.0
+offset_right = 27.0
+offset_bottom = 16.0
+
+[connection signal="pressed" from="Panel/Control/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="Panel/Control/NoButton" to="." method="_on_no_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkfbae7sgq1mv"]
+[gd_scene load_steps=12 format=3 uid="uid://dkfbae7sgq1mv"]
 
 [ext_resource type="Texture2D" uid="uid://cpkulf7m2gntj" path="res://Assets/Arts/Animations/drone_animations/drone_idle.png" id="2_cv6aq"]
 
@@ -33,13 +33,14 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y5vca")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2eog0"]
-size = Vector2(3.62319, 3.62612)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_srywr"]
+radius = 1.95652
+height = 4.81249
 
 [sub_resource type="Animation" id="Animation_dvuf8"]
 resource_name = "Idle"
@@ -103,6 +104,10 @@ _data = {
 "RESET": SubResource("Animation_rp1t2")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_caped"]
+radius = 18.0
+height = 48.0
+
 [node name="SimpleEnemy" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["enemy"]]
@@ -112,12 +117,18 @@ sprite_frames = SubResource("SpriteFrames_ihvpn")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(1.58946e-06, -5)
+position = Vector2(-1, -5)
 scale = Vector2(9.2, 9.97405)
-shape = SubResource("RectangleShape2D_2eog0")
+shape = SubResource("CapsuleShape2D_srywr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
 libraries = {
 "": SubResource("AnimationLibrary_knq5b")
 }
 autoplay = "Idle"
+
+[node name="Hitbox" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hitbox"]
+position = Vector2(-1, -5)
+shape = SubResource("CapsuleShape2D_caped")

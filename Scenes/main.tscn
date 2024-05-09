@@ -1,63 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://doewd1xob6x63"]
+[gd_scene load_steps=6 format=3 uid="uid://doewd1xob6x63"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/main.gd" id="1_gejnf"]
-[ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="2_l6iag"]
 [ext_resource type="AudioStream" uid="uid://blb85uuhc3n38" path="res://Assets/Sounds/music/main menu theme - GreenStarFire.ogg" id="2_lb3jg"]
-[ext_resource type="Texture2D" uid="uid://d1wlvrndak0j5" path="res://Assets/Arts/Gui/Animated Tablets/blue/Tablet.png" id="4_b8wvr"]
-[ext_resource type="FontFile" uid="uid://c33jywaea07wv" path="res://Assets/Arts/Gui/Cyberphont/Cyberphont beta/Cyberphont_pixels.ttf" id="5_3lale"]
-[ext_resource type="Texture2D" uid="uid://iy7ecswsckof" path="res://Assets/Arts/Gui/Text ScreenPads/blue/scalable_Text_screen.png" id="6_80b61"]
-[ext_resource type="FontFile" uid="uid://dyqoacn20kknd" path="res://Assets/Arts/Gui/Cyberphont/Cyberphont 2.0/Cyberphont 2.0.ttf" id="7_ggnmw"]
+[ext_resource type="PackedScene" uid="uid://gg5d0kkcpoey" path="res://Scenes/UI/pause_menu.tscn" id="4_ti4mb"]
+[ext_resource type="PackedScene" uid="uid://dmpuglts6my21" path="res://Scenes/player.tscn" id="5_8iwyy"]
+[ext_resource type="PackedScene" uid="uid://dudwfr5a2vkg" path="res://Scenes/TestLevel.tscn" id="8_ddylw"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_exq0e"]
-shader = ExtResource("2_l6iag")
-shader_parameter/amount = 1.471
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ue2v"]
-texture = ExtResource("4_b8wvr")
-
-[sub_resource type="Theme" id="Theme_4ql4f"]
-Panel/styles/panel = SubResource("StyleBoxTexture_5ue2v")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_abocp"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4v58w"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gt4nm"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7foau"]
-texture = ExtResource("6_80b61")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8pqne"]
-texture = ExtResource("6_80b61")
-
-[sub_resource type="Theme" id="Theme_ktn46"]
-default_font = ExtResource("7_ggnmw")
-default_font_size = 0
-Button/colors/font_color = Color(0.501961, 0.956863, 1, 1)
-Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
-Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/font_outline_color = Color(1, 1, 1, 1)
-Button/colors/font_pressed_color = Color(1, 1, 1, 1)
-Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
-Button/colors/icon_focus_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/icon_normal_color = Color(1, 1, 1, 1)
-Button/colors/icon_pressed_color = Color(0, 0.552941, 0.984314, 1)
-Button/constants/h_separation = 5
-Button/constants/icon_max_width = 0
-Button/constants/outline_size = 0
-Button/font_sizes/font_size = 50
-Button/fonts/font = ExtResource("5_3lale")
-Button/styles/disabled = SubResource("StyleBoxTexture_abocp")
-Button/styles/focus = SubResource("StyleBoxTexture_4v58w")
-Button/styles/hover = SubResource("StyleBoxTexture_gt4nm")
-Button/styles/normal = SubResource("StyleBoxTexture_7foau")
-Button/styles/pressed = SubResource("StyleBoxTexture_8pqne")
-
-[node name="Main" type="Node2D"]
+[node name="GameManager" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_gejnf")
 
@@ -65,60 +14,14 @@ script = ExtResource("1_gejnf")
 stream = ExtResource("2_lb3jg")
 volume_db = -20.0
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(3.8147e-05, 0)
-volume_db = -5.0
-
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_exq0e")
-offset_left = -9.0
-offset_top = -6.0
-offset_right = 31.0
-offset_bottom = 34.0
-scale = Vector2(29.6821, 17.0937)
-
-[node name="Panel" type="Panel" parent="."]
-process_mode = 3
-texture_filter = 3
-offset_left = 87.0
-offset_top = 49.0
-offset_right = 1246.0
-offset_bottom = 696.0
-scale = Vector2(0.826351, 0.826186)
-theme = SubResource("Theme_4ql4f")
-
-[node name="Control" type="Control" parent="Panel"]
+[node name="Player" parent="." instance=ExtResource("5_8iwyy")]
 process_mode = 1
-layout_mode = 3
-anchors_preset = 0
-offset_top = -1.21038
-offset_right = 40.0
-offset_bottom = 38.7896
-theme = SubResource("Theme_ktn46")
 
-[node name="Play" type="Button" parent="Panel/Control"]
-texture_filter = 3
-layout_mode = 0
-offset_left = 399.346
-offset_top = 79.8852
-offset_right = 699.346
-offset_bottom = 379.885
-rotation = 0.00265048
-scale = Vector2(1.23925, 0.544463)
-text = "Play"
+[node name="TestLevel" parent="." instance=ExtResource("8_ddylw")]
+process_mode = 1
 
-[node name="Quit" type="Button" parent="Panel/Control"]
-layout_mode = 0
-offset_left = 401.766
-offset_top = 285.65
-offset_right = 701.766
-offset_bottom = 585.65
-rotation = 0.00265048
-scale = Vector2(1.239, 0.544)
-tooltip_text = "This is quit"
-text = "Quit"
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
 
-[connection signal="mouse_entered" from="Panel/Control/Play" to="." method="_on_hover"]
-[connection signal="pressed" from="Panel/Control/Play" to="." method="_on_play_pressed"]
-[connection signal="mouse_entered" from="Panel/Control/Quit" to="." method="_on_hover"]
-[connection signal="pressed" from="Panel/Control/Quit" to="." method="_on_quit_pressed"]
+[node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_ti4mb")]
+game_manager = NodePath("../..")
