@@ -66,7 +66,7 @@ func _physics_process(delta):
 				ghost_timer.start()
 				$dash_again_timer.start()
 		if is_dead:
-			anim.play("Dead")
+			anim.play("Death")
 		else:
 		#Crouch
 			if Input.is_action_pressed("Crouch") and is_on_floor() and !is_interaction and is_idle():
