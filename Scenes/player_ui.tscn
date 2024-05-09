@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://2xi8ldx06rmb"]
+[gd_scene load_steps=24 format=3 uid="uid://2xi8ldx06rmb"]
 
 [ext_resource type="Texture2D" uid="uid://bsqm7x15f8ows" path="res://Assets/Arts/Gui/Lifebars/Lifebar2_Damage_animation.png" id="1_bup4p"]
 [ext_resource type="Shader" path="res://Shaders/cast_shadow.gdshader" id="1_uccv4"]
 [ext_resource type="Texture2D" uid="uid://swsdw366mw1y" path="res://Assets/Arts/Gui/Lifebars/lifebar2.png" id="2_k7y56"]
 [ext_resource type="Script" path="res://Scripts/GUI/life_bar.gd" id="3_6heob"]
 [ext_resource type="Texture2D" uid="uid://dfdgvqgduav0e" path="res://Assets/Arts/Gui/Lifebars/health.png" id="4_n3sxd"]
+[ext_resource type="Texture2D" uid="uid://n1end3q3k1ow" path="res://Assets/Arts/Gui/Animated Loaders/Loading Sprite 04.png" id="5_2i1pb"]
+[ext_resource type="Texture2D" uid="uid://cbunmx2uabwyj" path="res://Assets/Arts/Gui/Menu buttons v2/skill_icons.png" id="6_bl7kf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ekmh2"]
 shader = ExtResource("1_uccv4")
@@ -50,6 +52,77 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlb1c"]
+atlas = ExtResource("5_2i1pb")
+region = Rect2(0, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bdjh"]
+atlas = ExtResource("5_2i1pb")
+region = Rect2(19, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10bl0"]
+atlas = ExtResource("5_2i1pb")
+region = Rect2(38, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ks4d"]
+atlas = ExtResource("5_2i1pb")
+region = Rect2(57, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcdap"]
+atlas = ExtResource("5_2i1pb")
+region = Rect2(76, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alqcy"]
+atlas = ExtResource("5_2i1pb")
+region = Rect2(95, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4wh0"]
+atlas = ExtResource("5_2i1pb")
+region = Rect2(114, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4yhw"]
+atlas = ExtResource("5_2i1pb")
+region = Rect2(133, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1nlq"]
+atlas = ExtResource("6_bl7kf")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jpsn4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlb1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bdjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10bl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ks4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcdap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alqcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4wh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4yhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1nlq")
+}],
+"loop": false,
+"name": &"Loading",
+"speed": 1.0
+}]
+
 [node name="Player UI" type="CanvasLayer"]
 
 [node name="Life" type="Control" parent="."]
@@ -60,6 +133,7 @@ offset_bottom = 40.0
 script = ExtResource("3_6heob")
 
 [node name="Lifebar" type="Sprite2D" parent="Life"]
+visible = false
 material = SubResource("ShaderMaterial_ekmh2")
 position = Vector2(173, 83)
 scale = Vector2(4, 4)
@@ -70,8 +144,12 @@ position = Vector2(173, 83)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_v1x4p")
 animation = &"Glitch"
-frame = 3
-frame_progress = 1.0
+
+[node name="DashLoading" type="AnimatedSprite2D" parent="Life"]
+position = Vector2(86, 85)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_jpsn4")
+animation = &"Loading"
 
 [node name="health_points" type="TextureRect" parent="Life"]
 modulate = Color(100, 100, 100, 1)

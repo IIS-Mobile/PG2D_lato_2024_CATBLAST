@@ -14,7 +14,7 @@ const DOUBLE_JUMP_VELOCITY = -400.0
 @export var ghost_node : PackedScene
 @onready var ghost_timer = $GhostTimer
 var dashing = false
-var can_dash = true
+
 var is_crouching = false
 var stuck_under_object = false
 var has_double_jumped = false
@@ -57,12 +57,12 @@ func _physics_process(delta):
 	if GlobalVariables.PLAYER_CONTROLS_ENABLED:
 		var direction = Input.get_axis("ui_left", "ui_right")
 		#Handle dash
-		if Input.is_action_just_pressed("Dash") and can_dash:
+		if Input.is_action_just_pressed("Dash") and GlobalVariables.CAN_PLAYER_DASH:
 			if direction:
 				dash()
 				dashing = true
 				# mozna tu wrzucic animacje dasha
-				can_dash = false
+				GlobalVariables.CAN_PLAYER_DASH = false
 				ghost_timer.start()
 				$dash_again_timer.start()
 		if is_dead:
@@ -207,7 +207,7 @@ func _on_ghost_timer_timeout():
 	particles.emitting = false
 
 func _on_dash_again_timer_timeout():
-	can_dash = true
+	GlobalVariables.CAN_PLAYER_DASH = true
 
 
 func _on_ghost_spawn_timer_timeout():

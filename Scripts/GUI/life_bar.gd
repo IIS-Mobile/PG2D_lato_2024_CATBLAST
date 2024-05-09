@@ -6,6 +6,16 @@ var previous_health: int = GlobalVariables.CURRENT_HEALTH
 @onready var animated_lifebar = $AnimatedLifebar
 
 func _process(delta):
+	#dash animation
+	#$DashLoading to animated sprite 2d
+	if GlobalVariables.CAN_PLAYER_DASH:
+		$DashLoading.frame = 8
+	else:
+		$DashLoading.speed_scale = $DashLoading.sprite_frames.get_frame_count("Loading")/1.5
+		$DashLoading.play("Loading")
+		
+	
+	
 	if animated_lifebar.is_playing():
 		$Lifebar.visible = false
 		animated_lifebar.visible = true
