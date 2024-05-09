@@ -1718,6 +1718,7 @@ process_material = SubResource("ParticleProcessMaterial_u3wnw")
 collision_base_size = 61.72
 
 [node name="dash_again_timer" type="Timer" parent="."]
+wait_time = 1.5
 
 [node name="GhostSpawnTimer" type="Timer" parent="."]
 wait_time = 0.05
