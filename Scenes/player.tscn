@@ -1663,7 +1663,7 @@ color_ramp = SubResource("GradientTexture1D_aio8a")
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 3
-position = Vector2(-1, 0)
+position = Vector2(112, 185)
 script = ExtResource("1_341yb")
 ghost_node = ExtResource("2_pehe5")
 

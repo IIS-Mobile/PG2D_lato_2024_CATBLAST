@@ -5,7 +5,7 @@ const DASH_UP = -600
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
 const DOUBLE_JUMP_VELOCITY = -400.0
-const KNOCKBACK_POWER = 200
+const KNOCKBACK_POWER = 400
 
 @onready var cshape = $CollisionShape2D
 @onready var anim = get_node("AnimationPlayer")
@@ -67,6 +67,9 @@ func _physics_process(delta):
 		if anim.current_animation != "Death":
 			GlobalVariables.CURRENT_HEALTH = GlobalVariables.MAX_HEALTH
 			get_tree().reload_current_scene()
+		velocity.x = sign(velocity.x) * KNOCKBACK_POWER/2
+		if is_on_floor():
+			velocity.x = 0
 		move_and_slide()
 
 	if GlobalVariables.PLAYER_CONTROLS_ENABLED and not is_dying:
@@ -279,6 +282,6 @@ func _on_hurtbox_area_entered(area):
 	pass  # Replace with function body.
 	
 func knockback():
-	velocity.x = sign(velocity.x) * (-1.0) * KNOCKBACK_POWER * 5
+	velocity.x = sign(velocity.x) * (-1.0) * KNOCKBACK_POWER *3
 	velocity.y = sign(velocity.y) * (-1.0) * KNOCKBACK_POWER
 	move_and_slide()
