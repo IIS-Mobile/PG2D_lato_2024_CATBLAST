@@ -5,6 +5,7 @@ const DASH_UP = -600
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
 const DOUBLE_JUMP_VELOCITY = -400.0
+const KNOCKBACK_POWER = 200
 
 @onready var cshape = $CollisionShape2D
 @onready var anim = get_node("AnimationPlayer")
@@ -44,7 +45,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
-	print(anim.current_animation)
+	#print(anim.current_animation)
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	is_dead = GlobalVariables.CURRENT_HEALTH == 0
@@ -129,7 +130,7 @@ func is_idle() -> bool:
 
 
 func update_animations(direction, dir):
-	print(anim.current_animation)
+	#print(anim.current_animation)
 	if Input.is_action_pressed("Interact") and (is_idle() or anim.current_animation == "Run"):
 		#GlobalVariables.PLAYER_CONTROLS_ENABLED = false;
 		#print("x")
@@ -271,7 +272,13 @@ func _on_ghost_spawn_timer_timeout():
 func _on_hurtbox_area_entered(area):
 	if area.name == "Hitbox":
 		if GlobalVariables.CURRENT_HEALTH != 0:
+			knockback()
 			anim.play("Hurt")
 			GlobalVariables.CURRENT_HEALTH -= 1
 			print("Getting hit", GlobalVariables.CURRENT_HEALTH)
 	pass  # Replace with function body.
+	
+func knockback():
+	velocity.x = sign(velocity.x) * (-1.0) * KNOCKBACK_POWER * 5
+	velocity.y = sign(velocity.y) * (-1.0) * KNOCKBACK_POWER
+	move_and_slide()
