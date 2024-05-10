@@ -45,6 +45,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
 	print(anim.current_animation)
+	if not is_on_floor():
+		velocity.y += gravity * delta
 	is_dead = GlobalVariables.CURRENT_HEALTH == 0
 	is_hurt = anim.current_animation == "Hurt"
 	is_attacking = (
@@ -64,8 +66,9 @@ func _physics_process(delta):
 		if anim.current_animation != "Death":
 			GlobalVariables.CURRENT_HEALTH = GlobalVariables.MAX_HEALTH
 			get_tree().reload_current_scene()
+		move_and_slide()
 
-	if GlobalVariables.PLAYER_CONTROLS_ENABLED:
+	if GlobalVariables.PLAYER_CONTROLS_ENABLED and not is_dying:
 		var direction = Input.get_axis("ui_left", "ui_right")
 		#Handle dash
 		if Input.is_action_just_pressed("Dash") and GlobalVariables.CAN_PLAYER_DASH:
@@ -76,8 +79,6 @@ func _physics_process(delta):
 				GlobalVariables.CAN_PLAYER_DASH = false
 				ghost_timer.start()
 				$dash_again_timer.start()
-		if is_dead:
-			anim.play("Death")
 		else:
 			#Crouch
 			if (
@@ -97,9 +98,6 @@ func _physics_process(delta):
 			if stuck_under_object and above_head_is_empty():
 				stand()
 				stuck_under_object = false
-
-			if not is_on_floor():
-				velocity.y += gravity * delta
 
 			# Get the input direction and handle the movement/deceleration.
 			# As good practice, you should replace UI actions with custom gameplay actions.
