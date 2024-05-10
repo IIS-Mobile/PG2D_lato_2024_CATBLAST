@@ -135,7 +135,6 @@ offset_bottom = 40.0
 script = ExtResource("3_6heob")
 
 [node name="Lifebar" type="Sprite2D" parent="Life"]
-visible = false
 material = SubResource("ShaderMaterial_ekmh2")
 position = Vector2(173, 83)
 scale = Vector2(4, 4)
