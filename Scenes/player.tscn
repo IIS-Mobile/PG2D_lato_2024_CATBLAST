@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=3 uid="uid://dmpuglts6my21"]
+[gd_scene load_steps=135 format=3 uid="uid://dmpuglts6my21"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_movement.gd" id="1_341yb"]
 [ext_resource type="Texture2D" uid="uid://ci8ylvh8xr8aj" path="res://Assets/Arts/Animations/player_animations/attack/player_attack.png" id="2_dl8vb"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://2xi8ldx06rmb" path="res://Scenes/player_ui.tscn" id="17_dys1h"]
 [ext_resource type="AudioStream" uid="uid://b0levoeqrth12" path="res://Assets/Sounds/player/death - Pixabay.wav" id="18_fn83i"]
 [ext_resource type="AudioStream" uid="uid://beeqv3t33hc5a" path="res://Assets/Sounds/player/player damaged - Pixabay.wav" id="18_xpq8w"]
+[ext_resource type="Script" path="res://Scripts/Player/KillAuraFix.gd" id="22_1smnd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yvufx"]
 shader = ExtResource("4_sgta2")
@@ -1478,7 +1479,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1679,7 +1680,7 @@ material = SubResource("ShaderMaterial_yvufx")
 position = Vector2(2, -5.44003)
 scale = Vector2(0.998, 0.968)
 sprite_frames = SubResource("SpriteFrames_328ho")
-animation = &"Idle"
+animation = &"Attack_Jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
@@ -1692,6 +1693,7 @@ root_node = NodePath("../Camera2D")
 libraries = {
 "": SubResource("AnimationLibrary_lrkoh")
 }
+script = ExtResource("22_1smnd")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../AnimationPlayer")
@@ -1711,6 +1713,7 @@ polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 3
 disabled = true
 
 [node name="Attack_L" type="CollisionPolygon2D" parent="Sprite2D/Hitbox"]
+visible = false
 position = Vector2(637, -1)
 scale = Vector2(-1, 1)
 polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 353, 294, 328, 295, 342, 275, 345, 251, 329, 241, 294, 244)
@@ -1757,6 +1760,7 @@ target_position = Vector2(0, -27)
 
 [node name="Player UI" parent="." instance=ExtResource("17_dys1h")]
 
+[connection signal="current_animation_changed" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_changed"]
 [connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_weapon_area_2d_body_entered"]
 [connection signal="body_shape_entered" from="Sprite2D/Hitbox" to="." method="_on_weapon_area_2d_body_shape_entered"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
