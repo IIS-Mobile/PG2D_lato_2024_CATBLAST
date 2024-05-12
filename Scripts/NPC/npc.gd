@@ -18,6 +18,15 @@ func _process(delta):
 
 func _physics_process(delta):
 	animation_player.play("idle")
+	var current_frame: int = $AnimatedSprite2D.get_frame()
+	if(current_frame > 3 && current_frame <=8 || current_frame >= 13 && current_frame <=18):
+		$PointLight2D.set_position(Vector2(0, 0))
+	elif(current_frame >= 10 && current_frame <=11):
+		$PointLight2D.set_position(Vector2(8, 8))
+	elif(current_frame == 3 || current_frame == 8 || current_frame == 13 || current_frame == 18 ):
+		$PointLight2D.set_position(Vector2(-1.5, 0.2))
+	else:
+		$PointLight2D.set_position(Vector2(8, 5))
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
