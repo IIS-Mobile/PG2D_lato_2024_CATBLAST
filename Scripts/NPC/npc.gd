@@ -7,6 +7,8 @@ var is_player_in_dialogue_range = false
 
 
 func _process(delta):
+	play_animation()
+	
 	if (
 		is_player_in_dialogue_range
 		and Input.is_action_just_pressed("Interact")
@@ -17,16 +19,8 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	animation_player.play("idle")
-	var current_frame: int = $AnimatedSprite2D.get_frame()
-	if(current_frame > 3 && current_frame <=8 || current_frame >= 13 && current_frame <=18):
-		$PointLight2D.set_position(Vector2(0, 0))
-	elif(current_frame >= 10 && current_frame <=11):
-		$PointLight2D.set_position(Vector2(8, 8))
-	elif(current_frame == 3 || current_frame == 8 || current_frame == 13 || current_frame == 18 ):
-		$PointLight2D.set_position(Vector2(-1.5, 0.2))
-	else:
-		$PointLight2D.set_position(Vector2(8, 5))
+
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
@@ -44,3 +38,18 @@ func _on_chat_detection_area_body_shape_exited(body_rid, body, body_shape_index,
 		#$Textbox.hide_textbox()
 		#$Textbox.sound_timer.stop()
 		print("Player left dialogue range")
+		
+func play_animation():
+	animation_player.play("idle")
+	var current_frame: int = animation_player.get_frame()
+
+	match current_frame:
+		10, 11:
+			$PointLight2D.set_position(Vector2(8, 8))
+		0, 1, 2, 9, 12, 19:
+			$PointLight2D.set_position(Vector2(8, 5))
+		3, 8, 13, 18:
+			$PointLight2D.set_position(Vector2(-1.5, 0.2))
+		_:
+			$PointLight2D.set_position(Vector2(0, 0))
+			
