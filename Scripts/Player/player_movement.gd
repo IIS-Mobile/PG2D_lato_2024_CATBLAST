@@ -71,8 +71,9 @@ func _physics_process(delta):
 		if is_on_floor():
 			velocity.x = 0
 		move_and_slide()
+		return
 
-	if GlobalVariables.PLAYER_CONTROLS_ENABLED and not is_dying:
+	if GlobalVariables.PLAYER_CONTROLS_ENABLED:
 		var direction = Input.get_axis("ui_left", "ui_right")
 		#Handle dash
 		if Input.is_action_just_pressed("Dash") and GlobalVariables.CAN_PLAYER_DASH:
@@ -96,8 +97,7 @@ func _physics_process(delta):
 				if above_head_is_empty():
 					stand()
 				else:
-					if stuck_under_object != true:
-						stuck_under_object = true
+					stuck_under_object = true
 			# Add the gravity.
 			if stuck_under_object and above_head_is_empty():
 				stand()
@@ -131,6 +131,7 @@ func is_idle() -> bool:
 		return true
 	return false
 
+enum AttackEnum {ATTACK_JUMP,ATTACK_RUN,ATTACK}
 
 func update_animations(direction, dir):
 	#print(anim.current_animation)
@@ -149,27 +150,18 @@ func update_animations(direction, dir):
 		velocity.y = JUMP_VELOCITY
 		if !is_attacking:
 			anim.play("Jump")
-			#print("Jump")
-	#if velocity.x == 0 and velocity.y == 0 and is_attacking:
-	#anim.play("Attack")
-	if Input.is_action_just_pressed("Attack") and !is_interaction and !is_hurt:
-		if is_crouching == false:
-			if dir == false:
-				if velocity.y != 0:
-					anim.play("Attack_Jump")
-				else:
-					if velocity.x != 0:
-						anim.play("Attack_Run")
-					else:
-						anim.play("Attack")
-			else:
-				if velocity.y != 0:
-					anim.play("Attack_Jump_L")
-				else:
-					if velocity.x != 0:
-						anim.play("Attack_Run_L")
-					else:
-						anim.play("attack_left")
+
+	const attack_anim_lut = [["Attack_Jump","Attack_Run","Attack"],["Attack_Jump_L","Attack_Run_L","attack_left"]]
+	
+	if Input.is_action_just_pressed("Attack") and !is_interaction and !is_hurt and !is_crouching:
+		if velocity.y != 0:
+			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_JUMP])
+		elif velocity.x != 0:
+			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_RUN])
+		else:
+			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK])
+		
+
 
 	if Input.is_action_just_pressed("Jump") and not has_double_jumped and not is_on_floor():
 		velocity.y = DOUBLE_JUMP_VELOCITY
