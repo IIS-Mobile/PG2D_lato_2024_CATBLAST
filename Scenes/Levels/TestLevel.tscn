@@ -172,6 +172,7 @@ position = Vector2(1250.73, 560.005)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
 material = SubResource("ShaderMaterial_ivkmq")
 anchors_preset = 15
 anchor_right = 1.0
@@ -184,4 +185,4 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="npc" parent="." instance=ExtResource("7_0wo3m")]
-position = Vector2(603, 433)
+position = Vector2(56, 573)

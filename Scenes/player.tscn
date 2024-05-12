@@ -1676,6 +1676,7 @@ offset = Vector2(0, -35)
 zoom = Vector2(2, 2)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 3
 material = SubResource("ShaderMaterial_yvufx")
 position = Vector2(2, -5.44003)
 scale = Vector2(0.998, 0.968)
@@ -1703,6 +1704,7 @@ tree_root = SubResource("AnimationNodeStateMachine_8u65a")
 layer = -5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 3
 position = Vector2(-317, -269)
 
 [node name="Hitbox" type="Area2D" parent="Sprite2D"]
