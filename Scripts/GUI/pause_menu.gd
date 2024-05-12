@@ -6,6 +6,9 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
+	$Panel.get_node("Control/AnimatedSprite2D").play("Glitch")
+	$Panel.get_node("Control/AnimatedSprite2D2").play("Glitch")
+	$Panel.get_node("Control/AnimatedSprite2D3").play("Glitch")
 	game_manager.connect("toggle_game_paused", _on_game_manager_toggle_game_paused)
 
 

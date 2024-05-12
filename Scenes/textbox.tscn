@@ -13,7 +13,7 @@ border_width_bottom = 8
 border_color = Color(1, 1, 1, 1)
 
 [node name="Textbox" type="CanvasLayer"]
-layer = 10
+layer = 5
 script = ExtResource("1_oebwf")
 
 [node name="TextboxContainer" type="MarginContainer" parent="."]
