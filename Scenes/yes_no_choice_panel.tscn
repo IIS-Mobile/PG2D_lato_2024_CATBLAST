@@ -38,7 +38,7 @@ offset_top = 10.0
 offset_right = 1152.0
 offset_bottom = 73.0
 theme_override_fonts/font = ExtResource("2_ip08d")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 36
 text = "Proceed to the 
 next level?"
 horizontal_alignment = 1
@@ -53,34 +53,37 @@ offset_bottom = 35.0
 
 [node name="YesButton" type="Button" parent="ChoiceboxContainer/Panel/Control"]
 layout_mode = 0
-offset_left = 45.0
+offset_left = -10.0
 offset_top = 70.0
-offset_right = 148.0
-offset_bottom = 96.0
+offset_right = 89.0
+offset_bottom = 102.0
 
 [node name="Label" type="Label" parent="ChoiceboxContainer/Panel/Control/YesButton"]
 layout_mode = 0
+offset_top = 3.0
 offset_right = 100.0
-offset_bottom = 26.0
+offset_bottom = 30.0
 theme_override_fonts/font = ExtResource("2_ip08d")
+theme_override_font_sizes/font_size = 30
 text = "YES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NoButton" type="Button" parent="ChoiceboxContainer/Panel/Control"]
 layout_mode = 0
-offset_left = 166.0
+offset_left = 210.0
 offset_top = 68.0
-offset_right = 266.0
-offset_bottom = 94.0
+offset_right = 309.0
+offset_bottom = 100.0
 
 [node name="Label" type="Label" parent="ChoiceboxContainer/Panel/Control/NoButton"]
 layout_mode = 0
 offset_left = 1.0
-offset_top = 1.0
+offset_top = 3.0
 offset_right = 100.0
-offset_bottom = 27.0
+offset_bottom = 30.0
 theme_override_fonts/font = ExtResource("2_ip08d")
+theme_override_font_sizes/font_size = 30
 text = "NO"
 horizontal_alignment = 1
 vertical_alignment = 1
