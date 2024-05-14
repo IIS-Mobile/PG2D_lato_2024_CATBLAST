@@ -4,9 +4,11 @@ var implant_name: String = "Ultra Elastic Joints"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for implant in GlobalVariables.IMPLANTS:
-		if implant.name == implant_name:
-			$Area2D/CollisionShape2D/Sprite2D.texture = load(implant.graphic_path)
-	
+		if !implant.possessed:	
+			if implant.name == implant_name:
+				$Area2D/CollisionShape2D/Sprite2D.texture = load(implant.graphic_path)
+		else:
+			self.queue_free()
 	pass # Replace with function body.
 
 
