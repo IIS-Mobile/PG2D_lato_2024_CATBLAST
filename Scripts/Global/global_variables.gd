@@ -21,6 +21,7 @@ var LEVEL_TO_CHANGE: int = CURRENT_LEVEL
 
 var LEVELS = [
 	LevelObject.new("res://Scenes/Levels/LobbyLevel.tscn", Vector2(441, 317)),
-	LevelObject.new("res://Scenes/Levels/TestLevel.tscn", Vector2(0, 368))
+	LevelObject.new("res://Scenes/Levels/TestLevel.tscn", Vector2(0, 368)),
+	LevelObject.new("res://Scenes/Levels/PathfindingTestLevel.tscn", Vector2(541, 346))
 ]
 
