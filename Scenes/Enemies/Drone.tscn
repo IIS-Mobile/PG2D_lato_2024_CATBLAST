@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d1rxkgas26uuw"]
+[gd_scene load_steps=20 format=3 uid="uid://d1rxkgas26uuw"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/drone.gd" id="1_ecsgm"]
 [ext_resource type="Texture2D" uid="uid://cpkulf7m2gntj" path="res://Assets/Arts/Animations/drone_animations/drone_idle.png" id="2_lf7iw"]
@@ -98,34 +98,23 @@ _data = {
 "shoot": SubResource("Animation_43hx6")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tin4k"]
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_q8sc6"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_55l8b"]
 animation = &"idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2lopo"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fhswo"]
 animation = &"shoot"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s803i"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kqwma"]
-advance_mode = 2
-advance_condition = &"shooting"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k7b4q"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pcrp5"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_urws7"]
-states/End/position = Vector2(622, 100)
-states/Start/position = Vector2(177, 100)
-states/idle/node = SubResource("AnimationNodeAnimation_tin4k")
-states/idle/position = Vector2(307, 100)
-states/shoot/node = SubResource("AnimationNodeAnimation_2lopo")
-states/shoot/position = Vector2(424, 100)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_s803i"), "idle", "shoot", SubResource("AnimationNodeStateMachineTransition_kqwma"), "shoot", "End", SubResource("AnimationNodeStateMachineTransition_k7b4q"), "shoot", "idle", SubResource("AnimationNodeStateMachineTransition_pcrp5")]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2xrn5"]
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_q8sc6")
+nodes/OneShot/position = Vector2(520, 40)
+nodes/idle/node = SubResource("AnimationNodeAnimation_55l8b")
+nodes/idle/position = Vector2(140, 80)
+nodes/output/position = Vector2(800, 40)
+nodes/shoot/node = SubResource("AnimationNodeAnimation_fhswo")
+nodes/shoot/position = Vector2(300, 160)
+node_connections = [&"OneShot", 0, &"idle", &"OneShot", 1, &"shoot", &"output", 0, &"OneShot"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ksnwq"]
 atlas = ExtResource("2_lf7iw")
@@ -195,9 +184,11 @@ shape = SubResource("RectangleShape2D_ymvw2")
 libraries = {
 "": SubResource("AnimationLibrary_ha7mj")
 }
-tree_root = SubResource("AnimationNodeStateMachine_urws7")
+tree_root = SubResource("AnimationNodeBlendTree_2xrn5")
 anim_player = NodePath("../AnimatedSprite2D/AnimationPlayer")
-parameters/conditions/shooting = false
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5l1ra")

@@ -12,8 +12,6 @@ const COOLDOWN = 3.0 # seconds
 
 @onready var animation_tree : AnimationTree = $AnimationTree
 
-@onready var anim_state_machine = $AnimationTree.get("parameters/playback")
-
 var timer = Timer.new()
 
 var timer2 = Timer.new()
@@ -29,31 +27,30 @@ func _ready():
 	add_child(timer2)
 	var callable = Callable(self, "spawn_bullet")
 	timer2.connect("timeout", callable)
+	animation_tree.active = true
 
 	
 
 func _physics_process(delta):
 	var direction = (player.global_position - global_position).normalized()
-	get_node("AnimatedSprite2D").flip_h = direction.x > 0
+	
 	velocity.x = direction.x * SPEED
 	# velocity.y = direction.y * SPEED
 	
 	# get current animation
-	var current_animation = anim_state_machine.get_current_node()
-	if current_animation == "shoot":
+	var shooting = animation_tree.get("parameters/OneShot/active")
+	if shooting:
 		velocity.x = 0
-		velocity.y = 0
+	else:
+		get_node("AnimatedSprite2D").flip_h = direction.x > 0
 
 	# if player is in range
 	if player.global_position.distance_to(global_position) < RANGE:
 		# if timer is counting
 		if timer.is_stopped():
-			animation_tree["parameters/conditions/shooting"] = true	
-			# spawn_bullet()
+			animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)	
 			timer2.start()
 			timer.start()
-		else:
-			animation_tree["parameters/conditions/shooting"] = false
 
 	move_and_slide()
 
