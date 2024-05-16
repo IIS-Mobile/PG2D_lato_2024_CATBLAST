@@ -24,9 +24,12 @@ func _ready():
 	timer.set_one_shot(true)
 	add_child(timer)
 	timer2 = Timer.new()
-	timer2.set_wait_time(0.1)
+	timer2.set_wait_time(0.5)
 	timer2.set_one_shot(true)
 	add_child(timer2)
+	var callable = Callable(self, "spawn_bullet")
+	timer2.connect("timeout", callable)
+
 	
 
 func _physics_process(delta):
@@ -46,7 +49,8 @@ func _physics_process(delta):
 		# if timer is counting
 		if timer.is_stopped():
 			animation_tree["parameters/conditions/shooting"] = true	
-			spawn_bullet()
+			# spawn_bullet()
+			timer2.start()
 			timer.start()
 		else:
 			animation_tree["parameters/conditions/shooting"] = false
