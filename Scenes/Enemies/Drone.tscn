@@ -7,6 +7,33 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymvw2"]
 size = Vector2(3.62319, 3.62612)
 
+[sub_resource type="Animation" id="Animation_fxg6c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_sl2v7"]
 resource_name = "idle"
 length = 1.2
@@ -36,33 +63,6 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_fxg6c"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="Animation" id="Animation_43hx6"]
 resource_name = "shoot"
 length = 0.4
@@ -85,7 +85,7 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
@@ -109,18 +109,20 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kqwma"]
 advance_mode = 2
+advance_condition = &"shooting"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k7b4q"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pcrp5"]
+switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_urws7"]
 states/End/position = Vector2(622, 100)
 states/Start/position = Vector2(177, 100)
 states/idle/node = SubResource("AnimationNodeAnimation_tin4k")
-states/idle/position = Vector2(308, 100)
+states/idle/position = Vector2(307, 100)
 states/shoot/node = SubResource("AnimationNodeAnimation_2lopo")
 states/shoot/position = Vector2(424, 100)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_s803i"), "idle", "shoot", SubResource("AnimationNodeStateMachineTransition_kqwma"), "shoot", "End", SubResource("AnimationNodeStateMachineTransition_k7b4q"), "shoot", "idle", SubResource("AnimationNodeStateMachineTransition_pcrp5")]
@@ -194,6 +196,7 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_urws7")
 anim_player = NodePath("../AnimatedSprite2D/AnimationPlayer")
+parameters/conditions/shooting = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5l1ra")
