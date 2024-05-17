@@ -5,12 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://dkfbae7sgq1mv" path="res://Scenes/SimpleEnemy.tscn" id="1_fh6g2"]
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="3_nobln"]
 [ext_resource type="PackedScene" uid="uid://c5yj3p0tq8rr7" path="res://Scenes/street_lamp.tscn" id="4_3orsa"]
-[ext_resource type="PackedScene" path="res://Scenes/WomanNeonScene.tscn" id="6_bn17l"]
+[ext_resource type="PackedScene" uid="uid://bvnrskhtu5gb3" path="res://Scenes/WomanNeonScene.tscn" id="6_bn17l"]
 [ext_resource type="Shader" path="res://Shaders/TestLevel.gdshader" id="6_yt2ig"]
 [ext_resource type="PackedScene" uid="uid://dgoam2f5xpmgo" path="res://Scenes/npc.tscn" id="7_0wo3m"]
 [ext_resource type="PackedScene" uid="uid://curi4fmo2javc" path="res://Scenes/medbox.tscn" id="8_mnmam"]
 [ext_resource type="PackedScene" uid="uid://ccpfutqal1mee" path="res://Scenes/barbed_wire.tscn" id="9_ktp6b"]
-[ext_resource type="PackedScene" uid="uid://d1rxkgas26uuw" path="res://Scenes/Enemies/drone.tscn" id="11_66vwm"]
+[ext_resource type="PackedScene" uid="uid://d1rxkgas26uuw" path="res://Scenes/Enemies/Drone.tscn" id="11_66vwm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ivkmq"]
 shader = ExtResource("6_yt2ig")

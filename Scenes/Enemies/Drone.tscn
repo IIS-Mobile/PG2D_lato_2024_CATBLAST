@@ -171,7 +171,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Drone" type="CharacterBody2D"]
+[node name="Drone" type="CharacterBody2D" groups=["enemy"]]
 motion_mode = 1
 script = ExtResource("1_ecsgm")
 
