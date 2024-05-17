@@ -31,12 +31,12 @@ func _process(delta):
 func load_lvl():
 	if(GlobalVariables.CURRENT_LEVEL != GlobalVariables.LEVEL_TO_CHANGE):
 		
-		for child in get_children():
-			if "Level" in child.name:
-				remove_child(child)
+		var current_level = get_node("CurrentLevel")
+		for child in current_level.get_children():
+			current_level.remove_child(child)
 		
 		var new_scene = load(GlobalVariables.LEVELS[GlobalVariables.LEVEL_TO_CHANGE].path).instantiate()
-		self.add_child(new_scene)
+		current_level.add_child(new_scene)
 		var player_node = get_node("Player")
 		player_node.position = GlobalVariables.LEVELS[GlobalVariables.LEVEL_TO_CHANGE].player_start_position
 		

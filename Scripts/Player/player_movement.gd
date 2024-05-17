@@ -162,12 +162,15 @@ func update_animations(direction, dir):
 			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK])
 		
 
-
-	if Input.is_action_just_pressed("Jump") and not has_double_jumped and not is_on_floor():
-		velocity.y = DOUBLE_JUMP_VELOCITY
-		anim.play("Jump")
-		#print("Doublejump")
-		has_double_jumped = true
+	#double_jump Logic
+	for implant in GlobalVariables.IMPLANTS:
+		if implant.name == "Ultra Elastic Joints":
+			if implant.equipped:
+				if Input.is_action_just_pressed("Jump") and not has_double_jumped and not is_on_floor():
+					velocity.y = DOUBLE_JUMP_VELOCITY
+					anim.play("Jump")
+					#print("Doublejump")
+					has_double_jumped = true
 
 	if is_on_floor():
 		has_double_jumped = false
