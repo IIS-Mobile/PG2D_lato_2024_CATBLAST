@@ -5,23 +5,32 @@ const DASH_UP = -600
 const SPEED = 300.0
 const JUMP_VELOCITY = -500.0
 const DOUBLE_JUMP_VELOCITY = -400.0
+const KNOCKBACK_POWER = 400
 
-@onready var katanaSlashMetal: AudioStream = load("res://Assets/Sounds/player/slash against metal - mixkit.wav")
-@onready var dashSound: AudioStream = load("res://Assets/Sounds/player/dash - danlew69.wav")
 @onready var cshape = $CollisionShape2D
 @onready var anim = get_node("AnimationPlayer")
 @onready var particles = $GPUParticles2D
 @onready var crouch_raycast1 = $CrouchRaycast_1
 @onready var crouch_raycast2 = $CrouchRaycast_2
-@export var ghost_node : PackedScene
+@export var ghost_node: PackedScene
 @onready var ghost_timer = $GhostTimer
 var dashing = false
-var can_dash = true
+
 var is_crouching = false
 var stuck_under_object = false
 var has_double_jumped = false
 var standing_cshape = preload("res://Assets/Collisions/player_standing_cshape.tres")
 var crouching_cshape = preload("res://Assets/Collisions/player_crouching_cshape.tres")
+var is_attacking
+var is_interaction
+var is_dead
+var is_hurt
+var is_dying = false
+
+
+func _ready():
+	print(self.get_path())
+
 func add_ghost():
 	var ghost = ghost_node.instantiate()
 	ghost.set_property(global_position, $AnimatedSprite2D.scale)
@@ -31,116 +40,197 @@ func add_ghost():
 func dash():
 	particles.emitting = true
 	$GhostSpawnTimer.start()
-	playsound(dashSound)
-	
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.DASH)
+
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var audio_player: AudioStreamPlayer2D
 
-func _ready():
-	audio_player = $PlayerSounds
-	
+
 func _physics_process(delta):
+	#print(anim.current_animation)
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	is_dead = GlobalVariables.CURRENT_HEALTH == 0
+	is_hurt = anim.current_animation == "Hurt"
+	is_attacking = (
+		anim.current_animation == "Attack"
+		or anim.current_animation == "attack_left"
+		or anim.current_animation == "Attack_Jump"
+		or anim.current_animation == "Attack_Run"
+		or anim.current_animation == "Attack_Run_L"
+		or anim.current_animation == "Attack_Jump_L"
+	)
+	is_interaction = anim.current_animation == "Interact"
+
+	if GlobalVariables.CURRENT_HEALTH == 0:
+		if !is_dying:
+			anim.play("Death")
+		is_dying = true
+		if anim.current_animation != "Death":
+			GlobalVariables.CURRENT_HEALTH = GlobalVariables.MAX_HEALTH
+			get_tree().reload_current_scene()
+		velocity.x = sign(velocity.x) * KNOCKBACK_POWER/2
+		if is_on_floor():
+			velocity.x = 0
+		move_and_slide()
+		return
 
 	if GlobalVariables.PLAYER_CONTROLS_ENABLED:
 		var direction = Input.get_axis("ui_left", "ui_right")
 		#Handle dash
-		if Input.is_action_just_pressed("Dash") and can_dash:
+		if Input.is_action_just_pressed("Dash") and GlobalVariables.CAN_PLAYER_DASH:
 			if direction:
 				dash()
 				dashing = true
 				# mozna tu wrzucic animacje dasha
-				can_dash = false
+				GlobalVariables.CAN_PLAYER_DASH = false
 				ghost_timer.start()
 				$dash_again_timer.start()
-		#Crouch
-		if Input.is_action_pressed("Crouch") and is_on_floor():
-			crouch()
-		elif Input.is_action_just_released("Crouch") or !is_on_floor():
-			if above_head_is_empty():
-				stand()
-			else: 
-				if stuck_under_object != true:
+		else:
+			#Crouch
+			if (
+				Input.is_action_pressed("Crouch")
+				and is_on_floor()
+				and !is_interaction
+				and is_idle()
+			):
+				crouch()
+			elif Input.is_action_just_released("Crouch") or !is_on_floor():
+				if above_head_is_empty():
+					stand()
+				else:
 					stuck_under_object = true
-		# Add the gravity.
-		if stuck_under_object and above_head_is_empty():
-			stand()
-			stuck_under_object = false
+			# Add the gravity.
+			if stuck_under_object and above_head_is_empty():
+				stand()
+				stuck_under_object = false
 
-		if not is_on_floor():
-			velocity.y += gravity * delta
-				
+			# Get the input direction and handle the movement/deceleration.
+			# As good practice, you should replace UI actions with custom gameplay actions.
 
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
-		
-		var dir = get_node("AnimatedSprite2D").flip_h
-		if direction == -1:
-			get_node("AnimatedSprite2D").flip_h = true
-		elif direction == 1 :
-			get_node("AnimatedSprite2D").flip_h = false
-			# Handle jump.
+			var dir = get_node("AnimatedSprite2D").flip_h
+			if !is_interaction and !is_hurt:
+				if direction == -1:
+					get_node("AnimatedSprite2D").flip_h = true
+				elif direction == 1:
+					get_node("AnimatedSprite2D").flip_h = false
+				# Handle jump.
 
-		update_animations(direction,dir)
-		move_and_slide()
+			update_animations(direction, dir)
+			move_and_slide()
 	elif not GlobalVariables.PLAYER_CONTROLS_ENABLED:
 		anim.play("Idle")
-	
-	
+	#
+
+
 func above_head_is_empty() -> bool:
 	var result = !crouch_raycast1.is_colliding() and !crouch_raycast2.is_colliding()
 	return result
-	
-func update_animations(direction,dir):
-	if Input.is_action_pressed("Jump") and is_on_floor() and (!is_crouching and above_head_is_empty()) :
+
+
+func is_idle() -> bool:
+	if anim.current_animation == "Idle":
+		return true
+	return false
+
+enum AttackEnum {ATTACK_JUMP,ATTACK_RUN,ATTACK}
+
+func update_animations(direction, dir):
+	#print(anim.current_animation)
+	if Input.is_action_pressed("Interact") and (is_idle() or anim.current_animation == "Run"):
+		#GlobalVariables.PLAYER_CONTROLS_ENABLED = false;
+		#print("x")
+		anim.play("Interact")
+
+	if (
+		Input.is_action_pressed("Jump")
+		and is_on_floor()
+		and (!is_crouching and above_head_is_empty())
+		and !is_interaction
+		and !is_hurt
+	):
 		velocity.y = JUMP_VELOCITY
-		if anim.current_animation != "Attack" and anim.current_animation != "attack_left":
+		if !is_attacking:
 			anim.play("Jump")
-			#print("Jump")
+
+	const attack_anim_lut = [["Attack_Jump","Attack_Run","Attack"],["Attack_Jump_L","Attack_Run_L","attack_left"]]
+	
+	if Input.is_action_just_pressed("Attack") and !is_interaction and !is_hurt and !is_crouching:
+		if velocity.y != 0:
+			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_JUMP])
+		elif velocity.x != 0:
+			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_RUN])
+		else:
+			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK])
 		
-	if Input.is_action_just_pressed("Attack"):
-		if is_crouching == false:
-			if(dir == false) :
-				anim.play("Attack")
-			else:
-				anim.play("attack_left")
-	
-	if Input.is_action_just_pressed("Jump") and not has_double_jumped and not is_on_floor():
-		velocity.y = DOUBLE_JUMP_VELOCITY
-		anim.play("Jump")
-		#print("Doublejump")
-		has_double_jumped = true
-	
+
+	#double_jump Logic
+	for implant in GlobalVariables.IMPLANTS:
+		if implant.name == "Ultra Elastic Joints":
+			if implant.equipped:
+				if Input.is_action_just_pressed("Jump") and not has_double_jumped and not is_on_floor():
+					velocity.y = DOUBLE_JUMP_VELOCITY
+					anim.play("Jump")
+					#print("Doublejump")
+					has_double_jumped = true
+
 	if is_on_floor():
 		has_double_jumped = false
-		
-	if direction:
+
+	if direction and anim.current_animation != "Interact" and !is_hurt:
 		if dashing:
 			velocity.y = 0
 			velocity.x = direction * DASH_SPEED
 		else:
 			if is_crouching:
-				velocity.x = direction * SPEED*0.5
+				velocity.x = direction * SPEED * 0.5
 			else:
 				velocity.x = direction * SPEED
-			if( velocity.y == 0) and anim.current_animation != "Attack"  and anim.current_animation != "attack_left":
-				if(is_crouching):
+			if (
+				(velocity.y == 0)
+				and !anim.current_animation == "Attack_Run"
+				and !anim.current_animation == "Attack_Run_L"
+			):
+				if is_crouching:
 					anim.play("Crouch_walk")
-				else :
+				elif (
+					anim.current_animation != "Hurt"
+					and anim.current_animation != "Attack_Run"
+					and !anim.current_animation == "Attack_Run_L"
+				):
 					anim.play("Run")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		if( velocity.y== 0) and anim.current_animation != "Attack" and anim.current_animation != "attack_left":
+		if (
+			(velocity.y == 0)
+			and anim.current_animation != "Attack"
+			and anim.current_animation != "attack_left"
+		):
 			if is_crouching:
 				anim.play("Crouch")
-			else : 
+			elif (
+				!is_interaction
+				and !is_hurt
+				and anim.current_animation != "Interact"
+				and !is_attacking
+			):
 				anim.play("Idle")
-	if(velocity.y > 0) and anim.current_animation != "Attack" and anim.current_animation != "attack_left":
+	if (
+		(velocity.y > 0)
+		and !anim.current_animation == "Attack_Jump"
+		and !anim.current_animation == "Attack_Jump_L"
+		and !is_hurt
+	):
 		anim.play("Fall")
+
+
 func is_anim_playing() -> bool:
-	if (anim.current_animation == "Attack" || anim.current_animation == "attack_left"):
+	if anim.current_animation != "Idle":
 		return true
 	return false
+
+
 func crouch():
 	if is_crouching:
 		return
@@ -148,31 +238,31 @@ func crouch():
 		is_crouching = true
 		cshape.shape = crouching_cshape
 		cshape.position.y = 5
+
+
 func stand():
 	if is_crouching == false:
-		return 
-	is_crouching = false;	
+		return
+	is_crouching = false
 	cshape.shape = standing_cshape
 	cshape.position.y = -1
-	
+
+
 func _on_weapon_area_2d_body_entered(body):
 	if body.is_in_group("enemy"):
 		print("Hit enemy")
-		playsound(katanaSlashMetal)
+		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_METAL)
 		body.queue_free()
-	pass 
-
-func playsound(sound):
-	audio_player.stream = sound
-	audio_player.play()
+	pass
 
 
 func _on_ghost_timer_timeout():
 	dashing = false
 	particles.emitting = false
 
+
 func _on_dash_again_timer_timeout():
-	can_dash = true
+	GlobalVariables.CAN_PLAYER_DASH = true
 
 
 func _on_ghost_spawn_timer_timeout():
@@ -183,6 +273,13 @@ func _on_ghost_spawn_timer_timeout():
 func _on_hurtbox_area_entered(area):
 	if area.name == "Hitbox":
 		if GlobalVariables.CURRENT_HEALTH != 0:
-			GlobalVariables.CURRENT_HEALTH -= 1;
+			knockback()
+			anim.play("Hurt")
+			GlobalVariables.CURRENT_HEALTH -= 1
 			print("Getting hit", GlobalVariables.CURRENT_HEALTH)
-	pass # Replace with function body.
+	pass  # Replace with function body.
+	
+func knockback():
+	velocity.x = sign(velocity.x) * (-1.0) * KNOCKBACK_POWER *3
+	velocity.y = sign(velocity.y) * (-1.0) * KNOCKBACK_POWER
+	move_and_slide()

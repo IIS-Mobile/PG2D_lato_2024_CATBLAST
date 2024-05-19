@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c787wbi60og44"]
+
+[ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="1_krrvq"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_krrvq")
+format = 2

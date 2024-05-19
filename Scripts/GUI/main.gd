@@ -3,11 +3,6 @@ extends Node2D
 class_name GameManager
 
 signal toggle_game_paused(is_paused: bool)
-
-@onready var confirmSound: AudioStream = load("res://Assets/Sounds/ui/button yes - phoenix_the_maker.wav")
-@onready var hoverSound: AudioStream = load("res://Assets/Sounds/ui/hover button - Pixabay.wav")
-@onready var pause_menu  =$"."
-
 var audio_player: AudioStreamPlayer2D
 
 var game_paused : bool = false :
@@ -23,25 +18,28 @@ func _input(event : InputEvent):
 		game_paused = !game_paused
 
 func _ready():
-	audio_player = $AudioStreamPlayer2D
 	randomize()
 	SoundtrackPlayer.play_soundtrack(SOUNDTRACKPLAYER_CLASS.THEMES.PEACE)
-#
-#func _on_play_pressed():
-	#$AudioStreamPlayer.stop()
-	#audio_player.stream = confirmSound
-	#audio_player.play()
-	#
-	#get_tree().change_scene_to_file("res://Scenes/TestLevel.tscn")
-#
-#func pauseMenu():
-	#var current_value : bool = get_tree().paused
-	#get_tree().paused = !current_value
-	#if get_tree().paused:
-		#pause_menu.hide()
-	#else:
-		#pause_menu.show()
 
 func _on_hover():
-	audio_player.stream = hoverSound
-	audio_player.play()
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HOVER)
+	
+func _process(delta):
+	load_lvl()
+	pass
+	
+func load_lvl():
+	if(GlobalVariables.CURRENT_LEVEL != GlobalVariables.LEVEL_TO_CHANGE):
+		
+		var current_level = get_node("CurrentLevel")
+		for child in current_level.get_children():
+			current_level.remove_child(child)
+		
+		var new_scene = load(GlobalVariables.LEVELS[GlobalVariables.LEVEL_TO_CHANGE].path).instantiate()
+		current_level.add_child(new_scene)
+		var player_node = get_node("Player")
+		player_node.position = GlobalVariables.LEVELS[GlobalVariables.LEVEL_TO_CHANGE].player_start_position
+		
+		GlobalVariables.CURRENT_LEVEL = GlobalVariables.LEVEL_TO_CHANGE
+		
+	pass
