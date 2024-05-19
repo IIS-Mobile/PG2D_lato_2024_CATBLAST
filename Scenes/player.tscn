@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Player/player_movement.gd" id="1_341yb"]
 [ext_resource type="Texture2D" uid="uid://ci8ylvh8xr8aj" path="res://Assets/Arts/Animations/player_animations/attack/player_attack.png" id="2_dl8vb"]
-[ext_resource type="PackedScene" uid="uid://b8gt0h1g6mdpr" path="res://Scenes/Dash.tscn" id="2_pehe5"]
+[ext_resource type="PackedScene" path="res://Scenes/Dash.tscn" id="2_pehe5"]
 [ext_resource type="Texture2D" uid="uid://dmvbrs1pxtheg" path="res://Assets/Arts/Animations/player_animations/jump/player_jump.png" id="3_eyvv4"]
 [ext_resource type="Shader" path="res://Shaders/katana_color.gdshader" id="4_sgta2"]
 [ext_resource type="Texture2D" uid="uid://b107myecroshd" path="res://Assets/Arts/Animations/player_animations/idle/player_idle.png" id="4_v14h0"]

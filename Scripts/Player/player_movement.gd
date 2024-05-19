@@ -27,6 +27,11 @@ var is_dead
 var is_hurt
 var is_dying = false
 
+<<<<<<< HEAD
+=======
+func _ready():
+	print(self.get_path())
+>>>>>>> enemy
 
 func add_ghost():
 	var ghost = ghost_node.instantiate()
