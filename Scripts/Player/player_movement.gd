@@ -27,11 +27,9 @@ var is_dead
 var is_hurt
 var is_dying = false
 
-<<<<<<< HEAD
-=======
+
 func _ready():
 	print(self.get_path())
->>>>>>> enemy
 
 func add_ghost():
 	var ghost = ghost_node.instantiate()
@@ -254,7 +252,7 @@ func _on_weapon_area_2d_body_entered(body):
 	if body.is_in_group("enemy"):
 		print("Hit enemy")
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_METAL)
-		body.get_parent().queue_free()
+		body.queue_free()
 	pass
 
 

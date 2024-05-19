@@ -172,6 +172,7 @@ animations = [{
 }]
 
 [node name="Drone" type="CharacterBody2D" groups=["enemy"]]
+z_index = 3
 motion_mode = 1
 script = ExtResource("1_ecsgm")
 
