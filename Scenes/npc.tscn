@@ -173,7 +173,6 @@ shape = SubResource("RectangleShape2D_uire7")
 
 [node name="Textbox" parent="." instance=ExtResource("3_jwlgb")]
 layer = 3
-visible = false
 
 [connection signal="area_exited" from="chat_detection_area" to="." method="_on_chat_detection_area_area_exited"]
 [connection signal="body_entered" from="chat_detection_area" to="." method="_on_chat_detection_area_body_entered"]
