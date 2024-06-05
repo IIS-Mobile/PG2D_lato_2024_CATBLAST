@@ -246,7 +246,7 @@ func _on_weapon_area_2d_body_entered(body):
 	if body.is_in_group("enemy"):
 		print("Hit enemy")
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_METAL)
-		body.get_parent().queue_free()
+		body.queue_free()
 	pass
 
 

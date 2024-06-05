@@ -29,7 +29,7 @@ class Tile_data:
 		right_edge = false
 		fall_point = false
 
-const LAYER = 2
+const LAYER = 0
 
 var tile_list : Array[Tile_data]
 
@@ -43,9 +43,9 @@ func _process(delta):
 	pass
 	
 var draw_lines_list = []
-func _draw():
-	for i in draw_lines_list:
-		draw_line(i[0],i[1],Color.RED)
+#func _draw():
+	#for i in draw_lines_list:
+		#draw_line(i[0],i[1],Color.RED)
 
 func find_by_id(id : int):
 	var f = tile_list.map(func (e): return e.point_id == id)
@@ -60,12 +60,24 @@ func reverse_path_stack(path_stack : Array):
 
 func get_platform_2d_path(startPos : Vector2, endPos : Vector2):
 	var path_stack : Array = []
-	var id_path = astar.get_id_path(astar.get_closest_point(startPos),astar.get_closest_point(endPos))
+
+	var startPosClosestPoint := astar.get_closest_point(startPos)
+	var endPosClosestPoint := astar.get_closest_point(endPos)
+	
+	startPos = local_to_map(astar.get_point_position(startPosClosestPoint))
+	endPos = local_to_map(astar.get_point_position(endPosClosestPoint))
+	var id_path = astar.get_id_path(startPosClosestPoint,endPosClosestPoint)
+	var debug_list = []
+	for i in id_path:
+		debug_list.append(tile_list[i])
 	if id_path.is_empty():
 		return path_stack
-		print("yippie path is not empty")
+	print("yippie path is not empty")
 	var start_point = get_point_info(startPos)
 	var end_point = get_point_info(endPos)
+	
+	if start_point == null or end_point == null:
+		return []
 	var n = id_path.size()
 	for i in range(n):
 		var cur_point = find_by_id(id_path[i])
@@ -73,14 +85,14 @@ func get_platform_2d_path(startPos : Vector2, endPos : Vector2):
 			continue
 		
 		if i == 0 and n >= 2:
-			var second_path_point = find_by_id(id_path[i+1])
-			if start_point.position.distance_to(second_path_point.position) < cur_point.position.distance_to(second_path_point.position):
+			var second_path_point = find_by_id(id_path[1])
+			if Vector2(start_point.position).distance_to(second_path_point.position) < Vector2(cur_point.position).distance_to(second_path_point.position):
 				path_stack.append(start_point)
 				continue
 		
 		elif i == n -1 and n >= 2:
 			var penult_point = find_by_id(id_path[i-1])
-			if end_point.position.distance_to(penult_point.position) < cur_point.position.distance_to(penult_point.position):
+			if Vector2(end_point.position).distance_to(penult_point.position) < Vector2(cur_point.position).distance_to(penult_point.position):
 				continue
 			else:
 				path_stack.append(cur_point)
@@ -91,8 +103,10 @@ func get_platform_2d_path(startPos : Vector2, endPos : Vector2):
 
 func get_point_info(cell : Vector2i):
 	for tile in tile_list:
+		var m = map_to_local(cell)
 		if tile.position == Vector2i(map_to_local(cell)):
 			return tile
+
 
 
 func get_start_scan_tile_for_fall_point(cell :Vector2i):
@@ -120,11 +134,9 @@ func tile_is_in_graph(cell : Vector2i):
 func add_left_wall(cell : Vector2i):
 	if tile_above_exists(cell):
 		return
-	if get_cell_source_id(LAYER, Vector2i(cell.x + -1, cell.y - 1)) == -1: 
+	if get_cell_source_id(LAYER, Vector2i(cell.x - 1, cell.y - 1)) != -1: 
 		var tile_above = Vector2i(cell.x, cell.y - 1)
 		var cell_id = tile_is_in_graph(tile_above)
-		
-
 		if cell_id == -1:
 			cell_id = astar.get_available_point_id()
 			var info = Tile_data.new(cell_id, map_to_local(tile_above))
@@ -173,7 +185,7 @@ func add_right_edge(cell: Vector2i):
 func add_right_wall(cell : Vector2i):
 	if tile_above_exists(cell):
 		return
-	if get_cell_source_id(LAYER, Vector2i(cell.x + 1, cell.y - 1)) == -1: 
+	if get_cell_source_id(LAYER, Vector2i(cell.x + 1, cell.y - 1)) != -1: 
 		var tile_above = Vector2i(cell.x, cell.y - 1)
 		var cell_id = tile_is_in_graph(tile_above)
 		
@@ -214,7 +226,7 @@ func find_fall_point(cell : Vector2i):
 	var fall_tile = null
 	for i in range(500):
 		if get_cell_source_id(LAYER,tile_scan+Vector2i.DOWN) != -1:
-			return fall_tile
+			return tile_scan
 		tile_scan.y += 1
 	
 	return null
@@ -222,7 +234,7 @@ func find_fall_point(cell : Vector2i):
 
 var cells
 var astar := AStar2D.new()
-const JUMP = 50
+const JUMP = 28 #in tiles
 
 
 func generateGraph() -> void:
@@ -310,3 +322,6 @@ func connect_points():
 		connect_h(p)
 		connect_j(p)
 		connect_f(p)
+		
+
+

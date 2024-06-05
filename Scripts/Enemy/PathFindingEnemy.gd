@@ -8,8 +8,17 @@ var target = null
 var prevTarget = null
 var path : Array
 
+func _draw():
+	var next_n = 1
+	
+	for n in path:
+		if next_n == path.size():
+			break
+		draw_line( path_find.to_global( n.position)-position,path_find.to_global(  path[next_n].position)-position,Color.GREEN_YELLOW)
+		next_n += 1
+
 func _ready():
-	player = get_parent().get_parent().find_child("Player")
+	player = get_node("/root/GameManager/Player")
 	path_find = get_parent().get_node("WorldTiles")
 	print("Ready enemy")
 
@@ -23,31 +32,29 @@ func _process(delta):
 
 func go_to_next_point_in_path():
 	if path.is_empty():
-		print(self, " loosing target")
 		prevTarget = null
 		target = null
 		return
 	prevTarget = target
 	target = path.pop_back()
+	queue_redraw()
 	
 
 func jump_right_edge():
-	print("jump right edge")
-	pass
+	return prevTarget.right_edge and target.left_edge and prevTarget.position.y <= target.position.y and prevTarget.position.x < target.position.x
 
 func jump_left_edge():
-	print("jump left edge")
-	pass
+	return prevTarget.left_edge && target.right_edge and prevTarget.position.y <= target.position.y and prevTarget.position.x > target.position.x
+	
 
 func jump(v : Vector2):
-	print("jump")
 	if target == null or prevTarget == null:
 		return v.y
-	if prevTarget.position.y < target.position.y and prevTarget.position.distance_to(target.position) < 500:
+	if prevTarget.position.y < target.position.y and Vector2(prevTarget.position).distance_to(target.position) < 120:
 		return v.y
 	if prevTarget.position.y < target.position.y and target.fall_point:
 		return v.y
-	if prevTarget.position.y >= target.position.y or jump_left_edge() or jump_right_edge():
+	if prevTarget.position.y > target.position.y or jump_left_edge() or jump_right_edge():
 		print("jump should be done!!!!!!")
 		var h_distance = path_find.local_to_map(target.position).y - path_find.local_to_map(prevTarget.position).y
 		if abs(h_distance) <= 1:
@@ -55,12 +62,12 @@ func jump(v : Vector2):
 		elif abs(h_distance) == 2:
 			return -390
 		else:
-			return -500
+			return -600
+	return v.y
 const player_offset = Vector2.DOWN * 16
 func do_path_finding():
-	var player_pos = path_find.local_to_map(player.position + player_offset)
-	path = path_find.get_platform_2d_path(path_find.local_to_map(position),player_pos)
-	print(path.size())
+	var player_pos = player.position + player_offset
+	path = path_find.get_platform_2d_path(position,player_pos)
 	go_to_next_point_in_path()
 
 func _physics_process(delta):
@@ -69,7 +76,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity*delta
 		
-	do_path_finding()
+	#do_path_finding()
 	
 	
 	if target != null:
@@ -89,8 +96,3 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-	
-	
-		
-	
-	

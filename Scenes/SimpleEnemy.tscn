@@ -131,3 +131,9 @@ position = Vector2(-1, -5)
 shape = SubResource("CapsuleShape2D_caped")
 
 [node name="SimpleEnemy" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.6
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="do_path_finding"]
