@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://2xi8ldx06rmb"]
+[gd_scene load_steps=28 format=3 uid="uid://2xi8ldx06rmb"]
 
 [ext_resource type="Texture2D" uid="uid://bsqm7x15f8ows" path="res://Assets/Arts/Gui/Lifebars/Lifebar2_Damage_animation.png" id="1_bup4p"]
 [ext_resource type="Shader" path="res://Shaders/cast_shadow.gdshader" id="1_uccv4"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://dfdgvqgduav0e" path="res://Assets/Arts/Gui/Lifebars/health.png" id="4_n3sxd"]
 [ext_resource type="Texture2D" uid="uid://n1end3q3k1ow" path="res://Assets/Arts/Gui/Animated Loaders/Loading Sprite 04.png" id="5_2i1pb"]
 [ext_resource type="Texture2D" uid="uid://cbunmx2uabwyj" path="res://Assets/Arts/Gui/Menu buttons v2/skill_icons.png" id="6_bl7kf"]
+[ext_resource type="PackedScene" uid="uid://btf4sjejil12d" path="res://Scenes/UI/slot.tscn" id="8_a7x0m"]
+[ext_resource type="PackedScene" uid="uid://c07vsaa3d04qu" path="res://Scenes/UI/passive_slot.tscn" id="9_7dks4"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_a7aeb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ekmh2"]
 shader = ExtResource("1_uccv4")
@@ -127,6 +131,77 @@ animations = [{
 
 [node name="Player UI" type="CanvasLayer"]
 
+[node name="InventoryControlUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Inventory" type="GridContainer" parent="InventoryControlUI"]
+layout_mode = 0
+offset_left = 541.0
+offset_top = 245.0
+offset_right = 953.0
+offset_bottom = 449.0
+columns = 4
+
+[node name="slot" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
+layout_mode = 2
+
+[node name="TextureRect" parent="InventoryControlUI/Inventory/slot" index="0"]
+texture = SubResource("PlaceholderTexture2D_a7aeb")
+slot_type = 2
+
+[node name="slot2" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
+layout_mode = 2
+
+[node name="slot3" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
+layout_mode = 2
+
+[node name="slot4" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
+layout_mode = 2
+
+[node name="slot5" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
+layout_mode = 2
+
+[node name="slot6" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
+layout_mode = 2
+
+[node name="slot7" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
+layout_mode = 2
+
+[node name="slot8" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
+layout_mode = 2
+
+[node name="Character" type="Control" parent="InventoryControlUI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PassiveSlot" parent="InventoryControlUI/Character" instance=ExtResource("9_7dks4")]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 170.0
+offset_right = 468.0
+offset_bottom = 270.0
+slot_type = 1
+
+[node name="PassiveSlot2" parent="InventoryControlUI/Character" instance=ExtResource("9_7dks4")]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 428.0
+offset_right = 468.0
+offset_bottom = 528.0
+slot_type = 3
+
+[node name="PassiveSlot3" parent="InventoryControlUI/Character" instance=ExtResource("9_7dks4")]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 299.0
+offset_right = 468.0
+offset_bottom = 399.0
+slot_type = 2
+
 [node name="Life" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -164,3 +239,5 @@ offset_bottom = 76.0
 scale = Vector2(4, 4)
 texture = ExtResource("4_n3sxd")
 stretch_mode = 1
+
+[editable path="InventoryControlUI/Inventory/slot"]
