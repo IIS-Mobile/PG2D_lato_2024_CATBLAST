@@ -211,6 +211,7 @@ offset_bottom = 87.0
 scale = Vector2(0.8, 0.8)
 
 [node name="PassiveSlot" parent="InventoryControlUI/Character" instance=ExtResource("9_7dks4")]
+modulate = Color(0, 0, 0, 1)
 z_index = 4096
 layout_mode = 0
 offset_left = 273.0
@@ -220,21 +221,23 @@ offset_bottom = 289.0
 slot_type = 1
 
 [node name="PassiveSlot2" parent="InventoryControlUI/Character" instance=ExtResource("9_7dks4")]
+modulate = Color(0, 0, 0, 1)
 z_index = 4096
 layout_mode = 0
 offset_left = 273.0
-offset_top = 447.0
+offset_top = 500.0
 offset_right = 373.0
-offset_bottom = 547.0
+offset_bottom = 600.0
 slot_type = 3
 
 [node name="PassiveSlot3" parent="InventoryControlUI/Character" instance=ExtResource("9_7dks4")]
+modulate = Color(0, 0, 0, 1)
 z_index = 4096
 layout_mode = 0
-offset_left = 273.0
-offset_top = 318.0
-offset_right = 373.0
-offset_bottom = 418.0
+offset_left = 272.5
+offset_top = 302.5
+offset_right = 372.5
+offset_bottom = 402.5
 slot_type = 2
 
 [node name="Life" type="Control" parent="."]
