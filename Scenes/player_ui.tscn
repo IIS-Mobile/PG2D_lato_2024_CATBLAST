@@ -132,45 +132,56 @@ animations = [{
 [node name="Player UI" type="CanvasLayer"]
 
 [node name="InventoryControlUI" type="Control" parent="."]
+z_index = 50
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Inventory" type="GridContainer" parent="InventoryControlUI"]
+z_index = 4096
 layout_mode = 0
-offset_left = 541.0
-offset_top = 245.0
-offset_right = 953.0
-offset_bottom = 449.0
+offset_left = 446.0
+offset_top = 264.0
+offset_right = 858.0
+offset_bottom = 468.0
 columns = 4
 
 [node name="slot" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
+z_index = 4096
 layout_mode = 2
 
 [node name="TextureRect" parent="InventoryControlUI/Inventory/slot" index="0"]
+z_index = 4096
 texture = SubResource("PlaceholderTexture2D_a7aeb")
 slot_type = 2
 
 [node name="slot2" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
+z_index = 4096
 layout_mode = 2
 
 [node name="slot3" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
+z_index = 4096
 layout_mode = 2
 
 [node name="slot4" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
+z_index = 4096
 layout_mode = 2
 
 [node name="slot5" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
+z_index = 4096
 layout_mode = 2
 
 [node name="slot6" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
+z_index = 4096
 layout_mode = 2
 
 [node name="slot7" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
+z_index = 4096
 layout_mode = 2
 
 [node name="slot8" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
+z_index = 4096
 layout_mode = 2
 
 [node name="Character" type="Control" parent="InventoryControlUI"]
@@ -179,27 +190,30 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="PassiveSlot" parent="InventoryControlUI/Character" instance=ExtResource("9_7dks4")]
+z_index = 4096
 layout_mode = 0
-offset_left = 368.0
-offset_top = 170.0
-offset_right = 468.0
-offset_bottom = 270.0
+offset_left = 273.0
+offset_top = 189.0
+offset_right = 373.0
+offset_bottom = 289.0
 slot_type = 1
 
 [node name="PassiveSlot2" parent="InventoryControlUI/Character" instance=ExtResource("9_7dks4")]
+z_index = 4096
 layout_mode = 0
-offset_left = 368.0
-offset_top = 428.0
-offset_right = 468.0
-offset_bottom = 528.0
+offset_left = 273.0
+offset_top = 447.0
+offset_right = 373.0
+offset_bottom = 547.0
 slot_type = 3
 
 [node name="PassiveSlot3" parent="InventoryControlUI/Character" instance=ExtResource("9_7dks4")]
+z_index = 4096
 layout_mode = 0
-offset_left = 368.0
-offset_top = 299.0
-offset_right = 468.0
-offset_bottom = 399.0
+offset_left = 273.0
+offset_top = 318.0
+offset_right = 373.0
+offset_bottom = 418.0
 slot_type = 2
 
 [node name="Life" type="Control" parent="."]
