@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://2xi8ldx06rmb"]
+[gd_scene load_steps=31 format=3 uid="uid://2xi8ldx06rmb"]
 
 [ext_resource type="Texture2D" uid="uid://yaryv23ybkga" path="res://Assets/Arts/Gui/Implant Pack/Implants_skeleton.png" id="1_6rr83"]
+[ext_resource type="Script" path="res://Scripts/GUI/InventoryControlUI.gd" id="1_a2mrr"]
 [ext_resource type="Texture2D" uid="uid://bsqm7x15f8ows" path="res://Assets/Arts/Gui/Lifebars/Lifebar2_Damage_animation.png" id="1_bup4p"]
 [ext_resource type="Shader" path="res://Shaders/cast_shadow.gdshader" id="1_uccv4"]
 [ext_resource type="Texture2D" uid="uid://swsdw366mw1y" path="res://Assets/Arts/Gui/Lifebars/lifebar2.png" id="2_k7y56"]
@@ -10,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dfdgvqgduav0e" path="res://Assets/Arts/Gui/Lifebars/health.png" id="4_n3sxd"]
 [ext_resource type="Texture2D" uid="uid://n1end3q3k1ow" path="res://Assets/Arts/Gui/Animated Loaders/Loading Sprite 04.png" id="5_2i1pb"]
 [ext_resource type="Texture2D" uid="uid://cbunmx2uabwyj" path="res://Assets/Arts/Gui/Menu buttons v2/skill_icons.png" id="6_bl7kf"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/slot.tscn" id="8_a7x0m"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/passive_slot.tscn" id="9_7dks4"]
+[ext_resource type="PackedScene" uid="uid://btf4sjejil12d" path="res://Scenes/UI/slot.tscn" id="8_a7x0m"]
+[ext_resource type="PackedScene" uid="uid://c07vsaa3d04qu" path="res://Scenes/UI/passive_slot.tscn" id="9_7dks4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ekmh2"]
 shader = ExtResource("1_uccv4")
@@ -133,11 +134,13 @@ animations = [{
 [node name="Player UI" type="CanvasLayer"]
 
 [node name="InventoryControlUI" type="Control" parent="."]
+visible = false
 z_index = 50
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_a2mrr")
 
 [node name="ImplantsSkeleton" type="Sprite2D" parent="InventoryControlUI"]
 position = Vector2(361, 363)
@@ -211,7 +214,6 @@ offset_bottom = 87.0
 scale = Vector2(0.8, 0.8)
 
 [node name="PassiveSlot" parent="InventoryControlUI/Character" instance=ExtResource("9_7dks4")]
-modulate = Color(0, 0, 0, 1)
 z_index = 4096
 layout_mode = 0
 offset_left = 273.0
@@ -221,7 +223,6 @@ offset_bottom = 289.0
 slot_type = 1
 
 [node name="PassiveSlot2" parent="InventoryControlUI/Character" instance=ExtResource("9_7dks4")]
-modulate = Color(0, 0, 0, 1)
 z_index = 4096
 layout_mode = 0
 offset_left = 273.0
@@ -231,7 +232,6 @@ offset_bottom = 600.0
 slot_type = 3
 
 [node name="PassiveSlot3" parent="InventoryControlUI/Character" instance=ExtResource("9_7dks4")]
-modulate = Color(0, 0, 0, 1)
 z_index = 4096
 layout_mode = 0
 offset_left = 272.5
