@@ -9,6 +9,9 @@ height = 12.0
 
 [node name="Bullet" type="CharacterBody2D"]
 z_index = 3
+position = Vector2(0, -2.045)
+rotation = -1.39626
+scale = Vector2(1, 3.33)
 script = ExtResource("1_1iumi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

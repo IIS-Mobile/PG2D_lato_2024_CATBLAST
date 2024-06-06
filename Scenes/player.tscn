@@ -1673,7 +1673,7 @@ visibility_layer = 256
 position = Vector2(-1.39001, -15.347)
 scale = Vector2(0.260762, 0.260713)
 offset = Vector2(0, -35)
-zoom = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 3
