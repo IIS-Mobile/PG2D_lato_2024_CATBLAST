@@ -34,18 +34,38 @@ const LAYER = 0
 var tile_list : Array[Tile_data]
 
 # Called when the node enters the scene tree for the first time.
+var player_node_id 
+var connected_node_id
+var draw_lines_player_index 
 func _ready():
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	player_node_id = astar.get_available_point_id()
+	astar.add_point(player_node_id,get_node('/root/GameManager/Player').position)
+	connected_node_id = astar.get_closest_point(get_node('/root/GameManager/Player').position)
+	astar.connect_points(player_node_id,connected_node_id)
 	
+	draw_lines_player_index = draw_lines_list.size()
+	draw_lines_list.append([get_node('/root/GameManager/Player').position,astar.get_point_position(connected_node_id)])
+	
+
+
+func _physics_process(delta):
+	astar.disconnect_points(player_node_id,connected_node_id)
+	astar.set_point_disabled(player_node_id)
+	connected_node_id = astar.get_closest_point(get_node('/root/GameManager/Player').position)
+	astar.set_point_disabled(player_node_id,false)
+	astar.set_point_position(player_node_id,get_node('/root/GameManager/Player').position)
+	astar.connect_points(player_node_id,connected_node_id)
+
+	var pos = astar.get_point_position(connected_node_id)
+
+	draw_lines_list[draw_lines_player_index] = [get_node('/root/GameManager/Player').position,astar.get_point_position(connected_node_id)]
+	queue_redraw()
+
+
 var draw_lines_list = []
-#func _draw():
-	#for i in draw_lines_list:
-		#draw_line(i[0],i[1],Color.RED)
+func _draw():
+	for i in draw_lines_list:
+		draw_line(i[0],i[1],Color.RED)
 
 func find_by_id(id : int):
 	var f = tile_list.map(func (e): return e.point_id == id)
@@ -67,14 +87,15 @@ func get_platform_2d_path(startPos : Vector2, endPos : Vector2):
 	startPos = local_to_map(astar.get_point_position(startPosClosestPoint))
 	endPos = local_to_map(astar.get_point_position(endPosClosestPoint))
 	var id_path = astar.get_id_path(startPosClosestPoint,endPosClosestPoint)
-	var debug_list = []
-	for i in id_path:
-		debug_list.append(tile_list[i])
+
+
 	if id_path.is_empty():
 		return path_stack
 	print("yippie path is not empty")
 	var start_point = get_point_info(startPos)
 	var end_point = get_point_info(endPos)
+	if end_point == null:
+		end_point = Tile_data.new(player_node_id,map_to_local(endPos)) # create new
 	
 	if start_point == null or end_point == null:
 		return []

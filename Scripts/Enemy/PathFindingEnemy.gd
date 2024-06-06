@@ -9,13 +9,10 @@ var prevTarget = null
 var path : Array
 
 func _draw():
-	var next_n = 1
-	
-	for n in path:
-		if next_n == path.size():
-			break
-		draw_line( path_find.to_global( n.position)-position,path_find.to_global(  path[next_n].position)-position,Color.GREEN_YELLOW)
-		next_n += 1
+	for i in range(path.size()-1):
+		draw_line(path[i].position,path[i+1].position,Color.BROWN)
+ 
+
 
 func _ready():
 	player = get_node("/root/GameManager/Player")
