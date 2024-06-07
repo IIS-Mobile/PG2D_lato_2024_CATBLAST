@@ -10,6 +10,8 @@ const COOLDOWN = 3.0 # seconds
 
 @onready var bullet = preload("res://Scenes/Enemies/bullet.tscn")
 
+@onready var laser = preload("res://Scenes/Enemies/laser.tscn")
+
 @onready var animation_tree : AnimationTree = $AnimationTree
 
 var timer = Timer.new()
@@ -25,7 +27,8 @@ func _ready():
 	timer2.set_wait_time(0.5)
 	timer2.set_one_shot(true)
 	add_child(timer2)
-	var callable = Callable(self, "spawn_bullet")
+	# var callable = Callable(self, "spawn_bullet")
+	var callable = Callable(self, "spawn_laser")
 	timer2.connect("timeout", callable)
 	animation_tree.active = true
 
@@ -59,5 +62,12 @@ func spawn_bullet():
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.global_position = global_position
 	get_parent().add_child(bullet_instance)
+	# get_node("AnimatedSprite2D/AnimationPlayer").play("shoot")
+	# animation tree set shooting parameter to change anim
+
+func spawn_laser():
+	var laser_instance = laser.instantiate()
+	laser_instance.global_position = global_position
+	get_parent().add_child(laser_instance)
 	# get_node("AnimatedSprite2D/AnimationPlayer").play("shoot")
 	# animation tree set shooting parameter to change anim
