@@ -32,3 +32,4 @@ func _on_resume_button_pressed():
 func _on_quit_pressed():
 	get_tree().quit()
 	pass  # Replace with function body.
+
