@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="1_h6cvy"]
 [ext_resource type="PackedScene" uid="uid://curi4fmo2javc" path="res://Scenes/medbox.tscn" id="2_0xqbv"]
 [ext_resource type="PackedScene" uid="uid://c5yj3p0tq8rr7" path="res://Scenes/street_lamp.tscn" id="3_8sq4s"]
-[ext_resource type="Shader" path="res://Shaders/TestLevel.gdshader" id="4_favi0"]
+[ext_resource type="Shader" path="res://Shaders/cybermexico.gdshader" id="4_favi0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hgokv"]
 shader = ExtResource("4_favi0")

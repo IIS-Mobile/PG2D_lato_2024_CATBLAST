@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://gg5d0kkcpoey"]
+[gd_scene load_steps=26 format=3 uid="uid://gg5d0kkcpoey"]
 
 [ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="1_cqo7l"]
 [ext_resource type="Script" path="res://Scripts/GUI/pause_menu.gd" id="1_mbdmb"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://c33jywaea07wv" path="res://Assets/Arts/Gui/Cyberphont/Cyberphont beta/Cyberphont_pixels.ttf" id="3_nghtd"]
 [ext_resource type="FontFile" uid="uid://dyqoacn20kknd" path="res://Assets/Arts/Gui/Cyberphont/Cyberphont 2.0/Cyberphont 2.0.ttf" id="5_4pbly"]
 [ext_resource type="Texture2D" uid="uid://dbsw5s74r1blp" path="res://Assets/Arts/Gui/Menu buttons v2/menu_button01.png" id="6_ifdbg"]
+[ext_resource type="Texture2D" uid="uid://bnqraq6kwarq0" path="res://Assets/Arts/Gui/Menu buttons v2/menu_button02.png" id="8_hlkra"]
 [ext_resource type="Texture2D" uid="uid://dx5ems6t3ms0p" path="res://Assets/Arts/Gui/crt screens/button crt/button 1 crt sprite.png" id="8_x4hq7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_exq0e"]
@@ -63,6 +64,12 @@ Button/styles/focus = SubResource("StyleBoxTexture_4v58w")
 Button/styles/hover = SubResource("StyleBoxTexture_noroc")
 Button/styles/normal = SubResource("StyleBoxTexture_7foau")
 Button/styles/pressed = SubResource("StyleBoxTexture_8pqne")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_osony"]
+texture = ExtResource("8_hlkra")
+
+[sub_resource type="Theme" id="Theme_3e4ai"]
+Button/styles/normal = SubResource("StyleBoxTexture_osony")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vlma0"]
 atlas = ExtResource("8_x4hq7")
@@ -169,7 +176,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_ktn46")
 
-[node name="ResumeButton" type="Button" parent="Panel/Control"]
+[node name="ResumeButton" type="TextureButton" parent="Panel/Control"]
 texture_filter = 3
 layout_mode = 1
 anchors_preset = 5
@@ -182,7 +189,7 @@ offset_bottom = 306.044
 grow_horizontal = 2
 rotation = 0.00265048
 scale = Vector2(1.23925, 0.544463)
-text = "RESUME "
+theme = SubResource("Theme_3e4ai")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/Control"]
 modulate = Color(1, 1, 1, 0.678431)
@@ -191,7 +198,7 @@ scale = Vector2(7.38897, 8.01877)
 sprite_frames = SubResource("SpriteFrames_lj3yl")
 animation = &"Glitch"
 
-[node name="OptionsButton" type="Button" parent="Panel/Control"]
+[node name="OptionsButton" type="TextureButton" parent="Panel/Control"]
 texture_filter = 3
 layout_mode = 1
 anchors_preset = 5
@@ -204,8 +211,6 @@ offset_bottom = 464.604
 grow_horizontal = 2
 rotation = 0.00265048
 scale = Vector2(1.23925, 0.544463)
-text = "OPTIONS
-"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Panel/Control"]
 modulate = Color(1, 1, 1, 0.678431)
@@ -214,7 +219,7 @@ scale = Vector2(7.44592, 8.019)
 sprite_frames = SubResource("SpriteFrames_lj3yl")
 animation = &"Glitch"
 
-[node name="Quit" type="Button" parent="Panel/Control"]
+[node name="Quit" type="TextureButton" parent="Panel/Control"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -230,7 +235,6 @@ grow_vertical = 0
 rotation = 0.00265048
 scale = Vector2(1.239, 0.544)
 tooltip_text = "This is quit"
-text = "QUIT"
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Panel/Control"]
 modulate = Color(1, 1, 1, 0.678431)

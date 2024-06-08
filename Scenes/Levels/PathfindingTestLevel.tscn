@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cq5l7cie5u53o"]
+[gd_scene load_steps=5 format=3 uid="uid://cq5l7cie5u53o"]
 
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="1_f77hi"]
 [ext_resource type="Script" path="res://Scenes/WorldTiles.gd" id="2_2ulq3"]
 [ext_resource type="PackedScene" uid="uid://dkfbae7sgq1mv" path="res://Scenes/SimpleEnemy.tscn" id="2_fr1u6"]
+[ext_resource type="PackedScene" uid="uid://dgoam2f5xpmgo" path="res://Scenes/npc.tscn" id="4_8gaxu"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -14,3 +15,24 @@ script = ExtResource("2_2ulq3")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_fr1u6")]
 position = Vector2(1573, 280)
+
+[node name="npc" parent="." instance=ExtResource("4_8gaxu")]
+position = Vector2(863, 352)
+
+[node name="npc2" parent="." instance=ExtResource("4_8gaxu")]
+position = Vector2(1472, 593)
+
+[node name="npc3" parent="." instance=ExtResource("4_8gaxu")]
+position = Vector2(1819, 486)
+
+[node name="npc4" parent="." instance=ExtResource("4_8gaxu")]
+position = Vector2(1630, 276)
+
+[node name="npc5" parent="." instance=ExtResource("4_8gaxu")]
+position = Vector2(2163, 151)
+
+[node name="npc6" parent="." instance=ExtResource("4_8gaxu")]
+position = Vector2(2383, 433)
+
+[node name="npc7" parent="." instance=ExtResource("4_8gaxu")]
+position = Vector2(2720, 643)
