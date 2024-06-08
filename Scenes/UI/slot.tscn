@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://btf4sjejil12d"]
+
+[ext_resource type="Script" path="res://Scripts/GUI/slot.gd" id="1_ppnnw"]
+[ext_resource type="Script" path="res://Scripts/GUI/stats.gd" id="2_g5avw"]
+
+[node name="slot" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ppnnw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("2_g5avw")

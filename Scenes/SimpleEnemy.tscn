@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dkfbae7sgq1mv"]
+[gd_scene load_steps=13 format=3 uid="uid://dkfbae7sgq1mv"]
 
+[ext_resource type="Script" path="res://Scripts/Enemy/PathFindingEnemy.gd" id="1_ipugj"]
 [ext_resource type="Texture2D" uid="uid://cpkulf7m2gntj" path="res://Assets/Arts/Animations/drone_animations/drone_idle.png" id="2_cv6aq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3doo"]
@@ -106,26 +107,33 @@ _data = {
 radius = 18.0
 height = 48.0
 
-[node name="SimpleEnemy" type="Node2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_ipugj")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["enemy"]]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ihvpn")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_wdggs")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_knq5b")
 }
 autoplay = "Idle"
 
-[node name="Hitbox" type="Area2D" parent="CharacterBody2D"]
+[node name="Hitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-1, -5)
 shape = SubResource("CapsuleShape2D_caped")
+
+[node name="SimpleEnemy" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.6
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="do_path_finding"]

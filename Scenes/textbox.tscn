@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://cjc6s10hemgj7" path="res://Assets/Arts/Gui/Cyberphont/Dialogue Font/Fewture.ttf" id="1_12hf5"]
 [ext_resource type="Script" path="res://Scripts/NPC/textbox.gd" id="1_oebwf"]
-[ext_resource type="PackedScene" uid="uid://b7o5nslhfk653" path="res://Scenes/yes_no_choice_panel.tscn" id="3_ttkmc"]
+[ext_resource type="PackedScene" uid="uid://cv1f0schqx7fb" path="res://Scenes/debug_level_choice_panel.tscn" id="3_na5el"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xeaug"]
 bg_color = Color(0.113725, 0, 0.286275, 1)
@@ -83,9 +83,8 @@ horizontal_alignment = 3
 
 [node name="LetterTimer" type="Timer" parent="."]
 
-[node name="YesNoDialogueChoice" parent="." instance=ExtResource("3_ttkmc")]
+[node name="LevelDebugDialogueControl" parent="." instance=ExtResource("3_na5el")]
 offset_top = 486.0
-offset_right = 130.0
-offset_bottom = 547.0
+offset_bottom = 526.0
 
 [connection signal="timeout" from="LetterTimer" to="." method="_on_timer_timeout"]
