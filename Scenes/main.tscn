@@ -18,11 +18,14 @@ volume_db = -20.0
 process_mode = 1
 position = Vector2(0, 368)
 
-[node name="TestLevel" parent="." instance=ExtResource("8_ddylw")]
+[node name="CurrentLevel" type="Node2D" parent="."]
+process_mode = 1
+
+[node name="TestLevel" parent="CurrentLevel" instance=ExtResource("8_ddylw")]
 process_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 5
+layer = 10
 
 [node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_ti4mb")]
 game_manager = NodePath("../..")

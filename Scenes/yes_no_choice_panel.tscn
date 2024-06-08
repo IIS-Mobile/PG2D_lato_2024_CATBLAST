@@ -14,8 +14,6 @@ border_color = Color(1, 1, 1, 1)
 [node name="YesNoDialogueChoice" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 321.0
-offset_bottom = 121.0
 script = ExtResource("1_i5450")
 
 [node name="ChoiceboxContainer" type="MarginContainer" parent="."]

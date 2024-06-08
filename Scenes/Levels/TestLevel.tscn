@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dudwfr5a2vkg"]
+[gd_scene load_steps=15 format=3 uid="uid://dudwfr5a2vkg"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/TestLevel.gd" id="1_8ygb6"]
 [ext_resource type="PackedScene" uid="uid://c1qxk2wkfx44j" path="res://Scenes/pink_neon.tscn" id="1_638po"]
@@ -9,8 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://bvnrskhtu5gb3" path="res://Scenes/WomanNeonScene.tscn" id="6_bn17l"]
 [ext_resource type="Shader" path="res://Shaders/TestLevel.gdshader" id="6_yt2ig"]
 [ext_resource type="PackedScene" uid="uid://dgoam2f5xpmgo" path="res://Scenes/npc.tscn" id="7_0wo3m"]
+[ext_resource type="PackedScene" uid="uid://d1rxkgas26uuw" path="res://Scenes/Enemies/Drone.tscn" id="7_atwmb"]
 [ext_resource type="PackedScene" uid="uid://curi4fmo2javc" path="res://Scenes/medbox.tscn" id="8_mnmam"]
 [ext_resource type="PackedScene" uid="uid://ccpfutqal1mee" path="res://Scenes/barbed_wire.tscn" id="9_ktp6b"]
+[ext_resource type="PackedScene" uid="uid://qj5p7myu3odr" path="res://Scenes/implant_1.tscn" id="11_w0px0"]
+[ext_resource type="PackedScene" uid="uid://b8i5mb7732elk" path="res://Scenes/Enemies/Mangusta.tscn" id="13_l488a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ivkmq"]
 shader = ExtResource("6_yt2ig")
@@ -187,3 +190,15 @@ grow_vertical = 2
 
 [node name="npc" parent="." instance=ExtResource("7_0wo3m")]
 position = Vector2(56, 573)
+
+[node name="Drone" parent="." instance=ExtResource("7_atwmb")]
+position = Vector2(1230.73, 385.675)
+
+[node name="Drone2" parent="." instance=ExtResource("7_atwmb")]
+position = Vector2(584, 409)
+
+[node name="Implant1" parent="." instance=ExtResource("11_w0px0")]
+position = Vector2(488, 592)
+
+[node name="Drone3" parent="." instance=ExtResource("13_l488a")]
+position = Vector2(627, 428)
