@@ -18,8 +18,8 @@ func window_summon():
 func _on_yes_button_pressed():
 	#get_tree().change_scene_to_file(TestLevel2)
 	if GlobalVariables.LEVEL_TO_CHANGE == 1:
-		GlobalVariables.LEVEL_TO_CHANGE = 0;
-	elif GlobalVariables.LEVEL_TO_CHANGE == 0:
+		GlobalVariables.LEVEL_TO_CHANGE = 2;
+	elif GlobalVariables.LEVEL_TO_CHANGE == 2:
 		GlobalVariables.LEVEL_TO_CHANGE = 1;
 		
 	choice_box.hide()
