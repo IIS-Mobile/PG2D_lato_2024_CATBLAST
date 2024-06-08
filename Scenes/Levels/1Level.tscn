@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsiggijgxry0e"]
+[gd_scene load_steps=6 format=3 uid="uid://mlvt6xs750sp"]
 
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="1_h6cvy"]
 [ext_resource type="PackedScene" uid="uid://curi4fmo2javc" path="res://Scenes/medbox.tscn" id="2_0xqbv"]
