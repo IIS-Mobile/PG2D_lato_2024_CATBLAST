@@ -21,7 +21,6 @@ SoundtrackPlayer="*res://Scenes/soundtrack_player.tscn"
 GlobalVariables="*res://Scripts/Global/global_variables.gd"
 SoundEffectPlayer="*res://Scenes/sound_effect_player.tscn"
 Implants="*res://Scripts/Global/implants.gd"
-Inventory="*res://Scripts/GUI/InventoryControlUI.gd"
 
 [display]
 

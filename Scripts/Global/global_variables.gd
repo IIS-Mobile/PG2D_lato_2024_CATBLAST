@@ -25,6 +25,8 @@ class ImplantObject:
 		self.posessed = posessed
 		self.equipped = equipped
 
+signal item_pickup_signal(name: String)
+
 var PLAYER_CONTROLS_ENABLED = true
 var IS_PLAYER_TALKING = false
 var CAN_PLAYER_DASH = true
