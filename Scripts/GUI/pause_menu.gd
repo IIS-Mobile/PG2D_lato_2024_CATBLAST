@@ -25,11 +25,25 @@ func _on_game_manager_toggle_game_paused(is_paused: bool):
 
 
 func _on_resume_button_pressed():
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.CONFIRM)
 	game_manager.game_paused = false
 	print("res")
 
 
 func _on_quit_pressed():
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.CONFIRM)
 	get_tree().quit()
-	pass  # Replace with function body.
+
+
+
+func _on_resume_button_mouse_entered():
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HOVER)
+
+
+func _on_options_button_mouse_entered():
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HOVER)
+
+
+func _on_quit_mouse_entered():
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HOVER)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dudwfr5a2vkg"]
+[gd_scene load_steps=14 format=3 uid="uid://dudwfr5a2vkg"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/TestLevel.gd" id="1_8ygb6"]
 [ext_resource type="PackedScene" uid="uid://c1qxk2wkfx44j" path="res://Scenes/pink_neon.tscn" id="1_638po"]

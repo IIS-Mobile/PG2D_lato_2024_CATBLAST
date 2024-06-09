@@ -91,7 +91,7 @@ func get_platform_2d_path(startPos : Vector2, endPos : Vector2):
 
 	if id_path.is_empty():
 		return path_stack
-	print("yippie path is not empty")
+	#print("yippie path is not empty")
 	var start_point = get_point_info(startPos)
 	var end_point = get_point_info(endPos)
 	if end_point == null:
