@@ -31,7 +31,7 @@ var PLAYER_CONTROLS_ENABLED = true
 var IS_PLAYER_TALKING = false
 var CAN_PLAYER_DASH = true
 
-var MAX_HEALTH: int = 7
+var MAX_HEALTH: int = 700
 var CURRENT_HEALTH: int = MAX_HEALTH
 
 #CURRENT_LEVEL defines the level that loads upon launching the game

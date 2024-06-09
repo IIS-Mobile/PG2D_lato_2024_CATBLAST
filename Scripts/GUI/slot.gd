@@ -15,9 +15,22 @@ func _can_drop_data(at_position, data):
 	return data is TextureRect
 	
 func _drop_data(at_position, data):
+	var old_property = texture_rect.property
+	var new_property = data.property
+	
 	var temp = texture_rect.property
 	texture_rect.property = data.property
 	data.property = temp
+	
+	print("OLD: ", old_property)
+	print("NEW: ", new_property)
+	if old_property["ITEM_NAME"] != "" and new_property["ITEM_NAME"] == "":
+		_on_item_equipped(new_property)
+	elif old_property["ITEM_NAME"] == "" and new_property["ITEM_NAME"] != "":
+		_on_item_unequipped(old_property)
+	elif old_property["ITEM_NAME"] != "" and new_property["ITEM_NAME"] != "":
+		_on_item_unequipped(old_property)
+		_on_item_equipped(new_property)
 
 func get_preview():
 	var preview_texture = TextureRect.new()
@@ -38,4 +51,15 @@ func set_property(item_data):
 		filled = false
 	else:
 		filled = true
-	
+		
+func _on_item_equipped(item_data):
+	print("Item added: ", item_data)
+	for implant in GlobalVariables.IMPLANTS:
+		if implant.name == item_data["ITEM_NAME"]:
+			implant.equipped = true
+
+func _on_item_unequipped(item_data):
+	print("Item removed: ", item_data)
+	for implant in GlobalVariables.IMPLANTS:
+		if implant.name == item_data["ITEM_NAME"]:
+			implant.equipped = false

@@ -7,6 +7,7 @@ var is_inventory_open = false
 
 func _ready():
 	GlobalVariables.item_pickup_signal.connect(add_item)
+	print(inventory_grid)
 
 func _process(delta):
 	#if Input.is_action_just_pressed("ui_accept"):
@@ -15,7 +16,7 @@ func _process(delta):
 		#else:
 			#inventory_controller.show()
 		#is_inventory_open = !is_inventory_open
-	pass
+		pass
 
 
 func add_item(item_name):
@@ -27,19 +28,22 @@ func add_item(item_name):
 			
 	var item_texture = load(desired_implant.graphic_path)
 	var item_slot_type = desired_implant.slot_type
+	
 	var item_data = {"TEXTURE": item_texture,
-					 "SLOT_TYPE": item_slot_type}
+					 "SLOT_TYPE": item_slot_type,
+					 "ITEM_NAME": item_name}
 	
 	desired_implant.posessed = true
 	
 	var index = 0
 	
 	var children_array = inventory_grid.get_children()
+	print(children_array)
 	
+	print(get_child_count())
 	for i in children_array:
-		print("in loop")
 		if i.filled == false:
 			index = i.get_index()
+			print(i.get_index())
 			break
-	print("after loop")
 	inventory_grid.get_child(index).set_property(item_data)
