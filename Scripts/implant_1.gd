@@ -9,7 +9,6 @@ func _ready():
 		else:
 			self.queue_free()
 
-
 func _process(delta):
 	pass
 

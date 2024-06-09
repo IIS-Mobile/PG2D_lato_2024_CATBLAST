@@ -15,18 +15,16 @@ func _can_drop_data(at_position, data):
 	return data is TextureRect
 	
 func _drop_data(at_position, data):
-	var old_property = texture_rect.property
-	var new_property = data.property
-	
 	var temp = texture_rect.property
 	texture_rect.property = data.property
 	data.property = temp
 	
-	print("OLD: ", old_property)
-	print("NEW: ", new_property)
-	if old_property["ITEM_NAME"] != "" and new_property["ITEM_NAME"] == "":
+	var old_property = texture_rect.property
+	var new_property = data.property
+	
+	if old_property["ITEM_NAME"] == "" and new_property["ITEM_NAME"] != "":
 		_on_item_equipped(new_property)
-	elif old_property["ITEM_NAME"] == "" and new_property["ITEM_NAME"] != "":
+	elif old_property["ITEM_NAME"] != "" and new_property["ITEM_NAME"] == "":
 		_on_item_unequipped(old_property)
 	elif old_property["ITEM_NAME"] != "" and new_property["ITEM_NAME"] != "":
 		_on_item_unequipped(old_property)
