@@ -3,7 +3,7 @@ extends CanvasLayer
 const CHAR_READ_RATE = 0.05
 
 @onready var textbox_container = $TextboxContainer
-@onready var choice_box = $LevelDebugDialogueControl
+@onready var choice_box = $DialogueChoice
 @onready var start_symbol = $TextboxContainer/MarginContainer/HBoxContainer/Start
 @onready var end_symbol = $TextboxContainer/MarginContainer/HBoxContainer/End
 @onready var label = $TextboxContainer/MarginContainer/HBoxContainer/Label
@@ -61,7 +61,10 @@ func _process(delta):
 			if Input.is_action_just_pressed("Interact"):
 				change_state(State.READY)
 				hide_textbox()
-				if text_queue.is_empty():
+				if text_queue.is_empty() and first_dialogue_flag:
+					GlobalVariables.PLAYER_CONTROLS_ENABLED = true
+					GlobalVariables.IS_PLAYER_TALKING = false
+				elif text_queue.is_empty():
 					choice_box.window_summon()
 
 
