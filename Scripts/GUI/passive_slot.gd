@@ -13,8 +13,6 @@ func _drop_data(at_position, data):
 	texture_rect.property = data.property
 	data.property = temp
 	
-	print("OLD: ", old_property)
-	print("NEW: ", new_property)
 	if old_property["ITEM_NAME"] == "" and new_property["ITEM_NAME"] != "":
 		_on_item_equipped(new_property)
 	elif old_property["ITEM_NAME"] != "" and new_property["ITEM_NAME"] == "":

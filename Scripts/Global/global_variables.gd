@@ -26,6 +26,7 @@ class ImplantObject:
 		self.equipped = equipped
 
 signal item_pickup_signal(name: String)
+signal open_implant_inventory()
 
 var PLAYER_CONTROLS_ENABLED = true
 var IS_PLAYER_TALKING = false

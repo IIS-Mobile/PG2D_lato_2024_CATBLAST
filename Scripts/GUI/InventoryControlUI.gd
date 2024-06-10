@@ -7,17 +7,16 @@ var is_inventory_open = false
 
 func _ready():
 	GlobalVariables.item_pickup_signal.connect(add_item)
-	print(inventory_grid)
+	GlobalVariables.open_implant_inventory.connect(open_inventory)
+	inventory_controller.hide()
 
-func _process(delta):
-	#if Input.is_action_just_pressed("ui_accept"):
-		#if is_inventory_open:
-			#inventory_controller.hide()
-		#else:
-			#inventory_controller.show()
-		#is_inventory_open = !is_inventory_open
-		pass
-
+func open_inventory():
+	inventory_controller.show()
+	
+func _on_done_button_pressed():
+	GlobalVariables.PLAYER_CONTROLS_ENABLED = true
+	GlobalVariables.IS_PLAYER_TALKING = false
+	inventory_controller.hide()
 
 func add_item(item_name):
 	var desired_implant
@@ -47,3 +46,6 @@ func add_item(item_name):
 			print(i.get_index())
 			break
 	inventory_grid.get_child(index).set_property(item_data)
+
+
+
