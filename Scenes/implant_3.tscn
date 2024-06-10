@@ -1,14 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://qj5p7myu3odr"]
+[gd_scene load_steps=4 format=3 uid="uid://f4j2hf6obifc"]
 
-[ext_resource type="Script" path="res://Scripts/implant_1.gd" id="1_nsawy"]
-[ext_resource type="Texture2D" uid="uid://cmpi4h8fgc4e2" path="res://Assets/Arts/Items/implant_placeholder.png" id="2_uy1k4"]
+[ext_resource type="Script" path="res://Scripts/implant_3.gd" id="1_50xr2"]
+[ext_resource type="Texture2D" uid="uid://cmpi4h8fgc4e2" path="res://Assets/Arts/Items/implant_placeholder.png" id="2_gowdb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjf8l"]
 size = Vector2(16, 16)
 
-[node name="UltraElasticJoints" type="StaticBody2D"]
+[node name="RibcageEnergyShield" type="StaticBody2D"]
 z_index = 2
-script = ExtResource("1_nsawy")
+script = ExtResource("1_50xr2")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -17,6 +17,6 @@ position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_cjf8l")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D/CollisionShape2D"]
-texture = ExtResource("2_uy1k4")
+texture = ExtResource("2_gowdb")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

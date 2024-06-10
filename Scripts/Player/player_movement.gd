@@ -27,6 +27,7 @@ var is_dead
 var is_hurt
 var is_dying = false
 
+var hp_regen_timer_flag = false
 
 func _ready():
 	print(self.get_path())
@@ -118,11 +119,14 @@ func _physics_process(delta):
 				# Handle jump.
 
 			update_animations(direction, dir)
+			check_for_implants()
 			move_and_slide()
 	elif not GlobalVariables.PLAYER_CONTROLS_ENABLED:
 		anim.play("Idle")
 	#
 
+#=========================================================
+#=========================================================
 
 func above_head_is_empty() -> bool:
 	var result = !crouch_raycast1.is_colliding() and !crouch_raycast2.is_colliding()
@@ -163,17 +167,6 @@ func update_animations(direction, dir):
 			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_RUN])
 		else:
 			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK])
-		
-
-	#double_jump Logic
-	for implant in GlobalVariables.IMPLANTS:
-		if implant.name == "Ultra Elastic Joints":
-			if implant.equipped:
-				if Input.is_action_just_pressed("Jump") and not has_double_jumped and not is_on_floor():
-					velocity.y = DOUBLE_JUMP_VELOCITY
-					anim.play("Jump")
-					#print("Doublejump")
-					has_double_jumped = true
 
 	if is_on_floor():
 		has_double_jumped = false
@@ -224,6 +217,20 @@ func update_animations(direction, dir):
 	):
 		anim.play("Fall")
 
+func check_for_implants():
+	for implant in GlobalVariables.IMPLANTS:
+		if implant.name == "Ultra Elastic Joints":
+			if implant.equipped:
+				if Input.is_action_just_pressed("Jump") and not has_double_jumped and not is_on_floor():
+					velocity.y = DOUBLE_JUMP_VELOCITY
+					anim.play("Jump")
+					#print("Doublejump")
+					has_double_jumped = true
+		if implant.name == "Circulatory System Enhancement":
+			if implant.equipped and !hp_regen_timer_flag:
+				print("regen timer starts")
+				$HPRegenTimer.start()
+				hp_regen_timer_flag = true
 
 func is_anim_playing() -> bool:
 	if anim.current_animation != "Idle":
@@ -277,9 +284,17 @@ func _on_hurtbox_area_entered(area):
 			anim.play("Hurt")
 			GlobalVariables.CURRENT_HEALTH -= 1
 			print("Getting hit", GlobalVariables.CURRENT_HEALTH)
-	pass  # Replace with function body.
 	
 func knockback():
 	velocity.x = sign(velocity.x) * (-1.0) * KNOCKBACK_POWER *3
 	velocity.y = sign(velocity.y) * (-1.0) * KNOCKBACK_POWER
 	move_and_slide()
+
+
+func _on_hp_regen_timer_timeout():
+	print("timeout regen occurs")
+	if GlobalVariables.CURRENT_HEALTH < GlobalVariables.MAX_HEALTH:
+		GlobalVariables.CURRENT_HEALTH += 1
+		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HEAL)
+	hp_regen_timer_flag = false
+	

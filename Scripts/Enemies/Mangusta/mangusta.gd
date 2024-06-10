@@ -71,6 +71,7 @@ func spawn_bullet():
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.global_position = global_position
 	get_parent().add_child(bullet_instance)
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.GUN_SHOT)
 	# get_node("AnimatedSprite2D/AnimationPlayer").play("shoot")
 	# animation tree set shooting parameter to change anim
 

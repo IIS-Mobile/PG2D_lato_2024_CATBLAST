@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dudwfr5a2vkg"]
+[gd_scene load_steps=16 format=3 uid="uid://dudwfr5a2vkg"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/TestLevel.gd" id="1_8ygb6"]
 [ext_resource type="PackedScene" uid="uid://c1qxk2wkfx44j" path="res://Scenes/pink_neon.tscn" id="1_638po"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://ccpfutqal1mee" path="res://Scenes/barbed_wire.tscn" id="9_ktp6b"]
 [ext_resource type="PackedScene" uid="uid://qj5p7myu3odr" path="res://Scenes/implant_1.tscn" id="11_w0px0"]
 [ext_resource type="PackedScene" uid="uid://b8i5mb7732elk" path="res://Scenes/Enemies/Mangusta.tscn" id="13_l488a"]
+[ext_resource type="PackedScene" uid="uid://dnseb26vwnfv" path="res://Scenes/implant_2.tscn" id="14_pg0i2"]
+[ext_resource type="PackedScene" uid="uid://f4j2hf6obifc" path="res://Scenes/implant_3.tscn" id="15_701m1"]
 
 [node name="TestLevel" type="Node2D"]
 script = ExtResource("1_8ygb6")
@@ -67,7 +69,7 @@ constant_linear_velocity = Vector2(-1, 0)
 [node name="StreetLamp" parent="WorldTiles" instance=ExtResource("4_3orsa")]
 light_mask = 1023
 visibility_layer = 1023
-position = Vector2(234, 498.245)
+position = Vector2(288, 498)
 
 [node name="StreetLamp2" parent="WorldTiles" instance=ExtResource("4_3orsa")]
 light_mask = 1023
@@ -176,8 +178,14 @@ position = Vector2(1230.73, 385.675)
 [node name="Drone2" parent="." instance=ExtResource("7_atwmb")]
 position = Vector2(584, 409)
 
-[node name="Implant1" parent="." instance=ExtResource("11_w0px0")]
-position = Vector2(488, 592)
-
 [node name="Drone3" parent="." instance=ExtResource("13_l488a")]
 position = Vector2(627, 428)
+
+[node name="UltraElasticJoints" parent="." instance=ExtResource("11_w0px0")]
+position = Vector2(303, 591)
+
+[node name="CirculatorySystemEnhancement" parent="." instance=ExtResource("14_pg0i2")]
+position = Vector2(323, 591)
+
+[node name="RibcageEnergyShield" parent="." instance=ExtResource("15_701m1")]
+position = Vector2(284, 591)

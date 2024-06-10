@@ -107,6 +107,7 @@ animation = &"idle"
 animation = &"shoot"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2xrn5"]
+graph_offset = Vector2(-131.094, -3.8725)
 nodes/OneShot/node = SubResource("AnimationNodeOneShot_q8sc6")
 nodes/OneShot/position = Vector2(520, 40)
 nodes/idle/node = SubResource("AnimationNodeAnimation_55l8b")

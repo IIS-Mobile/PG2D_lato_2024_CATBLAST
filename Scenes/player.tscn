@@ -1732,12 +1732,6 @@ debug_color = Color(0.956863, 0, 0, 0.419608)
 position = Vector2(-317, -269)
 volume_db = -10.0
 
-[node name="GhostTimer" type="Timer" parent="."]
-wait_time = 0.15
-
-[node name="PlayerStepsTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 show_behind_parent = true
 position = Vector2(1, 10)
@@ -1745,12 +1739,6 @@ emitting = false
 amount = 120
 process_material = SubResource("ParticleProcessMaterial_u3wnw")
 collision_base_size = 61.72
-
-[node name="dash_again_timer" type="Timer" parent="."]
-wait_time = 1.5
-
-[node name="GhostSpawnTimer" type="Timer" parent="."]
-wait_time = 0.05
 
 [node name="CrouchRaycast_1" type="RayCast2D" parent="."]
 position = Vector2(-12, 3)
@@ -1762,6 +1750,18 @@ target_position = Vector2(0, -27)
 
 [node name="Player UI" parent="." instance=ExtResource("17_dys1h")]
 
+[node name="GhostTimer" type="Timer" parent="."]
+wait_time = 0.15
+
+[node name="dash_again_timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="GhostSpawnTimer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="HPRegenTimer" type="Timer" parent="."]
+wait_time = 10.0
+
 [connection signal="current_animation_changed" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_changed"]
 [connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_weapon_area_2d_body_entered"]
 [connection signal="body_shape_entered" from="Sprite2D/Hitbox" to="." method="_on_weapon_area_2d_body_shape_entered"]
@@ -1769,3 +1769,4 @@ target_position = Vector2(0, -27)
 [connection signal="timeout" from="GhostTimer" to="." method="_on_ghost_timer_timeout"]
 [connection signal="timeout" from="dash_again_timer" to="." method="_on_dash_again_timer_timeout"]
 [connection signal="timeout" from="GhostSpawnTimer" to="." method="_on_ghost_spawn_timer_timeout"]
+[connection signal="timeout" from="HPRegenTimer" to="." method="_on_hp_regen_timer_timeout"]
