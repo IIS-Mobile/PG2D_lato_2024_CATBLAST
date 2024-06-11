@@ -8,8 +8,10 @@ const LETTERS_POP_PATH = "res://Assets/Sounds/ui/dialogue letters sound effect -
 const HEAL_PATH = "res://Assets/Sounds/player/heal up - Pixabay.mp3"
 const LASER_SHOT_PATH = "res://Assets/Sounds/enemies/laser shot - Pixabay.wav"
 const GUN_SHOT_PATH = "res://Assets/Sounds/enemies/gun shot - pixabay.wav"
+const ITEM_EQUIP_PATH = "res://Assets/Sounds/ui/item equip - Fronbondi_Skegs.wav"
 
-enum SOUNDS { SLASH_METAL, DASH, CONFIRM, HOVER, LETTERS_POP, HEAL, LASER_SHOT, GUN_SHOT}
+enum SOUNDS { SLASH_METAL, DASH, CONFIRM, HOVER, LETTERS_POP, HEAL, LASER_SHOT, GUN_SHOT, 
+			ITEM_EQUIP}
 
 var PLAYSOUND = {
 	SOUNDS.SLASH_METAL: load(KATANA_SLASH_PATH),
@@ -19,7 +21,8 @@ var PLAYSOUND = {
 	SOUNDS.LETTERS_POP: load(LETTERS_POP_PATH),
 	SOUNDS.HEAL: load(HEAL_PATH),
 	SOUNDS.LASER_SHOT: load(LASER_SHOT_PATH),
-	SOUNDS.GUN_SHOT: load(GUN_SHOT_PATH)
+	SOUNDS.GUN_SHOT: load(GUN_SHOT_PATH),
+	SOUNDS.ITEM_EQUIP: load(ITEM_EQUIP_PATH)
 }
 
 @onready var audio_player = $AudioStreamPlayer

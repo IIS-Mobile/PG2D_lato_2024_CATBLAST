@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const DASH_SPEED = 1200
 const DASH_UP = -600
-const SPEED = 300.0
+
 const JUMP_VELOCITY = -500.0
 const DOUBLE_JUMP_VELOCITY = -400.0
 const KNOCKBACK_POWER = 400
@@ -23,7 +23,6 @@ var standing_cshape = preload("res://Assets/Collisions/player_standing_cshape.tr
 var crouching_cshape = preload("res://Assets/Collisions/player_crouching_cshape.tres")
 var is_attacking
 var is_interaction
-var is_dead
 var is_hurt
 var is_dying = false
 
@@ -31,6 +30,7 @@ var hp_regen_timer_flag = false
 
 func _ready():
 	print(self.get_path())
+	preserve_inventory()
 
 func add_ghost():
 	var ghost = ghost_node.instantiate()
@@ -52,7 +52,6 @@ func _physics_process(delta):
 	#print(anim.current_animation)
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	is_dead = GlobalVariables.CURRENT_HEALTH == 0
 	is_hurt = anim.current_animation == "Hurt"
 	is_attacking = (
 		anim.current_animation == "Attack"
@@ -177,9 +176,9 @@ func update_animations(direction, dir):
 			velocity.x = direction * DASH_SPEED
 		else:
 			if is_crouching:
-				velocity.x = direction * SPEED * 0.5
+				velocity.x = direction * GlobalVariables.PLAYER_SPEED * 0.5
 			else:
-				velocity.x = direction * SPEED
+				velocity.x = direction * GlobalVariables.PLAYER_SPEED
 			if (
 				(velocity.y == 0)
 				and !anim.current_animation == "Attack_Run"
@@ -194,7 +193,7 @@ func update_animations(direction, dir):
 				):
 					anim.play("Run")
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, GlobalVariables.PLAYER_SPEED)
 		if (
 			(velocity.y == 0)
 			and anim.current_animation != "Attack"
@@ -231,6 +230,13 @@ func check_for_implants():
 				print("regen timer starts")
 				$HPRegenTimer.start()
 				hp_regen_timer_flag = true
+		if implant.name == "Light Titanium Leg Bones":
+			if implant.equipped:
+				GlobalVariables.PLAYER_SPEED = 500
+			else:
+				GlobalVariables.PLAYER_SPEED = 300
+		
+				
 
 func is_anim_playing() -> bool:
 	if anim.current_animation != "Idle":
@@ -292,9 +298,16 @@ func knockback():
 
 
 func _on_hp_regen_timer_timeout():
-	print("timeout regen occurs")
 	if GlobalVariables.CURRENT_HEALTH < GlobalVariables.MAX_HEALTH:
 		GlobalVariables.CURRENT_HEALTH += 1
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HEAL)
 	hp_regen_timer_flag = false
+	
+func preserve_inventory():
+	for implant in GlobalVariables.IMPLANTS:
+		if implant.posessed and !implant.equipped:
+			GlobalVariables.item_pickup_signal.emit(implant.name)
+			print(implant.name, " is possesed, signal sent")
+		if implant.equipped:
+			GlobalVariables.item_equip_signal.emit(implant.name)
 	

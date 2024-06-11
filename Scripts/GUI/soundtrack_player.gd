@@ -4,11 +4,12 @@ class_name SOUNDTRACKPLAYER_CLASS
 enum THEMES { PEACE, BATTLE }
 
 var TRACKS = {
-	THEMES.PEACE: [preload("res://Assets/Sounds/music/safe - Alec Koff.ogg")],
+	THEMES.PEACE: [preload("res://Assets/Sounds/music/predator and prey - Yurika.ogg")],
 	THEMES.BATTLE:
 	[
 		preload("res://Assets/Sounds/music/levelmusic - drmseq.ogg"),
-		preload("res://Assets/Sounds/music/levelmusic2 - Pixabay.ogg")
+		preload("res://Assets/Sounds/music/levelmusic2 - Pixabay.ogg"),
+		preload("res://Assets/Sounds/music/safe - Alec Koff.ogg")
 	]
 }
 

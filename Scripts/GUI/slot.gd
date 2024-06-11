@@ -51,13 +51,15 @@ func set_property(item_data):
 		filled = true
 		
 func _on_item_equipped(item_data):
-	print("Item added: ", item_data)
-	for implant in GlobalVariables.IMPLANTS:
-		if implant.name == item_data["ITEM_NAME"]:
-			implant.equipped = true
-
-func _on_item_unequipped(item_data):
-	print("Item removed: ", item_data)
+	print("Moved around: ", item_data)
 	for implant in GlobalVariables.IMPLANTS:
 		if implant.name == item_data["ITEM_NAME"]:
 			implant.equipped = false
+	
+
+func _on_item_unequipped(item_data):
+	print("Moved around: ", item_data)
+	for implant in GlobalVariables.IMPLANTS:
+		if implant.name == item_data["ITEM_NAME"]:
+			implant.equipped = false
+	

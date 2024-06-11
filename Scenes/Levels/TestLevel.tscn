@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dudwfr5a2vkg"]
+[gd_scene load_steps=19 format=3 uid="uid://dudwfr5a2vkg"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/TestLevel.gd" id="1_8ygb6"]
 [ext_resource type="PackedScene" uid="uid://c1qxk2wkfx44j" path="res://Scenes/pink_neon.tscn" id="1_638po"]
@@ -11,10 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://d1rxkgas26uuw" path="res://Scenes/Enemies/Drone.tscn" id="7_atwmb"]
 [ext_resource type="PackedScene" uid="uid://curi4fmo2javc" path="res://Scenes/medbox.tscn" id="8_mnmam"]
 [ext_resource type="PackedScene" uid="uid://ccpfutqal1mee" path="res://Scenes/barbed_wire.tscn" id="9_ktp6b"]
-[ext_resource type="PackedScene" uid="uid://qj5p7myu3odr" path="res://Scenes/implant_1.tscn" id="11_w0px0"]
+[ext_resource type="PackedScene" uid="uid://qj5p7myu3odr" path="res://Scenes/ultra_elastic_joints_implant.tscn" id="11_w0px0"]
 [ext_resource type="PackedScene" uid="uid://b8i5mb7732elk" path="res://Scenes/Enemies/Mangusta.tscn" id="13_l488a"]
-[ext_resource type="PackedScene" uid="uid://dnseb26vwnfv" path="res://Scenes/implant_2.tscn" id="14_pg0i2"]
-[ext_resource type="PackedScene" uid="uid://f4j2hf6obifc" path="res://Scenes/implant_3.tscn" id="15_701m1"]
+[ext_resource type="PackedScene" uid="uid://dnseb26vwnfv" path="res://Scenes/circulatory_system_enhancement_implant.tscn" id="14_pg0i2"]
+[ext_resource type="PackedScene" uid="uid://f4j2hf6obifc" path="res://Scenes/ribcage_energy_shield_implant.tscn" id="15_701m1"]
+[ext_resource type="PackedScene" uid="uid://doocd7atilpat" path="res://Scenes/carbon_fiber_arm_muscles_implant.tscn" id="16_cwbj8"]
+[ext_resource type="PackedScene" uid="uid://22ct645ybp57" path="res://Scenes/light_titanium_leg_bones_implant.tscn" id="17_wl4x5"]
+[ext_resource type="PackedScene" uid="uid://cssoybtjgvjay" path="res://Scenes/full_precision_mechanical_arms_implant.tscn" id="18_stwsx"]
 
 [node name="TestLevel" type="Node2D"]
 script = ExtResource("1_8ygb6")
@@ -185,7 +188,16 @@ position = Vector2(627, 428)
 position = Vector2(303, 591)
 
 [node name="CirculatorySystemEnhancement" parent="." instance=ExtResource("14_pg0i2")]
-position = Vector2(323, 591)
+position = Vector2(305, 569)
 
 [node name="RibcageEnergyShield" parent="." instance=ExtResource("15_701m1")]
 position = Vector2(284, 591)
+
+[node name="CarbonFiberArmMuscles" parent="." instance=ExtResource("16_cwbj8")]
+position = Vector2(265, 591)
+
+[node name="LightTitaniumLegBones" parent="." instance=ExtResource("17_wl4x5")]
+position = Vector2(265, 569)
+
+[node name="FullPrecisionMechanicalArms" parent="." instance=ExtResource("18_stwsx")]
+position = Vector2(286, 569)

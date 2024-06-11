@@ -6,7 +6,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_player_in_dialogue_range = false
 
 var first_dialogue_path = "res://Assets/Dialogue/first_dialogue.txt"
-var first_dialogue_flag = false
+
 
 var standard_dialogue_path = "res://Assets/Dialogue/standard_dialogue.txt"
 
@@ -19,9 +19,9 @@ func _process(delta):
 		and not GlobalVariables.IS_PLAYER_TALKING
 	):
 		GlobalVariables.IS_PLAYER_TALKING = true
-		if !first_dialogue_flag:
+		if !GlobalVariables.FIRST_DIALOGUE_FLAG:
 			$Textbox_final.dialogue_begin(first_dialogue_path)
-			first_dialogue_flag = true;
+			GlobalVariables.FIRST_DIALOGUE_FLAG = true;
 		else:
 			$Textbox_final.dialogue_begin(standard_dialogue_path)
 
