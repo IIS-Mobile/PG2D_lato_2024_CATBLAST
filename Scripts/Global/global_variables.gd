@@ -36,7 +36,8 @@ var LEVEL_TO_CHANGE: int = CURRENT_LEVEL
 var LEVELS = [
 	LevelObject.new("res://Scenes/Levels/LobbyLevel.tscn", Vector2(441, 317)),
 	LevelObject.new("res://Scenes/Levels/TestLevel.tscn", Vector2(0, 368)),
-	LevelObject.new("res://Scenes/Levels/1Level.tscn", Vector2(700, 233))
+	LevelObject.new("res://Scenes/Levels/1Level.tscn", Vector2(700, 33)),
+	LevelObject.new("res://Scenes/Levels/2Level.tscn", Vector2(-40, 100)),
 ]
 
 var IMPLANTS = [
