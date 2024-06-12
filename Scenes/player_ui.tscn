@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://2xi8ldx06rmb"]
+[gd_scene load_steps=35 format=3 uid="uid://2xi8ldx06rmb"]
 
 [ext_resource type="Texture2D" uid="uid://yaryv23ybkga" path="res://Assets/Arts/Gui/Implant Pack/Implants_skeleton.png" id="1_6rr83"]
 [ext_resource type="Script" path="res://Scripts/GUI/InventoryControlUI.gd" id="1_a2mrr"]
@@ -6,7 +6,9 @@
 [ext_resource type="Shader" path="res://Shaders/cast_shadow.gdshader" id="1_uccv4"]
 [ext_resource type="Texture2D" uid="uid://swsdw366mw1y" path="res://Assets/Arts/Gui/Lifebars/lifebar2.png" id="2_k7y56"]
 [ext_resource type="Texture2D" uid="uid://xwegs8sucoqb" path="res://Assets/Arts/Gui/Implant Pack/Implants_frame.png" id="2_sc4ba"]
+[ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="2_ysawq"]
 [ext_resource type="Script" path="res://Scripts/GUI/life_bar.gd" id="3_6heob"]
+[ext_resource type="Texture2D" uid="uid://pgjb0rj1u4fx" path="res://Assets/Arts/Gui/Text ScreenPads/bg_for_scalable_screen.png" id="3_7j68v"]
 [ext_resource type="Script" path="res://Scripts/GUI/Inventory.gd" id="4_d80fg"]
 [ext_resource type="Texture2D" uid="uid://dfdgvqgduav0e" path="res://Assets/Arts/Gui/Lifebars/health.png" id="4_n3sxd"]
 [ext_resource type="Texture2D" uid="uid://n1end3q3k1ow" path="res://Assets/Arts/Gui/Animated Loaders/Loading Sprite 04.png" id="5_2i1pb"]
@@ -14,6 +16,10 @@
 [ext_resource type="FontFile" uid="uid://cjc6s10hemgj7" path="res://Assets/Arts/Gui/Cyberphont/Dialogue Font/Fewture.ttf" id="7_yillm"]
 [ext_resource type="PackedScene" uid="uid://btf4sjejil12d" path="res://Scenes/UI/slot.tscn" id="8_a7x0m"]
 [ext_resource type="PackedScene" uid="uid://c07vsaa3d04qu" path="res://Scenes/UI/passive_slot.tscn" id="9_7dks4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vrjoi"]
+shader = ExtResource("2_ysawq")
+shader_parameter/amount = 1.471
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ekmh2"]
 shader = ExtResource("1_uccv4")
@@ -142,63 +148,90 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_a2mrr")
 
+[node name="ColorRect" type="ColorRect" parent="InventoryControlUI"]
+z_index = 9
+material = SubResource("ShaderMaterial_vrjoi")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(29.6821, 17.0937)
+
+[node name="TextureRect" type="TextureRect" parent="InventoryControlUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = 1147.0
+offset_bottom = 610.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7j68v")
+
 [node name="ImplantsSkeleton" type="Sprite2D" parent="InventoryControlUI"]
-position = Vector2(361, 363)
+z_index = 10
+position = Vector2(461, 358)
 scale = Vector2(4, 4)
 texture = ExtResource("1_6rr83")
 
 [node name="ImplantsFrame2" type="Sprite2D" parent="InventoryControlUI"]
-position = Vector2(776, 363)
+z_index = 10
+position = Vector2(815.337, 369)
 rotation = 1.5708
-scale = Vector2(4, 4)
+scale = Vector2(4, 4.06952)
 texture = ExtResource("2_sc4ba")
 
 [node name="ImplantsFrame" type="Sprite2D" parent="InventoryControlUI"]
-position = Vector2(361, 363)
-scale = Vector2(4, 4)
+z_index = 10
+position = Vector2(368.5, 363)
+scale = Vector2(5.9359, 4)
 texture = ExtResource("2_sc4ba")
 
 [node name="Inventory" type="GridContainer" parent="InventoryControlUI"]
-z_index = 4096
+z_index = 6
 layout_mode = 0
-offset_left = 610.805
-offset_top = 230.855
-offset_right = 1022.81
-offset_bottom = 434.855
+offset_left = 650.0
+offset_top = 256.0
+offset_right = 1062.0
+offset_bottom = 460.0
 scale = Vector2(0.8, 0.8)
 columns = 4
 script = ExtResource("4_d80fg")
 
 [node name="slot" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
-z_index = 4096
+z_index = 6
 layout_mode = 2
 
 [node name="slot2" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
-z_index = 4096
+z_index = 6
 layout_mode = 2
 
 [node name="slot3" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
-z_index = 4096
+z_index = 6
 layout_mode = 2
 
 [node name="slot4" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
-z_index = 4096
+z_index = 6
 layout_mode = 2
 
 [node name="slot5" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
-z_index = 4096
+z_index = 6
 layout_mode = 2
 
 [node name="slot6" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
-z_index = 4096
+z_index = 6
 layout_mode = 2
 
 [node name="slot7" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
-z_index = 4096
+z_index = 6
 layout_mode = 2
 
 [node name="slot8" parent="InventoryControlUI/Inventory" instance=ExtResource("8_a7x0m")]
-z_index = 4096
+z_index = 6
 layout_mode = 2
 
 [node name="Character" type="Control" parent="InventoryControlUI"]
@@ -210,38 +243,59 @@ offset_bottom = 87.0
 scale = Vector2(0.8, 0.8)
 
 [node name="PassiveSlotArms" parent="InventoryControlUI/Character" instance=ExtResource("9_7dks4")]
-z_index = 4096
+z_index = 10
 layout_mode = 0
-offset_left = 273.0
-offset_top = 189.0
-offset_right = 373.0
-offset_bottom = 289.0
+offset_left = 95.0
+offset_top = 205.0
+offset_right = 195.0
+offset_bottom = 305.0
 slot_type = 1
 
+[node name="SlotSkeletonLine" type="Line2D" parent="InventoryControlUI/Character/PassiveSlotArms"]
+points = PackedVector2Array(100, 55, 223.75, 21.25)
+width = 5.0
+
+[node name="SlotSkeletonLine2" type="Line2D" parent="InventoryControlUI/Character/PassiveSlotArms"]
+points = PackedVector2Array(98.75, 55, 483.75, 22.5)
+width = 5.0
+
 [node name="PassiveSlotBody" parent="InventoryControlUI/Character" instance=ExtResource("9_7dks4")]
-z_index = 4096
+z_index = 10
 layout_mode = 0
-offset_left = 273.0
-offset_top = 500.0
-offset_right = 373.0
-offset_bottom = 600.0
+offset_left = 95.0
+offset_top = 477.5
+offset_right = 195.0
+offset_bottom = 577.5
 slot_type = 3
 
+[node name="SlotSkeletonLine" type="Line2D" parent="InventoryControlUI/Character/PassiveSlotBody"]
+points = PackedVector2Array(98.75, -80, 351.25, -182.5)
+width = 5.0
+
 [node name="PassiveSlotLegs" parent="InventoryControlUI/Character" instance=ExtResource("9_7dks4")]
-z_index = 4096
+z_index = 10
 layout_mode = 0
-offset_left = 272.5
-offset_top = 302.5
-offset_right = 372.5
-offset_bottom = 402.5
+offset_left = 95.0
+offset_top = 342.5
+offset_right = 195.0
+offset_bottom = 442.5
 slot_type = 2
 
+[node name="SlotSkeletonLine" type="Line2D" parent="InventoryControlUI/Character/PassiveSlotLegs"]
+points = PackedVector2Array(97.5, 188.75, 311.25, 225)
+width = 5.0
+
+[node name="SlotSkeletonLine2" type="Line2D" parent="InventoryControlUI/Character/PassiveSlotLegs"]
+points = PackedVector2Array(97.5, 188.75, 422.5, 175)
+width = 5.0
+
 [node name="DoneButton" type="Button" parent="InventoryControlUI"]
+z_index = 10
 layout_mode = 0
-offset_left = 812.0
-offset_top = 447.0
-offset_right = 939.0
-offset_bottom = 494.0
+offset_left = 855.0
+offset_top = 451.0
+offset_right = 982.0
+offset_bottom = 498.0
 theme_override_fonts/font = ExtResource("7_yillm")
 theme_override_font_sizes/font_size = 30
 text = "Done"
@@ -254,7 +308,6 @@ offset_bottom = 40.0
 script = ExtResource("3_6heob")
 
 [node name="Lifebar" type="Sprite2D" parent="Life"]
-visible = false
 material = SubResource("ShaderMaterial_ekmh2")
 position = Vector2(173, 83)
 scale = Vector2(4, 4)
@@ -286,4 +339,5 @@ stretch_mode = 1
 
 [node name="Node2D" type="Node2D" parent="."]
 
+[connection signal="mouse_entered" from="InventoryControlUI/DoneButton" to="InventoryControlUI" method="_on_done_button_mouse_entered"]
 [connection signal="pressed" from="InventoryControlUI/DoneButton" to="InventoryControlUI" method="_on_done_button_pressed"]

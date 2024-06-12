@@ -229,7 +229,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Mangusta" type="CharacterBody2D" groups=["enemy"]]
+[node name="Mangusta" type="CharacterBody2D" groups=["flesh_enemy"]]
 z_index = 3
 script = ExtResource("2_aepbr")
 

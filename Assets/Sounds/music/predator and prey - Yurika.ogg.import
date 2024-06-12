@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://l0wqdwa10any"
+path="res://.godot/imported/predator and prey - Yurika.ogg-a9a8e24f5422f86570c355caccfd0824.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/music/predator and prey - Yurika.ogg"
+dest_files=["res://.godot/imported/predator and prey - Yurika.ogg-a9a8e24f5422f86570c355caccfd0824.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

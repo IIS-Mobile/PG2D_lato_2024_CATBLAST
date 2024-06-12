@@ -18,5 +18,19 @@ func _drop_data(at_position, data):
 	elif old_property["ITEM_NAME"] != "" and new_property["ITEM_NAME"] == "":
 		_on_item_unequipped(old_property)
 	elif old_property["ITEM_NAME"] != "" and new_property["ITEM_NAME"] != "":
-		_on_item_unequipped(old_property)
-		_on_item_equipped(new_property)
+		if old_property["ITEM_NAME"] != new_property["ITEM_NAME"]:
+			_on_item_unequipped(old_property)
+			_on_item_equipped(new_property)
+
+func _on_item_equipped(item_data):
+	print("Item equipped: ", item_data)
+	for implant in GlobalVariables.IMPLANTS:
+		if implant.name == item_data["ITEM_NAME"]:
+			implant.equipped = true
+			SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.ITEM_EQUIP)
+
+func _on_item_unequipped(item_data):
+	print("Item unequipped: ", item_data)
+	for implant in GlobalVariables.IMPLANTS:
+		if implant.name == item_data["ITEM_NAME"]:
+			implant.equipped = false
