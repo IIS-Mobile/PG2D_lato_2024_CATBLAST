@@ -240,6 +240,9 @@ scale = Vector2(7.43124, 7.6416)
 sprite_frames = SubResource("SpriteFrames_lj3yl")
 animation = &"Glitch"
 
+[connection signal="mouse_entered" from="Panel/Control/ResumeButton" to="." method="_on_resume_button_mouse_entered"]
 [connection signal="pressed" from="Panel/Control/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="mouse_entered" from="Panel/Control/OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="pressed" from="Panel/Control/OptionsButton" to="." method="_on_resume_button_pressed"]
+[connection signal="mouse_entered" from="Panel/Control/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="Panel/Control/Quit" to="." method="_on_quit_pressed"]

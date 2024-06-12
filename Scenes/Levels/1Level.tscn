@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="1_h6cvy"]
 [ext_resource type="PackedScene" uid="uid://curi4fmo2javc" path="res://Scenes/medbox.tscn" id="2_0xqbv"]
 [ext_resource type="PackedScene" uid="uid://c5yj3p0tq8rr7" path="res://Scenes/street_lamp.tscn" id="3_8sq4s"]
-[ext_resource type="Shader" path="res://Shaders/TestLevel.gdshader" id="4_favi0"]
+[ext_resource type="Shader" path="res://Shaders/cybermexico.gdshader" id="4_favi0"]
 [ext_resource type="Texture2D" uid="uid://cr7u0awwr0fhh" path="res://Assets/Arts/Textures/lamp_light_texture.png" id="4_wkmkp"]
 [ext_resource type="Script" path="res://Scenes/Levels/Area2D.gd" id="5_srkl8"]
 
@@ -80,6 +80,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.372549, 1, 0.533333, 1)
 gradient = SubResource("Gradient_tdsei")
 fill_from = Vector2(0.645299, 0.675214)
 fill_to = Vector2(0.205128, 0)
+
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hgokv"]
 shader = ExtResource("4_favi0")

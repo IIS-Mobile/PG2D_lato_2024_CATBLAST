@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdmgbj8isv4dn"]
+[gd_scene load_steps=10 format=3 uid="uid://bdmgbj8isv4dn"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/lobby_level.gd" id="1_ti545"]
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="2_bxd37"]
 [ext_resource type="PackedScene" uid="uid://dgoam2f5xpmgo" path="res://Scenes/npc.tscn" id="3_tyu8v"]
-[ext_resource type="Shader" path="res://Shaders/TestLevel.gdshader" id="4_xi53i"]
+[ext_resource type="PackedScene" uid="uid://ccc7l762u7ib4" path="res://Scenes/npc_final.tscn" id="4_bjwkj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mk6lo"]
 size = Vector2(20, 67)
@@ -14,11 +14,11 @@ size = Vector2(622, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_faa5o"]
 size = Vector2(432, 15)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ouakx"]
-shader = ExtResource("4_xi53i")
-shader_parameter/r_displacement = Vector2(2, 0)
-shader_parameter/g_displacement = Vector2(0, 0)
-shader_parameter/b_displacement = Vector2(-3, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_itc6d"]
+size = Vector2(31.375, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gv1pi"]
+size = Vector2(17.5, 15.5)
 
 [node name="LobbyLevel" type="Node2D"]
 script = ExtResource("1_ti545")
@@ -49,7 +49,7 @@ blend_mode = 1
 range_layer_min = -100
 
 [node name="npc" parent="." instance=ExtResource("3_tyu8v")]
-position = Vector2(923, 301)
+position = Vector2(269, 301)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -69,16 +69,21 @@ shape = SubResource("RectangleShape2D_faa5o")
 position = Vector2(81, 144)
 shape = SubResource("RectangleShape2D_mk6lo")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1083, 256)
+shape = SubResource("RectangleShape2D_itc6d")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_ouakx")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 190.0
-offset_top = 95.0
-offset_right = 190.0
-offset_bottom = 95.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1067, 287.5)
+shape = SubResource("RectangleShape2D_itc6d")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1043.75, 296.25)
+shape = SubResource("RectangleShape2D_gv1pi")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1035, 320)
+shape = SubResource("RectangleShape2D_itc6d")
+
+[node name="npc_final" parent="." instance=ExtResource("4_bjwkj")]
+position = Vector2(932, 301)

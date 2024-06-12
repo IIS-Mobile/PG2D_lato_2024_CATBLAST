@@ -37,8 +37,8 @@ offset_right = 1152.0
 offset_bottom = 77.0
 theme_override_fonts/font = ExtResource("2_ip08d")
 theme_override_font_sizes/font_size = 36
-text = "Proceed to the 
-next level?"
+text = "Do you want to open
+the implants inventory?"
 horizontal_alignment = 1
 vertical_alignment = 1
 

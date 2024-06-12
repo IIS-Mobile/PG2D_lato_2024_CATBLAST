@@ -1,0 +1,152 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv1f0schqx7fb"]
+
+[ext_resource type="Script" path="res://Scripts/NPC/debug_level_choice_panel.gd" id="1_4amur"]
+[ext_resource type="FontFile" uid="uid://cjc6s10hemgj7" path="res://Assets/Arts/Gui/Cyberphont/Dialogue Font/Fewture.ttf" id="1_gc1i0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0u83"]
+bg_color = Color(0.113725, 0, 0.286275, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+
+[node name="LevelDebugDialogueControl" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4amur")
+
+[node name="ChoiceboxContainer" type="MarginContainer" parent="."]
+z_index = 5
+offset_right = 1152.0
+offset_bottom = 162.0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Panel" type="Panel" parent="ChoiceboxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e0u83")
+
+[node name="Label" type="Label" parent="ChoiceboxContainer/Panel"]
+layout_mode = 2
+offset_top = 10.0
+offset_right = 1152.0
+offset_bottom = 77.0
+theme_override_fonts/font = ExtResource("1_gc1i0")
+theme_override_font_sizes/font_size = 36
+text = "Choose level to proceed to."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="ChoiceboxContainer/Panel"]
+anchors_preset = 0
+offset_left = 412.0
+offset_top = 35.0
+offset_right = 413.0
+offset_bottom = 35.0
+
+[node name="Level1Button" type="Button" parent="ChoiceboxContainer/Panel/Control"]
+layout_mode = 0
+offset_left = -388.0
+offset_top = 62.0
+offset_right = -202.0
+offset_bottom = 94.0
+
+[node name="Label" type="Label" parent="ChoiceboxContainer/Panel/Control/Level1Button"]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 186.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("1_gc1i0")
+theme_override_font_sizes/font_size = 30
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level2Button" type="Button" parent="ChoiceboxContainer/Panel/Control"]
+layout_mode = 0
+offset_left = -173.0
+offset_top = 62.0
+offset_right = 7.0
+offset_bottom = 94.0
+
+[node name="Label" type="Label" parent="ChoiceboxContainer/Panel/Control/Level2Button"]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 179.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("1_gc1i0")
+theme_override_font_sizes/font_size = 30
+text = "Level 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PathfindingButton" type="Button" parent="ChoiceboxContainer/Panel/Control"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 62.0
+offset_right = 311.0
+offset_bottom = 95.0
+
+[node name="Label" type="Label" parent="ChoiceboxContainer/Panel/Control/PathfindingButton"]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 270.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("1_gc1i0")
+theme_override_font_sizes/font_size = 30
+text = "Pathfinding"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CancelButton" type="Button" parent="ChoiceboxContainer/Panel/Control"]
+layout_mode = 0
+offset_left = 509.0
+offset_top = 62.0
+offset_right = 699.0
+offset_bottom = 95.0
+
+[node name="Label" type="Label" parent="ChoiceboxContainer/Panel/Control/CancelButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.036
+anchor_top = 0.19
+anchor_right = 0.036
+anchor_bottom = 0.19
+offset_left = -6.84
+offset_top = -3.27
+offset_right = 183.16
+offset_bottom = 23.73
+theme_override_fonts/font = ExtResource("1_gc1i0")
+theme_override_font_sizes/font_size = 30
+text = "Cancel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LobbyButton" type="Button" parent="ChoiceboxContainer/Panel/Control"]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 62.0
+offset_right = 493.0
+offset_bottom = 95.0
+
+[node name="Label" type="Label" parent="ChoiceboxContainer/Panel/Control/LobbyButton"]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 144.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("1_gc1i0")
+theme_override_font_sizes/font_size = 30
+text = "Lobby"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="ChoiceboxContainer/Panel/Control/Level1Button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="ChoiceboxContainer/Panel/Control/Level2Button" to="." method="_on_level_2_button_pressed"]
+[connection signal="pressed" from="ChoiceboxContainer/Panel/Control/PathfindingButton" to="." method="_on_pathfinding_button_pressed"]
+[connection signal="pressed" from="ChoiceboxContainer/Panel/Control/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="ChoiceboxContainer/Panel/Control/LobbyButton" to="." method="_on_lobby_button_pressed"]

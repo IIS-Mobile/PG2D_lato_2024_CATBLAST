@@ -3,7 +3,7 @@ extends CanvasLayer
 const CHAR_READ_RATE = 0.05
 
 @onready var textbox_container = $TextboxContainer
-@onready var choice_box = $YesNoDialogueChoice
+@onready var choice_box = $LevelDebugDialogueControl
 @onready var start_symbol = $TextboxContainer/MarginContainer/HBoxContainer/Start
 @onready var end_symbol = $TextboxContainer/MarginContainer/HBoxContainer/End
 @onready var label = $TextboxContainer/MarginContainer/HBoxContainer/Label
@@ -18,17 +18,18 @@ var audio_player: AudioStreamPlayer2D
 var current_state = State.READY
 var text_queue = []
 
+var first_dialogue_flag = false
 
-func dialogue_begin():
+
+func dialogue_begin(dialogue_path):
 	GlobalVariables.PLAYER_CONTROLS_ENABLED = false
 	print("Starting state: State.READY")
 	hide_textbox()
-	queue_text("This is an NPC dialogue test.")
-	queue_text("Pressing Interact as the letters pop up makes the whole text appear at once.")
-	queue_text("Player is no longer free to move around.")
-	queue_text("In fact, he cannot do anything except pushing the dialogue forward.")
-	queue_text("Player doesn't have to leave the NPC's dialogue range to be able to talk anymore.")
-	queue_text("Mangusta will perish.")
+	load_file(dialogue_path)
+	if dialogue_path == "res://Assets/Dialogue/first_dialogue.txt":
+		first_dialogue_flag = true
+	else:
+		first_dialogue_flag = false
 
 
 func _ready():
@@ -117,3 +118,13 @@ func change_state(next_state):
 
 func _on_timer_timeout():
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.LETTERS_POP)
+
+func load_file(file):
+	var f = FileAccess.open(file, FileAccess.READ)
+	while not f.eof_reached():
+		var line = f.get_line()
+		if line == "":
+			break
+		queue_text(line)
+	f.close()
+	return

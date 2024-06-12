@@ -1,0 +1,6 @@
+This is an NPC dialogue test.
+Pressing Interact as the letters pop up makes the whole text appear at once.
+Player is no longer free to move around.
+In fact, he cannot do anything except pushing the dialogue forward.
+Player doesn't have to leave the NPC's dialogue range to be able to talk anymore.
+Mangusta will perish.

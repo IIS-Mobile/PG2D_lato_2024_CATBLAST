@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://btf4sjejil12d"]
+
+[ext_resource type="Script" path="res://Scripts/GUI/slot.gd" id="1_ppnnw"]
+[ext_resource type="Script" path="res://Scripts/GUI/stats.gd" id="2_g5avw"]
+[ext_resource type="FontFile" uid="uid://cjc6s10hemgj7" path="res://Assets/Arts/Gui/Cyberphont/Dialogue Font/Fewture.ttf" id="3_o04k6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uraib"]
+bg_color = Color(0.0470588, 0, 0.172549, 0.462745)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xyq7s"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdsdf"]
+bg_color = Color(0.0745098, 0, 0.235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k3dil"]
+bg_color = Color(0.0470588, 0, 0.172549, 1)
+
+[node name="slot" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ppnnw")
+
+[node name="SlotBackground" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uraib")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+expand_mode = 1
+script = ExtResource("2_g5avw")
+
+[node name="ItemDescription" type="MarginContainer" parent="TextureRect"]
+z_index = 7
+layout_mode = 0
+offset_left = 6.0
+offset_top = -47.0
+offset_right = 288.0
+offset_bottom = 42.0
+theme_override_constants/margin_left = 0
+
+[node name="Panel" type="Panel" parent="TextureRect/ItemDescription"]
+z_index = 7
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xyq7s")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/ItemDescription"]
+z_index = 7
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Panel" type="Panel" parent="TextureRect/ItemDescription/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sdsdf")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/ItemDescription/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="TextureRect/ItemDescription/MarginContainer/MarginContainer"]
+z_index = 7
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_o04k6")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_k3dil")
+text = "testing haha!
+hello there
+fellas"
+autowrap_mode = 3
+
+[connection signal="mouse_entered" from="TextureRect" to="TextureRect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TextureRect" to="TextureRect" method="_on_mouse_exited"]
