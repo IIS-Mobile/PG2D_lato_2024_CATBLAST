@@ -17,7 +17,6 @@ func window_summon():
 
 func _on_yes_button_pressed():
 	GlobalVariables.open_implant_inventory.emit()
-	
 	choice_box.hide()
 
 func _on_no_button_pressed():
