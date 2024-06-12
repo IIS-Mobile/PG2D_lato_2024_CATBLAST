@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://4wokv1ncvknc"
+path="res://.godot/imported/shield discharge new - Pixabay.wav-1341f21278db7949d35a79b5b1083509.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/player/shield discharge new - Pixabay.wav"
+dest_files=["res://.godot/imported/shield discharge new - Pixabay.wav-1341f21278db7949d35a79b5b1083509.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -14,7 +14,7 @@ const ITEM_EQUIP_PATH = "res://Assets/Sounds/ui/item equip - Fronbondi_Skegs.wav
 const ITEM_PICKUP_PATH = "res://Assets/Sounds/ui/item pickup - Phil Michalski.wav"
 const INVENTORY_CLOSE_PATH = "res://Assets/Sounds/ui/close implant inventory - Phil Michalski.wav"
 const SHIELD_CHARGED_PATH = "res://Assets/Sounds/player/shield charged - Pixabay.wav"
-const SHIELD_DISCHARGE_PATH = "res://Assets/Sounds/player/shield discharge - Pixabay.wav"
+const SHIELD_DISCHARGE_PATH = "res://Assets/Sounds/player/shield discharge new - Pixabay.wav"
 
 enum SOUNDS { SLASH_METAL, SLASH_FLESH, DASH, CONFIRM, HOVER, LETTERS_POP, HEAL, LASER_SHOT, 
 			GUN_SHOT, ITEM_EQUIP, ITEM_PICKUP, INVENTORY_CLOSE, SHIELD_CHARGED, SHIELD_DISCHARGE}
