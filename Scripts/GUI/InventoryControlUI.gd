@@ -18,6 +18,7 @@ func open_inventory():
 func _on_done_button_pressed():
 	GlobalVariables.PLAYER_CONTROLS_ENABLED = true
 	GlobalVariables.IS_PLAYER_TALKING = false
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.INVENTORY_CLOSE)
 	inventory_controller.hide()
 
 func add_item(item_name):
@@ -75,3 +76,6 @@ func equip_item(item_name):
 			print(i.get_index())
 			break
 	passive_slots.get_child(index).set_property(item_data)
+
+func _on_done_button_mouse_entered():
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HOVER)

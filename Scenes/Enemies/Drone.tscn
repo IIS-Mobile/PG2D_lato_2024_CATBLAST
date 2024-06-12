@@ -172,7 +172,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Drone" type="CharacterBody2D" groups=["enemy"]]
+[node name="Drone" type="CharacterBody2D" groups=["metal_enemy"]]
 z_index = 3
 motion_mode = 1
 script = ExtResource("1_kaeg1")

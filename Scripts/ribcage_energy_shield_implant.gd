@@ -16,4 +16,5 @@ func _process(delta):
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
 		GlobalVariables.item_pickup_signal.emit(implant_name)
+		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.ITEM_PICKUP)
 		self.queue_free()

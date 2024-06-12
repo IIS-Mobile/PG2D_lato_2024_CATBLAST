@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://3whmr516et3"
+path="res://.godot/imported/item pickup - Phil Michalski.wav-b0beb9b742574b7cb5239139c224eda5.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/ui/item pickup - Phil Michalski.wav"
+dest_files=["res://.godot/imported/item pickup - Phil Michalski.wav-b0beb9b742574b7cb5239139c224eda5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

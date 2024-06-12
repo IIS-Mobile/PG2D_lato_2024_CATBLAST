@@ -28,6 +28,12 @@ var is_dying = false
 
 var hp_regen_timer_flag = false
 
+var shield_timer_flag = false
+var is_shield_implant_active = false
+var is_shield_up = false
+
+
+
 func _ready():
 	print(self.get_path())
 	preserve_inventory()
@@ -230,13 +236,24 @@ func check_for_implants():
 				print("regen timer starts")
 				$HPRegenTimer.start()
 				hp_regen_timer_flag = true
+			if !implant.equipped:
+				$HPRegenTimer.stop()
 		if implant.name == "Light Titanium Leg Bones":
 			if implant.equipped:
 				GlobalVariables.PLAYER_SPEED = 500
 			else:
 				GlobalVariables.PLAYER_SPEED = 300
-		
-				
+		if implant.name == "Ribcage Energy Shield":
+			if implant.equipped and !shield_timer_flag:
+				print("ribcage on")
+				is_shield_implant_active = true
+				$RechargableShieldTimer.start()
+				shield_timer_flag = true
+			if !implant.equipped:
+				is_shield_implant_active = false
+				shield_timer_flag = false
+				is_shield_up = false
+				$RechargableShieldTimer.stop()
 
 func is_anim_playing() -> bool:
 	if anim.current_animation != "Idle":
@@ -262,11 +279,13 @@ func stand():
 
 
 func _on_weapon_area_2d_body_entered(body):
-	if body.is_in_group("enemy"):
-		print("Hit enemy")
+	if body.is_in_group("metal_enemy"):
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_METAL)
 		body.queue_free()
-	pass
+		
+	if body.is_in_group("flesh_enemy"):
+		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_FLESH)
+		body.queue_free()
 
 
 func _on_ghost_timer_timeout():
@@ -285,12 +304,20 @@ func _on_ghost_spawn_timer_timeout():
 
 func _on_hurtbox_area_entered(area):
 	if area.name == "Hitbox":
-		if GlobalVariables.CURRENT_HEALTH != 0:
+		if (GlobalVariables.CURRENT_HEALTH != 0
+		and (!is_shield_up or !is_shield_implant_active)):
 			knockback()
 			anim.play("Hurt")
 			GlobalVariables.CURRENT_HEALTH -= 1
 			print("Getting hit", GlobalVariables.CURRENT_HEALTH)
-	
+			
+		if is_shield_up:
+			SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SHIELD_DISCHARGE)
+		is_shield_up = false
+		if is_shield_implant_active:
+			$RechargableShieldTimer.start()
+			shield_timer_flag = false
+
 func knockback():
 	velocity.x = sign(velocity.x) * (-1.0) * KNOCKBACK_POWER *3
 	velocity.y = sign(velocity.y) * (-1.0) * KNOCKBACK_POWER
@@ -302,12 +329,17 @@ func _on_hp_regen_timer_timeout():
 		GlobalVariables.CURRENT_HEALTH += 1
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HEAL)
 	hp_regen_timer_flag = false
-	
+
+func _on_rechargable_shield_timer_timeout():
+	is_shield_up = true
+	print("shield's up")
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SHIELD_CHARGED)
+	$RechargableShieldTimer.stop()
+	#shield_timer_flag = false
+
 func preserve_inventory():
 	for implant in GlobalVariables.IMPLANTS:
 		if implant.posessed and !implant.equipped:
 			GlobalVariables.item_pickup_signal.emit(implant.name)
-			print(implant.name, " is possesed, signal sent")
 		if implant.equipped:
 			GlobalVariables.item_equip_signal.emit(implant.name)
-	
