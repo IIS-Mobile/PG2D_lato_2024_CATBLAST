@@ -107,7 +107,7 @@ _data = {
 radius = 18.0
 height = 48.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" groups=["enemy"]]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["metal_enemy"]]
 script = ExtResource("1_ipugj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

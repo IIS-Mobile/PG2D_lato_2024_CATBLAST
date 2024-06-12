@@ -16,16 +16,8 @@ func window_summon():
 
 
 func _on_yes_button_pressed():
-	#get_tree().change_scene_to_file(TestLevel2)
-	if GlobalVariables.LEVEL_TO_CHANGE == 1:
-		GlobalVariables.LEVEL_TO_CHANGE = 2;
-	elif GlobalVariables.LEVEL_TO_CHANGE == 2:
-		GlobalVariables.LEVEL_TO_CHANGE = 1;
-		
+	GlobalVariables.open_implant_inventory.emit()
 	choice_box.hide()
-	GlobalVariables.PLAYER_CONTROLS_ENABLED = true
-	GlobalVariables.IS_PLAYER_TALKING = false
-
 
 func _on_no_button_pressed():
 	choice_box.hide()

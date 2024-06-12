@@ -45,6 +45,13 @@ func _on_pathfinding_button_pressed():
 	GlobalVariables.PLAYER_CONTROLS_ENABLED = true
 	GlobalVariables.IS_PLAYER_TALKING = false
 
+func _on_test_level_button_pressed():
+	GlobalVariables.LEVEL_TO_CHANGE = 4
+	
+	choice_box.hide()
+	GlobalVariables.PLAYER_CONTROLS_ENABLED = true
+	GlobalVariables.IS_PLAYER_TALKING = false
+
 func _on_cancel_button_pressed():
 	choice_box.hide()
 	GlobalVariables.PLAYER_CONTROLS_ENABLED = true

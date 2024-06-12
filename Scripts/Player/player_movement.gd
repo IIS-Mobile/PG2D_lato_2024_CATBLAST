@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const DASH_SPEED = 1200
 const DASH_UP = -600
-const SPEED = 300.0
+
 const JUMP_VELOCITY = -500.0
 const DOUBLE_JUMP_VELOCITY = -400.0
 const KNOCKBACK_POWER = 400
@@ -23,13 +23,20 @@ var standing_cshape = preload("res://Assets/Collisions/player_standing_cshape.tr
 var crouching_cshape = preload("res://Assets/Collisions/player_crouching_cshape.tres")
 var is_attacking
 var is_interaction
-var is_dead
 var is_hurt
 var is_dying = false
+
+var hp_regen_timer_flag = false
+
+var shield_timer_flag = false
+var is_shield_implant_active = false
+var is_shield_up = false
+
 
 
 func _ready():
 	print(self.get_path())
+	preserve_inventory()
 
 func add_ghost():
 	var ghost = ghost_node.instantiate()
@@ -51,7 +58,6 @@ func _physics_process(delta):
 	#print(anim.current_animation)
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	is_dead = GlobalVariables.CURRENT_HEALTH == 0
 	is_hurt = anim.current_animation == "Hurt"
 	is_attacking = (
 		anim.current_animation == "Attack"
@@ -118,11 +124,14 @@ func _physics_process(delta):
 				# Handle jump.
 
 			update_animations(direction, dir)
+			check_for_implants()
 			move_and_slide()
 	elif not GlobalVariables.PLAYER_CONTROLS_ENABLED:
 		anim.play("Idle")
 	#
 
+#=========================================================
+#=========================================================
 
 func above_head_is_empty() -> bool:
 	var result = !crouch_raycast1.is_colliding() and !crouch_raycast2.is_colliding()
@@ -163,17 +172,6 @@ func update_animations(direction, dir):
 			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_RUN])
 		else:
 			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK])
-		
-
-	#double_jump Logic
-	for implant in GlobalVariables.IMPLANTS:
-		if implant.name == "Ultra Elastic Joints":
-			if implant.equipped:
-				if Input.is_action_just_pressed("Jump") and not has_double_jumped and not is_on_floor():
-					velocity.y = DOUBLE_JUMP_VELOCITY
-					anim.play("Jump")
-					#print("Doublejump")
-					has_double_jumped = true
 
 	if is_on_floor():
 		has_double_jumped = false
@@ -184,9 +182,9 @@ func update_animations(direction, dir):
 			velocity.x = direction * DASH_SPEED
 		else:
 			if is_crouching:
-				velocity.x = direction * SPEED * 0.5
+				velocity.x = direction * GlobalVariables.PLAYER_SPEED * 0.5
 			else:
-				velocity.x = direction * SPEED
+				velocity.x = direction * GlobalVariables.PLAYER_SPEED
 			if (
 				(velocity.y == 0)
 				and !anim.current_animation == "Attack_Run"
@@ -201,7 +199,7 @@ func update_animations(direction, dir):
 				):
 					anim.play("Run")
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, GlobalVariables.PLAYER_SPEED)
 		if (
 			(velocity.y == 0)
 			and anim.current_animation != "Attack"
@@ -224,6 +222,38 @@ func update_animations(direction, dir):
 	):
 		anim.play("Fall")
 
+func check_for_implants():
+	for implant in GlobalVariables.IMPLANTS:
+		if implant.name == "Ultra Elastic Joints":
+			if implant.equipped:
+				if Input.is_action_just_pressed("Jump") and not has_double_jumped and not is_on_floor():
+					velocity.y = DOUBLE_JUMP_VELOCITY
+					anim.play("Jump")
+					#print("Doublejump")
+					has_double_jumped = true
+		if implant.name == "Circulatory System Enhancement":
+			if implant.equipped and !hp_regen_timer_flag:
+				print("regen timer starts")
+				$HPRegenTimer.start()
+				hp_regen_timer_flag = true
+			if !implant.equipped:
+				$HPRegenTimer.stop()
+		if implant.name == "Light Titanium Leg Bones":
+			if implant.equipped:
+				GlobalVariables.PLAYER_SPEED = 500
+			else:
+				GlobalVariables.PLAYER_SPEED = 300
+		if implant.name == "Ribcage Energy Shield":
+			if implant.equipped and !shield_timer_flag:
+				print("ribcage on")
+				is_shield_implant_active = true
+				$RechargableShieldTimer.start()
+				shield_timer_flag = true
+			if !implant.equipped:
+				is_shield_implant_active = false
+				shield_timer_flag = false
+				is_shield_up = false
+				$RechargableShieldTimer.stop()
 
 func is_anim_playing() -> bool:
 	if anim.current_animation != "Idle":
@@ -249,11 +279,13 @@ func stand():
 
 
 func _on_weapon_area_2d_body_entered(body):
-	if body.is_in_group("enemy"):
-		print("Hit enemy")
+	if body.is_in_group("metal_enemy"):
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_METAL)
 		body.queue_free()
-	pass
+		
+	if body.is_in_group("flesh_enemy"):
+		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_FLESH)
+		body.queue_free()
 
 
 func _on_ghost_timer_timeout():
@@ -272,14 +304,42 @@ func _on_ghost_spawn_timer_timeout():
 
 func _on_hurtbox_area_entered(area):
 	if area.name == "Hitbox":
-		if GlobalVariables.CURRENT_HEALTH != 0:
+		if (GlobalVariables.CURRENT_HEALTH != 0
+		and (!is_shield_up or !is_shield_implant_active)):
 			knockback()
 			anim.play("Hurt")
 			GlobalVariables.CURRENT_HEALTH -= 1
 			print("Getting hit", GlobalVariables.CURRENT_HEALTH)
-	pass  # Replace with function body.
-	
+			
+		if is_shield_up:
+			SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SHIELD_DISCHARGE)
+		is_shield_up = false
+		if is_shield_implant_active:
+			$RechargableShieldTimer.start()
+			shield_timer_flag = false
+
 func knockback():
 	velocity.x = sign(velocity.x) * (-1.0) * KNOCKBACK_POWER *3
 	velocity.y = sign(velocity.y) * (-1.0) * KNOCKBACK_POWER
 	move_and_slide()
+
+
+func _on_hp_regen_timer_timeout():
+	if GlobalVariables.CURRENT_HEALTH < GlobalVariables.MAX_HEALTH:
+		GlobalVariables.CURRENT_HEALTH += 1
+		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HEAL)
+	hp_regen_timer_flag = false
+
+func _on_rechargable_shield_timer_timeout():
+	is_shield_up = true
+	print("shield's up")
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SHIELD_CHARGED)
+	$RechargableShieldTimer.stop()
+	#shield_timer_flag = false
+
+func preserve_inventory():
+	for implant in GlobalVariables.IMPLANTS:
+		if implant.posessed and !implant.equipped:
+			GlobalVariables.item_pickup_signal.emit(implant.name)
+		if implant.equipped:
+			GlobalVariables.item_equip_signal.emit(implant.name)

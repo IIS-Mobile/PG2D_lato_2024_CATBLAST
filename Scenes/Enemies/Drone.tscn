@@ -107,6 +107,7 @@ animation = &"idle"
 animation = &"shoot"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2xrn5"]
+graph_offset = Vector2(-131.094, -3.8725)
 nodes/OneShot/node = SubResource("AnimationNodeOneShot_q8sc6")
 nodes/OneShot/position = Vector2(520, 40)
 nodes/idle/node = SubResource("AnimationNodeAnimation_55l8b")
@@ -171,7 +172,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Drone" type="CharacterBody2D" groups=["enemy"]]
+[node name="Drone" type="CharacterBody2D" groups=["metal_enemy"]]
 z_index = 3
 motion_mode = 1
 script = ExtResource("1_kaeg1")
