@@ -4,22 +4,41 @@ extends Control
 
 @onready var inventory_grid = $Inventory
 @onready var passive_slots = $Character
-var is_inventory_open = false
+#var is_inventory_open = false
 
 func _ready():
 	GlobalVariables.item_pickup_signal.connect(add_item)
 	GlobalVariables.item_equip_signal.connect(equip_item)
-	GlobalVariables.open_implant_inventory.connect(open_inventory)
-	inventory_controller.hide()
+	GlobalVariables.open_implant_inventory_signal.connect(open_inventory)
+	close_inventory()
+
+func _process(delta):
+	if Input.is_action_just_pressed("Inventory") and !GlobalVariables.IS_PLAYER_TALKING:
+		if !GlobalVariables.INVENTORY_LOOKUP_FLAG and !GlobalVariables.IS_INVENTORY_OPEN:
+			open_inventory()
+			GlobalVariables.IS_INVENTORY_OPEN = true
+			GlobalVariables.INVENTORY_LOOKUP_FLAG = true
+		elif GlobalVariables.INVENTORY_LOOKUP_FLAG or GlobalVariables.IS_INVENTORY_OPEN:
+			GlobalVariables.IS_INVENTORY_OPEN = false
+			GlobalVariables.PLAYER_CONTROLS_ENABLED = true
+			GlobalVariables.IS_PLAYER_TALKING = false
+			GlobalVariables.INVENTORY_LOOKUP_FLAG = false
+			SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.INVENTORY_CLOSE)
+			close_inventory()
 
 func open_inventory():
 	inventory_controller.show()
 	
+func close_inventory():
+	inventory_controller.hide()
+	
 func _on_done_button_pressed():
+	GlobalVariables.IS_INVENTORY_OPEN = false
 	GlobalVariables.PLAYER_CONTROLS_ENABLED = true
 	GlobalVariables.IS_PLAYER_TALKING = false
+	GlobalVariables.INVENTORY_LOOKUP_FLAG = false
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.INVENTORY_CLOSE)
-	inventory_controller.hide()
+	close_inventory()
 
 func add_item(item_name):
 	var desired_implant

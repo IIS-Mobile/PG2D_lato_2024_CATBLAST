@@ -30,7 +30,7 @@ func _on_mouse_entered():
 		label_text += "Slot: " + slot_type + "\n"
 		
 		label.text = label_text
-		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HOVER)
+		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.ITEM_HOVER)
 		$ItemDescription.show()
 
 

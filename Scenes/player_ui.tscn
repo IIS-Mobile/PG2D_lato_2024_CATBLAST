@@ -331,6 +331,20 @@ theme_override_fonts/font = ExtResource("7_yillm")
 theme_override_font_sizes/font_size = 30
 text = "Done"
 
+[node name="Label" type="Label" parent="InventoryControlUI"]
+z_index = 10
+layout_mode = 0
+offset_left = 648.0
+offset_top = 434.0
+offset_right = 828.0
+offset_bottom = 509.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_yillm")
+text = "Lookup mode. Talk to ripper to swap your chrome"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [node name="Life" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0

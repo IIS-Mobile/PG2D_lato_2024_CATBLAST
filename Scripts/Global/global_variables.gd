@@ -27,8 +27,19 @@ class ImplantObject:
 
 signal item_pickup_signal(name: String)
 signal item_equip_signal(name: String)
-signal open_implant_inventory()
+signal open_implant_inventory_signal()
 
+signal toggle_game_paused_signal(is_paused: bool)
+var GAME_PAUSED : bool = false :
+	get:
+		return GAME_PAUSED
+	set(value):
+		GAME_PAUSED = value
+		get_tree().paused = GAME_PAUSED
+		toggle_game_paused_signal.emit(GAME_PAUSED)
+
+var INVENTORY_LOOKUP_FLAG = false
+var IS_INVENTORY_OPEN = false
 var PLAYER_CONTROLS_ENABLED = true
 var IS_PLAYER_TALKING = false
 var CAN_PLAYER_DASH = true
@@ -40,7 +51,7 @@ var MAX_HEALTH: int = 7
 var CURRENT_HEALTH: int = MAX_HEALTH
 
 #CURRENT_LEVEL defines the level that loads upon launching the game
-var CURRENT_LEVEL: int = 2
+var CURRENT_LEVEL: int = 4
 var LEVEL_TO_CHANGE: int = CURRENT_LEVEL
 
 var LEVELS = [

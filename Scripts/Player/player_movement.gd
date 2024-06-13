@@ -162,6 +162,7 @@ func update_animations(direction, dir):
 		velocity.y = JUMP_VELOCITY
 		if !is_attacking:
 			anim.play("Jump")
+			SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.JUMP)
 
 	const attack_anim_lut = [["Attack_Jump","Attack_Run","Attack"],["Attack_Jump_L","Attack_Run_L","attack_left"]]
 	
@@ -229,7 +230,7 @@ func check_for_implants():
 				if Input.is_action_just_pressed("Jump") and not has_double_jumped and not is_on_floor():
 					velocity.y = DOUBLE_JUMP_VELOCITY
 					anim.play("Jump")
-					#print("Doublejump")
+					SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.DOUBLE_JUMP)
 					has_double_jumped = true
 		if implant.name == "Circulatory System Enhancement":
 			if implant.equipped and !hp_regen_timer_flag:
