@@ -12,12 +12,16 @@ const LASER_SHOT_PATH = "res://Assets/Sounds/enemies/laser shot - Pixabay.wav"
 const GUN_SHOT_PATH = "res://Assets/Sounds/enemies/gun shot - pixabay.wav"
 const ITEM_EQUIP_PATH = "res://Assets/Sounds/ui/item equip - Fronbondi_Skegs.wav"
 const ITEM_PICKUP_PATH = "res://Assets/Sounds/ui/item pickup - Phil Michalski.wav"
+const ITEM_HOVER_PATH = "res://Assets/Sounds/ui/item hover - Empty Sea Audio.wav"
 const INVENTORY_CLOSE_PATH = "res://Assets/Sounds/ui/close implant inventory - Phil Michalski.wav"
 const SHIELD_CHARGED_PATH = "res://Assets/Sounds/player/shield charged - Pixabay.wav"
 const SHIELD_DISCHARGE_PATH = "res://Assets/Sounds/player/shield discharge new - Pixabay.wav"
+const DOUBLE_JUMP_PATH = "res://Assets/Sounds/player/double jump - Soundmorph.wav"
+const JUMP_PATH = "res://Assets/Sounds/player/jump - Soundsnap and Friends.wav"
 
 enum SOUNDS { SLASH_METAL, SLASH_FLESH, DASH, CONFIRM, HOVER, LETTERS_POP, HEAL, LASER_SHOT, 
-			GUN_SHOT, ITEM_EQUIP, ITEM_PICKUP, INVENTORY_CLOSE, SHIELD_CHARGED, SHIELD_DISCHARGE}
+			GUN_SHOT, ITEM_EQUIP, ITEM_PICKUP, ITEM_HOVER, INVENTORY_CLOSE, SHIELD_CHARGED, SHIELD_DISCHARGE,
+			DOUBLE_JUMP, JUMP}
 
 # Copy -> SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_METAL)
 
@@ -33,9 +37,12 @@ var PLAYSOUND = {
 	SOUNDS.GUN_SHOT: load(GUN_SHOT_PATH),
 	SOUNDS.ITEM_EQUIP: load(ITEM_EQUIP_PATH),
 	SOUNDS.ITEM_PICKUP: load(ITEM_PICKUP_PATH),
+	SOUNDS.ITEM_HOVER: load(ITEM_HOVER_PATH),
 	SOUNDS.INVENTORY_CLOSE: load(INVENTORY_CLOSE_PATH),
 	SOUNDS.SHIELD_CHARGED: load(SHIELD_CHARGED_PATH),
-	SOUNDS.SHIELD_DISCHARGE: load(SHIELD_DISCHARGE_PATH)
+	SOUNDS.SHIELD_DISCHARGE: load(SHIELD_DISCHARGE_PATH),
+	SOUNDS.DOUBLE_JUMP: load(DOUBLE_JUMP_PATH),
+	SOUNDS.JUMP: load(JUMP_PATH)
 }
 
 @onready var audio_player

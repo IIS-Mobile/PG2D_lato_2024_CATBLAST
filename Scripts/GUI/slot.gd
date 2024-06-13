@@ -27,7 +27,7 @@ func _can_drop_data(at_position, data):
 	else:
 		retbool = false
 	
-	return data is TextureRect and retbool
+	return data is TextureRect and retbool and !GlobalVariables.INVENTORY_LOOKUP_FLAG
 	#return (data is TextureRect 
 	#and (data.slot_type == texture_rect.slot_type 
 	#or texture_rect.slot_type == 0))

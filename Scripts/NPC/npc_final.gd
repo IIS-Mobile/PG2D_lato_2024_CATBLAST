@@ -17,6 +17,7 @@ func _process(delta):
 		is_player_in_dialogue_range
 		and Input.is_action_just_pressed("Interact")
 		and not GlobalVariables.IS_PLAYER_TALKING
+		and not GlobalVariables.IS_INVENTORY_OPEN
 	):
 		GlobalVariables.IS_PLAYER_TALKING = true
 		if !GlobalVariables.FIRST_DIALOGUE_FLAG:

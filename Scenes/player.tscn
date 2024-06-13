@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=3 uid="uid://dmpuglts6my21"]
+[gd_scene load_steps=134 format=3 uid="uid://dmpuglts6my21"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_movement.gd" id="1_341yb"]
 [ext_resource type="Texture2D" uid="uid://ci8ylvh8xr8aj" path="res://Assets/Arts/Animations/player_animations/attack/player_attack.png" id="2_dl8vb"]
@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://dkq3lytlh2dji" path="res://Assets/Arts/Animations/player_animations/damage/player_hurt.png" id="8_3dt8c"]
 [ext_resource type="AudioStream" uid="uid://omka4tugmk4c" path="res://Assets/Sounds/player/katana sweep - Samuel Manzanero Recio.wav" id="9_aq6sx"]
 [ext_resource type="AudioStream" uid="uid://bhaqkxo4x6i53" path="res://Assets/Sounds/player/footstep - Pixabay.wav" id="10_b44pa"]
-[ext_resource type="AudioStream" uid="uid://bpn8pktpauoge" path="res://Assets/Sounds/player/jump - Soundsnap and Friends.wav" id="10_buie0"]
 [ext_resource type="Shape2D" uid="uid://bg7jxk4f6nboq" path="res://Assets/Collisions/player_standing_cshape.tres" id="11_ry7ov"]
 [ext_resource type="Texture2D" uid="uid://7ciu01ul58q6" path="res://Assets/Arts/Animations/player_animations/idle/player_interaction.png" id="11_ualut"]
 [ext_resource type="AudioStream" uid="uid://tpg5hvfsw3sc" path="res://Assets/Sounds/player/crouching footstep - Pixabay.wav" id="13_y0wou"]
@@ -1403,21 +1402,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [&"Jump"]
 }
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../PlayerSounds")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("10_buie0")
-}],
-"times": PackedFloat32Array(-0.06)
-}
-tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_tt8ct"]
 length = 0.001
@@ -1681,9 +1665,7 @@ material = SubResource("ShaderMaterial_yvufx")
 position = Vector2(2, -5.44003)
 scale = Vector2(0.998, 0.968)
 sprite_frames = SubResource("SpriteFrames_328ho")
-
-animation = &"Attack_Run"
-
+animation = &"Jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)

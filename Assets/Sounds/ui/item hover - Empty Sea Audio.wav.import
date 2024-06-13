@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bvjt3d3obvp1b"
+path="res://.godot/imported/item hover - Empty Sea Audio.wav-168d6058789b712155598f2a45ff47ee.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/ui/item hover - Empty Sea Audio.wav"
+dest_files=["res://.godot/imported/item hover - Empty Sea Audio.wav-168d6058789b712155598f2a45ff47ee.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

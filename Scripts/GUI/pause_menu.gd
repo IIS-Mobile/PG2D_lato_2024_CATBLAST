@@ -9,7 +9,7 @@ func _ready():
 	$Panel.get_node("Control/AnimatedSprite2D").play("Glitch")
 	$Panel.get_node("Control/AnimatedSprite2D2").play("Glitch")
 	$Panel.get_node("Control/AnimatedSprite2D3").play("Glitch")
-	game_manager.connect("toggle_game_paused", _on_game_manager_toggle_game_paused)
+	GlobalVariables.toggle_game_paused_signal.connect(_on_game_manager_toggle_game_paused)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,9 +26,11 @@ func _on_game_manager_toggle_game_paused(is_paused: bool):
 
 func _on_resume_button_pressed():
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.CONFIRM)
-	game_manager.game_paused = false
+	GlobalVariables.GAME_PAUSED = false
 	print("res")
-
+	
+func _on_options_button_pressed():
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.CONFIRM)	
 
 func _on_quit_pressed():
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.CONFIRM)
@@ -46,4 +48,3 @@ func _on_options_button_mouse_entered():
 
 func _on_quit_mouse_entered():
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HOVER)
-
