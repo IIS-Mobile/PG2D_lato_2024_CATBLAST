@@ -46,7 +46,9 @@ func _physics_process(delta):
 	
 	var direction = (player.global_position - global_position).normalized()
 	
-	velocity.x = direction.x * SPEED
+	# velocity.x = direction.x * SPEED
+
+
 	# velocity.y = direction.y * SPEED
 	
 	# get current animation
@@ -59,7 +61,7 @@ func _physics_process(delta):
 	# if player is in range
 	if player.global_position.distance_to(global_position) < RANGE:
 		# if timer is counting
-		if timer.is_stopped():
+		if timer.is_stopped() and shooting == false:
 			animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)	
 			timer2.start()
 			timer.start()
