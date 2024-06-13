@@ -107,7 +107,6 @@ animation = &"idle"
 animation = &"shoot"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2xrn5"]
-graph_offset = Vector2(-131.094, -3.8725)
 nodes/OneShot/node = SubResource("AnimationNodeOneShot_q8sc6")
 nodes/OneShot/position = Vector2(520, 40)
 nodes/idle/node = SubResource("AnimationNodeAnimation_55l8b")
@@ -117,27 +116,27 @@ nodes/shoot/node = SubResource("AnimationNodeAnimation_fhswo")
 nodes/shoot/position = Vector2(300, 160)
 node_connections = [&"OneShot", 0, &"idle", &"OneShot", 1, &"shoot", &"output", 0, &"OneShot"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ksnwq"]
-atlas = ExtResource("2_lf7iw")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k6imr"]
-atlas = ExtResource("2_lf7iw")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_epas0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sb65"]
 atlas = ExtResource("2_lf7iw")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ndp1y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lb0d"]
 atlas = ExtResource("2_lf7iw")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_snnti"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_skbth"]
+atlas = ExtResource("2_lf7iw")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u2ec"]
+atlas = ExtResource("2_lf7iw")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_en81c"]
 atlas = ExtResource("3_l5frq")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ivhfm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y48i2"]
 atlas = ExtResource("3_l5frq")
 region = Rect2(64, 0, 64, 64)
 
@@ -145,16 +144,16 @@ region = Rect2(64, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ksnwq")
+"texture": SubResource("AtlasTexture_6sb65")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k6imr")
+"texture": SubResource("AtlasTexture_0lb0d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_epas0")
+"texture": SubResource("AtlasTexture_skbth")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ndp1y")
+"texture": SubResource("AtlasTexture_0u2ec")
 }],
 "loop": true,
 "name": &"idle",
@@ -162,10 +161,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_snnti")
+"texture": SubResource("AtlasTexture_en81c")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ivhfm")
+"texture": SubResource("AtlasTexture_y48i2")
 }],
 "loop": true,
 "name": &"shoot",
@@ -195,6 +194,7 @@ parameters/OneShot/request = 0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5l1ra")
 animation = &"idle"
+autoplay = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 root_node = NodePath("../..")
