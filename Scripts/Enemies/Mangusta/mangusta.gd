@@ -29,9 +29,11 @@ func _ready():
 	timer2.set_wait_time(0.5)
 	timer2.set_one_shot(true)
 	add_child(timer2)
-	var callable = Callable(self, "spawn_bullet")
-	timer2.connect("timeout", callable)
+	# var callable = Callable(self, "spawn_bullet")
+	# timer2.connect("timeout", callable)
 	animation_tree.active = true
+	# animation_player.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
+
 
 	
 
