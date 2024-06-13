@@ -14,6 +14,8 @@ const COOLDOWN = 3.0 # seconds
 
 @onready var bullet = preload("res://Scenes/Enemies/gun_bullet.tscn")
 
+@onready var laser = preload("res://Scenes/Enemies/laser.tscn")
+
 @onready var animation_tree : AnimationTree = $AnimationTree
 
 var timer = Timer.new()
@@ -30,6 +32,7 @@ func _ready():
 	timer2.set_one_shot(true)
 	add_child(timer2)
 	var callable = Callable(self, "spawn_bullet")
+	# var callable = Callable(self, "spawn_laser")
 	timer2.connect("timeout", callable)
 	animation_tree.active = true
 
@@ -49,18 +52,17 @@ func _physics_process(delta):
 	# velocity.y = direction.y * SPEED
 	
 	# get current animation
-	# var shooting = animation_tree.get("parameters/OneShot/active")
-	# animation_tree.get
-	# if shooting:
-	# 	velocity.x = 0
-	# else:
-	get_node("AnimatedSprite2D").flip_h = direction.x < 0
+	var shooting = animation_tree.get("parameters/OneShot/active")
+	if shooting:
+		velocity.x = 0
+	else:
+		get_node("AnimatedSprite2D").flip_h = direction.x < 0
 
 	# if player is in range
 	if player.global_position.distance_to(global_position) < RANGE:
 		# if timer is counting
-		if timer.is_stopped():
-			animation_tree.set("parameters/conditions/shoot", true)
+		if timer.is_stopped() and shooting == false:
+			animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)	
 			timer2.start()
 			timer.start()
 
@@ -71,5 +73,13 @@ func spawn_bullet():
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.global_position = global_position
 	get_parent().add_child(bullet_instance)
-	animation_tree.set("parameters/conditions/shoot", false)
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.GUN_SHOT)
+	# get_node("AnimatedSprite2D/AnimationPlayer").play("shoot")
+	# animation tree set shooting parameter to change anim
+
+func spawn_laser():
+	var laser_instance = laser.instantiate()
+	laser_instance.global_position = global_position
+	get_parent().add_child(laser_instance)
+	# get_node("AnimatedSprite2D/AnimationPlayer").play("shoot")
+	# animation tree set shooting parameter to change anim

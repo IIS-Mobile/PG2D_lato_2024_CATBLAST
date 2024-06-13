@@ -32,7 +32,7 @@ var shield_timer_flag = false
 var is_shield_implant_active = false
 var is_shield_up = false
 
-var godmode = true
+
 
 func _ready():
 	print(self.get_path())
@@ -304,7 +304,7 @@ func _on_ghost_spawn_timer_timeout():
 
 
 func _on_hurtbox_area_entered(area):
-	if area.name == "Hitbox" and !godmode:
+	if area.name == "Hitbox":
 		if (GlobalVariables.CURRENT_HEALTH != 0
 		and (!is_shield_up or !is_shield_implant_active)):
 			knockback()
