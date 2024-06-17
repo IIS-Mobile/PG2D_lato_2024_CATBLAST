@@ -38,8 +38,12 @@ func _ready():
 	preserve_inventory()
 
 func add_ghost():
+	var frameIndex: int = $AnimatedSprite2D.get_frame()
+	var animationName: String = $AnimatedSprite2D.animation
+	var spriteFrames: SpriteFrames = $AnimatedSprite2D.get_sprite_frames()
+	var currentTexture: Texture2D = spriteFrames.get_frame_texture(animationName, frameIndex)
 	var ghost = ghost_node.instantiate()
-	ghost.set_property(global_position, $AnimatedSprite2D.scale)
+	ghost.set_property(global_position, $AnimatedSprite2D.scale, currentTexture, dashDirection)
 	get_tree().current_scene.add_child(ghost)
 
 
