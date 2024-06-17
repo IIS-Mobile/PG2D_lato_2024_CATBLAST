@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwlabtumomi5b"
-path="res://.godot/imported/ripperdoc.png-d00b3b203fb99462f9cacb1c762475cf.ctex"
+uid="uid://c265tpliqegg4"
+path="res://.godot/imported/Mangusta_run.png-cc7a82a732b315d3f73140a3ba08ad52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Arts/Animations/npc_animation/ripperdoc.png"
-dest_files=["res://.godot/imported/ripperdoc.png-d00b3b203fb99462f9cacb1c762475cf.ctex"]
+source_file="res://Assets/Arts/Animations/enemy_animations/mangusta_gun/Mangusta_run.png"
+dest_files=["res://.godot/imported/Mangusta_run.png-cc7a82a732b315d3f73140a3ba08ad52.ctex"]
 
 [params]
 
