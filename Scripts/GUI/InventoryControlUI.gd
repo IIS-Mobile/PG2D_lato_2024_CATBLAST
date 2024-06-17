@@ -88,11 +88,9 @@ func equip_item(item_name):
 
 	var index = 0
 	var children_array = passive_slots.get_children()
-	print(children_array)
 	
-	print(get_child_count())
 	for i in children_array:
-		if i.filled == false:
+		if i.slot_type == desired_implant.slot_type:
 			index = i.get_index()
 			print(i.get_index())
 			break
