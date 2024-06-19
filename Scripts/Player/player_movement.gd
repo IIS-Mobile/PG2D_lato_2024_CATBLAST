@@ -31,7 +31,6 @@ var hp_regen_timer_flag = false
 var shield_timer_flag = false
 var is_shield_implant_active = false
 var is_shield_up = false
-
 func _ready():
 	dashDirection = Vector2(1, 0)
 	print(self.get_path())
@@ -58,6 +57,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	is_hurt = anim.current_animation == "Hurt"
@@ -176,7 +176,6 @@ func update_animations(direction, dir):
 			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_RUN])
 		else:
 			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK])
-
 	if is_on_floor():
 		has_double_jumped = false
 
@@ -263,6 +262,16 @@ func check_for_implants():
 				shield_timer_flag = false
 				is_shield_up = false
 				$RechargableShieldTimer.stop()
+#Carbon Fiber Arm Muscles - zwiększa prędkość ataku o X procent, podejście agresywniejsze
+
+		if implant.name == "Carbon Fiber Arm Muscles":
+			if implant.equipped:
+				if is_attacking:
+					anim.speed_scale = 3
+				else:
+					anim.speed_scale = 1	
+			else:
+				anim.speed_scale = 1
 
 func is_anim_playing() -> bool:
 	if anim.current_animation != "Idle":
