@@ -1,8 +1,9 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://u4unsqyy6047"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://u4unsqyy6047"]
 
 [ext_resource type="FontFile" uid="uid://c33jywaea07wv" path="res://Assets/Arts/Gui/Cyberphont/Cyberphont beta/Cyberphont_pixels.ttf" id="1_e0qcv"]
 [ext_resource type="Texture2D" uid="uid://dbsw5s74r1blp" path="res://Assets/Arts/Gui/Menu buttons v2/menu_button01.png" id="2_wt35t"]
 [ext_resource type="FontFile" uid="uid://dyqoacn20kknd" path="res://Assets/Arts/Gui/Cyberphont/Cyberphont 2.0/Cyberphont 2.0.ttf" id="3_3n5ng"]
+[ext_resource type="Texture2D" uid="uid://dn1xfvxnh371" path="res://Assets/Arts/Gui/Inventory Pack/checkbox1.png" id="3_m6aoq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_abocp"]
 
@@ -20,6 +21,30 @@ region_rect = Rect2(0, 0, 85, 18)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8pqne"]
 texture = ExtResource("2_wt35t")
 region_rect = Rect2(86, 0, 85, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4k1jk"]
+texture = ExtResource("3_m6aoq")
+region_rect = Rect2(0, 1, 13, 9)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y3le3"]
+texture = ExtResource("3_m6aoq")
+region_rect = Rect2(0, 1, 13, 9)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q7egp"]
+texture = ExtResource("3_m6aoq")
+region_rect = Rect2(0, 1, 13, 9)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkcgx"]
+texture = ExtResource("3_m6aoq")
+region_rect = Rect2(0, 11, 13, 9)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6dd2w"]
+texture = ExtResource("3_m6aoq")
+region_rect = Rect2(0, 1, 13, 9)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8pvtl"]
+texture = ExtResource("3_m6aoq")
+region_rect = Rect2(0, 11, 13, 9)
 
 [resource]
 default_font = ExtResource("3_3n5ng")
@@ -47,3 +72,19 @@ Button/styles/focus = SubResource("StyleBoxTexture_4v58w")
 Button/styles/hover = SubResource("StyleBoxTexture_noroc")
 Button/styles/normal = SubResource("StyleBoxTexture_7foau")
 Button/styles/pressed = SubResource("StyleBoxTexture_8pqne")
+CheckBox/icons/checked = null
+CheckBox/icons/checked_disabled = null
+CheckBox/icons/radio_checked = null
+CheckBox/icons/radio_checked_disabled = null
+CheckBox/icons/radio_unchecked = null
+CheckBox/icons/radio_unchecked_disabled = null
+CheckBox/icons/unchecked = null
+CheckBox/icons/unchecked_disabled = null
+CheckBox/styles/disabled = SubResource("StyleBoxTexture_4k1jk")
+CheckBox/styles/focus = SubResource("StyleBoxTexture_y3le3")
+CheckBox/styles/hover = SubResource("StyleBoxTexture_q7egp")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxTexture_mkcgx")
+CheckBox/styles/normal = SubResource("StyleBoxTexture_6dd2w")
+CheckBox/styles/pressed = SubResource("StyleBoxTexture_8pvtl")
+CheckButton/icons/checked = null
+CheckButton/icons/unchecked = null

@@ -184,10 +184,12 @@ rotation = 0.00265048
 scale = Vector2(1.23925, 0.544463)
 text = "RESUME "
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/Control"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/Control/ResumeButton"]
 modulate = Color(1, 1, 1, 0.678431)
-position = Vector2(490.914, 102.615)
-scale = Vector2(7.38897, 8.01877)
+position = Vector2(254.522, 120.735)
+rotation = -0.00603269
+scale = Vector2(5.96254, 14.7278)
+skew = 0.00486815
 sprite_frames = SubResource("SpriteFrames_lj3yl")
 animation = &"Glitch"
 
@@ -207,10 +209,12 @@ scale = Vector2(1.23925, 0.544463)
 text = "OPTIONS
 "
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Panel/Control"]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Panel/Control/OptionsButton"]
 modulate = Color(1, 1, 1, 0.678431)
-position = Vector2(494.545, 263.595)
-scale = Vector2(7.44592, 8.019)
+position = Vector2(255.504, 125.173)
+rotation = -0.00603269
+scale = Vector2(6.0085, 14.7282)
+skew = 0.00486815
 sprite_frames = SubResource("SpriteFrames_lj3yl")
 animation = &"Glitch"
 
@@ -232,11 +236,10 @@ scale = Vector2(1.239, 0.544)
 tooltip_text = "This is quit"
 text = "QUIT"
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Panel/Control"]
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Panel/Control/Quit"]
 modulate = Color(1, 1, 1, 0.678431)
-position = Vector2(494.638, 422.792)
-rotation = 0.00265048
-scale = Vector2(7.43124, 7.6416)
+position = Vector2(255.63, 124.226)
+scale = Vector2(5.99777, 14.0471)
 sprite_frames = SubResource("SpriteFrames_lj3yl")
 animation = &"Glitch"
 

@@ -1,0 +1,133 @@
+[gd_scene load_steps=12 format=3 uid="uid://h5l5g4auvpll"]
+
+[ext_resource type="Theme" uid="uid://u4unsqyy6047" path="res://Assets/Arts/Gui/gui_them.tres" id="1_274i0"]
+[ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="2_l10h0"]
+[ext_resource type="Texture2D" uid="uid://dx5ems6t3ms0p" path="res://Assets/Arts/Gui/crt screens/button crt/button 1 crt sprite.png" id="2_u05gq"]
+[ext_resource type="Script" path="res://Scripts/GUI/settings_menu.gd" id="2_v7aih"]
+[ext_resource type="Texture2D" uid="uid://pgjb0rj1u4fx" path="res://Assets/Arts/Gui/Text ScreenPads/bg_for_scalable_screen.png" id="3_7yjpd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_osjq0"]
+shader = ExtResource("2_l10h0")
+shader_parameter/amount = 1.471
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlma0"]
+atlas = ExtResource("2_u05gq")
+region = Rect2(0, 0, 85, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ed52"]
+atlas = ExtResource("2_u05gq")
+region = Rect2(85, 0, 85, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6g5l"]
+atlas = ExtResource("2_u05gq")
+region = Rect2(170, 0, 85, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb6bw"]
+atlas = ExtResource("2_u05gq")
+region = Rect2(255, 0, 85, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sf3ut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlma0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ed52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6g5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pb6bw")
+}],
+"loop": true,
+"name": &"Glitch",
+"speed": 5.0
+}]
+
+[node name="SettingsMenu" type="Control"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1158.0
+offset_bottom = 648.0
+theme = ExtResource("1_274i0")
+script = ExtResource("2_v7aih")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 10
+material = SubResource("ShaderMaterial_osjq0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1119.0
+offset_bottom = -610.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(29.6821, 17.0937)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7yjpd")
+
+[node name="Quit" type="Button" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 177.0
+offset_top = -135.0
+offset_right = 687.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.00265048
+scale = Vector2(0.731634, 0.321234)
+tooltip_text = "This is quit"
+text = "QUIT"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Quit"]
+modulate = Color(1, 1, 1, 0.678431)
+z_index = 10
+position = Vector2(255.63, 124.226)
+scale = Vector2(5.99777, 14.0471)
+sprite_frames = SubResource("SpriteFrames_sf3ut")
+animation = &"Glitch"
+
+[node name="SoundsSlider" type="HSlider" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 190.0
+offset_top = 145.0
+offset_right = 986.0
+offset_bottom = 161.0
+
+[node name="HSlider" type="HSlider" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 190.0
+offset_top = 311.0
+offset_right = 986.0
+offset_bottom = 327.0
+
+[node name="CheckBox" type="CheckBox" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 244.0
+offset_top = 456.0
+offset_right = 358.0
+offset_bottom = 505.0
+
+[connection signal="mouse_entered" from="Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
