@@ -1,0 +1,249 @@
+[gd_scene load_steps=20 format=3 uid="uid://bunghhdx2ce8n"]
+
+[ext_resource type="Script" path="res://Scripts/GUI/main_menu.gd" id="1_2weg3"]
+[ext_resource type="Shader" path="res://Shaders/main_menu_background.gdshader" id="1_21v8t"]
+[ext_resource type="Texture2D" uid="uid://bvd3o20d5a24e" path="res://Assets/Arts/Menu/main_menu_background.png" id="2_6u4ni"]
+[ext_resource type="Texture2D" uid="uid://d1wlvrndak0j5" path="res://Assets/Arts/Gui/Animated Tablets/Tablet.png" id="3_fn6jj"]
+[ext_resource type="Shader" path="res://Shaders/matrix_rain.gdshader" id="4_vgs3f"]
+[ext_resource type="Texture2D" uid="uid://bofi410bkxkr1" path="res://Assets/Arts/Menu/matrix_noise.png" id="5_j3jn3"]
+[ext_resource type="Texture2D" uid="uid://dx5ems6t3ms0p" path="res://Assets/Arts/Gui/crt screens/button crt/button 1 crt sprite.png" id="7_3jdrn"]
+[ext_resource type="Theme" uid="uid://dbe53d8bjs78e" path="res://Assets/Arts/Gui/gui_them.tres" id="7_cislv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_papu1"]
+shader = ExtResource("1_21v8t")
+shader_parameter/shine_color = Color(1, 1, 1, 0.0901961)
+shader_parameter/shine_speed = 6.0
+shader_parameter/shine_size = 0.01
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ihah6"]
+bg_color = Color(0.654902, 0.898039, 0.929412, 1)
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbg56"]
+shader = ExtResource("4_vgs3f")
+shader_parameter/noise_tex = ExtResource("5_j3jn3")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f83aa"]
+bg_color = Color(0.113725, 0, 0.286275, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ue2v"]
+texture = ExtResource("3_fn6jj")
+modulate_color = Color(1, 1, 1, 0)
+
+[sub_resource type="Theme" id="Theme_qsqnq"]
+Panel/styles/panel = SubResource("StyleBoxTexture_5ue2v")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlma0"]
+atlas = ExtResource("7_3jdrn")
+region = Rect2(0, 0, 85, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ed52"]
+atlas = ExtResource("7_3jdrn")
+region = Rect2(85, 0, 85, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6g5l"]
+atlas = ExtResource("7_3jdrn")
+region = Rect2(170, 0, 85, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb6bw"]
+atlas = ExtResource("7_3jdrn")
+region = Rect2(255, 0, 85, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uf4jb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlma0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ed52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6g5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pb6bw")
+}],
+"loop": true,
+"name": &"Glitch",
+"speed": 5.0
+}]
+
+[node name="MainMenu" type="Control"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2weg3")
+metadata/_edit_horizontal_guides_ = [63.0, 584.0]
+metadata/_edit_vertical_guides_ = [40.0, 256.0]
+
+[node name="Background" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_papu1")
+position = Vector2(739.335, 329.25)
+scale = Vector2(0.60952, 0.609519)
+texture = ExtResource("2_6u4ni")
+
+[node name="Border" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ihah6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 289.0
+offset_bottom = 648.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ButtonsBackground" type="Panel" parent="MarginContainer"]
+material = SubResource("ShaderMaterial_dbg56")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f83aa")
+
+[node name="Panel" type="Panel" parent="."]
+process_mode = 3
+z_index = 10
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 1.0
+offset_right = 363.0
+offset_bottom = 784.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.826351, 0.826186)
+theme = SubResource("Theme_qsqnq")
+
+[node name="Control" type="Control" parent="Panel"]
+process_mode = 2
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.5
+offset_top = -392.5
+offset_right = 181.5
+offset_bottom = 391.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_cislv")
+
+[node name="PlayButton" type="Button" parent="Panel/Control"]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -132.928
+offset_top = 76.0437
+offset_right = 359.072
+offset_bottom = 346.044
+grow_horizontal = 2
+rotation = 0.00265048
+scale = Vector2(0.529, 0.233)
+text = "PLAY"
+
+[node name="OptionsButton" type="Button" parent="Panel/Control"]
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -132.928
+offset_top = 202.044
+offset_right = 360.072
+offset_bottom = 472.044
+grow_horizontal = 2
+rotation = 0.00265048
+scale = Vector2(0.529, 0.233)
+text = "OPTIONS
+"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Panel/Control/OptionsButton"]
+modulate = Color(1, 1, 1, 0.678431)
+position = Vector2(255.504, 125.173)
+rotation = -0.00603269
+scale = Vector2(6.0085, 14.7282)
+skew = 0.00486815
+sprite_frames = SubResource("SpriteFrames_uf4jb")
+animation = &"Glitch"
+
+[node name="Credits" type="Button" parent="Panel/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -133.094
+offset_top = -453.776
+offset_right = 360.906
+offset_bottom = -183.776
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.529, 0.233)
+tooltip_text = "This is quit"
+text = "CREDITS"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Panel/Control/Credits"]
+modulate = Color(1, 1, 1, 0.678431)
+position = Vector2(255.63, 124.226)
+scale = Vector2(5.99777, 14.0471)
+sprite_frames = SubResource("SpriteFrames_uf4jb")
+animation = &"Glitch"
+
+[node name="Quit" type="Button" parent="Panel/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -132.928
+offset_top = -141.145
+offset_right = 360.072
+offset_bottom = 128.855
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.00265048
+scale = Vector2(0.529, 0.233)
+tooltip_text = "This is quit"
+text = "QUIT"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Panel/Control/Quit"]
+modulate = Color(1, 1, 1, 0.678431)
+position = Vector2(255.63, 124.226)
+scale = Vector2(5.99777, 14.0471)
+sprite_frames = SubResource("SpriteFrames_uf4jb")
+animation = &"Glitch"
+
+[node name="Button" type="Button" parent="Panel/Control"]
+layout_mode = 0
+offset_left = 68.978
+offset_top = 474.259
+offset_right = 286.978
+offset_bottom = 545.259
+
+[connection signal="mouse_entered" from="Panel/Control/PlayButton" to="." method="_on_play_button_mouse_entered"]
+[connection signal="pressed" from="Panel/Control/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="Panel/Control/OptionsButton" to="." method="_on_options_button_mouse_entered"]
+[connection signal="pressed" from="Panel/Control/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="mouse_entered" from="Panel/Control/Credits" to="." method="_on_credits_mouse_entered"]
+[connection signal="pressed" from="Panel/Control/Credits" to="." method="_on_credits_pressed"]
+[connection signal="mouse_entered" from="Panel/Control/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="Panel/Control/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Panel/Control/Button" to="." method="_on_button_pressed"]

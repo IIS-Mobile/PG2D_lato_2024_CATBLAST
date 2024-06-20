@@ -1,9 +1,11 @@
 extends Node2D
 class_name SOUNDTRACKPLAYER_CLASS
 
-enum THEMES { PEACE, BATTLE }
+enum THEMES { PEACE, BATTLE, MENU, INTRO }
 
 var TRACKS = {
+	THEMES.INTRO: [preload("res://Assets/Sounds/music/intro sound - moodmode.ogg")],
+	THEMES.MENU: [preload("res://Assets/Sounds/music/main menu theme - GreenStarFire.ogg")],
 	THEMES.PEACE: [preload("res://Assets/Sounds/music/predator and prey - Yurika.ogg")],
 	THEMES.BATTLE:
 	[
