@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=3 uid="uid://dmpuglts6my21"]
+[gd_scene load_steps=137 format=3 uid="uid://dmpuglts6my21"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_movement.gd" id="1_341yb"]
 [ext_resource type="Shader" path="res://Shaders/shield_up_shader.gdshader" id="1_j78mr"]
@@ -941,6 +941,110 @@ tracks/4/keys = {
 }
 tracks/4/use_blend = true
 
+[sub_resource type="Animation" id="Animation_fsue4"]
+resource_name = "Attack_Long"
+length = 0.55
+step = 0.07
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21, 0.28, 0.35, 0.42, 0.49, 0.56, 0.63),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"Attack"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprite2D/Hitbox/Attack_R:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.21, 0.35, 0.42),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprite2D/Hitbox/Attack_R:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.21, 0.35, 0.42),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../PlayerSounds")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0301,
+"stream": ExtResource("9_aq6sx")
+}],
+"times": PackedFloat32Array(0.07)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Sprite2D/Hitbox/Attack_L:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.77),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Sprite2D/Hitbox/Attack_R2:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.21, 0.35, 0.42),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Sprite2D/Hitbox/Attack_R2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.21, 0.35, 0.42),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+
 [sub_resource type="Animation" id="Animation_bktgy"]
 resource_name = "Attack_Run"
 length = 0.7
@@ -1518,6 +1622,30 @@ tracks/7/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Sprite2D/Hitbox/Attack_L2:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Sprite2D/Hitbox/Attack_L2:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_q32u2"]
 resource_name = "Run"
@@ -1647,8 +1775,8 @@ tracks/5/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_fsue4"]
-resource_name = "Attack_Long"
+[sub_resource type="Animation" id="Animation_ct658"]
+resource_name = "attack_left_Long"
 length = 0.55
 step = 0.07
 tracks/0/type = "value"
@@ -1660,44 +1788,44 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.07, 0.14, 0.21, 0.28, 0.35, 0.42, 0.49, 0.56, 0.63),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
+"update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../AnimatedSprite2D:animation")
+tracks/1/path = NodePath("../Sprite2D/Hitbox/Attack_L:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [&"Attack"]
+"times": PackedFloat32Array(0, 0.07, 0.21, 0.35, 0.42),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Sprite2D/Hitbox/Attack_R:visible")
+tracks/2/path = NodePath("../Sprite2D/Hitbox/Attack_L:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.07, 0.21, 0.35, 0.42),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, true, false, true, false]
+"values": [true, false, true, false, true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Sprite2D/Hitbox/Attack_R:disabled")
+tracks/3/path = NodePath("../AnimatedSprite2D:animation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.07, 0.21, 0.35, 0.42),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.55),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false, true, false, true]
+"values": [&"attack_left"]
 }
 tracks/4/type = "audio"
 tracks/4/imported = false
@@ -1708,7 +1836,7 @@ tracks/4/loop_wrap = true
 tracks/4/keys = {
 "clips": [{
 "end_offset": 0.0,
-"start_offset": 0.0301,
+"start_offset": 0.0,
 "stream": ExtResource("9_aq6sx")
 }],
 "times": PackedFloat32Array(0.07)
@@ -1717,19 +1845,19 @@ tracks/4/use_blend = true
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Sprite2D/Hitbox/Attack_L:disabled")
+tracks/5/path = NodePath("../Sprite2D/Hitbox/Attack_R:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.77),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.49),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, true]
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Sprite2D/Hitbox/Attack_R2:disabled")
+tracks/6/path = NodePath("../Sprite2D/Hitbox/Attack_L2:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1741,7 +1869,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../Sprite2D/Hitbox/Attack_R2:visible")
+tracks/7/path = NodePath("../Sprite2D/Hitbox/Attack_L2:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1769,7 +1897,8 @@ _data = {
 "Jump": SubResource("Animation_8h8ff"),
 "RESET": SubResource("Animation_tt8ct"),
 "Run": SubResource("Animation_q32u2"),
-"attack_left": SubResource("Animation_wbt6x")
+"attack_left": SubResource("Animation_wbt6x"),
+"attack_left_Long": SubResource("Animation_ct658")
 }
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8u65a"]
@@ -1846,22 +1975,21 @@ polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 3
 disabled = true
 
 [node name="Attack_L" type="CollisionPolygon2D" parent="Sprite2D/Hitbox"]
-visible = false
 position = Vector2(637, -1)
 rotation = 3.14159
 scale = Vector2(1, -1)
 polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 353, 294, 328, 295, 342, 275, 345, 251, 329, 241, 294, 244)
 disabled = true
 
+[node name="Attack_L2" type="CollisionPolygon2D" parent="Sprite2D/Hitbox"]
+position = Vector2(637, -1)
+rotation = 3.14159
+scale = Vector2(1, -1)
+polygon = PackedVector2Array(292, 233, 346, 233, 399.001, 247.999, 413.001, 272.999, 397.001, 291.999, 353, 294, 328, 295, 342, 275, 345, 251, 329, 241, 294, 244)
+
 [node name="Attack_R2" type="CollisionPolygon2D" parent="Sprite2D/Hitbox"]
 visible = false
 polygon = PackedVector2Array(292, 233, 375, 233, 465, 247, 465, 265, 436, 286, 353, 294, 328, 295, 342, 275, 345, 251, 329, 241, 294, 244)
-disabled = true
-
-[node name="Attack_L2" type="CollisionPolygon2D" parent="Sprite2D/Hitbox"]
-visible = false
-position = Vector2(0, -2)
-polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 353, 294, 328, 295, 342, 275, 345, 251, 329, 241, 294, 244)
 disabled = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
