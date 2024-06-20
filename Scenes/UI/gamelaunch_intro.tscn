@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b65q1id5lots"]
+[gd_scene load_steps=8 format=3 uid="uid://cnjnv1hu1q03r"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/gamelaunch_intro.gd" id="1_1xcya"]
-[ext_resource type="Texture2D" uid="uid://cxi7bpol7gptd" path="res://Assets/Arts/Menu/kototyp.png" id="2_dl1sw"]
+[ext_resource type="Texture2D" uid="uid://bc4dha7l5jqff" path="res://Assets/Arts/Gui/Logo/Logo2.png" id="2_povxs"]
+[ext_resource type="Texture2D" uid="uid://di3d7vcgg8v1e" path="res://Assets/Arts/Gui/Logo/logo.png" id="3_alypp"]
 
 [sub_resource type="Animation" id="Animation_x5oa8"]
 resource_name = "Fade_in"
@@ -9,7 +10,7 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -19,28 +20,13 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_qyc45"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_ptlvg"]
 resource_name = "Fade_out"
 length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -48,6 +34,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qyc45"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gtyiv"]
@@ -60,16 +61,43 @@ _data = {
 [node name="GamelaunchIntro" type="Node2D"]
 script = ExtResource("1_1xcya")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(578.055, 416)
-scale = Vector2(1.29095, 1.29095)
-texture = ExtResource("2_dl1sw")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -85.0
-offset_top = -102.0
-offset_right = 1299.0
-offset_bottom = 763.0
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_alypp")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -648.5
+offset_top = -469.5
+offset_right = 648.5
+offset_bottom = 469.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+size_flags_horizontal = 4
+texture = ExtResource("2_povxs")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
