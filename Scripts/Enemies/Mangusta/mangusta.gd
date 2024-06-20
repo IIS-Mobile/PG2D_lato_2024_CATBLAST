@@ -16,6 +16,8 @@ const COOLDOWN = 3.0 # seconds
 
 @onready var animation_tree : AnimationTree = $AnimationTree
 
+@onready var state_machine := $AnimationTree.get("parameters/playback") as AnimationNodeStateMachinePlayback
+
 var timer = Timer.new()
 
 var timer2 = Timer.new()
@@ -42,20 +44,26 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
+
+	if velocity.x > 0.0001:
+		animation_tree.set("parameters/conditions/run", true)
+		animation_tree.set("parameters/conditions/idle", false)
+	else:
+		animation_tree.set("parameters/conditions/run", false)
+		animation_tree.set("parameters/conditions/idle", true)
 	
 	var direction = (player.global_position - global_position).normalized()
 	
-	# velocity.x = direction.x * SPEED
+	# if current anim playing is shooting then velocity.x = 0
+	if state_machine.get_current_node() == "shoot":
+		velocity.x = 0
+
+	velocity.x = direction.x * SPEED
 
 
 	# velocity.y = direction.y * SPEED
 	
-	# get current animation
-	# var shooting = animation_tree.get("parameters/OneShot/active")
-	# animation_tree.get
-	# if shooting:
-	# 	velocity.x = 0
-	# else:
+
 	get_node("AnimatedSprite2D").flip_h = direction.x < 0
 
 	# if player is in range
@@ -75,3 +83,12 @@ func spawn_bullet():
 	get_parent().add_child(bullet_instance)
 	animation_tree.set("parameters/conditions/shoot", false)
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.GUN_SHOT)
+
+
+func _on_animation_tree_animation_finished(anim_name):
+	if anim_name == "death":
+		death()
+
+func death():
+	velocity.x = 0
+	queue_free()

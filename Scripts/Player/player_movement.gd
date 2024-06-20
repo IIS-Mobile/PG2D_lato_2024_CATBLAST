@@ -282,11 +282,11 @@ func stand():
 func _on_weapon_area_2d_body_entered(body):
 	if body.is_in_group("metal_enemy"):
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_METAL)
-		body.queue_free()
+		# body.queue_free()
 		
 	if body.is_in_group("flesh_enemy"):
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_FLESH)
-		body.queue_free()
+		# body.queue_free()
 
 
 func _on_ghost_timer_timeout():
