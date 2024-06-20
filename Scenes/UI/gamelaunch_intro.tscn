@@ -70,29 +70,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("3_alypp")
-
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -648.5
-offset_top = -469.5
-offset_right = 648.5
-offset_bottom = 469.5
+offset_left = -213.0
+offset_top = -281.0
+offset_right = 2154.0
+offset_bottom = 1432.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.3, 0.3)
 size_flags_horizontal = 4
 texture = ExtResource("2_povxs")
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 30.0
+offset_top = 419.0
+offset_right = 539.0
+offset_bottom = 645.0
+texture = ExtResource("3_alypp")
+
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
