@@ -897,6 +897,42 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0.1)
 }
 tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sprite2D/Hitbox/Attack_R2:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Sprite2D/Hitbox/Attack_L2:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Sprite2D/Hitbox/Attack_L:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_pxbku"]
 resource_name = "Attack_Jump_L"
@@ -964,6 +1000,30 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0.1)
 }
 tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Sprite2D/Hitbox/Attack_L2:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Sprite2D/Hitbox/Attack_R2:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_fsue4"]
 resource_name = "Attack_Long"
@@ -1068,6 +1128,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [false, true, false, true, false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Sprite2D/Hitbox/Attack_L2:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_bktgy"]
 resource_name = "Attack_Run"
@@ -1146,6 +1218,42 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.6)
 }
 tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Sprite2D/Hitbox/Attack_L:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Sprite2D/Hitbox/Attack_L2:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Sprite2D/Hitbox/Attack_R2:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_6a8h0"]
 resource_name = "Attack_Run_L"
@@ -1236,6 +1344,30 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.6)
 }
 tracks/5/use_blend = true
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Sprite2D/Hitbox/Attack_R2:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Sprite2D/Hitbox/Attack_L2:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_nn1bs"]
 resource_name = "Crouch"
@@ -1793,7 +1925,31 @@ tracks/5/path = NodePath("../Sprite2D/Hitbox/Attack_R:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.49),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Sprite2D/Hitbox/Attack_R2:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Sprite2D/Hitbox/Attack_L2:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -1901,6 +2057,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Sprite2D/Hitbox/Attack_R2:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_a2pby"]
@@ -2174,6 +2342,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [true, false, true, false, true]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Sprite2D/Hitbox/Attack_L2:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Sprite2D/Hitbox/Attack_L:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_rr42w"]
 resource_name = "Attack_Run_L_Long"
@@ -2356,7 +2548,6 @@ position = Vector2(2, -5.44003)
 scale = Vector2(0.998, 0.968)
 sprite_frames = SubResource("SpriteFrames_328ho")
 animation = &"Attack_Run"
-frame = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
@@ -2390,6 +2581,7 @@ polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 3
 disabled = true
 
 [node name="Attack_L" type="CollisionPolygon2D" parent="Sprite2D/Hitbox"]
+visible = false
 position = Vector2(637, -1)
 rotation = 3.14159
 scale = Vector2(1, -1)
@@ -2397,6 +2589,7 @@ polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 3
 disabled = true
 
 [node name="Attack_L2" type="CollisionPolygon2D" parent="Sprite2D/Hitbox"]
+visible = false
 position = Vector2(637, -1)
 rotation = 3.14159
 scale = Vector2(1, -1)
@@ -2404,6 +2597,7 @@ polygon = PackedVector2Array(292, 233, 346, 233, 427.001, 251.999, 428.001, 273.
 disabled = true
 
 [node name="Attack_R2" type="CollisionPolygon2D" parent="Sprite2D/Hitbox"]
+visible = false
 polygon = PackedVector2Array(292, 233, 375, 233, 465, 247, 465, 265, 436, 286, 353, 294, 328, 295, 342, 275, 345, 251, 329, 241, 294, 244)
 disabled = true
 
