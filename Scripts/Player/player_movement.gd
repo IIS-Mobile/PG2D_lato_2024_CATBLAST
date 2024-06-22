@@ -213,6 +213,8 @@ func update_animations(direction, dir):
 					anim.current_animation != "Hurt"
 					and anim.current_animation != "Attack_Run"
 					and !anim.current_animation == "Attack_Run_L"
+					and !anim.current_animation == "Attack_Run_Long"
+					and !anim.current_animation == "Attack_Run_L_Long"
 				):
 					anim.play("Run")
 	else:
@@ -235,6 +237,8 @@ func update_animations(direction, dir):
 		(velocity.y > 0)
 		and !anim.current_animation == "Attack_Jump"
 		and !anim.current_animation == "Attack_Jump_L"
+		and !anim.current_animation == "Attack_Jump_Long"
+		and !anim.current_animation == "Attack_Jump_L_Long"
 		and !is_hurt
 	):
 		anim.play("Fall")
