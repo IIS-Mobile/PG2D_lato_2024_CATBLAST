@@ -86,10 +86,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 177.0
-offset_top = -135.0
-offset_right = 687.0
-offset_bottom = 135.0
+offset_left = 181.0
+offset_top = -110.0
+offset_right = 691.0
+offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 0
 rotation = 0.00265048
@@ -105,29 +105,84 @@ scale = Vector2(5.99777, 14.0471)
 sprite_frames = SubResource("SpriteFrames_sf3ut")
 animation = &"Glitch"
 
-[node name="SoundsSlider" type="HSlider" parent="."]
-z_index = 10
-layout_mode = 0
-offset_left = 190.0
-offset_top = 145.0
-offset_right = 986.0
-offset_bottom = 161.0
-
-[node name="HSlider" type="HSlider" parent="."]
-z_index = 10
-layout_mode = 0
-offset_left = 190.0
-offset_top = 311.0
-offset_right = 986.0
-offset_bottom = 327.0
-
 [node name="CheckBox" type="CheckBox" parent="."]
 z_index = 10
 layout_mode = 0
+offset_left = 852.0
+offset_top = 446.0
+offset_right = 966.0
+offset_bottom = 495.0
+
+[node name="Label" type="Label" parent="CheckBox"]
+layout_mode = 0
+offset_left = -608.0
+offset_right = -38.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 24
+text = "Toggle chromatic aberration"
+
+[node name="MasterScrollbar" type="HScrollBar" parent="."]
+z_index = 10
+layout_mode = 0
 offset_left = 244.0
-offset_top = 456.0
-offset_right = 358.0
-offset_bottom = 505.0
+offset_top = 107.0
+offset_right = 923.0
+offset_bottom = 127.0
+min_value = -36.0
+max_value = -6.0
+value = -6.0
+
+[node name="Label" type="Label" parent="MasterScrollbar"]
+layout_mode = 0
+offset_top = -64.0
+offset_right = 608.0
+offset_bottom = -15.0
+theme_override_font_sizes/font_size = 24
+text = "Master volume"
+
+[node name="MusicScrollbar" type="HScrollBar" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 244.0
+offset_top = 239.0
+offset_right = 923.0
+offset_bottom = 259.0
+min_value = -36.0
+max_value = -6.0
+value = -6.0
+
+[node name="Label" type="Label" parent="MusicScrollbar"]
+layout_mode = 0
+offset_top = -62.0
+offset_right = 679.0
+offset_bottom = -13.0
+theme_override_font_sizes/font_size = 24
+text = "Music volume"
+
+[node name="SoundScrollbar" type="HScrollBar" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 244.0
+offset_top = 361.0
+offset_right = 923.0
+offset_bottom = 381.0
+min_value = -36.0
+max_value = -6.0
+value = -6.0
+
+[node name="Label" type="Label" parent="SoundScrollbar"]
+layout_mode = 0
+offset_top = -61.0
+offset_right = 178.0
+offset_bottom = -12.0
+theme_override_font_sizes/font_size = 24
+text = "SFX volume"
 
 [connection signal="mouse_entered" from="Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_exited" from="MasterScrollbar" to="." method="_on_master_scrollbar_mouse_exited"]
+[connection signal="value_changed" from="MasterScrollbar" to="." method="_on_master_scrollbar_value_changed"]
+[connection signal="mouse_exited" from="MusicScrollbar" to="." method="_on_music_scrollbar_mouse_exited"]
+[connection signal="value_changed" from="MusicScrollbar" to="." method="_on_music_scrollbar_value_changed"]
+[connection signal="mouse_exited" from="SoundScrollbar" to="." method="_on_sound_scrollbar_mouse_exited"]
+[connection signal="value_changed" from="SoundScrollbar" to="." method="_on_sound_scrollbar_value_changed"]

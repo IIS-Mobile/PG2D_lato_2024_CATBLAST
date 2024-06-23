@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://gg5d0kkcpoey"]
+[gd_scene load_steps=24 format=3 uid="uid://gg5d0kkcpoey"]
 
 [ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="1_cqo7l"]
 [ext_resource type="Script" path="res://Scripts/GUI/pause_menu.gd" id="1_mbdmb"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://dyqoacn20kknd" path="res://Assets/Arts/Gui/Cyberphont/Cyberphont 2.0/Cyberphont 2.0.ttf" id="5_4pbly"]
 [ext_resource type="Texture2D" uid="uid://dbsw5s74r1blp" path="res://Assets/Arts/Gui/Menu buttons v2/menu_button01.png" id="6_ifdbg"]
 [ext_resource type="Texture2D" uid="uid://dx5ems6t3ms0p" path="res://Assets/Arts/Gui/crt screens/button crt/button 1 crt sprite.png" id="8_x4hq7"]
+[ext_resource type="PackedScene" uid="uid://h5l5g4auvpll" path="res://Scenes/UI/settings_menu.tscn" id="9_kuisl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_exq0e"]
 shader = ExtResource("1_cqo7l")
@@ -242,6 +243,8 @@ position = Vector2(255.63, 124.226)
 scale = Vector2(5.99777, 14.0471)
 sprite_frames = SubResource("SpriteFrames_lj3yl")
 animation = &"Glitch"
+
+[node name="SettingsMenu" parent="." instance=ExtResource("9_kuisl")]
 
 [connection signal="mouse_entered" from="Panel/Control/ResumeButton" to="." method="_on_resume_button_mouse_entered"]
 [connection signal="pressed" from="Panel/Control/ResumeButton" to="." method="_on_resume_button_pressed"]

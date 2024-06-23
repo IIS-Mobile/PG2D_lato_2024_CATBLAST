@@ -14,6 +14,7 @@ func _process(delta):
 func _on_play_button_pressed():
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.CONFIRM)
 	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+
 	#get_node("/root/MainMenu").queue_free()
 	#get_tree().root.add_child(scene_preload)
 

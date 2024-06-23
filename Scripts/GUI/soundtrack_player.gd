@@ -17,13 +17,14 @@ var TRACKS = {
 
 var current_theme: int = THEMES.PEACE
 var is_repeating: bool = true
-var volume_delta = 20
+
+@export var master_bus_name := "Master"
+@export var music_bus_name := "Music"
+
+@onready var master_bus := AudioServer.get_bus_index(master_bus_name)
+@onready var music_bus := AudioServer.get_bus_index(music_bus_name)
+
 @onready var streamPlayer: AudioStreamPlayer = $AudioStreamPlayer
-
-
-func _ready():
-	streamPlayer.volume_db -= volume_delta
-
 
 func play_soundtrack(theme: int, repeat_themes: bool = true):
 	if current_theme != theme or !streamPlayer.playing:
