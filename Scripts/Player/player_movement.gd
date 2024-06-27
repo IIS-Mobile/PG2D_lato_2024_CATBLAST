@@ -31,7 +31,6 @@ var hp_regen_timer_flag = false
 var shield_timer_flag = false
 var is_shield_implant_active = false
 var is_shield_up = false
-var vignette = true
 @onready var vignette_rect = $Vignette
 func _ready():
 	dashDirection = Vector2(1, 0)
@@ -59,10 +58,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
-	if vignette == false:
-		vignette_rect.visible = false
+	if GlobalVariables.CURRENT_LEVEL == 2:
+		vignette_rect.visible = true
 	else:
-		vignette_rect.visible = true	
+		vignette_rect.visible = false	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	is_hurt = anim.current_animation == "Hurt"
