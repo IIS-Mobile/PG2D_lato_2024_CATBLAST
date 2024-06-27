@@ -1669,7 +1669,7 @@ color_ramp = SubResource("GradientTexture1D_aio8a")
 shader = ExtResource("24_qke42")
 shader_parameter/debanding_dither = -0.01
 shader_parameter/blur = 0.5
-shader_parameter/vignette_darkness = -0.07
+shader_parameter/vignette_darkness = -0.11
 shader_parameter/vignette = ExtResource("25_arbs0")
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
@@ -1777,7 +1777,7 @@ wait_time = 10.0
 wait_time = 8.0
 
 [node name="Vignette" type="ColorRect" parent="."]
-visible = false
+z_index = 20
 material = SubResource("ShaderMaterial_284h0")
 offset_left = -413.0
 offset_top = -266.0
