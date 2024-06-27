@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://dudwfr5a2vkg"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/TestLevel.gd" id="1_8ygb6"]
-[ext_resource type="PackedScene" uid="uid://c1qxk2wkfx44j" path="res://Scenes/pink_neon.tscn" id="1_638po"]
+[ext_resource type="PackedScene" path="res://Scenes/pink_neon.tscn" id="1_638po"]
 [ext_resource type="PackedScene" uid="uid://dkfbae7sgq1mv" path="res://Scenes/SimpleEnemy.tscn" id="1_fh6g2"]
 [ext_resource type="Script" path="res://Scenes/WorldTiles.gd" id="3_g5v8t"]
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="3_nobln"]
@@ -11,13 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://d1rxkgas26uuw" path="res://Scenes/Enemies/Drone.tscn" id="7_atwmb"]
 [ext_resource type="PackedScene" uid="uid://curi4fmo2javc" path="res://Scenes/medbox.tscn" id="8_mnmam"]
 [ext_resource type="PackedScene" uid="uid://ccpfutqal1mee" path="res://Scenes/barbed_wire.tscn" id="9_ktp6b"]
-[ext_resource type="PackedScene" path="res://Scenes/ultra_elastic_joints_implant.tscn" id="11_w0px0"]
-[ext_resource type="PackedScene" path="res://Scenes/Enemies/Mangusta.tscn" id="13_l488a"]
-[ext_resource type="PackedScene" path="res://Scenes/circulatory_system_enhancement_implant.tscn" id="14_pg0i2"]
-[ext_resource type="PackedScene" path="res://Scenes/ribcage_energy_shield_implant.tscn" id="15_701m1"]
-[ext_resource type="PackedScene" path="res://Scenes/carbon_fiber_arm_muscles_implant.tscn" id="16_cwbj8"]
-[ext_resource type="PackedScene" path="res://Scenes/light_titanium_leg_bones_implant.tscn" id="17_wl4x5"]
-[ext_resource type="PackedScene" path="res://Scenes/full_precision_mechanical_arms_implant.tscn" id="18_stwsx"]
+[ext_resource type="PackedScene" uid="uid://qj5p7myu3odr" path="res://Scenes/ultra_elastic_joints_implant.tscn" id="11_w0px0"]
+[ext_resource type="PackedScene" uid="uid://b8i5mb7732elk" path="res://Scenes/Enemies/Mangusta.tscn" id="13_l488a"]
+[ext_resource type="PackedScene" uid="uid://dnseb26vwnfv" path="res://Scenes/circulatory_system_enhancement_implant.tscn" id="14_pg0i2"]
+[ext_resource type="PackedScene" uid="uid://f4j2hf6obifc" path="res://Scenes/ribcage_energy_shield_implant.tscn" id="15_701m1"]
+[ext_resource type="PackedScene" uid="uid://doocd7atilpat" path="res://Scenes/carbon_fiber_arm_muscles_implant.tscn" id="16_cwbj8"]
+[ext_resource type="PackedScene" uid="uid://22ct645ybp57" path="res://Scenes/light_titanium_leg_bones_implant.tscn" id="17_wl4x5"]
+[ext_resource type="PackedScene" uid="uid://cssoybtjgvjay" path="res://Scenes/full_precision_mechanical_arms_implant.tscn" id="18_stwsx"]
 
 [node name="TestLevel" type="Node2D"]
 script = ExtResource("1_8ygb6")
@@ -173,7 +173,7 @@ position = Vector2(1832, 560)
 position = Vector2(1250.73, 560.005)
 
 [node name="npc" parent="." instance=ExtResource("7_0wo3m")]
-position = Vector2(56, 573)
+position = Vector2(81, 564)
 
 [node name="Drone" parent="." instance=ExtResource("7_atwmb")]
 position = Vector2(1230.73, 385.675)
