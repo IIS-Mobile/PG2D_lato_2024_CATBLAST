@@ -1777,7 +1777,7 @@ wait_time = 10.0
 wait_time = 8.0
 
 [node name="Vignette" type="ColorRect" parent="."]
-z_index = 3
+z_index = 10
 material = SubResource("ShaderMaterial_284h0")
 offset_left = -413.0
 offset_top = -266.0
