@@ -22,6 +22,7 @@ var has_double_jumped = false
 var standing_cshape = preload("res://Assets/Collisions/player_standing_cshape.tres")
 var crouching_cshape = preload("res://Assets/Collisions/player_crouching_cshape.tres")
 var is_attacking
+var is_climbing = false
 var is_interaction
 var is_hurt
 var is_dying = false
@@ -58,8 +59,21 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
-	if not is_on_floor():
+	
+	
+	if not is_on_floor() and not is_climbing :
 		velocity.y += gravity * delta
+	
+	if is_climbing:
+		velocity.y = 0
+		if Input.is_action_pressed("ui_up"):
+			velocity.y = -GlobalVariables.PLAYER_SPEED * 0.3
+		elif Input.is_action_pressed("ui_down"):
+			velocity.y = GlobalVariables.PLAYER_SPEED * 0.3
+		
+	
+		
+		
 	is_hurt = anim.current_animation == "Hurt"
 	is_attacking = (
 		anim.current_animation == "Attack"
