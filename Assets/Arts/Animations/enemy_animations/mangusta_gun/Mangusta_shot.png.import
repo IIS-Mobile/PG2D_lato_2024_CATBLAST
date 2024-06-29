@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpkulf7m2gntj"
-path="res://.godot/imported/drone_idle.png-8e80df16ac1cce3741ab558af117e2c8.ctex"
+uid="uid://ddv2j2407xjto"
+path="res://.godot/imported/Mangusta_shot.png-0790648007884157a108d8cc9f70dbf2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Arts/Animations/drone_animations/drone_idle.png"
-dest_files=["res://.godot/imported/drone_idle.png-8e80df16ac1cce3741ab558af117e2c8.ctex"]
+source_file="res://Assets/Arts/Animations/enemy_animations/mangusta_gun/Mangusta_shot.png"
+dest_files=["res://.godot/imported/Mangusta_shot.png-0790648007884157a108d8cc9f70dbf2.ctex"]
 
 [params]
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5yj3p0tq8rr7"]
+[gd_scene load_steps=4 format=3 uid="uid://c5yj3p0tq8rr7"]
 
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="1_as2fn"]
 [ext_resource type="Texture2D" uid="uid://cr7u0awwr0fhh" path="res://Assets/Arts/Textures/lamp_light_texture.png" id="2_mvgdp"]
+[ext_resource type="Script" path="res://Scripts/street_lamp.gd" id="3_ttaqc"]
 
 [node name="StreetLamp" type="StaticBody2D"]
 z_index = 2
@@ -27,3 +28,4 @@ range_z_max = 6
 range_layer_min = -5
 range_layer_max = 9
 texture = ExtResource("2_mvgdp")
+script = ExtResource("3_ttaqc")

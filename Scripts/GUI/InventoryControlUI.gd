@@ -4,12 +4,12 @@ extends Control
 
 @onready var inventory_grid = $Inventory
 @onready var passive_slots = $Character
-#var is_inventory_open = false
 
 func _ready():
 	GlobalVariables.item_pickup_signal.connect(add_item)
 	GlobalVariables.item_equip_signal.connect(equip_item)
 	GlobalVariables.open_implant_inventory_signal.connect(open_inventory)
+	$LookupInfoLabel.hide()
 	close_inventory()
 
 func _process(delta):
@@ -18,11 +18,9 @@ func _process(delta):
 			open_inventory()
 			GlobalVariables.IS_INVENTORY_OPEN = true
 			GlobalVariables.INVENTORY_LOOKUP_FLAG = true
+			$LookupInfoLabel.show()
 		elif GlobalVariables.INVENTORY_LOOKUP_FLAG or GlobalVariables.IS_INVENTORY_OPEN:
-			GlobalVariables.IS_INVENTORY_OPEN = false
-			GlobalVariables.PLAYER_CONTROLS_ENABLED = true
-			GlobalVariables.IS_PLAYER_TALKING = false
-			GlobalVariables.INVENTORY_LOOKUP_FLAG = false
+			inventory_closing_cleanup()
 			SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.INVENTORY_CLOSE)
 			close_inventory()
 
@@ -31,12 +29,16 @@ func open_inventory():
 	
 func close_inventory():
 	inventory_controller.hide()
-	
-func _on_done_button_pressed():
+
+func inventory_closing_cleanup():
 	GlobalVariables.IS_INVENTORY_OPEN = false
 	GlobalVariables.PLAYER_CONTROLS_ENABLED = true
 	GlobalVariables.IS_PLAYER_TALKING = false
 	GlobalVariables.INVENTORY_LOOKUP_FLAG = false
+	$LookupInfoLabel.hide()
+
+func _on_done_button_pressed():
+	inventory_closing_cleanup()
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.INVENTORY_CLOSE)
 	close_inventory()
 
@@ -86,11 +88,9 @@ func equip_item(item_name):
 
 	var index = 0
 	var children_array = passive_slots.get_children()
-	print(children_array)
 	
-	print(get_child_count())
 	for i in children_array:
-		if i.filled == false:
+		if i.slot_type == desired_implant.slot_type:
 			index = i.get_index()
 			print(i.get_index())
 			break
