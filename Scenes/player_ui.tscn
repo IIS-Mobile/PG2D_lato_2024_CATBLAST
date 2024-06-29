@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://n1end3q3k1ow" path="res://Assets/Arts/Gui/Animated Loaders/Loading Sprite 04.png" id="5_2i1pb"]
 [ext_resource type="Texture2D" uid="uid://cbunmx2uabwyj" path="res://Assets/Arts/Gui/Menu buttons v2/skill_icons.png" id="6_bl7kf"]
 [ext_resource type="FontFile" uid="uid://cjc6s10hemgj7" path="res://Assets/Arts/Gui/Cyberphont/Dialogue Font/Fewture.ttf" id="7_yillm"]
-[ext_resource type="PackedScene" uid="uid://btf4sjejil12d" path="res://Scenes/UI/slot.tscn" id="8_a7x0m"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/slot.tscn" id="8_a7x0m"]
 [ext_resource type="PackedScene" uid="uid://ci4vdxds3764n" path="res://Scenes/UI/passive_slot.tscn" id="9_7dks4"]
 [ext_resource type="Texture2D" uid="uid://dmiaa6gxhs0y2" path="res://Assets/Arts/Gui/Inventory Pack/point.png" id="9_u7nq2"]
 
@@ -331,7 +331,7 @@ theme_override_fonts/font = ExtResource("7_yillm")
 theme_override_font_sizes/font_size = 30
 text = "Done"
 
-[node name="LookupInfoLabel" type="Label" parent="InventoryControlUI"]
+[node name="Label" type="Label" parent="InventoryControlUI"]
 z_index = 10
 layout_mode = 0
 offset_left = 648.0
@@ -340,7 +340,7 @@ offset_right = 828.0
 offset_bottom = 509.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_yillm")
-text = "Lookup mode. Talk to ripper to swap your chrome."
+text = "Lookup mode. Talk to ripper to swap your chrome"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
