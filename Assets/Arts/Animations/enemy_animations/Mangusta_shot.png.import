@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwko0giiqdius"
-path="res://.godot/imported/Mangusta_katana_run.png-f61b9686bfa73c6334c9f8b595c4482c.ctex"
+uid="uid://ddv2j2407xjto"
+path="res://.godot/imported/Mangusta_shot.png-affe32fe52e7386ab76fdc732775b12f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Arts/Animations/enemy_animations/mangusta_katana/Mangusta_katana_run.png"
-dest_files=["res://.godot/imported/Mangusta_katana_run.png-f61b9686bfa73c6334c9f8b595c4482c.ctex"]
+source_file="res://Assets/Arts/Animations/enemy_animations/Mangusta_shot.png"
+dest_files=["res://.godot/imported/Mangusta_shot.png-affe32fe52e7386ab76fdc732775b12f.ctex"]
 
 [params]
 

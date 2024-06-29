@@ -52,7 +52,7 @@ func jump(v : Vector2):
 	if prevTarget.position.y < target.position.y and target.fall_point:
 		return v.y
 	if prevTarget.position.y > target.position.y or jump_left_edge() or jump_right_edge():
-		#print("jump should be done!!!!!!")
+		print("jump should be done!!!!!!")
 		var h_distance = path_find.local_to_map(target.position).y - path_find.local_to_map(prevTarget.position).y
 		if abs(h_distance) <= 1:
 			return -350

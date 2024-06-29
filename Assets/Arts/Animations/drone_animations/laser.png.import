@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5g4rxduvjmbd"
-path="res://.godot/imported/drone_shot.png-d705267142bb1f1e6ec9346ab3214760.ctex"
+uid="uid://balw7fxeayl4k"
+path="res://.godot/imported/laser.png-1edb5947dc9d6660dae74c4565b22163.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Arts/Animations/enemy_animations/drone/drone_shot.png"
-dest_files=["res://.godot/imported/drone_shot.png-d705267142bb1f1e6ec9346ab3214760.ctex"]
+source_file="res://Assets/Arts/Animations/drone_animations/laser.png"
+dest_files=["res://.godot/imported/laser.png-1edb5947dc9d6660dae74c4565b22163.ctex"]
 
 [params]
 

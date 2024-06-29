@@ -17,8 +17,7 @@ func _ready():
 	$ItemDescription.hide()
 
 func _on_mouse_entered():
-	item_name = self.property["ITEM_NAME"]
-	if item_name != "":
+	if self.property["ITEM_NAME"] != "":
 		var slot : int = self.property["SLOT_TYPE"]
 		var slot_type : String
 		if slot == 1:
@@ -27,9 +26,9 @@ func _on_mouse_entered():
 			slot_type = "Body"
 		elif slot == 3:
 			slot_type = "Legs"
-		var label_text : String = item_name + "\n"
-		label_text += "Slot: " + slot_type + "\n\n"
-		label_text += GlobalVariables.IMPLANTS_DESCRIPTIONS[get_implant_id(item_name)] + "\n"
+		var label_text : String = self.property["ITEM_NAME"] + "\n"
+		label_text += "Slot: " + slot_type + "\n"
+		
 		label.text = label_text
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.ITEM_HOVER)
 		$ItemDescription.show()
@@ -37,19 +36,3 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	$ItemDescription.hide()
-	
-func get_implant_id(name: String):
-	match name:
-		"Full Precision Mechanical Arms":
-			return 0
-		"Carbon Fiber Arm Muscles":
-			return 1
-		"Circulatory System Enhancement":
-			return 2
-		"Ribcage Energy Shield":
-			return 3
-		"Ultra Elastic Joints":
-			return 4
-		"Light Titanium Leg Bones":
-			return 5
-

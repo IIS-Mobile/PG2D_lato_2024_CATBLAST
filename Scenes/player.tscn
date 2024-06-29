@@ -1,10 +1,10 @@
-[gd_scene load_steps=142 format=3 uid="uid://dmpuglts6my21"]
+[gd_scene load_steps=134 format=3 uid="uid://dmpuglts6my21"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_movement.gd" id="1_341yb"]
-[ext_resource type="Shader" path="res://Shaders/shield_up_shader.gdshader" id="1_j78mr"]
 [ext_resource type="Texture2D" uid="uid://ci8ylvh8xr8aj" path="res://Assets/Arts/Animations/player_animations/attack/player_attack.png" id="2_dl8vb"]
 [ext_resource type="PackedScene" uid="uid://b8gt0h1g6mdpr" path="res://Scenes/Dash.tscn" id="2_pehe5"]
 [ext_resource type="Texture2D" uid="uid://dmvbrs1pxtheg" path="res://Assets/Arts/Animations/player_animations/jump/player_jump.png" id="3_eyvv4"]
+[ext_resource type="Shader" path="res://Shaders/katana_color.gdshader" id="4_sgta2"]
 [ext_resource type="Texture2D" uid="uid://b107myecroshd" path="res://Assets/Arts/Animations/player_animations/idle/player_idle.png" id="4_v14h0"]
 [ext_resource type="Texture2D" uid="uid://ch0tquivsn6hc" path="res://Assets/Arts/Animations/player_animations/attack/player_attack_jump.png" id="5_63opr"]
 [ext_resource type="Texture2D" uid="uid://cfy7tx5o0bhue" path="res://Assets/Arts/Animations/player_animations/crouch/player_crouch_idle.png" id="5_dly5m"]
@@ -19,32 +19,14 @@
 [ext_resource type="Shape2D" uid="uid://bg7jxk4f6nboq" path="res://Assets/Collisions/player_standing_cshape.tres" id="11_ry7ov"]
 [ext_resource type="Texture2D" uid="uid://7ciu01ul58q6" path="res://Assets/Arts/Animations/player_animations/idle/player_interaction.png" id="11_ualut"]
 [ext_resource type="AudioStream" uid="uid://tpg5hvfsw3sc" path="res://Assets/Sounds/player/crouching footstep - Pixabay.wav" id="13_y0wou"]
-[ext_resource type="Texture2D" uid="uid://wvijqfygpj5o" path="res://Assets/Arts/Animations/player_animations/ladder/Player_ladder_anim.png" id="15_lmvhb"]
 [ext_resource type="PackedScene" uid="uid://2xi8ldx06rmb" path="res://Scenes/player_ui.tscn" id="17_dys1h"]
 [ext_resource type="AudioStream" uid="uid://b0levoeqrth12" path="res://Assets/Sounds/player/death - Pixabay.wav" id="18_fn83i"]
 [ext_resource type="AudioStream" uid="uid://beeqv3t33hc5a" path="res://Assets/Sounds/player/player damaged - Pixabay.wav" id="18_xpq8w"]
 [ext_resource type="Script" path="res://Scripts/Player/KillAuraFix.gd" id="22_1smnd"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uygxu"]
-shader = ExtResource("1_j78mr")
-shader_parameter/effect_color = Color(0.2, 0.3, 0.8, 1)
-shader_parameter/octave_count = 10
-shader_parameter/amp_start = 0.5
-shader_parameter/amp_coeff = 0.5
-shader_parameter/freq_coeff = 2.0
-shader_parameter/speed = 0.5
-shader_parameter/effect_enabled = false
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yvufx"]
-resource_local_to_scene = true
-shader = ExtResource("1_j78mr")
-shader_parameter/effect_color = Color(0, 0.337255, 0.772549, 1)
-shader_parameter/octave_count = 20
-shader_parameter/amp_start = 0.5
-shader_parameter/amp_coeff = 0.5
-shader_parameter/freq_coeff = 2.0
-shader_parameter/speed = 0.5
-shader_parameter/effect_enabled = false
+shader = ExtResource("4_sgta2")
+shader_parameter/color_tint = Color(0, 0.827451, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hsffx"]
 atlas = ExtResource("2_dl8vb")
@@ -389,30 +371,6 @@ region = Rect2(720, 0, 120, 120)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hf2q0"]
 atlas = ExtResource("2_dl8vb")
 region = Rect2(840, 0, 120, 120)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5wsfb"]
-atlas = ExtResource("15_lmvhb")
-region = Rect2(0, 0, 72, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5qlft"]
-atlas = ExtResource("15_lmvhb")
-region = Rect2(72, 0, 72, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i2b6e"]
-atlas = ExtResource("15_lmvhb")
-region = Rect2(144, 0, 72, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ddy1r"]
-atlas = ExtResource("15_lmvhb")
-region = Rect2(216, 0, 72, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jo6y5"]
-atlas = ExtResource("15_lmvhb")
-region = Rect2(288, 0, 72, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ywyeo"]
-atlas = ExtResource("15_lmvhb")
-region = Rect2(360, 0, 72, 90)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_328ho"]
 animations = [{
@@ -761,29 +719,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5wsfb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5qlft")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i2b6e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ddy1r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jo6y5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ywyeo")
-}],
-"loop": true,
-"name": &"climb",
 "speed": 5.0
 }]
 
@@ -1713,7 +1648,6 @@ color_ramp = SubResource("GradientTexture1D_aio8a")
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 3
-material = SubResource("ShaderMaterial_uygxu")
 position = Vector2(112, 185)
 script = ExtResource("1_341yb")
 ghost_node = ExtResource("2_pehe5")
@@ -1731,8 +1665,7 @@ material = SubResource("ShaderMaterial_yvufx")
 position = Vector2(2, -5.44003)
 scale = Vector2(0.998, 0.968)
 sprite_frames = SubResource("SpriteFrames_328ho")
-animation = &"climb"
-frame_progress = 0.967411
+animation = &"Jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
