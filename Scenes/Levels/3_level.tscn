@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://djsl3gdn8xo4c" path="res://Scripts/Global/ladder.tscn" id="4_2ul42"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qo3op"]
-size = Vector2(5901.5, 57)
+size = Vector2(7509.5, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfwl2"]
 size = Vector2(286.31, 2.91666)
@@ -67,7 +67,7 @@ scale = Vector2(0.689, 0.463)
 position = Vector2(1494.5, 621.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrainTiles/StaticBody2D"]
-position = Vector2(-2234.75, -0.5)
+position = Vector2(-3038.75, -0.5)
 shape = SubResource("RectangleShape2D_qo3op")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TrainTiles/StaticBody2D"]
@@ -91,5 +91,5 @@ position = Vector2(-613.25, 436.75)
 shape = SubResource("RectangleShape2D_pw0od")
 debug_color = Color(0.52549, 0.560784, 0.301961, 0.0941176)
 
-[connection signal="area_entered" from="TrainTiles/TrainArea" to="TrainTiles" method="_on_train_area_area_entered"]
-[connection signal="area_exited" from="TrainTiles/TrainArea" to="TrainTiles" method="_on_train_area_area_exited"]
+[connection signal="body_entered" from="TrainTiles/TrainArea" to="TrainTiles" method="_on_train_area_body_entered"]
+[connection signal="body_exited" from="TrainTiles/TrainArea" to="TrainTiles" method="_on_train_area_body_exited"]

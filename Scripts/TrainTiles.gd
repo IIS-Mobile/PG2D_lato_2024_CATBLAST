@@ -5,18 +5,15 @@ extends TileMap
 
 func _process(delta):
 	if GlobalVariables.TRAIN_SPEED != 0:
-		if (player.is_on_floor() || GlobalVariables.IS_PLAYER_CLIMBING) && is_in_train_area:
-			player.position.x += GlobalVariables.TRAIN_SPEED * delta
-			
-		
-		
+		if is_in_train_area:
+			player.position.x += GlobalVariables.TRAIN_SPEED * delta		
 		position.x += GlobalVariables.TRAIN_SPEED * delta
 
+func _on_train_area_body_entered(body):
+	if body.is_in_group("player"):
+		is_in_train_area = true
 
-func _on_train_area_area_exited(area):
-	print("POWSZEEEeeeeeeeeEDL")
-	is_in_train_area =  false
 
-func _on_train_area_area_entered(area):
-	print("WSZEEeeeeeeeeEEDL")
-	is_in_train_area =  true
+func _on_train_area_body_exited(body):
+	if body.is_in_group("player"):
+		is_in_train_area = false
