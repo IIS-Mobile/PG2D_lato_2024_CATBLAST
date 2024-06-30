@@ -22,7 +22,7 @@ var has_double_jumped = false
 var standing_cshape = preload("res://Assets/Collisions/player_standing_cshape.tres")
 var crouching_cshape = preload("res://Assets/Collisions/player_crouching_cshape.tres")
 var is_attacking
-var is_climbing = false
+
 var is_interaction
 var is_hurt
 var is_dying = false
@@ -60,11 +60,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
 	
-	
-	if not is_on_floor() and not is_climbing :
+	if not is_on_floor() and not GlobalVariables.IS_PLAYER_CLIMBING :
 		velocity.y += gravity * delta
 	
-	if is_climbing:
+	if GlobalVariables.IS_PLAYER_CLIMBING:
 		velocity.y = 0
 		if Input.is_action_pressed("ui_up"):
 			velocity.y = -GlobalVariables.PLAYER_SPEED * 0.3
@@ -94,7 +93,7 @@ func _physics_process(delta):
 			get_tree().reload_current_scene()
 		velocity.x = sign(velocity.x) * KNOCKBACK_POWER/2
 		if is_on_floor():
-			velocity.x = 0
+			velocity.x = 0 
 		move_and_slide()
 		return
 
@@ -147,6 +146,11 @@ func _physics_process(delta):
 			move_and_slide()
 	elif not GlobalVariables.PLAYER_CONTROLS_ENABLED:
 		anim.play("Idle")
+		
+
+		
+	
+	
 	#
 
 #=========================================================
@@ -207,9 +211,9 @@ func update_animations(direction, dir):
 			velocity = dashDirection.normalized() * DASH_SPEED
 		else:
 			if is_crouching:
-				velocity.x = direction * GlobalVariables.PLAYER_SPEED * 0.5
+				velocity.x =  direction * GlobalVariables.PLAYER_SPEED * 0.5
 			else:
-				velocity.x = direction * GlobalVariables.PLAYER_SPEED
+				velocity.x =  direction * GlobalVariables.PLAYER_SPEED
 			if (
 				(velocity.y == 0)
 				and !anim.current_animation == "Attack_Run"
@@ -341,6 +345,11 @@ func _on_hurtbox_area_entered(area):
 		if is_shield_implant_active:
 			$RechargableShieldTimer.start()
 			shield_timer_flag = false
+			
+			
+	if area.name == "KillHitbox":
+		if GlobalVariables.CURRENT_HEALTH != 0:
+			GlobalVariables.CURRENT_HEALTH = 0
 
 func knockback():
 	velocity.x = sign(velocity.x) * (-1.0) * KNOCKBACK_POWER *3

@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bdmgbj8isv4dn"]
+[gd_scene load_steps=10 format=3 uid="uid://bdmgbj8isv4dn"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/lobby_level.gd" id="1_ti545"]
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="2_bxd37"]
 [ext_resource type="PackedScene" uid="uid://dgoam2f5xpmgo" path="res://Scenes/npc.tscn" id="3_tyu8v"]
 [ext_resource type="PackedScene" uid="uid://ccc7l762u7ib4" path="res://Scenes/npc_final.tscn" id="4_bjwkj"]
-[ext_resource type="PackedScene" uid="uid://djsl3gdn8xo4c" path="res://Scripts/Global/ladder.tscn" id="5_5oc8q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_faa5o"]
 size = Vector2(432, 15)
@@ -84,6 +83,3 @@ color = Color(0.364706, 0.364706, 0.364706, 1)
 energy = 1.99
 range_z_max = 5
 texture = SubResource("GradientTexture2D_a0v8c")
-
-[node name="Ladder" parent="." instance=ExtResource("5_5oc8q")]
-position = Vector2(386, 148)
