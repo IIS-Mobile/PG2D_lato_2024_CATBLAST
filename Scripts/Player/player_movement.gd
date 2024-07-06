@@ -22,7 +22,6 @@ var has_double_jumped = false
 var standing_cshape = preload("res://Assets/Collisions/player_standing_cshape.tres")
 var crouching_cshape = preload("res://Assets/Collisions/player_crouching_cshape.tres")
 var is_attacking
-var is_climbing = false
 var is_interaction
 var is_hurt
 var is_dying = false
@@ -32,7 +31,7 @@ var hp_regen_timer_flag = false
 var shield_timer_flag = false
 var is_shield_implant_active = false
 var is_shield_up = false
-
+@onready var vignette_rect = $Vignette
 func _ready():
 	dashDirection = Vector2(1, 0)
 	print(self.get_path())
@@ -59,21 +58,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
-	
-	
-	if not is_on_floor() and not is_climbing :
+	if GlobalVariables.CURRENT_LEVEL == 2:
+		vignette_rect.visible = true
+	else:
+		vignette_rect.visible = false	
+	if not is_on_floor():
 		velocity.y += gravity * delta
-	
-	if is_climbing:
-		velocity.y = 0
-		if Input.is_action_pressed("ui_up"):
-			velocity.y = -GlobalVariables.PLAYER_SPEED * 0.3
-		elif Input.is_action_pressed("ui_down"):
-			velocity.y = GlobalVariables.PLAYER_SPEED * 0.3
-		
-	
-		
-		
 	is_hurt = anim.current_animation == "Hurt"
 	is_attacking = (
 		anim.current_animation == "Attack"
