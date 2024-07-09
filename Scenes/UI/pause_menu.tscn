@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://gg5d0kkcpoey"]
+[gd_scene load_steps=23 format=3 uid="uid://gg5d0kkcpoey"]
 
 [ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="1_cqo7l"]
 [ext_resource type="Script" path="res://Scripts/GUI/pause_menu.gd" id="1_mbdmb"]
@@ -8,33 +8,32 @@
 [ext_resource type="FontFile" uid="uid://dyqoacn20kknd" path="res://Assets/Arts/Gui/Cyberphont/Cyberphont 2.0/Cyberphont 2.0.ttf" id="5_4pbly"]
 [ext_resource type="Texture2D" uid="uid://dbsw5s74r1blp" path="res://Assets/Arts/Gui/Menu buttons v2/menu_button01.png" id="6_ifdbg"]
 [ext_resource type="Texture2D" uid="uid://dx5ems6t3ms0p" path="res://Assets/Arts/Gui/crt screens/button crt/button 1 crt sprite.png" id="8_x4hq7"]
-[ext_resource type="PackedScene" uid="uid://h5l5g4auvpll" path="res://Scenes/UI/settings_menu.tscn" id="9_kuisl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_exq0e"]
 shader = ExtResource("1_cqo7l")
 shader_parameter/amount = 1.471
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hfw4w"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ue2v"]
 texture = ExtResource("2_x5g13")
 modulate_color = Color(1, 1, 1, 0)
 
 [sub_resource type="Theme" id="Theme_4ql4f"]
-Panel/styles/panel = SubResource("StyleBoxTexture_hfw4w")
+Panel/styles/panel = SubResource("StyleBoxTexture_5ue2v")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wmhwv"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_abocp"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ms851"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4v58w"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ixq0h"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_noroc"]
 texture = ExtResource("6_ifdbg")
 region_rect = Rect2(0, 0, 85, 18)
 modulate_color = Color(0, 1, 1, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vonhj"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7foau"]
 texture = ExtResource("6_ifdbg")
 region_rect = Rect2(0, 0, 85, 18)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_upm00"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8pqne"]
 texture = ExtResource("6_ifdbg")
 region_rect = Rect2(86, 0, 85, 18)
 
@@ -59,11 +58,11 @@ Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 40
 Button/fonts/font = ExtResource("3_nghtd")
-Button/styles/disabled = SubResource("StyleBoxTexture_wmhwv")
-Button/styles/focus = SubResource("StyleBoxTexture_ms851")
-Button/styles/hover = SubResource("StyleBoxTexture_ixq0h")
-Button/styles/normal = SubResource("StyleBoxTexture_vonhj")
-Button/styles/pressed = SubResource("StyleBoxTexture_upm00")
+Button/styles/disabled = SubResource("StyleBoxTexture_abocp")
+Button/styles/focus = SubResource("StyleBoxTexture_4v58w")
+Button/styles/hover = SubResource("StyleBoxTexture_noroc")
+Button/styles/normal = SubResource("StyleBoxTexture_7foau")
+Button/styles/pressed = SubResource("StyleBoxTexture_8pqne")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vlma0"]
 atlas = ExtResource("8_x4hq7")
@@ -185,12 +184,10 @@ rotation = 0.00265048
 scale = Vector2(1.23925, 0.544463)
 text = "RESUME "
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/Control/ResumeButton"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/Control"]
 modulate = Color(1, 1, 1, 0.678431)
-position = Vector2(254.522, 120.735)
-rotation = -0.00603269
-scale = Vector2(5.96254, 14.7278)
-skew = 0.00486815
+position = Vector2(490.914, 102.615)
+scale = Vector2(7.38897, 8.01877)
 sprite_frames = SubResource("SpriteFrames_lj3yl")
 animation = &"Glitch"
 
@@ -210,12 +207,10 @@ scale = Vector2(1.23925, 0.544463)
 text = "OPTIONS
 "
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Panel/Control/OptionsButton"]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Panel/Control"]
 modulate = Color(1, 1, 1, 0.678431)
-position = Vector2(255.504, 125.173)
-rotation = -0.00603269
-scale = Vector2(6.0085, 14.7282)
-skew = 0.00486815
+position = Vector2(494.545, 263.595)
+scale = Vector2(7.44592, 8.019)
 sprite_frames = SubResource("SpriteFrames_lj3yl")
 animation = &"Glitch"
 
@@ -237,14 +232,13 @@ scale = Vector2(1.239, 0.544)
 tooltip_text = "This is quit"
 text = "QUIT"
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Panel/Control/Quit"]
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Panel/Control"]
 modulate = Color(1, 1, 1, 0.678431)
-position = Vector2(255.63, 124.226)
-scale = Vector2(5.99777, 14.0471)
+position = Vector2(494.638, 422.792)
+rotation = 0.00265048
+scale = Vector2(7.43124, 7.6416)
 sprite_frames = SubResource("SpriteFrames_lj3yl")
 animation = &"Glitch"
-
-[node name="SettingsMenu" parent="." instance=ExtResource("9_kuisl")]
 
 [connection signal="mouse_entered" from="Panel/Control/ResumeButton" to="." method="_on_resume_button_mouse_entered"]
 [connection signal="pressed" from="Panel/Control/ResumeButton" to="." method="_on_resume_button_pressed"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://dudwfr5a2vkg"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/TestLevel.gd" id="1_8ygb6"]
-[ext_resource type="PackedScene" path="res://Scenes/pink_neon.tscn" id="1_638po"]
+[ext_resource type="PackedScene" uid="uid://c1qxk2wkfx44j" path="res://Scenes/pink_neon.tscn" id="1_638po"]
 [ext_resource type="PackedScene" uid="uid://dkfbae7sgq1mv" path="res://Scenes/SimpleEnemy.tscn" id="1_fh6g2"]
 [ext_resource type="Script" path="res://Scenes/WorldTiles.gd" id="3_g5v8t"]
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="3_nobln"]
@@ -173,7 +173,7 @@ position = Vector2(1832, 560)
 position = Vector2(1250.73, 560.005)
 
 [node name="npc" parent="." instance=ExtResource("7_0wo3m")]
-position = Vector2(81, 564)
+position = Vector2(56, 573)
 
 [node name="Drone" parent="." instance=ExtResource("7_atwmb")]
 position = Vector2(1230.73, 385.675)

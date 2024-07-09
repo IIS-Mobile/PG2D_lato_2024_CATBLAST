@@ -14,9 +14,9 @@ const COOLDOWN = 3.0 # seconds
 
 @onready var bullet = preload("res://Scenes/Enemies/gun_bullet.tscn")
 
-@onready var animation_tree : AnimationTree = $AnimationTree
+@onready var laser = preload("res://Scenes/Enemies/laser.tscn")
 
-@onready var state_machine := $AnimationTree.get("parameters/playback") as AnimationNodeStateMachinePlayback
+@onready var animation_tree : AnimationTree = $AnimationTree
 
 var timer = Timer.new()
 
@@ -31,11 +31,10 @@ func _ready():
 	timer2.set_wait_time(0.5)
 	timer2.set_one_shot(true)
 	add_child(timer2)
-	# var callable = Callable(self, "spawn_bullet")
-	# timer2.connect("timeout", callable)
+	var callable = Callable(self, "spawn_bullet")
+	# var callable = Callable(self, "spawn_laser")
+	timer2.connect("timeout", callable)
 	animation_tree.active = true
-	# animation_player.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
-
 
 	
 
@@ -44,33 +43,24 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
-	if velocity.x > 0.0001:
-		animation_tree.set("parameters/conditions/run", true)
-		animation_tree.set("parameters/conditions/idle", false)
-	else:
-		animation_tree.set("parameters/conditions/run", false)
-		animation_tree.set("parameters/conditions/idle", true)
 	
 	var direction = (player.global_position - global_position).normalized()
 	
-	# if current anim playing is shooting then velocity.x = 0
-	if state_machine.get_current_node() == "shoot":
-		velocity.x = 0
-
 	velocity.x = direction.x * SPEED
-
-
 	# velocity.y = direction.y * SPEED
 	
-
-	get_node("AnimatedSprite2D").flip_h = direction.x < 0
+	# get current animation
+	var shooting = animation_tree.get("parameters/OneShot/active")
+	if shooting:
+		velocity.x = 0
+	else:
+		get_node("AnimatedSprite2D").flip_h = direction.x < 0
 
 	# if player is in range
 	if player.global_position.distance_to(global_position) < RANGE:
 		# if timer is counting
 		if timer.is_stopped():
-			animation_tree.set("parameters/conditions/shoot", true)
+			animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)	
 			timer2.start()
 			timer.start()
 
@@ -81,14 +71,13 @@ func spawn_bullet():
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.global_position = global_position
 	get_parent().add_child(bullet_instance)
-	animation_tree.set("parameters/conditions/shoot", false)
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.GUN_SHOT)
+	# get_node("AnimatedSprite2D/AnimationPlayer").play("shoot")
+	# animation tree set shooting parameter to change anim
 
-
-func _on_animation_tree_animation_finished(anim_name):
-	if anim_name == "death":
-		death()
-
-func death():
-	velocity.x = 0
-	queue_free()
+func spawn_laser():
+	var laser_instance = laser.instantiate()
+	laser_instance.global_position = global_position
+	get_parent().add_child(laser_instance)
+	# get_node("AnimatedSprite2D/AnimationPlayer").play("shoot")
+	# animation tree set shooting parameter to change anim

@@ -1,11 +1,9 @@
 extends Node2D
 class_name SOUNDTRACKPLAYER_CLASS
 
-enum THEMES { PEACE, BATTLE, MENU, INTRO }
+enum THEMES { PEACE, BATTLE }
 
 var TRACKS = {
-	THEMES.INTRO: [preload("res://Assets/Sounds/music/intro sound - moodmode.ogg")],
-	THEMES.MENU: [preload("res://Assets/Sounds/music/main menu theme - GreenStarFire.ogg")],
 	THEMES.PEACE: [preload("res://Assets/Sounds/music/predator and prey - Yurika.ogg")],
 	THEMES.BATTLE:
 	[
@@ -17,14 +15,13 @@ var TRACKS = {
 
 var current_theme: int = THEMES.PEACE
 var is_repeating: bool = true
-
-@export var master_bus_name := "Master"
-@export var music_bus_name := "Music"
-
-@onready var master_bus := AudioServer.get_bus_index(master_bus_name)
-@onready var music_bus := AudioServer.get_bus_index(music_bus_name)
-
+var volume_delta = 20
 @onready var streamPlayer: AudioStreamPlayer = $AudioStreamPlayer
+
+
+func _ready():
+	streamPlayer.volume_db -= volume_delta
+
 
 func play_soundtrack(theme: int, repeat_themes: bool = true):
 	if current_theme != theme or !streamPlayer.playing:

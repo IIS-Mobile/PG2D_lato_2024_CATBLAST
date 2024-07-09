@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://2r70p772vgn4"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Drone/laser.gd" id="1_4eqwr"]
-[ext_resource type="Texture2D" path="res://Assets/Arts/Animations/drone_animations/laser.png" id="2_h3dkt"]
+[ext_resource type="Texture2D" uid="uid://balw7fxeayl4k" path="res://Assets/Arts/Animations/drone_animations/laser.png" id="2_h3dkt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbc7i"]
 size = Vector2(34, 6)

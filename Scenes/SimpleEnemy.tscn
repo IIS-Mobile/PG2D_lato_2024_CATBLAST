@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dkfbae7sgq1mv"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/PathFindingEnemy.gd" id="1_ipugj"]
-[ext_resource type="Texture2D" uid="uid://cpkulf7m2gntj" path="res://Assets/Arts/Animations/enemy_animations/drone/drone_idle.png" id="2_cv6aq"]
+[ext_resource type="Texture2D" uid="uid://cpkulf7m2gntj" path="res://Assets/Arts/Animations/drone_animations/drone_idle.png" id="2_cv6aq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3doo"]
 atlas = ExtResource("2_cv6aq")

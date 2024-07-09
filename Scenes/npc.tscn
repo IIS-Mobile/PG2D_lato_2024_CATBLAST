@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://dgoam2f5xpmgo"]
 
 [ext_resource type="Script" path="res://Scripts/NPC/npc.gd" id="1_hq0fk"]
-[ext_resource type="Texture2D" uid="uid://cwlabtumomi5b" path="res://Assets/Arts/Animations/npc_animations/ripperdoc.png" id="2_wle8t"]
+[ext_resource type="Texture2D" uid="uid://cwlabtumomi5b" path="res://Assets/Arts/Animations/npc_animation/ripperdoc.png" id="2_wle8t"]
 [ext_resource type="PackedScene" uid="uid://c3ml4t1h75tj0" path="res://Scenes/textbox.tscn" id="3_jwlgb"]
 [ext_resource type="Script" path="res://Scripts/NPC/Smoke_Light.gd" id="3_sc5rd"]
 
