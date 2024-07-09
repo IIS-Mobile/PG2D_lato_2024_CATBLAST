@@ -11,7 +11,6 @@ size = Vector2(20, 67)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvkg6"]
 size = Vector2(622, 30)
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_faa5o"]
 size = Vector2(432, 15)
 
@@ -88,23 +87,3 @@ shape = SubResource("RectangleShape2D_itc6d")
 
 [node name="npc_final" parent="." instance=ExtResource("4_bjwkj")]
 position = Vector2(932, 301)
-
-[node name="LinearWhiteLight6" type="PointLight2D" parent="."]
-position = Vector2(1291.5, 162.5)
-scale = Vector2(3.98438, 0.890625)
-range_z_max = 5
-texture = SubResource("GradientTexture2D_c6gpp")
-
-[node name="LinearWhiteLight7" type="PointLight2D" parent="."]
-position = Vector2(907, 158.5)
-scale = Vector2(2.5, 1.04688)
-range_z_max = 5
-texture = SubResource("GradientTexture2D_c6gpp")
-
-[node name="YellowLight3" type="PointLight2D" parent="."]
-position = Vector2(173.625, 72.5)
-scale = Vector2(3.38672, 0.734375)
-color = Color(0.364706, 0.364706, 0.364706, 1)
-energy = 1.99
-range_z_max = 5
-texture = SubResource("GradientTexture2D_a0v8c")

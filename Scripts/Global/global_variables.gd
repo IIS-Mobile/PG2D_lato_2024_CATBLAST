@@ -42,44 +42,28 @@ var INVENTORY_LOOKUP_FLAG = false
 var IS_INVENTORY_OPEN = false
 var PLAYER_CONTROLS_ENABLED = true
 var IS_PLAYER_TALKING = false
-var IS_PLAYER_CLIMBING = false
 var CAN_PLAYER_DASH = true
 var PLAYER_SPEED = 300.0
-var TRAIN_SPEED = 0
+
 var FIRST_DIALOGUE_FLAG = false
 
 var MAX_HEALTH: int = 7
 var CURRENT_HEALTH: int = MAX_HEALTH
 
 #CURRENT_LEVEL defines the level that loads upon launching the game
-var CURRENT_LEVEL: int = -1
-var LEVEL_TO_CHANGE: int = 0
+var CURRENT_LEVEL: int = 4
+var LEVEL_TO_CHANGE: int = CURRENT_LEVEL
 
 var LEVELS = [
 	LevelObject.new("res://Scenes/Levels/LobbyLevel.tscn", Vector2(441, 317)),
 	LevelObject.new("res://Scenes/Levels/1Level.tscn", Vector2(700, 33)),
   	LevelObject.new("res://Scenes/Levels/2Level.tscn", Vector2(-40, 100)),
-	LevelObject.new("res://Scenes/Levels/3_level.tscn", Vector2(407, 487)),
+	LevelObject.new("res://Scenes/Levels/PathfindingTestLevel.tscn", Vector2(541, 346)),
 	LevelObject.new("res://Scenes/Levels/TestLevel.tscn", Vector2(0, 368)),
 ]
 
-var IMPLANTS_DESCRIPTIONS = [
-	"Ripperdoc's wet dream tuned up to match Solo's needs. Slaughter 'em before they even think your arms seem off.
-	(Increased attack range)",
-	"This chrome's better than ganic muscles. Here's how to get Pudzianowski's looks and Musashi's agility.
-	(Increased attack speed)",
-	"Did you know how lousy hearts are? Do yaself a favor and chrome ya pump up a bit. Would be a pity if you flatlined from Enduro overdose.
-	(Passive health regeneration - 1 HP/10 s)",
-	"Ever wanted to feel like goddamn Raijin? Meet the R.E.S. You'll not be the only one shocked how effective it is
-	(Shield that absorbs all damage from one source. 10 s cooldown, reset if damaged)",
-	"Bouncing off the air? Now that's trippy. Chrome up and try to reach the clouds... don't become a wet stain on the walk, tho.
-	(Jump once while midair)",
-	"They won't kill what they can't see. Make 'em see you only once your blade sunk deep into they necks.
-	(Increased movement speed)"
-]
-
 var IMPLANTS = [
-	ImplantObject.new("Full Precision Mechanical Arms","res://Assets/Arts/Items/arm_implant1.png", 0, 1, true, true),
+	ImplantObject.new("Full Precision Mechanical Arms","res://Assets/Arts/Items/arm_implant1.png", 0, 1, false, false),
 	ImplantObject.new("Carbon Fiber Arm Muscles","res://Assets/Arts/Items/arm_implant2.png", 0, 1, false, false),
 	ImplantObject.new("Circulatory System Enhancement","res://Assets/Arts/Items/chest_implant1.png", 0, 2, false, false),
 	ImplantObject.new("Ribcage Energy Shield","res://Assets/Arts/Items/chest_implant2.png", 0, 2, false, false),

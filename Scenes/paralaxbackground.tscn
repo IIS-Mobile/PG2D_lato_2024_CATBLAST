@@ -19,6 +19,7 @@ gradient = SubResource("Gradient_g44j0")
 fill_from = Vector2(1, 1)
 
 [node name="Background" type="ParallaxBackground"]
+layer = 0
 
 [node name="BaseColorLayer" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.1, 0.1)

@@ -1,10 +1,6 @@
 extends Node2D
 class_name SFX_CLASS
 
-@export var sfx_bus_name := "SFX"
-
-@onready var sfx_bus := AudioServer.get_bus_index(sfx_bus_name)
-
 const KATANA_SLASH_METAL_PATH = "res://Assets/Sounds/player/slash against metal - mixkit.wav"
 const KATANA_SLASH_FLESH_PATH = "res://Assets/Sounds/player/slash against flesh - mixkit.wav"
 const DASH_PATH = "res://Assets/Sounds/player/dash - danlew69.wav"
@@ -51,6 +47,7 @@ var PLAYSOUND = {
 
 @onready var audio_player
 @onready var players = []
+var volume_delta = 20
 
 var playersN = 16
 var index
@@ -59,11 +56,10 @@ func _ready():
 	index = 0
 	for _i in range(playersN):
 		var player : AudioStreamPlayer = AudioStreamPlayer.new()
-		player.set_bus(sfx_bus_name)
+		player.volume_db -= volume_delta
 		players.append(player)
 		add_child(player)
 
-		
 func get_player():
 	var player : AudioStreamPlayer = players[index]
 	index = (index + 1) % playersN

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://doewd1xob6x63"]
+[gd_scene load_steps=6 format=3 uid="uid://doewd1xob6x63"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/main.gd" id="1_gejnf"]
 [ext_resource type="AudioStream" uid="uid://blb85uuhc3n38" path="res://Assets/Sounds/music/main menu theme - GreenStarFire.ogg" id="2_lb3jg"]
 [ext_resource type="PackedScene" uid="uid://gg5d0kkcpoey" path="res://Scenes/UI/pause_menu.tscn" id="4_ti4mb"]
 [ext_resource type="PackedScene" uid="uid://dmpuglts6my21" path="res://Scenes/player.tscn" id="5_8iwyy"]
+[ext_resource type="PackedScene" uid="uid://dudwfr5a2vkg" path="res://Scenes/Levels/TestLevel.tscn" id="8_ddylw"]
 
 [node name="GameManager" type="Node2D"]
 process_mode = 3
@@ -24,4 +25,7 @@ process_mode = 1
 position = Vector2(0, 368)
 
 [node name="CurrentLevel" type="Node2D" parent="."]
+process_mode = 1
+
+[node name="TestLevel" parent="CurrentLevel" instance=ExtResource("8_ddylw")]
 process_mode = 1

@@ -1,8 +1,8 @@
 [gd_scene load_steps=20 format=3 uid="uid://d1rxkgas26uuw"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Drone/drone.gd" id="1_kaeg1"]
-[ext_resource type="Texture2D" path="res://Assets/Arts/Animations/drone_animations/drone_idle.png" id="2_lf7iw"]
-[ext_resource type="Texture2D" path="res://Assets/Arts/Animations/drone_animations/drone_shot.png" id="3_l5frq"]
+[ext_resource type="Texture2D" uid="uid://cpkulf7m2gntj" path="res://Assets/Arts/Animations/drone_animations/drone_idle.png" id="2_lf7iw"]
+[ext_resource type="Texture2D" uid="uid://b5g4rxduvjmbd" path="res://Assets/Arts/Animations/drone_animations/drone_shot.png" id="3_l5frq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymvw2"]
 size = Vector2(3.62319, 3.62612)
@@ -107,6 +107,7 @@ animation = &"idle"
 animation = &"shoot"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2xrn5"]
+graph_offset = Vector2(-131.094, -3.8725)
 nodes/OneShot/node = SubResource("AnimationNodeOneShot_q8sc6")
 nodes/OneShot/position = Vector2(520, 40)
 nodes/idle/node = SubResource("AnimationNodeAnimation_55l8b")
@@ -116,27 +117,27 @@ nodes/shoot/node = SubResource("AnimationNodeAnimation_fhswo")
 nodes/shoot/position = Vector2(300, 160)
 node_connections = [&"OneShot", 0, &"idle", &"OneShot", 1, &"shoot", &"output", 0, &"OneShot"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6sb65"]
-atlas = ExtResource("2_lf7iw")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0lb0d"]
-atlas = ExtResource("2_lf7iw")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_skbth"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksnwq"]
 atlas = ExtResource("2_lf7iw")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0u2ec"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6imr"]
 atlas = ExtResource("2_lf7iw")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_en81c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_epas0"]
+atlas = ExtResource("2_lf7iw")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndp1y"]
+atlas = ExtResource("2_lf7iw")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snnti"]
 atlas = ExtResource("3_l5frq")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y48i2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivhfm"]
 atlas = ExtResource("3_l5frq")
 region = Rect2(64, 0, 64, 64)
 
@@ -144,16 +145,16 @@ region = Rect2(64, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6sb65")
+"texture": SubResource("AtlasTexture_ksnwq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0lb0d")
+"texture": SubResource("AtlasTexture_k6imr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_skbth")
+"texture": SubResource("AtlasTexture_epas0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0u2ec")
+"texture": SubResource("AtlasTexture_ndp1y")
 }],
 "loop": true,
 "name": &"idle",
@@ -161,10 +162,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_en81c")
+"texture": SubResource("AtlasTexture_snnti")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y48i2")
+"texture": SubResource("AtlasTexture_ivhfm")
 }],
 "loop": true,
 "name": &"shoot",
@@ -194,7 +195,6 @@ parameters/OneShot/request = 0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5l1ra")
 animation = &"idle"
-autoplay = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 root_node = NodePath("../..")

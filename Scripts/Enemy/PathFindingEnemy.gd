@@ -64,7 +64,7 @@ func jump(v : Vector2):
 const player_offset = Vector2.DOWN * 16
 func do_path_finding():
 	var player_pos = player.position + player_offset
-	#path = path_find.get_platform_2d_path(position,player_pos)
+	path = path_find.get_platform_2d_path(position,player_pos)
 	go_to_next_point_in_path()
 
 func _physics_process(delta):

@@ -16,17 +16,12 @@ const KNOCKBACK_POWER = 400
 @onready var ghost_timer = $GhostTimer
 var dashing = false
 
-var dashDirection = Vector2.ZERO
-var long_attack = false
-
-
 var is_crouching = false
 var stuck_under_object = false
 var has_double_jumped = false
 var standing_cshape = preload("res://Assets/Collisions/player_standing_cshape.tres")
 var crouching_cshape = preload("res://Assets/Collisions/player_crouching_cshape.tres")
 var is_attacking
-
 var is_interaction
 var is_hurt
 var is_dying = false
@@ -37,7 +32,7 @@ var shield_timer_flag = false
 var is_shield_implant_active = false
 var is_shield_up = false
 
-@onready var vignette_rect = $Vignette
+
 
 func _ready():
 	print(self.get_path())
@@ -60,28 +55,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
-
-
-	if not is_on_floor() and not GlobalVariables.IS_PLAYER_CLIMBING :
-		velocity.y += gravity * delta
-	
-	if GlobalVariables.IS_PLAYER_CLIMBING:
-		velocity.y = 0
-		if Input.is_action_pressed("ui_up"):
-			velocity.y = -GlobalVariables.PLAYER_SPEED * 0.3
-		elif Input.is_action_pressed("ui_down"):
-			velocity.y = GlobalVariables.PLAYER_SPEED * 0.3
-	
-	print(anim.current_animation)
-
-	if GlobalVariables.CURRENT_LEVEL == 2:
-		vignette_rect.visible = true
-	else:
-		vignette_rect.visible = false	
-
+	#print(anim.current_animation)
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
 	is_hurt = anim.current_animation == "Hurt"
 	is_attacking = (
 		anim.current_animation == "Attack"
@@ -90,13 +66,6 @@ func _physics_process(delta):
 		or anim.current_animation == "Attack_Run"
 		or anim.current_animation == "Attack_Run_L"
 		or anim.current_animation == "Attack_Jump_L"
-		# dlugie ataki
-		or anim.current_animation == "Attack_Long"
-		or anim.current_animation == "attack_left_Long"
-		or anim.current_animation == "Attack_Jump_Long"
-		or anim.current_animation == "Attack_Run_Long"
-		or anim.current_animation == "Attack_Run_L_Long"
-		or anim.current_animation == "Attack_Jump_L_Long"
 	)
 	is_interaction = anim.current_animation == "Interact"
 
@@ -109,7 +78,7 @@ func _physics_process(delta):
 			get_tree().reload_current_scene()
 		velocity.x = sign(velocity.x) * KNOCKBACK_POWER/2
 		if is_on_floor():
-			velocity.x = 0 
+			velocity.x = 0
 		move_and_slide()
 		return
 
@@ -159,11 +128,6 @@ func _physics_process(delta):
 			move_and_slide()
 	elif not GlobalVariables.PLAYER_CONTROLS_ENABLED:
 		anim.play("Idle")
-		
-
-		
-	
-	
 	#
 
 #=========================================================
@@ -200,15 +164,16 @@ func update_animations(direction, dir):
 			anim.play("Jump")
 			SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.JUMP)
 
-	const attack_anim_lut = [["Attack_Jump","Attack_Run","Attack","Attack_Jump_Long","Attack_Run_Long","Attack_Long"],["Attack_Jump_L","Attack_Run_L","attack_left","Attack_Jump_L_Long","Attack_Run_L_Long","attack_left_Long"]]
+	const attack_anim_lut = [["Attack_Jump","Attack_Run","Attack"],["Attack_Jump_L","Attack_Run_L","attack_left"]]
+	
 	if Input.is_action_just_pressed("Attack") and !is_interaction and !is_hurt and !is_crouching:
-		is_attacking = true
 		if velocity.y != 0:
-			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_JUMP+3*int(long_attack)])
+			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_JUMP])
 		elif velocity.x != 0:
-			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_RUN+3*int(long_attack)])
+			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_RUN])
 		else:
-			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK+3*int(long_attack)])
+			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK])
+
 	if is_on_floor():
 		has_double_jumped = false
 
@@ -218,9 +183,9 @@ func update_animations(direction, dir):
 			velocity.x = direction * DASH_SPEED
 		else:
 			if is_crouching:
-				velocity.x =  direction * GlobalVariables.PLAYER_SPEED * 0.5
+				velocity.x = direction * GlobalVariables.PLAYER_SPEED * 0.5
 			else:
-				velocity.x =  direction * GlobalVariables.PLAYER_SPEED
+				velocity.x = direction * GlobalVariables.PLAYER_SPEED
 			if (
 				(velocity.y == 0)
 				and !anim.current_animation == "Attack_Run"
@@ -232,16 +197,14 @@ func update_animations(direction, dir):
 					anim.current_animation != "Hurt"
 					and anim.current_animation != "Attack_Run"
 					and !anim.current_animation == "Attack_Run_L"
-					and !anim.current_animation == "Attack_Run_Long"
-					and !anim.current_animation == "Attack_Run_L_Long"
 				):
 					anim.play("Run")
 	else:
 		velocity.x = move_toward(velocity.x, 0, GlobalVariables.PLAYER_SPEED)
 		if (
 			(velocity.y == 0)
-			and (anim.current_animation != "Attack" or anim.current_animation != "Attack_Long")
-			and (anim.current_animation != "attack_left"or anim.current_animation != "attack_left_Long")
+			and anim.current_animation != "Attack"
+			and anim.current_animation != "attack_left"
 		):
 			if is_crouching:
 				anim.play("Crouch")
@@ -256,8 +219,6 @@ func update_animations(direction, dir):
 		(velocity.y > 0)
 		and !anim.current_animation == "Attack_Jump"
 		and !anim.current_animation == "Attack_Jump_L"
-		and !anim.current_animation == "Attack_Jump_Long"
-		and !anim.current_animation == "Attack_Jump_L_Long"
 		and !is_hurt
 	):
 		anim.play("Fall")
@@ -294,22 +255,6 @@ func check_for_implants():
 				shield_timer_flag = false
 				is_shield_up = false
 				$RechargableShieldTimer.stop()
-#Carbon Fiber Arm Muscles - zwiększa prędkość ataku o X procent, podejście agresywniejsze
-
-		if implant.name == "Carbon Fiber Arm Muscles":
-			if implant.equipped:
-				if is_attacking:
-					anim.speed_scale = 1.8
-				else:
-					anim.speed_scale = 1	
-			else:
-				anim.speed_scale = 1
-		if implant.name == "Full Precision Mechanical Arms":
-				if implant.equipped:
-					long_attack = true
-				else:
-					long_attack = false
-		
 
 func is_anim_playing() -> bool:
 	if anim.current_animation != "Idle":
@@ -337,11 +282,11 @@ func stand():
 func _on_weapon_area_2d_body_entered(body):
 	if body.is_in_group("metal_enemy"):
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_METAL)
-		# body.queue_free()
+		body.queue_free()
 		
 	if body.is_in_group("flesh_enemy"):
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_FLESH)
-		# body.queue_free()
+		body.queue_free()
 
 
 func _on_ghost_timer_timeout():
@@ -373,11 +318,6 @@ func _on_hurtbox_area_entered(area):
 		if is_shield_implant_active:
 			$RechargableShieldTimer.start()
 			shield_timer_flag = false
-			
-			
-	if area.name == "KillHitbox":
-		if GlobalVariables.CURRENT_HEALTH != 0:
-			GlobalVariables.CURRENT_HEALTH = 0
 
 func knockback():
 	velocity.x = sign(velocity.x) * (-1.0) * KNOCKBACK_POWER *3
