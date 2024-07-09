@@ -42,9 +42,10 @@ var INVENTORY_LOOKUP_FLAG = false
 var IS_INVENTORY_OPEN = false
 var PLAYER_CONTROLS_ENABLED = true
 var IS_PLAYER_TALKING = false
+var IS_PLAYER_CLIMBING = false
 var CAN_PLAYER_DASH = true
 var PLAYER_SPEED = 300.0
-
+var TRAIN_SPEED = 0
 var FIRST_DIALOGUE_FLAG = false
 
 var MAX_HEALTH: int = 7
@@ -58,7 +59,7 @@ var LEVELS = [
 	LevelObject.new("res://Scenes/Levels/LobbyLevel.tscn", Vector2(441, 317)),
 	LevelObject.new("res://Scenes/Levels/1Level.tscn", Vector2(700, 33)),
   	LevelObject.new("res://Scenes/Levels/2Level.tscn", Vector2(-40, 100)),
-	LevelObject.new("res://Scenes/Levels/PathfindingTestLevel.tscn", Vector2(541, 346)),
+	LevelObject.new("res://Scenes/Levels/3_level.tscn", Vector2(407, 487)),
 	LevelObject.new("res://Scenes/Levels/TestLevel.tscn", Vector2(0, 368)),
 ]
 
