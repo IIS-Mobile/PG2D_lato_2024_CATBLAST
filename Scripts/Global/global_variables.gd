@@ -76,7 +76,6 @@ var IMPLANTS_DESCRIPTIONS = [
 	"They won't kill what they can't see. Make 'em see you only once your blade sunk deep into they necks.
 	(Increased movement speed)"
 ]
-
 var IMPLANTS = [
 	ImplantObject.new("Full Precision Mechanical Arms","res://Assets/Arts/Items/arm_implant1.png", 0, 1, false, false),
 	ImplantObject.new("Carbon Fiber Arm Muscles","res://Assets/Arts/Items/arm_implant2.png", 0, 1, false, false),
