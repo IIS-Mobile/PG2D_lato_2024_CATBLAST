@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl3tvhfkalmxj"
-path="res://.godot/imported/Mangusta_death.png-667100c7c4b1559bb24bb7d78633fa2c.ctex"
+uid="uid://do1yflijhcwyu"
+path="res://.godot/imported/drone_start_attack.png-4ed16a74e456b004968ae425901c1ef6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Arts/Animations/enemy_animations/mangusta_gun/Mangusta_death.png"
-dest_files=["res://.godot/imported/Mangusta_death.png-667100c7c4b1559bb24bb7d78633fa2c.ctex"]
+source_file="res://Assets/Arts/Animations/drone_animations/drone_start_attack.png"
+dest_files=["res://.godot/imported/drone_start_attack.png-4ed16a74e456b004968ae425901c1ef6.ctex"]
 
 [params]
 

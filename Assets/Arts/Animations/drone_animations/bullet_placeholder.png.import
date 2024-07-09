@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0jiipcxlkfso"
-path="res://.godot/imported/Mangusta_katana_slash.png-37397049bfcd48588728f495956d528f.ctex"
+uid="uid://bryjy8xoe33yw"
+path="res://.godot/imported/bullet_placeholder.png-e19bdd0b50332fd274922efaedf2c6f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Arts/Animations/enemy_animations/mangusta_katana/Mangusta_katana_slash.png"
-dest_files=["res://.godot/imported/Mangusta_katana_slash.png-37397049bfcd48588728f495956d528f.ctex"]
+source_file="res://Assets/Arts/Animations/drone_animations/bullet_placeholder.png"
+dest_files=["res://.godot/imported/bullet_placeholder.png-e19bdd0b50332fd274922efaedf2c6f1.ctex"]
 
 [params]
 
