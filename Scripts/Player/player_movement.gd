@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 const DASH_SPEED = 1200
-const DASH_UP = -600
 
 const JUMP_VELOCITY = -500.0
 const DOUBLE_JUMP_VELOCITY = -400.0
@@ -15,6 +14,7 @@ const KNOCKBACK_POWER = 400
 @export var ghost_node: PackedScene
 @onready var ghost_timer = $GhostTimer
 var dashing = false
+var dashDirection = Vector2.ZERO
 
 var is_crouching = false
 var stuck_under_object = false
@@ -31,16 +31,19 @@ var hp_regen_timer_flag = false
 var shield_timer_flag = false
 var is_shield_implant_active = false
 var is_shield_up = false
-
-var godmode = true
-
+@onready var vignette_rect = $Vignette
 func _ready():
+	dashDirection = Vector2(1, 0)
 	print(self.get_path())
 	preserve_inventory()
 
 func add_ghost():
+	var frameIndex: int = $AnimatedSprite2D.get_frame()
+	var animationName: String = $AnimatedSprite2D.animation
+	var spriteFrames: SpriteFrames = $AnimatedSprite2D.get_sprite_frames()
+	var currentTexture: Texture2D = spriteFrames.get_frame_texture(animationName, frameIndex)
 	var ghost = ghost_node.instantiate()
-	ghost.set_property(global_position, $AnimatedSprite2D.scale)
+	ghost.set_property(global_position, $AnimatedSprite2D.scale, currentTexture, dashDirection)
 	get_tree().current_scene.add_child(ghost)
 
 
@@ -55,7 +58,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
-	#print(anim.current_animation)
+	if GlobalVariables.CURRENT_LEVEL == 2:
+		vignette_rect.visible = true
+	else:
+		vignette_rect.visible = false	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	is_hurt = anim.current_animation == "Hurt"
@@ -84,9 +90,13 @@ func _physics_process(delta):
 
 	if GlobalVariables.PLAYER_CONTROLS_ENABLED:
 		var direction = Input.get_axis("ui_left", "ui_right")
-		#Handle dash
+		if Input.is_action_pressed("ui_right") and !dashing:
+			dashDirection = Vector2(1, 0)
+		elif Input.is_action_pressed("ui_left") and !dashing:
+			dashDirection = Vector2(-1, 0)
+
 		if Input.is_action_just_pressed("Dash") and GlobalVariables.CAN_PLAYER_DASH:
-			if direction:
+			if dashDirection:
 				dash()
 				dashing = true
 				# mozna tu wrzucic animacje dasha
@@ -94,7 +104,6 @@ func _physics_process(delta):
 				ghost_timer.start()
 				$dash_again_timer.start()
 		else:
-			#Crouch
 			if (
 				Input.is_action_pressed("Crouch")
 				and is_on_floor()
@@ -146,10 +155,8 @@ func is_idle() -> bool:
 enum AttackEnum {ATTACK_JUMP,ATTACK_RUN,ATTACK}
 
 func update_animations(direction, dir):
-	#print(anim.current_animation)
 	if Input.is_action_pressed("Interact") and (is_idle() or anim.current_animation == "Run"):
 		#GlobalVariables.PLAYER_CONTROLS_ENABLED = false;
-		#print("x")
 		anim.play("Interact")
 
 	if (
@@ -177,10 +184,17 @@ func update_animations(direction, dir):
 	if is_on_floor():
 		has_double_jumped = false
 
+	if anim.current_animation != "Interact" and !is_hurt:
+		if dashing:
+			velocity.y = 0
+			#velocity.x = direction * DASH_SPEED
+			velocity = dashDirection.normalized() * DASH_SPEED
+			
 	if direction and anim.current_animation != "Interact" and !is_hurt:
 		if dashing:
 			velocity.y = 0
-			velocity.x = direction * DASH_SPEED
+			#velocity.x = direction * DASH_SPEED
+			velocity = dashDirection.normalized() * DASH_SPEED
 		else:
 			if is_crouching:
 				velocity.x = direction * GlobalVariables.PLAYER_SPEED * 0.5
@@ -234,7 +248,6 @@ func check_for_implants():
 					has_double_jumped = true
 		if implant.name == "Circulatory System Enhancement":
 			if implant.equipped and !hp_regen_timer_flag:
-				print("regen timer starts")
 				$HPRegenTimer.start()
 				hp_regen_timer_flag = true
 			if !implant.equipped:
@@ -246,7 +259,6 @@ func check_for_implants():
 				GlobalVariables.PLAYER_SPEED = 300
 		if implant.name == "Ribcage Energy Shield":
 			if implant.equipped and !shield_timer_flag:
-				print("ribcage on")
 				is_shield_implant_active = true
 				$RechargableShieldTimer.start()
 				shield_timer_flag = true
@@ -282,11 +294,11 @@ func stand():
 func _on_weapon_area_2d_body_entered(body):
 	if body.is_in_group("metal_enemy"):
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_METAL)
-		# body.queue_free()
+		body.queue_free()
 		
 	if body.is_in_group("flesh_enemy"):
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_FLESH)
-		# body.queue_free()
+		body.queue_free()
 
 
 func _on_ghost_timer_timeout():
@@ -304,16 +316,17 @@ func _on_ghost_spawn_timer_timeout():
 
 
 func _on_hurtbox_area_entered(area):
-	if area.name == "Hitbox" and !godmode:
+	if area.name == "Hitbox":
 		if (GlobalVariables.CURRENT_HEALTH != 0
 		and (!is_shield_up or !is_shield_implant_active)):
 			knockback()
 			anim.play("Hurt")
 			GlobalVariables.CURRENT_HEALTH -= 1
-			print("Getting hit", GlobalVariables.CURRENT_HEALTH)
+			print("Getting hit: ", GlobalVariables.CURRENT_HEALTH, " hp left")
 			
 		if is_shield_up:
 			SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SHIELD_DISCHARGE)
+			$AnimatedSprite2D.material.set_shader_parameter("effect_enabled", false)
 		is_shield_up = false
 		if is_shield_implant_active:
 			$RechargableShieldTimer.start()
@@ -333,14 +346,13 @@ func _on_hp_regen_timer_timeout():
 
 func _on_rechargable_shield_timer_timeout():
 	is_shield_up = true
-	print("shield's up")
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SHIELD_CHARGED)
+	$AnimatedSprite2D.material.set_shader_parameter("effect_enabled", true)
 	$RechargableShieldTimer.stop()
-	#shield_timer_flag = false
 
 func preserve_inventory():
 	for implant in GlobalVariables.IMPLANTS:
-		if implant.posessed and !implant.equipped:
-			GlobalVariables.item_pickup_signal.emit(implant.name)
 		if implant.equipped:
 			GlobalVariables.item_equip_signal.emit(implant.name)
+		elif implant.posessed and !implant.equipped:
+			GlobalVariables.item_pickup_signal.emit(implant.name)
