@@ -52,8 +52,8 @@ var MAX_HEALTH: int = 7
 var CURRENT_HEALTH: int = MAX_HEALTH
 
 #CURRENT_LEVEL defines the level that loads upon launching the game
-var CURRENT_LEVEL: int = 4
-var LEVEL_TO_CHANGE: int = CURRENT_LEVEL
+var CURRENT_LEVEL: int = -1
+var LEVEL_TO_CHANGE: int = 0
 
 var LEVELS = [
 	LevelObject.new("res://Scenes/Levels/LobbyLevel.tscn", Vector2(441, 317)),
@@ -77,9 +77,8 @@ var IMPLANTS_DESCRIPTIONS = [
 	"They won't kill what they can't see. Make 'em see you only once your blade sunk deep into they necks.
 	(Increased movement speed)"
 ]
-
 var IMPLANTS = [
-	ImplantObject.new("Full Precision Mechanical Arms","res://Assets/Arts/Items/arm_implant1.png", 0, 1, false, false),
+	ImplantObject.new("Full Precision Mechanical Arms","res://Assets/Arts/Items/arm_implant1.png", 0, 1, true, true),
 	ImplantObject.new("Carbon Fiber Arm Muscles","res://Assets/Arts/Items/arm_implant2.png", 0, 1, false, false),
 	ImplantObject.new("Circulatory System Enhancement","res://Assets/Arts/Items/chest_implant1.png", 0, 2, false, false),
 	ImplantObject.new("Ribcage Energy Shield","res://Assets/Arts/Items/chest_implant2.png", 0, 2, false, false),
