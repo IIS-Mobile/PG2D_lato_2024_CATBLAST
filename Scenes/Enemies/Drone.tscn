@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://d1rxkgas26uuw"]
+[gd_scene load_steps=45 format=3 uid="uid://d1rxkgas26uuw"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Drone/drone.gd" id="1_kaeg1"]
 [ext_resource type="Texture2D" uid="uid://do1yflijhcwyu" path="res://Assets/Arts/Animations/enemy_animations/drone/drone_start_attack.png" id="2_h8w1r"]
@@ -233,6 +233,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"explosion_damage"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_sl2v7"]
 resource_name = "idle"
@@ -371,12 +385,17 @@ states/shoot/node = SubResource("AnimationNodeAnimation_ogtai")
 states/shoot/position = Vector2(613, 123)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_btsiw"), "idle", "charge", SubResource("AnimationNodeStateMachineTransition_hxejx"), "charge", "shoot", SubResource("AnimationNodeStateMachineTransition_adn7q"), "shoot", "idle", SubResource("AnimationNodeStateMachineTransition_v5mew"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_nir2w"), "charge", "death", SubResource("AnimationNodeStateMachineTransition_fgugd"), "shoot", "death", SubResource("AnimationNodeStateMachineTransition_878ky"), "death", "End", SubResource("AnimationNodeStateMachineTransition_ds3hl")]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oana1"]
+radius = 35.0
+height = 70.0
+
 [node name="Drone" type="CharacterBody2D" groups=["metal_enemy"]]
 z_index = 3
 motion_mode = 1
 script = ExtResource("1_kaeg1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1.58946e-06, -5)
 scale = Vector2(9.2, 9.97405)
 shape = SubResource("RectangleShape2D_ymvw2")
@@ -398,4 +417,12 @@ parameters/conditions/death = false
 parameters/conditions/idle = false
 parameters/conditions/shoot = false
 
+[node name="Hitbox" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="ExplosionCollisionShape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -6)
+shape = SubResource("CapsuleShape2D_oana1")
+disabled = true
+
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="animation_started" from="AnimationTree" to="." method="_on_animation_tree_animation_started"]

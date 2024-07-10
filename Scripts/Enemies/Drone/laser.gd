@@ -18,7 +18,7 @@ func _ready():
 	scale.x = 0
 
 	timer = Timer.new()
-	timer.wait_time = 5.0
+	timer.wait_time = 10.0
 	timer.one_shot = true
 	var callable = Callable(self, "_on_Timer_timeout")
 	timer.connect("timeout", callable)

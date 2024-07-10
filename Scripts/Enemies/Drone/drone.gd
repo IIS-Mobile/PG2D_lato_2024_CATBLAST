@@ -113,7 +113,6 @@ func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == "charge":
 		animation_tree.set("parameters/conditions/shoot", false)
 	elif anim_name == "death":
-		# play sound
 		queue_free()
 
 func take_damage(damage):
@@ -122,3 +121,12 @@ func take_damage(damage):
 		animation_tree.set("parameters/conditions/death", true)
 		velocity.x = 0
 		velocity.y = 0
+
+func explosion_damage():
+	var area = $Hitbox
+	var collisionShape = $Hitbox/ExplosionCollisionShape
+	collisionShape.disabled = false
+	var bodies = area.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("enemy"):
+			body.take_damage(1)
