@@ -1720,7 +1720,7 @@ layer = -5
 z_index = 3
 position = Vector2(-317, -269)
 
-[node name="Hitbox" type="Area2D" parent="Sprite2D"]
+[node name="Hitbox" type="Area2D" parent="Sprite2D" groups=["katana"]]
 collision_layer = 2
 collision_mask = 8
 

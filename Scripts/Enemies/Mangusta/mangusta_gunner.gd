@@ -14,7 +14,7 @@ const COOLDOWN = 3.0 # seconds
 
 @onready var player = get_node("/root/GameManager/Player")
 
-@onready var bullet = preload("res://Scenes/Enemies/gun_bullet.tscn")
+@onready var bullet = preload("res://Scenes/Enemies/Bullet.tscn")
 
 @onready var animation_tree : AnimationTree = $AnimationTree
 
