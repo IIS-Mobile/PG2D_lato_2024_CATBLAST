@@ -18,6 +18,8 @@ const COOLDOWN = 3.0 # seconds
 
 @onready var animation_tree : AnimationTree = $AnimationTree
 
+@onready var raycast : RayCast2D = $RayCast2D
+
 var timer = Timer.new()
 
 func _ready():
@@ -34,7 +36,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	if abs(velocity.x) > 0.0001:
+	if abs(velocity.x) > 0.001:
 		animation_tree.set("parameters/conditions/run", true)
 		animation_tree.set("parameters/conditions/idle", false)
 	else:
@@ -54,12 +56,21 @@ func _physics_process(delta):
 
 	# velocity.y = direction.y * SPEED
 
+
 	# if player is in range
 	if player.global_position.distance_to(global_position) < RANGE:
-		# if timer is counting
-		if timer.is_stopped():
-			animation_tree.set("parameters/conditions/shoot", true)
-			timer.start()
+	
+		raycast.target_position = (player.global_position - global_position).normalized() * player.global_position.distance_to(global_position)
+
+		raycast.force_raycast_update()
+
+		if raycast.is_colliding():
+			var collider = raycast.get_collider()
+			if collider.name == "Player":
+				# if timer is counting
+				if timer.is_stopped():
+					animation_tree.set("parameters/conditions/shoot", true)
+					timer.start()
 
 	move_and_slide()
 
@@ -80,6 +91,7 @@ func take_damage(damage):
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == "death":
 		velocity.x = 0
+		raycast.enabled = false
 	elif anim_name == "shoot":
 		animation_tree.set("parameters/conditions/shoot", false)
 	

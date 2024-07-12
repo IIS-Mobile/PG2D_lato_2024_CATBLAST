@@ -22,6 +22,8 @@ const COOLDOWN = 3.0 # seconds
 
 @onready var attack_collision_polygon : CollisionPolygon2D = $Marker2D/Hitbox/Attack
 
+@onready var raycast : RayCast2D = $RayCast2D
+
 var timer = Timer.new()
 
 func _ready():
@@ -67,11 +69,19 @@ func _physics_process(delta):
 	var distance = player.global_position.distance_to(global_position)
 	# if player is in range
 	if distance < RANGE and current_animation != "attack" and current_animation != "death" and current_animation != "End":
-		# if timer is counting
-		if timer.is_stopped():
-			animation_tree.set("parameters/conditions/attack", true)
-			attack()
-			timer.start()
+	
+		raycast.target_position = (player.global_position - global_position).normalized() * player.global_position.distance_to(global_position)
+
+		raycast.force_raycast_update()
+
+		if raycast.is_colliding():
+			var collider = raycast.get_collider()
+			if collider.name == "Player":
+				# if timer is counting
+				if timer.is_stopped():
+					animation_tree.set("parameters/conditions/attack", true)
+					attack()
+					timer.start()
 
 	move_and_slide()
 
@@ -93,6 +103,7 @@ func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == "death":
 		attack_collision_polygon.disabled = true
 		velocity.x = 0
+		raycast.enabled = false
 	elif anim_name == "attack":
 		animation_tree.set("parameters/conditions/attack", false)
 	
