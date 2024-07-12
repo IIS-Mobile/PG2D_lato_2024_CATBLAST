@@ -234,6 +234,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Marker2D/Hitbox/Attack_R:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_x6vtk"]
 resource_name = "attack"
@@ -261,6 +273,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Marker2D/Hitbox/Attack_R:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_ixl1i"]
@@ -428,11 +452,20 @@ states/running/position = Vector2(508, 339)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_g0fre"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_u3dn8"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_3xecw"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_533j5"), "running", "attack", SubResource("AnimationNodeStateMachineTransition_qr8vj"), "attack", "running", SubResource("AnimationNodeStateMachineTransition_xsb3d"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_cu5p3"), "death", "End", SubResource("AnimationNodeStateMachineTransition_ae2tu"), "attack", "death", SubResource("AnimationNodeStateMachineTransition_hyxm8"), "running", "death", SubResource("AnimationNodeStateMachineTransition_oyl6c"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_ecsje")]
 graph_offset = Vector2(117, 24)
 
-[node name="Mangusta Melee" type="CharacterBody2D" groups=["enemy", "flesh_enemy"]]
+[node name="MangustaMelee" type="CharacterBody2D" groups=["enemy", "flesh_enemy"]]
 z_index = 3
+position = Vector2(2, -2)
+collision_layer = 2
 script = ExtResource("1_tkcja")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 2)
+scale = Vector2(9.2, 9.97405)
+shape = SubResource("CapsuleShape2D_4circ")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-2, 2)
 scale = Vector2(9.2, 9.97405)
 shape = SubResource("CapsuleShape2D_4circ")
@@ -447,11 +480,28 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 tree_root = SubResource("AnimationNodeStateMachine_ujxpe")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/attack = false
 parameters/conditions/death = false
 parameters/conditions/idle = false
 parameters/conditions/run = false
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="Marker2D"]
+position = Vector2(-317, -269)
+
+[node name="Attack_R" type="CollisionPolygon2D" parent="Marker2D/Hitbox"]
+polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 353, 294, 328, 295, 342, 275, 345, 251, 329, 241, 294, 244)
+disabled = true
+
+[node name="Attack_L" type="CollisionPolygon2D" parent="Marker2D/Hitbox"]
+visible = false
+position = Vector2(637, -1)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 353, 294, 328, 295, 342, 275, 345, 251, 329, 241, 294, 244)
+disabled = true
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]

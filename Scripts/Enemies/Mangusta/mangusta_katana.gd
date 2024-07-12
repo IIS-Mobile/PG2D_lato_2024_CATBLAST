@@ -18,6 +18,10 @@ const COOLDOWN = 3.0 # seconds
 
 @onready var animation_tree : AnimationTree = $AnimationTree
 
+@onready var hitbox = $Hitbox
+
+@onready var marker2D = $Marker2D
+
 var timer = Timer.new()
 
 # var timer2 = Timer.new()
@@ -60,8 +64,14 @@ func _physics_process(delta):
 		velocity.x = 0
 	else:
 		velocity.x = direction.x * SPEED
+		if direction.x > 0:
+			marker2D.scale.x = 1
+		elif direction.x < 0:
+			marker2D.scale.x = -1
+		
 		get_node("AnimatedSprite2D").flip_h = direction.x < 0
 
+	# scale.x = -1
 
 	# velocity.y = direction.y * SPEED
 	
@@ -73,6 +83,7 @@ func _physics_process(delta):
 		# if timer is counting
 		if timer.is_stopped():
 			animation_tree.set("parameters/conditions/attack", true)
+			attack()
 			# timer2.start()
 			timer.start()
 
