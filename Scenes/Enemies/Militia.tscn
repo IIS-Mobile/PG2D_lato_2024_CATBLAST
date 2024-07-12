@@ -459,6 +459,7 @@ graph_offset = Vector2(29, 30)
 [node name="Militia" type="CharacterBody2D" groups=["enemy", "flesh_enemy"]]
 z_index = 3
 collision_layer = 8
+safe_margin = 0.24
 script = ExtResource("1_ecqj5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

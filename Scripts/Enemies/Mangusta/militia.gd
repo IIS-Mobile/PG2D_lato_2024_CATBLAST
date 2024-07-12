@@ -38,7 +38,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	if abs(velocity.x) > 0.0001:
+	if abs(velocity.x) > 0.001:
 		animation_tree.set("parameters/conditions/run", true)
 		animation_tree.set("parameters/conditions/idle", false)
 	else:
@@ -49,7 +49,7 @@ func _physics_process(delta):
 	
 	var current_animation = animation_tree.get("parameters/playback").get_current_node()
 	# if current anim playing is shooting then velocity.x = 0
-	if current_animation == "shoot" or current_animation == "death" or current_animation == "End":
+	if current_animation == "shoot" or current_animation == "death" or current_animation == "End" or is_triggered == false:
 		velocity.x = 0
 	else:
 		velocity.x = direction.x * SPEED
@@ -70,6 +70,7 @@ func _physics_process(delta):
 			if raycast.is_colliding():
 				var collider = raycast.get_collider()
 				if collider.name == "Player":
+					velocity.x = 0
 					# if timer is counting
 					if timer.is_stopped():
 						animation_tree.set("parameters/conditions/shoot", true)

@@ -40,7 +40,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	if abs(velocity.x) > 0.0001:
+	if abs(velocity.x) > 0.001:
 		animation_tree.set("parameters/conditions/run", true)
 		animation_tree.set("parameters/conditions/idle", false)
 	else:

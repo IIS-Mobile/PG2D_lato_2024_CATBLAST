@@ -63,6 +63,7 @@ func _physics_process(delta):
 		if raycast.is_colliding():
 			var collider = raycast.get_collider()
 			if collider.name == "Player":
+				velocity.x = 0
 				# if timer is counting
 				if timer.is_stopped():
 					animation_tree.set("parameters/conditions/shoot", true)

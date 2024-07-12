@@ -59,7 +59,6 @@ func _physics_process(delta):
 
 	# if player is in range
 	if player.global_position.distance_to(global_position) < RANGE:
-	
 		raycast.target_position = (player.global_position - global_position).normalized() * player.global_position.distance_to(global_position)
 
 		raycast.force_raycast_update()
@@ -67,6 +66,7 @@ func _physics_process(delta):
 		if raycast.is_colliding():
 			var collider = raycast.get_collider()
 			if collider.name == "Player":
+				velocity.x = 0
 				# if timer is counting
 				if timer.is_stopped():
 					animation_tree.set("parameters/conditions/shoot", true)
