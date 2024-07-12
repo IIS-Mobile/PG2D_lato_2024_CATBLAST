@@ -74,7 +74,7 @@ func _physics_process(delta):
 
 func spawn_laser():
 	var laser_instance = laser.instantiate()
-	laser_instance.global_position = global_position
+	laser_instance.position = position
 	get_parent().add_child(laser_instance)
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.LASER_SHOT)
 

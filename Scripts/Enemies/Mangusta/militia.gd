@@ -80,7 +80,7 @@ func _physics_process(delta):
 
 func spawn_bullet():
 	var bullet_instance = bullet.instantiate()
-	bullet_instance.global_position = global_position
+	bullet_instance.position = position
 	get_parent().add_child(bullet_instance)
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.GUN_SHOT)
 
