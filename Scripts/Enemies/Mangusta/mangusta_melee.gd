@@ -22,25 +22,16 @@ const COOLDOWN = 3.0 # seconds
 
 @onready var marker2D = $Marker2D
 
-var timer = Timer.new()
+@onready var attack_collision_polygon : CollisionPolygon2D = $Marker2D/Hitbox/Attack
 
-# var timer2 = Timer.new()
+var timer = Timer.new()
 
 func _ready():
 	timer = Timer.new()
 	timer.set_wait_time(COOLDOWN)
 	timer.set_one_shot(true)
 	add_child(timer)
-	# timer2 = Timer.new()
-	# timer2.set_wait_time(0.5)
-	# timer2.set_one_shot(true)
-	# add_child(timer2)
-	# # var callable = Callable(self, "spawn_bullet")
-	# # timer2.connect("timeout", callable)
 	animation_tree.active = true
-	# animation_player.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
-
-
 	
 
 func _physics_process(delta):
@@ -71,28 +62,25 @@ func _physics_process(delta):
 		
 		get_node("AnimatedSprite2D").flip_h = direction.x < 0
 
-	# scale.x = -1
 
 	# velocity.y = direction.y * SPEED
-	
 
 
 	var distance = player.global_position.distance_to(global_position)
 	# if player is in range
-	if distance < RANGE:
+	if distance < RANGE and current_animation != "attack" and current_animation != "death" and current_animation != "End":
 		# if timer is counting
 		if timer.is_stopped():
 			animation_tree.set("parameters/conditions/attack", true)
 			attack()
-			# timer2.start()
 			timer.start()
 
 	move_and_slide()
 
 
 func attack():
-	# todo
-	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_FLESH) # ???
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.KATANA_SWING)
+	# ???
 
 func take_damage(damage):
 	health -= damage
@@ -105,7 +93,13 @@ func killed():
 
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == "death":
+		attack_collision_polygon.disabled = true
 		velocity.x = 0
 	elif anim_name == "attack":
 		animation_tree.set("parameters/conditions/attack", false)
+	
+
+func _on_hitbox_body_entered(body:Node2D):
+	if body.is_in_group("player"):
+		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_FLESH)
 	

@@ -1,121 +1,121 @@
 [gd_scene load_steps=57 format=3 uid="uid://bh70pimpvjiud"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Mangusta/mangusta_gun.gd" id="1_o73l2"]
-[ext_resource type="Texture2D" uid="uid://cl3tvhfkalmxj" path="res://Assets/Arts/Animations/enemy_animations/mangusta_gun/Mangusta_death.png" id="2_teg6d"]
-[ext_resource type="Texture2D" uid="uid://ccklk4vfr4rua" path="res://Assets/Arts/Animations/enemy_animations/mangusta/Mangusta_idle.png" id="3_pw8pl"]
-[ext_resource type="Texture2D" uid="uid://hqgaikj2fm6n" path="res://Assets/Arts/Animations/enemy_animations/mangusta/Mangusta_run.png" id="4_41nq8"]
-[ext_resource type="Texture2D" uid="uid://165t4ax4l5ia" path="res://Assets/Arts/Animations/enemy_animations/mangusta/Mangusta_shot.png" id="5_vliwp"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Mangusta/mangusta_gunner.gd" id="1_w0u4r"]
+[ext_resource type="Texture2D" uid="uid://cl3tvhfkalmxj" path="res://Assets/Arts/Animations/enemy_animations/mangusta_gun/Mangusta_death.png" id="2_gh4in"]
+[ext_resource type="Texture2D" uid="uid://ccklk4vfr4rua" path="res://Assets/Arts/Animations/enemy_animations/mangusta/Mangusta_idle.png" id="3_sgscd"]
+[ext_resource type="Texture2D" uid="uid://hqgaikj2fm6n" path="res://Assets/Arts/Animations/enemy_animations/mangusta/Mangusta_run.png" id="4_pk4ma"]
+[ext_resource type="Texture2D" uid="uid://165t4ax4l5ia" path="res://Assets/Arts/Animations/enemy_animations/mangusta/Mangusta_shot.png" id="5_0xnux"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4circ"]
 radius = 1.73913
 height = 5.41405
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2artu"]
-atlas = ExtResource("2_teg6d")
+atlas = ExtResource("2_gh4in")
 region = Rect2(0, 0, 96, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kfxqf"]
-atlas = ExtResource("2_teg6d")
+atlas = ExtResource("2_gh4in")
 region = Rect2(96, 0, 96, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pdi57"]
-atlas = ExtResource("2_teg6d")
+atlas = ExtResource("2_gh4in")
 region = Rect2(192, 0, 96, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ek3s"]
-atlas = ExtResource("2_teg6d")
+atlas = ExtResource("2_gh4in")
 region = Rect2(288, 0, 96, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_olfaj"]
-atlas = ExtResource("2_teg6d")
+atlas = ExtResource("2_gh4in")
 region = Rect2(384, 0, 96, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6y1ln"]
-atlas = ExtResource("3_pw8pl")
+atlas = ExtResource("3_sgscd")
 region = Rect2(0, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7lyss"]
-atlas = ExtResource("3_pw8pl")
+atlas = ExtResource("3_sgscd")
 region = Rect2(72, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3m35j"]
-atlas = ExtResource("3_pw8pl")
+atlas = ExtResource("3_sgscd")
 region = Rect2(144, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_etgny"]
-atlas = ExtResource("3_pw8pl")
+atlas = ExtResource("3_sgscd")
 region = Rect2(216, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qiist"]
-atlas = ExtResource("4_41nq8")
+atlas = ExtResource("4_pk4ma")
 region = Rect2(0, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lb4bt"]
-atlas = ExtResource("4_41nq8")
+atlas = ExtResource("4_pk4ma")
 region = Rect2(72, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o6iv3"]
-atlas = ExtResource("4_41nq8")
+atlas = ExtResource("4_pk4ma")
 region = Rect2(144, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bqgyj"]
-atlas = ExtResource("4_41nq8")
+atlas = ExtResource("4_pk4ma")
 region = Rect2(216, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jbc3p"]
-atlas = ExtResource("4_41nq8")
+atlas = ExtResource("4_pk4ma")
 region = Rect2(288, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sss0f"]
-atlas = ExtResource("4_41nq8")
+atlas = ExtResource("4_pk4ma")
 region = Rect2(360, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4n7k8"]
-atlas = ExtResource("4_41nq8")
+atlas = ExtResource("4_pk4ma")
 region = Rect2(432, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1hubn"]
-atlas = ExtResource("4_41nq8")
+atlas = ExtResource("4_pk4ma")
 region = Rect2(504, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aqhed"]
-atlas = ExtResource("5_vliwp")
+atlas = ExtResource("5_0xnux")
 region = Rect2(0, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nfauq"]
-atlas = ExtResource("5_vliwp")
+atlas = ExtResource("5_0xnux")
 region = Rect2(72, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u52x0"]
-atlas = ExtResource("5_vliwp")
+atlas = ExtResource("5_0xnux")
 region = Rect2(144, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m52jd"]
-atlas = ExtResource("5_vliwp")
+atlas = ExtResource("5_0xnux")
 region = Rect2(216, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_11mwi"]
-atlas = ExtResource("5_vliwp")
+atlas = ExtResource("5_0xnux")
 region = Rect2(288, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58tbn"]
-atlas = ExtResource("5_vliwp")
+atlas = ExtResource("5_0xnux")
 region = Rect2(360, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tasgs"]
-atlas = ExtResource("5_vliwp")
+atlas = ExtResource("5_0xnux")
 region = Rect2(432, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n8iwt"]
-atlas = ExtResource("5_vliwp")
+atlas = ExtResource("5_0xnux")
 region = Rect2(504, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_edd8e"]
-atlas = ExtResource("5_vliwp")
+atlas = ExtResource("5_0xnux")
 region = Rect2(576, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a84jm"]
-atlas = ExtResource("5_vliwp")
+atlas = ExtResource("5_0xnux")
 region = Rect2(648, 0, 72, 90)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5l1ra"]
@@ -456,9 +456,10 @@ states/shoot/position = Vector2(687, 100)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_g0fre"), "idle", "shoot", SubResource("AnimationNodeStateMachineTransition_u3dn8"), "shoot", "idle", SubResource("AnimationNodeStateMachineTransition_3xecw"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_533j5"), "running", "shoot", SubResource("AnimationNodeStateMachineTransition_qr8vj"), "shoot", "running", SubResource("AnimationNodeStateMachineTransition_xsb3d"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_cu5p3"), "death", "End", SubResource("AnimationNodeStateMachineTransition_ae2tu"), "shoot", "death", SubResource("AnimationNodeStateMachineTransition_hyxm8"), "running", "death", SubResource("AnimationNodeStateMachineTransition_oyl6c"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_ecsje")]
 graph_offset = Vector2(29, 30)
 
-[node name="Mangusta Gunner" type="CharacterBody2D" groups=["enemy", "flesh_enemy"]]
+[node name="MangustaGunner" type="CharacterBody2D" groups=["enemy", "flesh_enemy"]]
 z_index = 3
-script = ExtResource("1_o73l2")
+collision_layer = 8
+script = ExtResource("1_w0u4r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 2)

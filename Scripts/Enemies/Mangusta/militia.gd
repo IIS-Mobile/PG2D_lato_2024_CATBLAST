@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
+var is_triggered = false
+
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
 
-var health = 2
-
-var is_triggered = false
+var health = 1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -22,24 +22,13 @@ const COOLDOWN = 3.0 # seconds
 
 var timer = Timer.new()
 
-# var timer2 = Timer.new()
-
 func _ready():
 	timer = Timer.new()
 	timer.set_wait_time(COOLDOWN)
 	timer.set_one_shot(true)
 	add_child(timer)
-	# timer2 = Timer.new()
-	# timer2.set_wait_time(0.5)
-	# timer2.set_one_shot(true)
-	# add_child(timer2)
-	# # var callable = Callable(self, "spawn_bullet")
-	# # timer2.connect("timeout", callable)
 	animation_tree.active = true
-	# animation_player.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
 
-
-	
 
 func _physics_process(delta):
 
@@ -66,14 +55,13 @@ func _physics_process(delta):
 
 
 	# velocity.y = direction.y * SPEED
-	
+
 	if is_triggered:
 		# if player is in range
 		if player.global_position.distance_to(global_position) < RANGE:
 			# if timer is counting
 			if timer.is_stopped():
 				animation_tree.set("parameters/conditions/shoot", true)
-				# timer2.start()
 				timer.start()
 
 	move_and_slide()
@@ -83,11 +71,7 @@ func spawn_bullet():
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.global_position = global_position
 	get_parent().add_child(bullet_instance)
-	# animation_tree.set("parameters/conditions/shoot", false)
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.GUN_SHOT)
-
-func trigger():
-	is_triggered = true
 
 func take_damage(damage):
 	health -= damage
@@ -101,4 +85,7 @@ func _on_animation_tree_animation_finished(anim_name):
 		velocity.x = 0
 	elif anim_name == "shoot":
 		animation_tree.set("parameters/conditions/shoot", false)
-	
+
+
+func trigger():
+	is_triggered = true

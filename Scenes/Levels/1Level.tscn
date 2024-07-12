@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cr7u0awwr0fhh" path="res://Assets/Arts/Textures/lamp_light_texture.png" id="4_wkmkp"]
 [ext_resource type="PackedScene" uid="uid://djsl3gdn8xo4c" path="res://Scripts/Global/ladder.tscn" id="5_4fuvh"]
 [ext_resource type="Script" path="res://Scenes/Levels/Area2D.gd" id="5_srkl8"]
-[ext_resource type="PackedScene" uid="uid://b8i5mb7732elk" path="res://Scenes/Enemies/Mangusta.tscn" id="6_sbfoi"]
+[ext_resource type="PackedScene" uid="uid://b8i5mb7732elk" path="res://Scenes/Enemies/MangustaMelee.tscn" id="6_sbfoi"]
 [ext_resource type="PackedScene" uid="uid://d1rxkgas26uuw" path="res://Scenes/Enemies/Drone.tscn" id="7_1sdqq"]
 
 [sub_resource type="Gradient" id="Gradient_nve1c"]

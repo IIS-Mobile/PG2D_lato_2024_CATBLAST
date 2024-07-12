@@ -1,113 +1,113 @@
 [gd_scene load_steps=55 format=3 uid="uid://b8i5mb7732elk"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/Mangusta/mangusta_katana.gd" id="1_tkcja"]
-[ext_resource type="Texture2D" uid="uid://b0jiipcxlkfso" path="res://Assets/Arts/Animations/enemy_animations/mangusta_katana/Mangusta_katana_slash.png" id="2_3qi5l"]
-[ext_resource type="Texture2D" uid="uid://bhg1sd3o27wh" path="res://Assets/Arts/Animations/enemy_animations/mangusta_katana/Mangusta_katana_death.png" id="3_ptd1d"]
-[ext_resource type="Texture2D" uid="uid://0hlu0t4uruqh" path="res://Assets/Arts/Animations/enemy_animations/mangusta_katana/Mangusta_katana_idle.png" id="4_k2u00"]
-[ext_resource type="Texture2D" uid="uid://cwko0giiqdius" path="res://Assets/Arts/Animations/enemy_animations/mangusta_katana/Mangusta_katana_run.png" id="5_bqvbu"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Mangusta/mangusta_melee.gd" id="1_u6502"]
+[ext_resource type="Texture2D" uid="uid://b0jiipcxlkfso" path="res://Assets/Arts/Animations/enemy_animations/mangusta_katana/Mangusta_katana_slash.png" id="2_a84xe"]
+[ext_resource type="Texture2D" uid="uid://bhg1sd3o27wh" path="res://Assets/Arts/Animations/enemy_animations/mangusta_katana/Mangusta_katana_death.png" id="3_g33mx"]
+[ext_resource type="Texture2D" uid="uid://0hlu0t4uruqh" path="res://Assets/Arts/Animations/enemy_animations/mangusta_katana/Mangusta_katana_idle.png" id="4_pytsl"]
+[ext_resource type="Texture2D" uid="uid://cwko0giiqdius" path="res://Assets/Arts/Animations/enemy_animations/mangusta_katana/Mangusta_katana_run.png" id="5_4ayu8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4circ"]
 radius = 1.73913
 height = 5.41405
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nwkjc"]
-atlas = ExtResource("2_3qi5l")
+atlas = ExtResource("2_a84xe")
 region = Rect2(0, 0, 120, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0od2x"]
-atlas = ExtResource("2_3qi5l")
+atlas = ExtResource("2_a84xe")
 region = Rect2(120, 0, 120, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tmwdn"]
-atlas = ExtResource("2_3qi5l")
+atlas = ExtResource("2_a84xe")
 region = Rect2(240, 0, 120, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_77suf"]
-atlas = ExtResource("2_3qi5l")
+atlas = ExtResource("2_a84xe")
 region = Rect2(360, 0, 120, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lknt8"]
-atlas = ExtResource("2_3qi5l")
+atlas = ExtResource("2_a84xe")
 region = Rect2(480, 0, 120, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tmm4q"]
-atlas = ExtResource("2_3qi5l")
+atlas = ExtResource("2_a84xe")
 region = Rect2(600, 0, 120, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jgw80"]
-atlas = ExtResource("2_3qi5l")
+atlas = ExtResource("2_a84xe")
 region = Rect2(720, 0, 120, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qi578"]
-atlas = ExtResource("2_3qi5l")
+atlas = ExtResource("2_a84xe")
 region = Rect2(840, 0, 120, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oued2"]
-atlas = ExtResource("3_ptd1d")
+atlas = ExtResource("3_g33mx")
 region = Rect2(0, 0, 96, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_47ete"]
-atlas = ExtResource("3_ptd1d")
+atlas = ExtResource("3_g33mx")
 region = Rect2(96, 0, 96, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvg2p"]
-atlas = ExtResource("3_ptd1d")
+atlas = ExtResource("3_g33mx")
 region = Rect2(192, 0, 96, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_314bj"]
-atlas = ExtResource("3_ptd1d")
+atlas = ExtResource("3_g33mx")
 region = Rect2(288, 0, 96, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_agfi1"]
-atlas = ExtResource("3_ptd1d")
+atlas = ExtResource("3_g33mx")
 region = Rect2(384, 0, 96, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h1u4q"]
-atlas = ExtResource("4_k2u00")
+atlas = ExtResource("4_pytsl")
 region = Rect2(0, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v1pik"]
-atlas = ExtResource("4_k2u00")
+atlas = ExtResource("4_pytsl")
 region = Rect2(72, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rngck"]
-atlas = ExtResource("4_k2u00")
+atlas = ExtResource("4_pytsl")
 region = Rect2(144, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a2re1"]
-atlas = ExtResource("4_k2u00")
+atlas = ExtResource("4_pytsl")
 region = Rect2(216, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m7yxb"]
-atlas = ExtResource("5_bqvbu")
+atlas = ExtResource("5_4ayu8")
 region = Rect2(0, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oq2t3"]
-atlas = ExtResource("5_bqvbu")
+atlas = ExtResource("5_4ayu8")
 region = Rect2(72, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kohe0"]
-atlas = ExtResource("5_bqvbu")
+atlas = ExtResource("5_4ayu8")
 region = Rect2(144, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3twgv"]
-atlas = ExtResource("5_bqvbu")
+atlas = ExtResource("5_4ayu8")
 region = Rect2(216, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uuhxl"]
-atlas = ExtResource("5_bqvbu")
+atlas = ExtResource("5_4ayu8")
 region = Rect2(288, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u534k"]
-atlas = ExtResource("5_bqvbu")
+atlas = ExtResource("5_4ayu8")
 region = Rect2(360, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4rsu7"]
-atlas = ExtResource("5_bqvbu")
+atlas = ExtResource("5_4ayu8")
 region = Rect2(432, 0, 72, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4bfcx"]
-atlas = ExtResource("5_bqvbu")
+atlas = ExtResource("5_4ayu8")
 region = Rect2(504, 0, 72, 90)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5l1ra"]
@@ -237,7 +237,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Marker2D/Hitbox/Attack_R:disabled")
+tracks/2/path = NodePath("Marker2D/Hitbox/Attack:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -249,7 +249,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_x6vtk"]
 resource_name = "attack"
-length = 1.2
+length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -269,7 +269,7 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.8, 2.1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
@@ -277,14 +277,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Marker2D/Hitbox/Attack_R:disabled")
+tracks/2/path = NodePath("Marker2D/Hitbox/Attack:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, false, true, false, true]
+"values": [true, false, false, true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_ixl1i"]
@@ -455,17 +455,10 @@ graph_offset = Vector2(117, 24)
 [node name="MangustaMelee" type="CharacterBody2D" groups=["enemy", "flesh_enemy"]]
 z_index = 3
 position = Vector2(2, -2)
-collision_layer = 2
-script = ExtResource("1_tkcja")
+collision_layer = 8
+script = ExtResource("1_u6502")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 2)
-scale = Vector2(9.2, 9.97405)
-shape = SubResource("CapsuleShape2D_4circ")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-2, 2)
 scale = Vector2(9.2, 9.97405)
 shape = SubResource("CapsuleShape2D_4circ")
@@ -492,16 +485,12 @@ parameters/conditions/run = false
 
 [node name="Hitbox" type="Area2D" parent="Marker2D"]
 position = Vector2(-317, -269)
+collision_layer = 8
+collision_mask = 2
 
-[node name="Attack_R" type="CollisionPolygon2D" parent="Marker2D/Hitbox"]
-polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 353, 294, 328, 295, 342, 275, 345, 251, 329, 241, 294, 244)
-disabled = true
-
-[node name="Attack_L" type="CollisionPolygon2D" parent="Marker2D/Hitbox"]
-visible = false
-position = Vector2(637, -1)
-scale = Vector2(-1, 1)
+[node name="Attack" type="CollisionPolygon2D" parent="Marker2D/Hitbox"]
 polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 353, 294, 328, 295, 342, 275, 345, 251, 329, 241, 294, 244)
 disabled = true
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="body_entered" from="Marker2D/Hitbox" to="." method="_on_hitbox_body_entered"]

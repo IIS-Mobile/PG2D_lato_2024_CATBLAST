@@ -1,8 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://ccc7l762u7ib4"]
+[gd_scene load_steps=21 format=3 uid="uid://jr51qyuh2wp3"]
 
 [ext_resource type="Script" path="res://Scripts/NPC/npc_final.gd" id="1_sqvkb"]
-[ext_resource type="PackedScene" uid="uid://dhol3kh0pmveq" path="res://Scenes/textbox_final.tscn" id="2_c7bre"]
-[ext_resource type="Texture2D" uid="uid://cwlabtumomi5b" path="res://Assets/Arts/Animations/npc_animation/ripperdoc.png" id="2_ouv2t"]
+[ext_resource type="PackedScene" uid="uid://25vybpxjc6mv" path="res://Scenes/textbox_final.tscn" id="2_c7bre"]
+[ext_resource type="Texture2D" uid="uid://cwlabtumomi5b" path="res://Assets/Arts/Animations/npc_animations/ripperdoc.png" id="2_ouv2t"]
 [ext_resource type="Script" path="res://Scripts/NPC/Smoke_Light.gd" id="3_v6rt4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7wgbm"]
@@ -169,6 +169,8 @@ color = Color(0.521569, 0.521569, 0.521569, 1)
 color_ramp = SubResource("Gradient_58qsq")
 
 [node name="chat_detection_area" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
 shape = SubResource("RectangleShape2D_uire7")

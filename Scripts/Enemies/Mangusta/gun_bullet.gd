@@ -34,5 +34,8 @@ func _on_Timer_timeout():
 func _on_hitbox_body_entered(body:Node2D):
 	if body.is_in_group("player"):
 		queue_free()
-	if body.is_in_group("world"):
+
+
+func _on_hitbox_area_entered(area:Area2D):
+	if !area.is_in_group("player"):
 		queue_free()
