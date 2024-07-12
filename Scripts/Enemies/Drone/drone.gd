@@ -10,14 +10,10 @@ var health = 1
 
 @onready var start_position = global_position
 
-var is_returning = false
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var player = get_node("/root/GameManager/Player")
-
-@onready var bullet = preload("res://Scenes/Enemies/bullet.tscn")
 
 @onready var laser = preload("res://Scenes/Enemies/laser.tscn")
 
