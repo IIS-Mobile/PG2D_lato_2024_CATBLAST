@@ -65,6 +65,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	
 	if is_climbing:
+		anim.play("Climbing")
 		velocity.y = 0
 		if Input.is_action_pressed("ui_up"):
 			velocity.y = -GlobalVariables.PLAYER_SPEED * 0.3
@@ -145,7 +146,7 @@ func _physics_process(delta):
 			update_animations(direction, dir)
 			check_for_implants()
 			move_and_slide()
-	elif not GlobalVariables.PLAYER_CONTROLS_ENABLED:
+	elif not GlobalVariables.PLAYER_CONTROLS_ENABLED and !is_climbing:
 		anim.play("Idle")
 	#
 
@@ -177,7 +178,7 @@ func update_animations(direction, dir):
 		and !is_hurt
 	):
 		velocity.y = JUMP_VELOCITY
-		if !is_attacking:
+		if !is_attacking and !is_climbing:
 			anim.play("Jump")
 			SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.JUMP)
 
@@ -237,13 +238,14 @@ func update_animations(direction, dir):
 				and !is_hurt
 				and anim.current_animation != "Interact"
 				and !is_attacking
+				and !is_climbing
 			):
 				anim.play("Idle")
 	if (
 		(velocity.y > 0)
 		and !anim.current_animation == "Attack_Jump"
 		and !anim.current_animation == "Attack_Jump_L"
-		and !is_hurt
+		and !is_hurt and !is_climbing
 	):
 		anim.play("Fall")
 
@@ -251,7 +253,7 @@ func check_for_implants():
 	for implant in GlobalVariables.IMPLANTS:
 		if implant.name == "Ultra Elastic Joints":
 			if implant.equipped:
-				if Input.is_action_just_pressed("Jump") and not has_double_jumped and not is_on_floor():
+				if Input.is_action_just_pressed("Jump") and not has_double_jumped and not is_on_floor() and !is_climbing:
 					velocity.y = DOUBLE_JUMP_VELOCITY
 					anim.play("Jump")
 					SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.DOUBLE_JUMP)

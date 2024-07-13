@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=3 uid="uid://dmpuglts6my21"]
+[gd_scene load_steps=143 format=3 uid="uid://dmpuglts6my21"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_movement.gd" id="1_341yb"]
 [ext_resource type="Shader" path="res://Shaders/shield_up_shader.gdshader" id="1_j78mr"]
@@ -1671,6 +1671,33 @@ tracks/5/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_5y8fi"]
+resource_name = "Climbing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"climb"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lrkoh"]
 _data = {
 "Attack": SubResource("Animation_l4yaa"),
@@ -1678,6 +1705,7 @@ _data = {
 "Attack_Jump_L": SubResource("Animation_pxbku"),
 "Attack_Run": SubResource("Animation_bktgy"),
 "Attack_Run_L": SubResource("Animation_6a8h0"),
+"Climbing": SubResource("Animation_5y8fi"),
 "Crouch": SubResource("Animation_nn1bs"),
 "Crouch_walk": SubResource("Animation_ti0k0"),
 "Death": SubResource("Animation_v7el4"),
@@ -1732,7 +1760,7 @@ position = Vector2(2, -5.44003)
 scale = Vector2(0.998, 0.968)
 sprite_frames = SubResource("SpriteFrames_328ho")
 animation = &"climb"
-frame_progress = 0.967411
+frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
