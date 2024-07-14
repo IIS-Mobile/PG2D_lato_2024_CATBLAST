@@ -44,6 +44,7 @@ func _physics_process(delta):
 	else:
 		animation_tree.set("parameters/conditions/run", false)
 		animation_tree.set("parameters/conditions/idle", true)
+		velocity.x = 0
 	
 	var direction = (player.global_position - global_position).normalized()
 	
