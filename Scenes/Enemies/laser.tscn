@@ -7,7 +7,9 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p72v4"]
 shader = ExtResource("2_72vgf")
 shader_parameter/laser_color = Color(1, 0, 0, 1)
-shader_parameter/intensity = 1.613
+shader_parameter/intensity = 1.674
+shader_parameter/distortion_amount = 0.05
+shader_parameter/time_speed = 10.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbc7i"]
 size = Vector2(34, 6)
