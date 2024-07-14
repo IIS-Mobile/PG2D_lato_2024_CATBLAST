@@ -1,19 +1,13 @@
-[gd_scene load_steps=47 format=3 uid="uid://d1rxkgas26uuw"]
+[gd_scene load_steps=45 format=3 uid="uid://d1rxkgas26uuw"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Drone/drone.gd" id="1_kaeg1"]
 [ext_resource type="Texture2D" uid="uid://do1yflijhcwyu" path="res://Assets/Arts/Animations/enemy_animations/drone/drone_start_attack.png" id="2_h8w1r"]
 [ext_resource type="Texture2D" uid="uid://cpkulf7m2gntj" path="res://Assets/Arts/Animations/enemy_animations/drone/drone_idle.png" id="2_lf7iw"]
-[ext_resource type="Shader" path="res://Shaders/drone_heat.gdshader" id="2_mjx56"]
 [ext_resource type="Texture2D" uid="uid://bqu0k1yt1miv" path="res://Assets/Arts/Animations/enemy_animations/drone/drone_death.png" id="3_g0dfy"]
 [ext_resource type="Texture2D" uid="uid://b5g4rxduvjmbd" path="res://Assets/Arts/Animations/enemy_animations/drone/drone_shot.png" id="3_l5frq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymvw2"]
 size = Vector2(3.62319, 3.62612)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nac7y"]
-resource_local_to_scene = true
-shader = ExtResource("2_mjx56")
-shader_parameter/heat_intensity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jonyv"]
 atlas = ExtResource("2_h8w1r")
@@ -432,7 +426,6 @@ scale = Vector2(9.2, 9.97405)
 shape = SubResource("RectangleShape2D_ymvw2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_nac7y")
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_5l1ra")
 animation = &"idle"
