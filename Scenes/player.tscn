@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=3 uid="uid://dmpuglts6my21"]
+[gd_scene load_steps=143 format=3 uid="uid://dmpuglts6my21"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_movement.gd" id="1_341yb"]
 [ext_resource type="Shader" path="res://Shaders/shield_up_shader.gdshader" id="1_j78mr"]
@@ -19,6 +19,7 @@
 [ext_resource type="Shape2D" uid="uid://bg7jxk4f6nboq" path="res://Assets/Collisions/player_standing_cshape.tres" id="11_ry7ov"]
 [ext_resource type="Texture2D" uid="uid://7ciu01ul58q6" path="res://Assets/Arts/Animations/player_animations/idle/player_interaction.png" id="11_ualut"]
 [ext_resource type="AudioStream" uid="uid://tpg5hvfsw3sc" path="res://Assets/Sounds/player/crouching footstep - Pixabay.wav" id="13_y0wou"]
+[ext_resource type="Texture2D" uid="uid://wvijqfygpj5o" path="res://Assets/Arts/Animations/player_animations/ladder/Player_ladder_anim.png" id="15_lmvhb"]
 [ext_resource type="PackedScene" uid="uid://2xi8ldx06rmb" path="res://Scenes/player_ui.tscn" id="17_dys1h"]
 [ext_resource type="AudioStream" uid="uid://b0levoeqrth12" path="res://Assets/Sounds/player/death - Pixabay.wav" id="18_fn83i"]
 [ext_resource type="AudioStream" uid="uid://beeqv3t33hc5a" path="res://Assets/Sounds/player/player damaged - Pixabay.wav" id="18_xpq8w"]
@@ -391,6 +392,30 @@ region = Rect2(720, 0, 120, 120)
 atlas = ExtResource("2_dl8vb")
 region = Rect2(840, 0, 120, 120)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wsfb"]
+atlas = ExtResource("15_lmvhb")
+region = Rect2(0, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qlft"]
+atlas = ExtResource("15_lmvhb")
+region = Rect2(72, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2b6e"]
+atlas = ExtResource("15_lmvhb")
+region = Rect2(144, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddy1r"]
+atlas = ExtResource("15_lmvhb")
+region = Rect2(216, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo6y5"]
+atlas = ExtResource("15_lmvhb")
+region = Rect2(288, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywyeo"]
+atlas = ExtResource("15_lmvhb")
+region = Rect2(360, 0, 72, 90)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_328ho"]
 animations = [{
 "frames": [{
@@ -738,6 +763,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wsfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qlft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2b6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddy1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jo6y5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywyeo")
+}],
+"loop": true,
+"name": &"climb",
 "speed": 5.0
 }]
 
@@ -1625,6 +1673,33 @@ tracks/5/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_5y8fi"]
+resource_name = "Climbing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"climb"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lrkoh"]
 _data = {
 "Attack": SubResource("Animation_l4yaa"),
@@ -1632,6 +1707,7 @@ _data = {
 "Attack_Jump_L": SubResource("Animation_pxbku"),
 "Attack_Run": SubResource("Animation_bktgy"),
 "Attack_Run_L": SubResource("Animation_6a8h0"),
+"Climbing": SubResource("Animation_5y8fi"),
 "Crouch": SubResource("Animation_nn1bs"),
 "Crouch_walk": SubResource("Animation_ti0k0"),
 "Death": SubResource("Animation_v7el4"),
@@ -1692,7 +1768,8 @@ material = SubResource("ShaderMaterial_yvufx")
 position = Vector2(2, -5.44003)
 scale = Vector2(0.998, 0.968)
 sprite_frames = SubResource("SpriteFrames_328ho")
-animation = &"Attack"
+animation = &"climb"
+frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
