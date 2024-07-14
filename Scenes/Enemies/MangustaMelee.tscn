@@ -490,13 +490,14 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="Attack" type="CollisionPolygon2D" parent="Marker2D/Hitbox"]
-polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 353, 294, 328, 295, 342, 275, 345, 251, 329, 241, 294, 244)
+polygon = PackedVector2Array(294, 237, 342, 237, 363, 250, 375, 273, 350, 285, 330, 285, 310, 281, 330, 260, 307, 258, 284, 243)
 disabled = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(1, 0)
 target_position = Vector2(500, 0)
 collision_mask = 3
+hit_from_inside = true
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="Marker2D/Hitbox" to="." method="_on_hitbox_body_entered"]

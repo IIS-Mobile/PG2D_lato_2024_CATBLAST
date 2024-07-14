@@ -48,7 +48,7 @@ func _physics_process(delta):
 		animation_tree.set("parameters/conditions/idle", true)
 		velocity.x = 0
 	
-	var direction = (player.global_position - global_position).normalized()
+	var direction = (player.position - position).normalized()
 	
 	var current_animation = animation_tree.get("parameters/playback").get_current_node()
 
@@ -67,11 +67,11 @@ func _physics_process(delta):
 	# velocity.y = direction.y * SPEED
 
 
-	var distance = player.global_position.distance_to(global_position)
+	var distance = player.position.distance_to(position)
 	# if player is in range
 	if distance < RANGE and current_animation != "attack" and current_animation != "death" and current_animation != "End":
 	
-		raycast.target_position = (player.global_position - global_position).normalized() * player.global_position.distance_to(global_position)
+		raycast.target_position = (player.position - position).normalized() * player.position.distance_to(position)
 
 		raycast.force_raycast_update()
 
