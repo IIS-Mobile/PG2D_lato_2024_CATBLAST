@@ -94,6 +94,7 @@ func take_damage(damage):
 		velocity.y = 0
 
 func explosion_damage():
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.EXPLOSION)
 	var area = $Hitbox
 	var collisionShape = $Hitbox/ExplosionCollisionShape
 	collisionShape.disabled = false
