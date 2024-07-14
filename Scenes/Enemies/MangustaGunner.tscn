@@ -489,5 +489,6 @@ parameters/conditions/shoot = false
 position = Vector2(1, 0)
 target_position = Vector2(100, 0)
 collision_mask = 3
+hit_from_inside = true
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
