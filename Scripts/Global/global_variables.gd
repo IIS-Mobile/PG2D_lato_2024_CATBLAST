@@ -55,6 +55,8 @@ var CURRENT_HEALTH: int = MAX_HEALTH
 var CURRENT_LEVEL: int = -1
 var LEVEL_TO_CHANGE: int = 0
 
+var RELOAD: bool = false
+
 var LEVELS = [
 	LevelObject.new("res://Scenes/Levels/LobbyLevel.tscn", Vector2(441, 317)),
 	LevelObject.new("res://Scenes/Levels/1Level.tscn", Vector2(700, 33)),

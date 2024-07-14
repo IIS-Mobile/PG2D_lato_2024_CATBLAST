@@ -20,12 +20,14 @@ func _process(delta):
 	pass
 
 func load_lvl():
-	if(GlobalVariables.CURRENT_LEVEL != GlobalVariables.LEVEL_TO_CHANGE):
+	if(GlobalVariables.CURRENT_LEVEL != GlobalVariables.LEVEL_TO_CHANGE or GlobalVariables.RELOAD):
+		GlobalVariables.RELOAD = false
+
 		if(GlobalVariables.LEVEL_TO_CHANGE == 3):
 			GlobalVariables.TRAIN_SPEED = 500
 		else:
 			GlobalVariables.TRAIN_SPEED = 0
-		
+
 		var current_level = get_node("CurrentLevel")
 		for child in current_level.get_children():
 			current_level.remove_child(child)
