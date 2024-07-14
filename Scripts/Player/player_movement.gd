@@ -89,12 +89,15 @@ func _physics_process(delta):
 	is_interaction = anim.current_animation == "Interact"
 
 	if GlobalVariables.CURRENT_HEALTH == 0:
+		is_climbing = false
 		if !is_dying:
 			anim.play("Death")
 		is_dying = true
 		if anim.current_animation != "Death":
 			GlobalVariables.CURRENT_HEALTH = GlobalVariables.MAX_HEALTH
 			get_tree().reload_current_scene()
+			GlobalVariables.RELOAD = true
+			
 		velocity.x = sign(velocity.x) * KNOCKBACK_POWER/2
 		if is_on_floor():
 			velocity.x = 0 
