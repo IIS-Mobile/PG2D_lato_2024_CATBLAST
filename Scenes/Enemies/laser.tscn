@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://2r70p772vgn4"]
+[gd_scene load_steps=6 format=3 uid="uid://2r70p772vgn4"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Drone/laser.gd" id="1_4eqwr"]
+[ext_resource type="Shader" path="res://Shaders/laser_beam.gdshader" id="2_72vgf"]
 [ext_resource type="Texture2D" uid="uid://balw7fxeayl4k" path="res://Assets/Arts/Animations/enemy_animations/drone/laser.png" id="2_h3dkt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p72v4"]
+shader = ExtResource("2_72vgf")
+shader_parameter/laser_color = Color(1, 0, 0, 1)
+shader_parameter/intensity = 1.613
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbc7i"]
 size = Vector2(34, 6)
@@ -11,6 +17,7 @@ z_index = 3
 script = ExtResource("1_4eqwr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_p72v4")
 position = Vector2(1.90735e-06, 1.90735e-06)
 scale = Vector2(0.22549, 0.22549)
 texture = ExtResource("2_h3dkt")
