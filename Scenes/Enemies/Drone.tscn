@@ -14,7 +14,7 @@ size = Vector2(3.62319, 3.62612)
 resource_local_to_scene = true
 shader = ExtResource("2_4ryb3")
 shader_parameter/heat_intensity = 0.0
-shader_parameter/amplitude = 25.0
+shader_parameter/amplitude = 50.0
 shader_parameter/speed = 2.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jonyv"]
