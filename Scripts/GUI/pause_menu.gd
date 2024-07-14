@@ -37,11 +37,11 @@ func _on_options_button_pressed():
 
 func _on_quit_pressed():
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.CONFIRM)
-	#get_tree().change_scene_to_file("res://Scenes/UI/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/main_menu.tscn")
 	GlobalVariables.GAME_PAUSED = false
 
-	get_parent().get_parent().get_parent().add_child(load_menu_scene)
-	get_parent().get_parent().queue_free()
+	# get_parent().get_parent().get_parent().add_child(load_menu_scene)
+	# get_parent().get_parent().queue_free()
 	GlobalVariables.CURRENT_LEVEL = -1
 	GlobalVariables.LEVEL_TO_CHANGE = 0
 	
