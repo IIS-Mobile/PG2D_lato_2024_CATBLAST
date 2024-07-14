@@ -8,7 +8,9 @@ var health = 1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-const RANGE = 250.0
+const FIRE_RANGE = 250.0
+
+const VIEW_RANGE = 400.0
 
 const COOLDOWN = 3.0 # seconds
 
@@ -51,15 +53,20 @@ func _physics_process(delta):
 	if current_animation == "shoot" or current_animation == "death" or current_animation == "End":
 		velocity.x = 0
 	else:
-		velocity.x = direction.x * SPEED
-		get_node("AnimatedSprite2D").flip_h = direction.x < 0
+		if player.global_position.distance_to(global_position) < VIEW_RANGE:
+			raycast.target_position = (player.global_position - global_position).normalized() * player.global_position.distance_to(global_position)
 
+			raycast.force_raycast_update()
 
-	# velocity.y = direction.y * SPEED
-
+			if raycast.is_colliding():
+				var collider = raycast.get_collider()
+				if collider.name == "Player":
+					velocity.x = direction.x * SPEED
+					get_node("AnimatedSprite2D").flip_h = direction.x < 0
+					# velocity.y = direction.y * SPEED
 
 	# if player is in range
-	if player.global_position.distance_to(global_position) < RANGE:
+	if player.global_position.distance_to(global_position) < FIRE_RANGE:
 		raycast.target_position = (player.global_position - global_position).normalized() * player.global_position.distance_to(global_position)
 
 		raycast.force_raycast_update()

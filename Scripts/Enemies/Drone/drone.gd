@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 const SPEED = 60.0
 
-const RANGE = 250.0
+const FIRE_RANGE = 250.0
+
+const VIEW_RANGE = 400.0
 
 const COOLDOWN = 3.0 # seconds
 
@@ -43,9 +45,18 @@ func _physics_process(delta):
 		velocity.x = 0
 		velocity.y = 0
 	else:
-		velocity.x = direction.x * SPEED
-		# velocity.y = direction.y * SPEED
-		get_node("AnimatedSprite2D").flip_h = direction.x > 0
+		if player.global_position.distance_to(global_position) < VIEW_RANGE:
+			raycast.target_position = (player.global_position - global_position).normalized() * player.global_position.distance_to(global_position)
+
+			raycast.force_raycast_update()
+
+			if raycast.is_colliding():
+				var collider = raycast.get_collider()
+				if collider.name == "Player":
+					velocity.x = direction.x * SPEED
+					# velocity.y = direction.y * SPEED
+					get_node("AnimatedSprite2D").flip_h = direction.x > 0
+
 
 	if current_animation == "death" or current_animation == "End":
 		velocity.x = 0
@@ -54,7 +65,7 @@ func _physics_process(delta):
 		
 
 	# if player is in range
-	if player.global_position.distance_to(global_position) < RANGE:
+	if player.global_position.distance_to(global_position) < FIRE_RANGE:
 
 		raycast.target_position = (player.global_position - global_position).normalized() * player.global_position.distance_to(global_position)
 
