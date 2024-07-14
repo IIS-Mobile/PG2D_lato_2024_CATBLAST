@@ -51,8 +51,8 @@ var MAX_HEALTH: int = 7
 var CURRENT_HEALTH: int = MAX_HEALTH
 
 #CURRENT_LEVEL defines the level that loads upon launching the game
-var CURRENT_LEVEL: int = 4
-var LEVEL_TO_CHANGE: int = CURRENT_LEVEL
+var CURRENT_LEVEL: int = -1
+var LEVEL_TO_CHANGE: int = 0
 
 var LEVELS = [
 	LevelObject.new("res://Scenes/Levels/LobbyLevel.tscn", Vector2(441, 317)),
