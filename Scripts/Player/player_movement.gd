@@ -63,7 +63,7 @@ func _physics_process(delta):
 		vignette_rect.visible = true
 	else:
 		vignette_rect.visible = false	
-	if not is_on_floor():
+	if not is_on_floor() and not is_climbing:
 		velocity.y += gravity * delta
 	
 	if is_climbing:
