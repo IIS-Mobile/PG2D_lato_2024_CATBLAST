@@ -313,11 +313,13 @@ func stand():
 func _on_weapon_area_2d_body_entered(body):
 	if body.is_in_group("metal_enemy"):
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_METAL)
-		body.queue_free()
+		if body.has_method("take_damage"):
+			body.take_damage(1)
 		
 	if body.is_in_group("flesh_enemy"):
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_FLESH)
-		body.queue_free()
+		if body.has_method("take_damage"):
+			body.take_damage(1)
 
 
 func _on_ghost_timer_timeout():

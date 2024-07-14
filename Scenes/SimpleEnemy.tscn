@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dkfbae7sgq1mv"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/PathFindingEnemy.gd" id="1_ipugj"]
-[ext_resource type="Texture2D" uid="uid://cpkulf7m2gntj" path="res://Assets/Arts/Animations/drone_animations/drone_idle.png" id="2_cv6aq"]
+[ext_resource type="Texture2D" uid="uid://cpkulf7m2gntj" path="res://Assets/Arts/Animations/enemy_animations/drone/drone_idle.png" id="2_cv6aq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3doo"]
 atlas = ExtResource("2_cv6aq")
@@ -108,6 +108,8 @@ radius = 18.0
 height = 48.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["metal_enemy"]]
+collision_layer = 8
+collision_mask = 3
 script = ExtResource("1_ipugj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -125,6 +127,8 @@ libraries = {
 autoplay = "Idle"
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-1, -5)

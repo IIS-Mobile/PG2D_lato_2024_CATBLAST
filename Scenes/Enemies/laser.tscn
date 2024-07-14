@@ -1,7 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://2r70p772vgn4"]
+[gd_scene load_steps=6 format=3 uid="uid://2r70p772vgn4"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Drone/laser.gd" id="1_4eqwr"]
-[ext_resource type="Texture2D" uid="uid://balw7fxeayl4k" path="res://Assets/Arts/Animations/drone_animations/laser.png" id="2_h3dkt"]
+[ext_resource type="Shader" path="res://Shaders/laser_beam.gdshader" id="2_72vgf"]
+[ext_resource type="Texture2D" uid="uid://balw7fxeayl4k" path="res://Assets/Arts/Animations/enemy_animations/drone/laser.png" id="2_h3dkt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p72v4"]
+shader = ExtResource("2_72vgf")
+shader_parameter/laser_color = Color(1, 0, 0, 1)
+shader_parameter/intensity = 1.674
+shader_parameter/distortion_amount = 0.05
+shader_parameter/time_speed = 10.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbc7i"]
 size = Vector2(34, 6)
@@ -11,13 +19,18 @@ z_index = 3
 script = ExtResource("1_4eqwr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_p72v4")
 position = Vector2(1.90735e-06, 1.90735e-06)
 scale = Vector2(0.22549, 0.22549)
 texture = ExtResource("2_h3dkt")
 offset = Vector2(75, 0)
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(17, 0)
 shape = SubResource("RectangleShape2D_vbc7i")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

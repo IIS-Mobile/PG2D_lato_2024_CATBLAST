@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://f4j2hf6obifc"]
+[gd_scene load_steps=4 format=3 uid="uid://dfwda3q81pl5p"]
 
 [ext_resource type="Script" path="res://Scripts/ribcage_energy_shield_implant.gd" id="1_nrhgu"]
 [ext_resource type="Texture2D" uid="uid://cmpi4h8fgc4e2" path="res://Assets/Arts/Items/implant_placeholder.png" id="2_5a14t"]
@@ -11,6 +11,8 @@ z_index = 2
 script = ExtResource("1_nrhgu")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(8, 8)
