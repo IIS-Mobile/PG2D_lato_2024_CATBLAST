@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhol3kh0pmveq"]
+[gd_scene load_steps=13 format=3 uid="uid://dhol3kh0pmveq"]
 
 [ext_resource type="Script" path="res://Scripts/NPC/textbox_final.gd" id="1_2rolh"]
 [ext_resource type="FontFile" uid="uid://cjc6s10hemgj7" path="res://Assets/Arts/Gui/Cyberphont/Dialogue Font/Fewture.ttf" id="2_bb2oe"]
 [ext_resource type="PackedScene" uid="uid://b7o5nslhfk653" path="res://Scenes/yes_no_choice_panel.tscn" id="3_n0trn"]
+[ext_resource type="Texture2D" uid="uid://ylh7hbxj3l7l" path="res://Assets/Arts/Portraits/Viper.png" id="4_jth1v"]
+[ext_resource type="Texture2D" uid="uid://506j44rxbj8i" path="res://Assets/Arts/Portraits/Capibo.png" id="5_t0wj5"]
+[ext_resource type="Texture2D" uid="uid://6nwe0bjd0f3r" path="res://Assets/Arts/Portraits/Molly.png" id="6_pls4l"]
+[ext_resource type="Texture2D" uid="uid://bh41xn4rh3xqt" path="res://Assets/Arts/Portraits/Ratface.png" id="7_2hvut"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xeaug"]
 bg_color = Color(0.113725, 0, 0.286275, 1)
@@ -12,9 +16,39 @@ border_width_right = 8
 border_width_bottom = 8
 border_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xy71k"]
+bg_color = Color(1, 1, 1, 1)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0pnp"]
+bg_color = Color(1, 1, 1, 1)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wppwa"]
+bg_color = Color(1, 1, 1, 1)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdgxv"]
+bg_color = Color(1, 1, 1, 1)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
 [node name="Textbox" type="CanvasLayer"]
 layer = 5
 script = ExtResource("1_2rolh")
+metadata/_edit_vertical_guides_ = [18.0]
+metadata/_edit_horizontal_guides_ = [466.0]
 
 [node name="TextboxContainer" type="MarginContainer" parent="."]
 anchors_preset = 12
@@ -86,5 +120,61 @@ horizontal_alignment = 3
 [node name="DialogueChoice" parent="." instance=ExtResource("3_n0trn")]
 offset_top = 486.0
 offset_bottom = 486.0
+
+[node name="ViperPanel" type="Panel" parent="."]
+visible = false
+offset_left = 22.0
+offset_top = 256.0
+offset_right = 229.0
+offset_bottom = 463.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xy71k")
+
+[node name="ViperPortrait" type="TextureRect" parent="ViperPanel"]
+layout_mode = 0
+offset_right = 207.0
+offset_bottom = 207.0
+texture = ExtResource("4_jth1v")
+
+[node name="CapiboPanel" type="Panel" parent="."]
+visible = false
+offset_left = 912.0
+offset_top = 246.0
+offset_right = 1129.0
+offset_bottom = 463.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_w0pnp")
+
+[node name="CapiboPortrait" type="TextureRect" parent="CapiboPanel"]
+layout_mode = 0
+offset_right = 217.0
+offset_bottom = 217.0
+texture = ExtResource("5_t0wj5")
+
+[node name="MollyPanel" type="Panel" parent="."]
+visible = false
+offset_left = 928.0
+offset_top = 249.0
+offset_right = 1131.0
+offset_bottom = 465.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wppwa")
+
+[node name="MollyPortrait" type="TextureRect" parent="MollyPanel"]
+layout_mode = 0
+offset_right = 203.0
+offset_bottom = 216.0
+texture = ExtResource("6_pls4l")
+
+[node name="RatfacePanel" type="Panel" parent="."]
+visible = false
+offset_left = 912.0
+offset_top = 247.0
+offset_right = 1129.0
+offset_bottom = 464.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdgxv")
+
+[node name="RatfacePortrait" type="TextureRect" parent="RatfacePanel"]
+layout_mode = 0
+offset_right = 217.0
+offset_bottom = 217.0
+texture = ExtResource("7_2hvut")
 
 [connection signal="timeout" from="LetterTimer" to="." method="_on_timer_timeout"]

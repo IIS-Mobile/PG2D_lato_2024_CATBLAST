@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ct637tgyiwcaj"
+path="res://.godot/imported/explosion - aiko_Changing.wav-e7576a8a12ad9784f717a3beb3692296.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/enemies/explosion - aiko_Changing.wav"
+dest_files=["res://.godot/imported/explosion - aiko_Changing.wav-e7576a8a12ad9784f717a3beb3692296.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
