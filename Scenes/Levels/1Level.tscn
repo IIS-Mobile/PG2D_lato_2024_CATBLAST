@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bxsw2f5s1pgcr"]
+[gd_scene load_steps=36 format=3 uid="uid://bxsw2f5s1pgcr"]
 
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="1_h6cvy"]
 [ext_resource type="PackedScene" uid="uid://curi4fmo2javc" path="res://Scenes/medbox.tscn" id="2_0xqbv"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://d1rxkgas26uuw" path="res://Scenes/Enemies/Drone.tscn" id="7_1sdqq"]
 [ext_resource type="PackedScene" uid="uid://npyfjv0n7o1j" path="res://Scenes/old_man_npc.tscn" id="11_do07x"]
 [ext_resource type="PackedScene" uid="uid://c4trkkowqgash" path="res://Scenes/ratface_npc.tscn" id="12_fh2cr"]
+[ext_resource type="PackedScene" uid="uid://bh70pimpvjiud" path="res://Scenes/Enemies/MangustaGunner.tscn" id="13_wvglf"]
+[ext_resource type="PackedScene" uid="uid://dpjgpydi161bt" path="res://Scenes/Enemies/Militia.tscn" id="14_nblb5"]
 
 [sub_resource type="Gradient" id="Gradient_nve1c"]
 offsets = PackedFloat32Array(0, 0.531453, 0.694143, 0.722343, 0.770065, 1)
@@ -723,6 +725,72 @@ position = Vector2(-737, 658)
 [node name="ratface_npc" parent="." instance=ExtResource("12_fh2cr")]
 position = Vector2(7308, -814)
 scale = Vector2(-1, 1)
+
+[node name="MangustaGunner" parent="." instance=ExtResource("13_wvglf")]
+position = Vector2(6840, -414)
+
+[node name="MangustaGunner2" parent="." instance=ExtResource("13_wvglf")]
+position = Vector2(7272, -404)
+
+[node name="MangustaMelee" parent="." instance=ExtResource("6_sbfoi")]
+position = Vector2(6979, -398)
+
+[node name="MangustaGunner3" parent="." instance=ExtResource("13_wvglf")]
+position = Vector2(7328, -194)
+
+[node name="MangustaMelee2" parent="." instance=ExtResource("6_sbfoi")]
+position = Vector2(7097, -195)
+
+[node name="MangustaMelee3" parent="." instance=ExtResource("6_sbfoi")]
+position = Vector2(7181, -195)
+
+[node name="MangustaMelee4" parent="." instance=ExtResource("6_sbfoi")]
+position = Vector2(6817, 12)
+
+[node name="MangustaMelee5" parent="." instance=ExtResource("6_sbfoi")]
+position = Vector2(7208, 16)
+
+[node name="MangustaGunner4" parent="." instance=ExtResource("13_wvglf")]
+position = Vector2(7323, 223)
+
+[node name="MangustaGunner5" parent="." instance=ExtResource("13_wvglf")]
+position = Vector2(6797, 222)
+
+[node name="MangustaMelee6" parent="." instance=ExtResource("6_sbfoi")]
+position = Vector2(7110, 225)
+
+[node name="MangustaGunner6" parent="." instance=ExtResource("13_wvglf")]
+position = Vector2(7290, -607)
+
+[node name="MangustaMelee7" parent="." instance=ExtResource("6_sbfoi")]
+position = Vector2(7094, -610)
+
+[node name="MangustaGunner7" parent="." instance=ExtResource("13_wvglf")]
+position = Vector2(7346, 641)
+
+[node name="MangustaGunner8" parent="." instance=ExtResource("13_wvglf")]
+position = Vector2(7278, 638)
+
+[node name="MangustaMelee8" parent="." instance=ExtResource("6_sbfoi")]
+position = Vector2(7897, 609)
+
+[node name="Militia" parent="." instance=ExtResource("14_nblb5")]
+position = Vector2(1648, 500)
+
+[node name="Militia2" parent="." instance=ExtResource("14_nblb5")]
+position = Vector2(1321, 497)
+
+[node name="Militia3" parent="." instance=ExtResource("14_nblb5")]
+position = Vector2(2610, 665)
+
+[node name="Drone" parent="." instance=ExtResource("7_1sdqq")]
+position = Vector2(2109, 290)
+
+[node name="Drone2" parent="." instance=ExtResource("7_1sdqq")]
+position = Vector2(2627, 291)
+
+[node name="Drone3" parent="." instance=ExtResource("7_1sdqq")]
+position = Vector2(1822, 648)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="placeholde_ratface_death" to="WorldTiles" method="_on_placeholde_ratface_death_body_entered"]
