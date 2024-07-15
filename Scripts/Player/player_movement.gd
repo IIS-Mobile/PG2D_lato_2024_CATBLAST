@@ -251,8 +251,8 @@ func update_animations(direction, dir):
 		velocity.x = move_toward(velocity.x, 0, GlobalVariables.PLAYER_SPEED)
 		if (
 			(velocity.y == 0)
-			and (anim.current_animation != "Attack" or anim.current_animation != "Attack_Long")
-			and (anim.current_animation != "attack_left"or anim.current_animation != "attack_left_Long")
+			and anim.current_animation != "Attack" and anim.current_animation != "Attack_Long"
+			and anim.current_animation != "attack_left" and anim.current_animation != "attack_left_Long"
 		):
 			if is_crouching:
 				anim.play("Crouch")
