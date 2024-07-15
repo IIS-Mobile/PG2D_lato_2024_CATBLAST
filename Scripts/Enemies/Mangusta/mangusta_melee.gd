@@ -50,16 +50,16 @@ func _physics_process(delta):
 		animation_tree.set("parameters/conditions/idle", true)
 		velocity.x = 0
 	
-	var direction = (player.position - position).normalized()
+	var direction = (player.global_position - global_position).normalized()
 	
 	var current_animation = animation_tree.get("parameters/playback").get_current_node()
 
 	if current_animation == "attack" or current_animation == "death" or current_animation == "End":
 		velocity.x = 0
 	else:
-		if player.position.distance_to(position) < VIEW_RANGE and current_animation != "attack" and current_animation != "death" and current_animation != "End":
+		if player.global_position.distance_to(global_position) < VIEW_RANGE and current_animation != "attack" and current_animation != "death" and current_animation != "End":
 	
-			raycast.target_position = (player.position - position).normalized() * player.position.distance_to(position)
+			raycast.target_position = (player.global_position - global_position).normalized() * player.global_position.distance_to(global_position)
 
 			raycast.force_raycast_update()
 
@@ -78,9 +78,9 @@ func _physics_process(delta):
 
 
 	# if player is in range
-	if player.position.distance_to(position) < FIRE_RANGE and current_animation != "attack" and current_animation != "death" and current_animation != "End":
+	if player.global_position.distance_to(global_position) < FIRE_RANGE and current_animation != "attack" and current_animation != "death" and current_animation != "End":
 	
-		raycast.target_position = (player.position - position).normalized() * player.position.distance_to(position)
+		raycast.target_position = (player.global_position - global_position).normalized() * player.global_position.distance_to(global_position)
 
 		raycast.force_raycast_update()
 
