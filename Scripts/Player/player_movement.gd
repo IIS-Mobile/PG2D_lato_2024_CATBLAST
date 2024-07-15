@@ -59,6 +59,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
+	#print($InvincibleTimer.time_left)
+	if($InvincibleTimer.time_left<=0.3):
+		print("Player stopped being invincible.")
+		$InvincibleTimer.stop()
 	if GlobalVariables.CURRENT_LEVEL == 2:
 		vignette_rect.visible = true
 	else:
@@ -340,6 +344,19 @@ func _on_ghost_spawn_timer_timeout():
 
 
 func _on_hurtbox_area_entered(area):
+	#print($InvincibleTimer.time_left)
+	
+	#if( anim.current_animation == "Hurt"):
+		#$InvincibleTimer.start()
+	if($InvincibleTimer.time_left <= 0):
+		$InvincibleTimer.stop()
+		$InvincibleTimer.start(2)
+		
+	else:
+		return ;
+	#else: 
+		#return;
+	
 	if area.name == "Hitbox":
 		if (GlobalVariables.CURRENT_HEALTH != 0
 		and (!is_shield_up or !is_shield_implant_active)):

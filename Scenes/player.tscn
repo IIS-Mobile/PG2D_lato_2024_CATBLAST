@@ -1,4 +1,4 @@
-[gd_scene load_steps=143 format=3 uid="uid://dmpuglts6my21"]
+[gd_scene load_steps=146 format=3 uid="uid://dmpuglts6my21"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_movement.gd" id="1_341yb"]
 [ext_resource type="Shader" path="res://Shaders/shield_up_shader.gdshader" id="1_j78mr"]
@@ -1159,6 +1159,33 @@ tracks/5/keys = {
 }
 tracks/5/use_blend = true
 
+[sub_resource type="Animation" id="Animation_5y8fi"]
+resource_name = "Climbing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"climb"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
 [sub_resource type="Animation" id="Animation_nn1bs"]
 resource_name = "Crouch"
 loop_mode = 1
@@ -1673,33 +1700,6 @@ tracks/5/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_5y8fi"]
-resource_name = "Climbing"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"climb"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lrkoh"]
 _data = {
 "Attack": SubResource("Animation_l4yaa"),
@@ -1770,8 +1770,7 @@ material = SubResource("ShaderMaterial_yvufx")
 position = Vector2(2, -5.44003)
 scale = Vector2(0.998, 0.968)
 sprite_frames = SubResource("SpriteFrames_328ho")
-animation = &"climb"
-frame = 5
+animation = &"Attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
@@ -1866,6 +1865,9 @@ offset_left = -413.0
 offset_top = -266.0
 offset_right = 425.0
 offset_bottom = 190.0
+
+[node name="InvincibleTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="current_animation_changed" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_changed"]
 [connection signal="body_entered" from="Sprite2D/Hitbox" to="." method="_on_weapon_area_2d_body_entered"]
