@@ -61,7 +61,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _physics_process(delta):
 	#print($InvincibleTimer.time_left)
 	if($InvincibleTimer.time_left<=0.3):
-		print("Player stopped being invincible.")
 		$InvincibleTimer.stop()
 	if GlobalVariables.CURRENT_LEVEL == 2:
 		vignette_rect.visible = true
