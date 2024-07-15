@@ -25,7 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://beeqv3t33hc5a" path="res://Assets/Sounds/player/player damaged - Pixabay.wav" id="18_xpq8w"]
 [ext_resource type="Script" path="res://Scripts/Player/KillAuraFix.gd" id="22_1smnd"]
 [ext_resource type="Shader" path="res://Shaders/vignette.gdshader" id="24_qke42"]
-[ext_resource type="Texture2D" uid="uid://5oedj4b6ndh8" path="res://Scenes/vignette.png" id="25_arbs0"]
+[ext_resource type="Texture2D" path="res://Scenes/vignette.png" id="25_arbs0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uygxu"]
 shader = ExtResource("1_j78mr")

@@ -115,7 +115,7 @@ func _physics_process(delta):
 		elif Input.is_action_pressed("ui_left") and !dashing:
 			dashDirection = Vector2(-1, 0)
 
-		if Input.is_action_just_pressed("Dash") and GlobalVariables.CAN_PLAYER_DASH:
+		if Input.is_action_just_pressed("Dash") and GlobalVariables.CAN_PLAYER_DASH and !is_crouching:
 			if dashDirection:
 				dash()
 				dashing = true
@@ -350,7 +350,7 @@ func _on_hurtbox_area_entered(area):
 		#$InvincibleTimer.start()
 	if($InvincibleTimer.time_left <= 0):
 		$InvincibleTimer.stop()
-		$InvincibleTimer.start(2)
+		$InvincibleTimer.start(1.5)
 		
 	else:
 		return ;
