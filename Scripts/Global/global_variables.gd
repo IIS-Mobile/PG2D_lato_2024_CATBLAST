@@ -59,7 +59,7 @@ var RELOAD: bool = false
 
 var LEVELS = [
 	LevelObject.new("res://Scenes/Levels/LobbyLevel.tscn", Vector2(441, 317)),
-	LevelObject.new("res://Scenes/Levels/1Level.tscn", Vector2(700, 33)),
+	LevelObject.new("res://Scenes/Levels/1Level.tscn", Vector2(-100, 233)),
   	LevelObject.new("res://Scenes/Levels/2Level.tscn", Vector2(-40, 100)),
 	LevelObject.new("res://Scenes/Levels/3_level.tscn", Vector2(407, 487)),
 	LevelObject.new("res://Scenes/Levels/TestLevel.tscn", Vector2(0, 368)),
