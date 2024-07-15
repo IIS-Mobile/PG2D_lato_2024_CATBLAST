@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://npyfjv0n7o1j"]
+
+[ext_resource type="Texture2D" uid="uid://b00mpaptme3df" path="res://Assets/Arts/Animations/npc_animations/old_man_midle.png" id="1_8e6wo"]
+[ext_resource type="Texture2D" uid="uid://ypelofl14tp6" path="res://Assets/Arts/Animations/npc_animations/old_man_death.png" id="1_skb5p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6k3hr"]
+atlas = ExtResource("1_skb5p")
+region = Rect2(0, 0, 96, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1b4f"]
+atlas = ExtResource("1_skb5p")
+region = Rect2(96, 0, 96, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnrxq"]
+atlas = ExtResource("1_skb5p")
+region = Rect2(192, 0, 96, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqiwc"]
+atlas = ExtResource("1_skb5p")
+region = Rect2(288, 0, 96, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e40va"]
+atlas = ExtResource("1_skb5p")
+region = Rect2(384, 0, 96, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk62j"]
+atlas = ExtResource("1_8e6wo")
+region = Rect2(0, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faeai"]
+atlas = ExtResource("1_8e6wo")
+region = Rect2(72, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcyb7"]
+atlas = ExtResource("1_8e6wo")
+region = Rect2(144, 0, 72, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gitm"]
+atlas = ExtResource("1_8e6wo")
+region = Rect2(216, 0, 72, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0dj6c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6k3hr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1b4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnrxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqiwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e40va")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tk62j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faeai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcyb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gitm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur06l"]
+size = Vector2(161.5, 1)
+
+[node name="Old_man_npc" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_0dj6c")
+animation = &"idle"
+
+[node name="chat_detection_area" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
+shape = SubResource("RectangleShape2D_ur06l")
