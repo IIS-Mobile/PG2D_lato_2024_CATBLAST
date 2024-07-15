@@ -1,4 +1,4 @@
-[gd_scene load_steps=151 format=3 uid="uid://dmpuglts6my21"]
+[gd_scene load_steps=160 format=3 uid="uid://dmpuglts6my21"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_movement.gd" id="1_341yb"]
 [ext_resource type="Shader" path="res://Shaders/shield_up_shader.gdshader" id="1_j78mr"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bayfga7evi546" path="res://Scenes/paralaxbackground.tscn" id="5_ksvj2"]
 [ext_resource type="Texture2D" uid="uid://httvfwjwv1ho" path="res://Assets/Arts/Animations/player_animations/attack/player_run_attack.png" id="6_0tjyt"]
 [ext_resource type="Texture2D" uid="uid://cv7x0e166nkn0" path="res://Assets/Arts/Animations/player_animations/crouch/player_crouch_walk.png" id="6_l3y7b"]
+[ext_resource type="Texture2D" uid="uid://bd2i81n8bfphx" path="res://Assets/Arts/Animations/player_animations/attack/Wszczep_attack_jump.png" id="6_lo7qv"]
 [ext_resource type="Texture2D" uid="uid://c5p0gn845gslx" path="res://Assets/Arts/Animations/player_animations/damage/player_death.png" id="7_tqm3a"]
 [ext_resource type="Texture2D" uid="uid://dkq3lytlh2dji" path="res://Assets/Arts/Animations/player_animations/damage/player_hurt.png" id="8_3dt8c"]
 [ext_resource type="AudioStream" uid="uid://omka4tugmk4c" path="res://Assets/Sounds/player/katana sweep - Samuel Manzanero Recio.wav" id="9_aq6sx"]
@@ -23,7 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://b0levoeqrth12" path="res://Assets/Sounds/player/death - Pixabay.wav" id="18_fn83i"]
 [ext_resource type="AudioStream" uid="uid://beeqv3t33hc5a" path="res://Assets/Sounds/player/player damaged - Pixabay.wav" id="18_xpq8w"]
 [ext_resource type="Script" path="res://Scripts/Player/KillAuraFix.gd" id="22_1smnd"]
-[ext_resource type="Texture2D" uid="uid://8dh54oqphf5c" path="res://Assets/Arts/Animations/player_animations/attack/Attack_Extended.png" id="24_tt1ot"]
+[ext_resource type="Texture2D" path="res://Assets/Arts/Animations/player_animations/attack/Attack_Extended.png" id="24_tt1ot"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uygxu"]
 shader = ExtResource("1_j78mr")
@@ -109,6 +110,38 @@ region = Rect2(720, 0, 120, 120)
 [sub_resource type="AtlasTexture" id="AtlasTexture_18yv8"]
 atlas = ExtResource("5_63opr")
 region = Rect2(840, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdvdd"]
+atlas = ExtResource("6_lo7qv")
+region = Rect2(0, 0, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1gf3"]
+atlas = ExtResource("6_lo7qv")
+region = Rect2(200, 0, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uimek"]
+atlas = ExtResource("6_lo7qv")
+region = Rect2(400, 0, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ieip"]
+atlas = ExtResource("6_lo7qv")
+region = Rect2(600, 0, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvw0j"]
+atlas = ExtResource("6_lo7qv")
+region = Rect2(800, 0, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln2hh"]
+atlas = ExtResource("6_lo7qv")
+region = Rect2(1000, 0, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf5er"]
+atlas = ExtResource("6_lo7qv")
+region = Rect2(1200, 0, 200, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6p7n"]
+atlas = ExtResource("6_lo7qv")
+region = Rect2(1400, 0, 200, 120)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t557v"]
 atlas = ExtResource("6_0tjyt")
@@ -454,6 +487,35 @@ animations = [{
 }],
 "loop": true,
 "name": &"Attack_Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdvdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1gf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uimek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ieip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvw0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln2hh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf5er")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6p7n")
+}],
+"loop": true,
+"name": &"Attack_Jump_Long",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1039,7 +1101,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"Attack_Jump"]
+"values": [&"Attack_Jump_Long"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1123,31 +1185,34 @@ length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/path = NodePath("../Sprite2D/Hitbox/Attack_R:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [&"Attack_Jump"]
+"values": [true, false, true, false, true]
 }
-tracks/1/type = "value"
+tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/path = NodePath("../PlayerSounds")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_aq6sx")
+}],
+"times": PackedFloat32Array(0.1)
 }
+tracks/1/use_blend = true
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Sprite2D/Hitbox/Attack_R:disabled")
+tracks/2/path = NodePath("../Sprite2D/Hitbox/Attack_R2:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1156,56 +1221,53 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false, true, false, true]
 }
-tracks/3/type = "audio"
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../PlayerSounds")
+tracks/3/path = NodePath("../Sprite2D/Hitbox/Attack_L:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("9_aq6sx")
-}],
-"times": PackedFloat32Array(0.1)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
-tracks/3/use_blend = true
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Sprite2D/Hitbox/Attack_R2:disabled")
+tracks/4/path = NodePath("../Sprite2D/Hitbox/Attack_L2:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false, true, false, true]
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Sprite2D/Hitbox/Attack_L:disabled")
+tracks/5/path = NodePath("../AnimatedSprite2D:animation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [&"Attack_Jump_Long"]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Sprite2D/Hitbox/Attack_L2:disabled")
+tracks/6/path = NodePath("../AnimatedSprite2D:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true]
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_fsue4"]
@@ -2660,8 +2722,7 @@ material = SubResource("ShaderMaterial_yvufx")
 position = Vector2(2, -5.44003)
 scale = Vector2(0.998, 0.968)
 sprite_frames = SubResource("SpriteFrames_328ho")
-animation = &"Attack"
-frame = 5
+animation = &"Attack_Jump_Long"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
@@ -2690,6 +2751,7 @@ position = Vector2(-317, -269)
 [node name="Hitbox" type="Area2D" parent="Sprite2D"]
 
 [node name="Attack_R" type="CollisionPolygon2D" parent="Sprite2D/Hitbox"]
+visible = false
 polygon = PackedVector2Array(292, 233, 346, 233, 365, 248, 374, 265, 373, 284, 353, 294, 328, 295, 342, 275, 345, 251, 329, 241, 294, 244)
 disabled = true
 
