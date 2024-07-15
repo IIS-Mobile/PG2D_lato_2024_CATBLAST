@@ -1,4 +1,4 @@
-[gd_scene load_steps=178 format=3 uid="uid://dmpuglts6my21"]
+[gd_scene load_steps=189 format=3 uid="uid://dmpuglts6my21"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_movement.gd" id="1_341yb"]
 [ext_resource type="Shader" path="res://Shaders/shield_up_shader.gdshader" id="1_j78mr"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bayfga7evi546" path="res://Scenes/paralaxbackground.tscn" id="5_ksvj2"]
 [ext_resource type="Texture2D" uid="uid://httvfwjwv1ho" path="res://Assets/Arts/Animations/player_animations/attack/player_run_attack.png" id="6_0tjyt"]
 [ext_resource type="Texture2D" uid="uid://cv7x0e166nkn0" path="res://Assets/Arts/Animations/player_animations/crouch/player_crouch_walk.png" id="6_l3y7b"]
-[ext_resource type="Texture2D" path="res://Assets/Arts/Animations/player_animations/attack/Wszczep_attack_jump.png" id="6_lo7qv"]
+[ext_resource type="Texture2D" uid="uid://bd2i81n8bfphx" path="res://Assets/Arts/Animations/player_animations/attack/Wszczep_attack_jump.png" id="6_lo7qv"]
 [ext_resource type="Texture2D" uid="uid://2qq805ctnf1f" path="res://Assets/Arts/Animations/player_animations/attack/Wszczep_attack.png" id="7_2v6xb"]
 [ext_resource type="Texture2D" uid="uid://c5p0gn845gslx" path="res://Assets/Arts/Animations/player_animations/damage/player_death.png" id="7_tqm3a"]
 [ext_resource type="Texture2D" uid="uid://dkq3lytlh2dji" path="res://Assets/Arts/Animations/player_animations/damage/player_hurt.png" id="8_3dt8c"]
@@ -28,8 +28,8 @@
 [ext_resource type="AudioStream" uid="uid://beeqv3t33hc5a" path="res://Assets/Sounds/player/player damaged - Pixabay.wav" id="18_xpq8w"]
 [ext_resource type="Script" path="res://Scripts/Player/KillAuraFix.gd" id="22_1smnd"]
 [ext_resource type="Shader" path="res://Shaders/vignette.gdshader" id="24_qke42"]
-[ext_resource type="Texture2D" path="res://Scenes/vignette.png" id="25_arbs0"]
-[ext_resource type="Texture2D" path="res://Assets/Arts/Animations/player_animations/attack/Attack_Extended.png" id="24_tt1ot"]
+[ext_resource type="Texture2D" uid="uid://8dh54oqphf5c" path="res://Assets/Arts/Animations/player_animations/attack/Attack_Extended.png" id="24_tt1ot"]
+[ext_resource type="Texture2D" uid="uid://5oedj4b6ndh8" path="res://Scenes/vignette.png" id="25_arbs0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uygxu"]
 shader = ExtResource("1_j78mr")
@@ -1788,6 +1788,33 @@ tracks/7/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_5y8fi"]
+resource_name = "Climbing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"climb"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
 [sub_resource type="Animation" id="Animation_rr42w"]
 resource_name = "Attack_Run_L_Long"
 length = 0.7
@@ -2014,33 +2041,6 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_5y8fi"]
-resource_name = "Climbing"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"climb"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_nn1bs"]
@@ -2755,9 +2755,9 @@ _data = {
 "Attack_Long": SubResource("Animation_fsue4"),
 "Attack_Run": SubResource("Animation_bktgy"),
 "Attack_Run_L": SubResource("Animation_6a8h0"),
-"Climbing": SubResource("Animation_5y8fi"),
 "Attack_Run_L_Long": SubResource("Animation_rr42w"),
 "Attack_Run_Long": SubResource("Animation_68gu1"),
+"Climbing": SubResource("Animation_5y8fi"),
 "Crouch": SubResource("Animation_nn1bs"),
 "Crouch_walk": SubResource("Animation_ti0k0"),
 "Death": SubResource("Animation_v7el4"),
@@ -2942,9 +2942,9 @@ polygon = PackedVector2Array(312, 218, 373, 218, 405, 245, 408, 273, 398, 286, 3
 disabled = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 8
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(1, -1)

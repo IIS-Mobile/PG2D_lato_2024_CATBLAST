@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://64dh3elb5sia" path="res://Assets/Arts/Tiles/Sidescroller Shooter - Central City/Background/Background Props.png" id="4_jt32n"]
 [ext_resource type="Texture2D" uid="uid://dexy1y2830ck2" path="res://Assets/Arts/Tiles/My Tiles/train_tiles.png" id="5_88jo3"]
 [ext_resource type="Texture2D" uid="uid://c35cbe0tpjcx5" path="res://Assets/Arts/Tiles/Sidescroller Shooter - Central City/Background/Base Color.png" id="5_c1nhb"]
-[ext_resource type="Texture2D" path="res://Assets/Arts/Tiles/My Tiles/train_tiles_inside.png" id="6_s8u2s"]
+[ext_resource type="Texture2D" uid="uid://bf7gp077wrya0" path="res://Assets/Arts/Tiles/My Tiles/train_tiles_inside.png" id="6_s8u2s"]
 [ext_resource type="Texture2D" uid="uid://b3eqtshc2l4s" path="res://Assets/Arts/Tiles/Sidescroller Shooter - Central City/Background/Frontal Fog.png" id="6_vkb01"]
 [ext_resource type="Texture2D" uid="uid://drv0deao0sr05" path="res://Assets/Arts/Tiles/Sidescroller Shooter - Central City/Background/Mid Fog.png" id="7_otcvv"]
 [ext_resource type="Texture2D" uid="uid://b30g8n778iyb8" path="res://Assets/Arts/Tiles/My Tiles/props-02.png" id="9_5kgli"]
