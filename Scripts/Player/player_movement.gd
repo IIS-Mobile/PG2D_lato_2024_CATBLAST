@@ -15,7 +15,7 @@ const KNOCKBACK_POWER = 400
 @onready var ghost_timer = $GhostTimer
 var dashing = false
 var dashDirection = Vector2.ZERO
-
+var long_attack = false
 var is_crouching = false
 var stuck_under_object = false
 var has_double_jumped = false
@@ -89,6 +89,13 @@ func _physics_process(delta):
 		or anim.current_animation == "Attack_Run"
 		or anim.current_animation == "Attack_Run_L"
 		or anim.current_animation == "Attack_Jump_L"
+		# dlugie ataki
+		or anim.current_animation == "Attack_Long"
+		or anim.current_animation == "attack_left_Long"
+		or anim.current_animation == "Attack_Jump_Long"
+		or anim.current_animation == "Attack_Run_Long"
+		or anim.current_animation == "Attack_Run_L_Long"
+		or anim.current_animation == "Attack_Jump_L_Long"
 	)
 	is_interaction = anim.current_animation == "Interact"
 
@@ -200,12 +207,11 @@ func update_animations(direction, dir):
 	
 	if Input.is_action_just_pressed("Attack") and !is_interaction and !is_hurt and !is_crouching and !is_attacking:
 		if velocity.y != 0:
-			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_JUMP])
+			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_JUMP+3*int(long_attack)])
 		elif velocity.x != 0:
-			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_RUN])
+			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_RUN+3*int(long_attack)])
 		else:
-			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK])
-
+			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK+3*int(long_attack)])
 	if is_on_floor():
 		has_double_jumped = false
 
@@ -237,14 +243,16 @@ func update_animations(direction, dir):
 					and anim.current_animation != "Attack_Run"
 					and !anim.current_animation == "Attack_Run_L"
 					and !is_attacking
+					and !anim.current_animation == "Attack_Run_Long"
+					and !anim.current_animation == "Attack_Run_L_Long"
 				):
 					anim.play("Run")
 	else:
 		velocity.x = move_toward(velocity.x, 0, GlobalVariables.PLAYER_SPEED)
 		if (
 			(velocity.y == 0)
-			and anim.current_animation != "Attack"
-			and anim.current_animation != "attack_left"
+			and (anim.current_animation != "Attack" or anim.current_animation != "Attack_Long")
+			and (anim.current_animation != "attack_left"or anim.current_animation != "attack_left_Long")
 		):
 			if is_crouching:
 				anim.play("Crouch")
@@ -259,6 +267,8 @@ func update_animations(direction, dir):
 	if ( anim.current_animation !="Attack_Jump" and
 		(velocity.y > 0) and
 		!is_attacking 
+		and !anim.current_animation == "Attack_Jump_Long"
+		and !anim.current_animation == "Attack_Jump_L_Long"
 		and !is_hurt and !is_climbing
 	):
 		anim.play("Fall")
@@ -293,6 +303,22 @@ func check_for_implants():
 				shield_timer_flag = false
 				is_shield_up = false
 				$RechargableShieldTimer.stop()
+#Carbon Fiber Arm Muscles - zwiększa prędkość ataku o X procent, podejście agresywniejsze
+
+		if implant.name == "Carbon Fiber Arm Muscles":
+			if implant.equipped:
+				if is_attacking:
+					anim.speed_scale = 1.8
+				else:
+					anim.speed_scale = 1	
+			else:
+				anim.speed_scale = 1
+		if implant.name == "Full Precision Mechanical Arms":
+				if implant.equipped:
+					long_attack = true
+				else:
+					long_attack = false
+		
 
 func is_anim_playing() -> bool:
 	if anim.current_animation != "Idle":
