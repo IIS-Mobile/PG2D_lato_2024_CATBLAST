@@ -197,7 +197,7 @@ func update_animations(direction, dir):
 
 	const attack_anim_lut = [["Attack_Jump","Attack_Run","Attack"],["Attack_Jump_L","Attack_Run_L","attack_left"]]
 	
-	if Input.is_action_just_pressed("Attack") and !is_interaction and !is_hurt and !is_crouching:
+	if Input.is_action_just_pressed("Attack") and !is_interaction and !is_hurt and !is_crouching and !is_attacking:
 		if velocity.y != 0:
 			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_JUMP])
 		elif velocity.x != 0:
@@ -235,6 +235,7 @@ func update_animations(direction, dir):
 					anim.current_animation != "Hurt"
 					and anim.current_animation != "Attack_Run"
 					and !anim.current_animation == "Attack_Run_L"
+					and !is_attacking
 				):
 					anim.play("Run")
 	else:
