@@ -1,7 +1,7 @@
 extends Node2D
 class_name SOUNDTRACKPLAYER_CLASS
 
-enum THEMES { PEACE, BATTLE, MENU, INTRO }
+enum THEMES { PEACE, BATTLE, UNDERGROUND, MENU, INTRO }
 
 var TRACKS = {
 	THEMES.INTRO: [preload("res://Assets/Sounds/music/intro sound - moodmode.ogg")],
@@ -9,10 +9,14 @@ var TRACKS = {
 	THEMES.PEACE: [preload("res://Assets/Sounds/music/predator and prey - Yurika.ogg")],
 	THEMES.BATTLE:
 	[
-		preload("res://Assets/Sounds/music/levelmusic - drmseq.ogg"),
-		preload("res://Assets/Sounds/music/levelmusic2 - Pixabay.ogg"),
-		preload("res://Assets/Sounds/music/safe - Alec Koff.ogg")
-	]
+		preload("res://Assets/Sounds/music/levelmusic1 - Panda Beats.ogg"),
+		preload("res://Assets/Sounds/music/levelmusic2 - Panda Beats.ogg"),
+		preload("res://Assets/Sounds/music/levelmusic4 - Panda Beats.ogg"),
+		preload("res://Assets/Sounds/music/levelmusic5 - Panda Beats.ogg"),
+		preload("res://Assets/Sounds/music/levelmusic6 - Panda Beats.ogg"),
+		preload("res://Assets/Sounds/music/safe - Alec Koff.ogg"),
+	],
+	THEMES.UNDERGROUND: [preload("res://Assets/Sounds/music/levelmusic3 underground - Panda Beats.ogg")]
 }
 
 var current_theme: int = THEMES.PEACE

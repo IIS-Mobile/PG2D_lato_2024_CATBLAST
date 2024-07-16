@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://btnvvvh4owbfc"
+path="res://.godot/imported/levelmusic6 - Panda Beats.ogg-d7e022b78b51f4caf3ebaaa61350aa76.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/music/levelmusic6 - Panda Beats.ogg"
+dest_files=["res://.godot/imported/levelmusic6 - Panda Beats.ogg-d7e022b78b51f4caf3ebaaa61350aa76.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
