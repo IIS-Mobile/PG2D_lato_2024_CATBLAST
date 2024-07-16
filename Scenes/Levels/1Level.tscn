@@ -1,6 +1,7 @@
-[gd_scene load_steps=36 format=3 uid="uid://bxsw2f5s1pgcr"]
+[gd_scene load_steps=37 format=3 uid="uid://bxsw2f5s1pgcr"]
 
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="1_h6cvy"]
+[ext_resource type="Script" path="res://Scripts/Levels/1Level.gd" id="1_k0t2a"]
 [ext_resource type="PackedScene" uid="uid://curi4fmo2javc" path="res://Scenes/medbox.tscn" id="2_0xqbv"]
 [ext_resource type="Script" path="res://Scripts/Levels/Level1_tilemap.gd" id="2_vyfhs"]
 [ext_resource type="PackedScene" uid="uid://c5yj3p0tq8rr7" path="res://Scenes/street_lamp.tscn" id="3_8sq4s"]
@@ -10,8 +11,8 @@
 [ext_resource type="Script" path="res://Scenes/Levels/Area2D.gd" id="5_srkl8"]
 [ext_resource type="PackedScene" uid="uid://b8i5mb7732elk" path="res://Scenes/Enemies/MangustaMelee.tscn" id="6_sbfoi"]
 [ext_resource type="PackedScene" uid="uid://d1rxkgas26uuw" path="res://Scenes/Enemies/Drone.tscn" id="7_1sdqq"]
-[ext_resource type="PackedScene" uid="uid://npyfjv0n7o1j" path="res://Scenes/old_man_npc.tscn" id="11_do07x"]
-[ext_resource type="PackedScene" uid="uid://c4trkkowqgash" path="res://Scenes/ratface_npc.tscn" id="12_fh2cr"]
+[ext_resource type="PackedScene" path="res://Scenes/old_man_npc.tscn" id="11_do07x"]
+[ext_resource type="PackedScene" path="res://Scenes/ratface_npc.tscn" id="12_fh2cr"]
 [ext_resource type="PackedScene" uid="uid://bh70pimpvjiud" path="res://Scenes/Enemies/MangustaGunner.tscn" id="13_wvglf"]
 [ext_resource type="PackedScene" uid="uid://dpjgpydi161bt" path="res://Scenes/Enemies/Militia.tscn" id="14_nblb5"]
 
@@ -102,6 +103,7 @@ size = Vector2(68.5, 48.25)
 size = Vector2(105.5, 79)
 
 [node name="1Level" type="Node2D"]
+script = ExtResource("1_k0t2a")
 
 [node name="WorldTiles" type="TileMap" parent="."]
 position = Vector2(-4, 242)
