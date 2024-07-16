@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwl5ryplxbium"]
+[gd_scene load_steps=4 format=3 uid="uid://doocd7atilpat"]
 
 [ext_resource type="Script" path="res://Scripts/carbon_fiber_arm_muscles_implant.gd" id="1_v3mk4"]
 [ext_resource type="Texture2D" uid="uid://cmpi4h8fgc4e2" path="res://Assets/Arts/Items/implant_placeholder.png" id="2_w8dhp"]

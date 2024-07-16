@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds8fh6fn3voj7"]
+[gd_scene load_steps=4 format=3 uid="uid://dnseb26vwnfv"]
 
 [ext_resource type="Script" path="res://Scripts/circulatory_system_enhancement_implant.gd" id="1_qbih1"]
 [ext_resource type="Texture2D" uid="uid://cmpi4h8fgc4e2" path="res://Assets/Arts/Items/implant_placeholder.png" id="2_m80kg"]
