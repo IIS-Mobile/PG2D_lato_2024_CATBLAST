@@ -59,7 +59,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
-	#print(anim.current_animation)
+	
+	print(anim.current_animation)
 	#print($InvincibleTimer.time_left)
 	if($InvincibleTimer.time_left<=0.3):
 		$InvincibleTimer.stop()
@@ -207,7 +208,9 @@ func update_animations(direction, dir):
 	
 	if Input.is_action_just_pressed("Attack") and !is_interaction and !is_hurt and !is_crouching and !is_attacking:
 		if velocity.y != 0:
+			#print("fall attack")
 			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_JUMP+3*int(long_attack)])
+			
 		elif velocity.x != 0:
 			anim.play(attack_anim_lut[int(dir)][AttackEnum.ATTACK_RUN+3*int(long_attack)])
 		else:
