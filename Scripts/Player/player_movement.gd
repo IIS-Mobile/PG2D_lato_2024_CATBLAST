@@ -203,7 +203,7 @@ func update_animations(direction, dir):
 			anim.play("Jump")
 			SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.JUMP)
 
-	const attack_anim_lut = [["Attack_Jump","Attack_Run","Attack"],["Attack_Jump_L","Attack_Run_L","attack_left"]]
+	const attack_anim_lut = [["Attack_Jump","Attack_Run","Attack","Attack_Jump_Long","Attack_Run_Long","Attack_Long"],["Attack_Jump_L","Attack_Run_L","attack_left","Attack_Jump_L_Long","Attack_Run_L_Long","attack_left_Long"]]
 	
 	if Input.is_action_just_pressed("Attack") and !is_interaction and !is_hurt and !is_crouching and !is_attacking:
 		if velocity.y != 0:
