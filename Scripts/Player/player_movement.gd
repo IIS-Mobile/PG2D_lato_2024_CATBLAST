@@ -268,6 +268,7 @@ func update_animations(direction, dir):
 			):
 				anim.play("Idle")
 	if ( anim.current_animation !="Attack_Jump" and
+		anim.current_animation !="Attack_Jump_L" and
 		(velocity.y > 0) and
 		!is_attacking 
 		and !anim.current_animation == "Attack_Jump_Long"
