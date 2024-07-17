@@ -51,9 +51,9 @@ var FIRST_DIALOGUE_FLAG = false
 var MAX_HEALTH: int = 7
 var CURRENT_HEALTH: int = MAX_HEALTH
 
-#CURRENT_LEVEL defines the level that loads upon launching the game
+#LEVEL_TO_CHANGE defines the level that loads upon launching the game
 var CURRENT_LEVEL: int = -1
-var LEVEL_TO_CHANGE: int = 0
+var LEVEL_TO_CHANGE: int = 1
 
 var RELOAD: bool = false
 
