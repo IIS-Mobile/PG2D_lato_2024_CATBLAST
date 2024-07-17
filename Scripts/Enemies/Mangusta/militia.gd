@@ -16,6 +16,9 @@ const RANGE = 250.0
 
 const COOLDOWN = 3.0 # seconds
 
+var BLOOD_DISPLAY_TIME = 0.5
+var CURRENT_DISPLAY = 0.0
+
 @onready var player = get_node("/root/GameManager/Player")
 
 @onready var bullet = preload("res://Scenes/Enemies/Bullet.tscn")
@@ -27,6 +30,7 @@ var timer = Timer.new()
 @onready var raycast : RayCast2D = $RayCast2D
 
 func _ready():
+	$BloodSplatter.emitting = false
 	timer = Timer.new()
 	timer.set_wait_time(COOLDOWN)
 	timer.set_one_shot(true)
@@ -81,6 +85,11 @@ func _physics_process(delta):
 						animation_tree.set("parameters/conditions/shoot", true)
 						timer.start()
 
+	if $BloodSplatter.emitting == true:
+		CURRENT_DISPLAY += delta
+		if CURRENT_DISPLAY >= BLOOD_DISPLAY_TIME:
+			$BloodSplatter.emitting = false
+			CURRENT_DISPLAY = 0.0
 	move_and_slide()
 
 
@@ -91,6 +100,8 @@ func spawn_bullet():
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.GUN_SHOT)
 
 func take_damage(damage):
+	if health > 0:
+		$BloodSplatter.emitting = true
 	health -= damage
 	if health <= 0:
 		animation_tree.set("parameters/conditions/death", true)

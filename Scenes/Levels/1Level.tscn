@@ -666,6 +666,9 @@ scale = Vector2(0.689, 0.843)
 [node name="Mangusta" parent="WorldTiles/Enemies" instance=ExtResource("6_sbfoi")]
 position = Vector2(5003, -336)
 
+[node name="Mangusta7" parent="WorldTiles/Enemies" instance=ExtResource("6_sbfoi")]
+position = Vector2(679, 29)
+
 [node name="Mangusta2" parent="WorldTiles/Enemies" instance=ExtResource("6_sbfoi")]
 position = Vector2(3845, -335)
 
