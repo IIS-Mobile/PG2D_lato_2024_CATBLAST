@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://kb0wprefbp30"]
+[gd_scene load_steps=13 format=3 uid="uid://kb0wprefbp30"]
 
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="1_6315b"]
 [ext_resource type="Script" path="res://Scripts/TrainParallax.gd" id="1_ebwrp"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://curi4fmo2javc" path="res://Scenes/medbox.tscn" id="2_30voj"]
 [ext_resource type="Script" path="res://Scripts/TrainTiles.gd" id="2_aqubq"]
 [ext_resource type="PackedScene" uid="uid://djsl3gdn8xo4c" path="res://Scripts/Global/ladder.tscn" id="4_2ul42"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/MangustaMelee.tscn" id="7_g0s2i"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/MangustaGunner.tscn" id="8_mn6j8"]
+[ext_resource type="PackedScene" uid="uid://d1rxkgas26uuw" path="res://Scenes/Enemies/Drone.tscn" id="9_fi8tp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qo3op"]
 size = Vector2(7509.5, 57)
@@ -92,6 +95,84 @@ debug_color = Color(0.980392, 0, 0, 0.419608)
 position = Vector2(-613.25, 436.75)
 shape = SubResource("RectangleShape2D_pw0od")
 debug_color = Color(0.52549, 0.560784, 0.301961, 0.0941176)
+
+[node name="MangustaMelee" parent="TrainTiles" instance=ExtResource("7_g0s2i")]
+position = Vector2(-1755, 399)
+
+[node name="MangustaGunner" parent="TrainTiles" instance=ExtResource("8_mn6j8")]
+position = Vector2(-1510, 398)
+
+[node name="MangustaGunner2" parent="TrainTiles" instance=ExtResource("8_mn6j8")]
+position = Vector2(-1322, 478)
+
+[node name="MangustaGunner3" parent="TrainTiles" instance=ExtResource("8_mn6j8")]
+position = Vector2(-1043, 478)
+
+[node name="MangustaGunner4" parent="TrainTiles" instance=ExtResource("8_mn6j8")]
+position = Vector2(-782, 476)
+
+[node name="MangustaGunner5" parent="TrainTiles" instance=ExtResource("8_mn6j8")]
+position = Vector2(-255, 476)
+
+[node name="MangustaGunner6" parent="TrainTiles" instance=ExtResource("8_mn6j8")]
+position = Vector2(-205, 478)
+
+[node name="MangustaMelee2" parent="TrainTiles" instance=ExtResource("7_g0s2i")]
+position = Vector2(-3, 397)
+
+[node name="Drone" parent="TrainTiles" instance=ExtResource("9_fi8tp")]
+position = Vector2(-1725, 249)
+
+[node name="Drone2" parent="TrainTiles" instance=ExtResource("9_fi8tp")]
+position = Vector2(-1570, 261)
+
+[node name="Drone3" parent="TrainTiles" instance=ExtResource("9_fi8tp")]
+position = Vector2(-1322, 290)
+
+[node name="MangustaMelee3" parent="TrainTiles" instance=ExtResource("7_g0s2i")]
+position = Vector2(-968, 399)
+
+[node name="MangustaMelee4" parent="TrainTiles" instance=ExtResource("7_g0s2i")]
+position = Vector2(-1126, 397)
+
+[node name="MangustaGunner7" parent="TrainTiles" instance=ExtResource("8_mn6j8")]
+position = Vector2(-451, 396)
+
+[node name="Drone4" parent="TrainTiles" instance=ExtResource("9_fi8tp")]
+position = Vector2(-266, 266)
+
+[node name="MangustaMelee5" parent="TrainTiles" instance=ExtResource("7_g0s2i")]
+position = Vector2(-790, 291)
+
+[node name="MangustaMelee6" parent="TrainTiles" instance=ExtResource("7_g0s2i")]
+position = Vector2(-1023, 288)
+
+[node name="Drone5" parent="TrainTiles" instance=ExtResource("9_fi8tp")]
+position = Vector2(-658, 246)
+
+[node name="MangustaMelee7" parent="TrainTiles" instance=ExtResource("7_g0s2i")]
+position = Vector2(-67, 292)
+
+[node name="MangustaMelee8" parent="TrainTiles" instance=ExtResource("7_g0s2i")]
+position = Vector2(-1174, 473)
+
+[node name="MangustaMelee9" parent="TrainTiles" instance=ExtResource("7_g0s2i")]
+position = Vector2(-634, 477)
+
+[node name="MangustaGunner8" parent="TrainTiles" instance=ExtResource("8_mn6j8")]
+position = Vector2(-492, 397)
+
+[node name="MangustaGunner9" parent="TrainTiles" instance=ExtResource("8_mn6j8")]
+position = Vector2(-811, 398)
+
+[node name="MangustaGunner10" parent="TrainTiles" instance=ExtResource("8_mn6j8")]
+position = Vector2(-1246, 303)
+
+[node name="MangustaGunner11" parent="TrainTiles" instance=ExtResource("8_mn6j8")]
+position = Vector2(-1834, 299)
+
+[node name="MangustaGunner12" parent="TrainTiles" instance=ExtResource("8_mn6j8")]
+position = Vector2(-378, 301)
 
 [connection signal="body_entered" from="TrainTiles/TrainArea" to="TrainTiles" method="_on_train_area_body_entered"]
 [connection signal="body_exited" from="TrainTiles/TrainArea" to="TrainTiles" method="_on_train_area_body_exited"]

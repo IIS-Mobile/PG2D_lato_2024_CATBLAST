@@ -16,7 +16,7 @@ func _ready():
 	rotation = direction.angle()
 
 	timer = Timer.new()
-	timer.wait_time = 3.0
+	timer.wait_time = 10.0
 	timer.one_shot = true
 	var callable = Callable(self, "_on_Timer_timeout")
 	timer.connect("timeout", callable)
