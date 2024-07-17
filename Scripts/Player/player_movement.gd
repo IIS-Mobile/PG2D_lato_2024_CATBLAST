@@ -60,7 +60,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
 	
-	print(anim.current_animation)
+	#print(anim.current_animation)
 	#print($InvincibleTimer.time_left)
 	if($InvincibleTimer.time_left<=0.3):
 		$InvincibleTimer.stop()
