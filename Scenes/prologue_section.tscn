@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnjnv1hu1q03r"]
+[gd_scene load_steps=7 format=3 uid="uid://n3sedfpnd58i"]
 
-[ext_resource type="Script" path="res://Scripts/GUI/gamelaunch_intro.gd" id="1_1xcya"]
-[ext_resource type="Texture2D" uid="uid://bc4dha7l5jqff" path="res://Assets/Arts/Gui/Logo/Logo2.png" id="2_povxs"]
-[ext_resource type="Texture2D" uid="uid://di3d7vcgg8v1e" path="res://Assets/Arts/Gui/Logo/logo.png" id="3_alypp"]
+[ext_resource type="Script" path="res://Scripts/prologue_section.gd" id="1_ulna0"]
+[ext_resource type="Texture2D" uid="uid://b01buphymlqoq" path="res://Assets/Arts/Menu/city_panorama.png" id="2_ssntd"]
 
 [sub_resource type="Animation" id="Animation_x5oa8"]
 resource_name = "Fade_in"
@@ -58,42 +57,24 @@ _data = {
 "RESET": SubResource("Animation_qyc45")
 }
 
-[node name="GamelaunchIntro" type="Node2D"]
-script = ExtResource("1_1xcya")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Background" type="ColorRect" parent="CanvasLayer"]
+[node name="PrologueSection" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
+script = ExtResource("1_ulna0")
 
-[node name="BigLogo" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -213.0
-offset_top = -281.0
-offset_right = 2154.0
-offset_bottom = 1432.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.3, 0.3)
-size_flags_horizontal = 4
-texture = ExtResource("2_povxs")
-metadata/_edit_use_anchors_ = true
-
-[node name="SmolLogo" type="TextureRect" parent="CanvasLayer"]
-offset_left = 30.0
-offset_top = 419.0
-offset_right = 539.0
-offset_bottom = 645.0
-texture = ExtResource("3_alypp")
+texture = ExtResource("2_ssntd")
 metadata/_edit_use_anchors_ = true
 
 [node name="BlackFade" type="ColorRect" parent="CanvasLayer"]
