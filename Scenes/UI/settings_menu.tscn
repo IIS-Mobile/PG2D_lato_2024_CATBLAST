@@ -130,7 +130,7 @@ offset_right = 923.0
 offset_bottom = 127.0
 min_value = -36.0
 max_value = -6.0
-value = -6.0
+value = -12.0
 
 [node name="Label" type="Label" parent="MasterScrollbar"]
 layout_mode = 0
@@ -148,8 +148,8 @@ offset_top = 239.0
 offset_right = 923.0
 offset_bottom = 259.0
 min_value = -36.0
-max_value = -6.0
-value = -6.0
+max_value = -12.0
+value = -12.0
 
 [node name="Label" type="Label" parent="MusicScrollbar"]
 layout_mode = 0
