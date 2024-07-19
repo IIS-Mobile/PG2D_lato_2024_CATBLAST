@@ -56,10 +56,12 @@ func _process(delta):
 		State.FINISHED:
 			sound_timer.stop()
 			if text_queue.is_empty() and Input.is_action_just_pressed("Interact"):
+				manage_portraits(-1)
 				GlobalVariables.PLAYER_CONTROLS_ENABLED = true
 				GlobalVariables.IS_PLAYER_TALKING = false
 				dialogue_finished.emit()
 			if Input.is_action_just_pressed("Interact"):
+				manage_portraits(-1)
 				change_state(State.READY)
 				hide_textbox()
 
