@@ -3,6 +3,8 @@ class_name TEXTBOXNARRATIVE_CLASS
 
 const CHAR_READ_RATE = 0.05
 
+signal dialogue_finished
+
 @onready var textbox_container = $TextboxContainer
 @onready var choice_box = $LevelDebugDialogueControl
 @onready var start_symbol = $TextboxContainer/MarginContainer/HBoxContainer/Start
@@ -53,6 +55,10 @@ func _process(delta):
 				change_state(State.FINISHED)
 		State.FINISHED:
 			sound_timer.stop()
+			if text_queue.is_empty() and Input.is_action_just_pressed("Interact"):
+				GlobalVariables.PLAYER_CONTROLS_ENABLED = true
+				GlobalVariables.IS_PLAYER_TALKING = false
+				dialogue_finished.emit()
 			if Input.is_action_just_pressed("Interact"):
 				change_state(State.READY)
 				hide_textbox()
@@ -77,6 +83,10 @@ func show_textbox():
 func display_text():
 	dialogue_tween = get_tree().create_tween()
 	var next_text = text_queue.pop_front()
+	
+	var portrait_number = seek_for_name(next_text)
+	manage_portraits(portrait_number)
+	
 	label.text = next_text
 	label.visible_characters = 0
 	change_state(State.READING)
@@ -121,3 +131,45 @@ func load_file(file):
 		queue_text(line)
 	f.close()
 	return
+
+func seek_for_name(text):
+	if(text[0] == 'V' && text[1] == 'I' && text[2] == 'P' && text[3] == 'E'):
+		return 0
+	elif(text[0] == 'C' && text[1] == 'A' && text[2] == 'P' && text[3] == 'I'):
+		return 1
+	elif(text[0] == 'M' && text[1] == 'O' && text[2] == 'L' && text[3] == 'L'):
+		return 2
+	elif(text[0] == 'R' && text[1] == 'A' && text[2] == 'T' && text[3] == 'F'):
+		return 3
+	else:
+		return -2
+
+func manage_portraits(number): 
+	match number:
+		0:
+			$ViperPanel.show()
+			$CapiboPanel.hide()
+			$MollyPanel.hide()
+			$RatfacePanel.hide()
+		1:
+			$ViperPanel.hide()
+			$CapiboPanel.show()
+			$MollyPanel.hide()
+			$RatfacePanel.hide()
+		2:
+			$ViperPanel.hide()
+			$CapiboPanel.hide()
+			$MollyPanel.show()
+			$RatfacePanel.hide()
+		3:
+			$ViperPanel.hide()
+			$CapiboPanel.hide()
+			$MollyPanel.hide()
+			$RatfacePanel.show()
+		-1:
+			$ViperPanel.hide()
+			$CapiboPanel.hide()
+			$MollyPanel.hide()
+			$RatfacePanel.hide()
+		-2:
+			return

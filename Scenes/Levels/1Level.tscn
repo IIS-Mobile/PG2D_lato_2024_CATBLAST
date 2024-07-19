@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bxsw2f5s1pgcr"]
+[gd_scene load_steps=38 format=3 uid="uid://bxsw2f5s1pgcr"]
 
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="1_h6cvy"]
 [ext_resource type="Script" path="res://Scripts/Levels/1Level.gd" id="1_k0t2a"]
@@ -101,6 +101,9 @@ size = Vector2(68.5, 48.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bkfby"]
 size = Vector2(105.5, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6sqtc"]
+size = Vector2(234, 133)
 
 [node name="1Level" type="Node2D"]
 script = ExtResource("1_k0t2a")
@@ -797,5 +800,15 @@ position = Vector2(2627, 291)
 [node name="Drone3" parent="." instance=ExtResource("7_1sdqq")]
 position = Vector2(1822, 648)
 
+[node name="FirstCallFromCapibo" type="Area2D" parent="."]
+position = Vector2(384, 220)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstCallFromCapibo"]
+position = Vector2(-147, 14.5)
+shape = SubResource("RectangleShape2D_6sqtc")
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="placeholde_ratface_death" to="WorldTiles" method="_on_placeholde_ratface_death_body_entered"]
+[connection signal="body_entered" from="FirstCallFromCapibo" to="." method="_on_first_call_from_capibo_body_entered"]
+[connection signal="body_exited" from="FirstCallFromCapibo" to="." method="_on_first_call_from_capibo_body_exited"]
