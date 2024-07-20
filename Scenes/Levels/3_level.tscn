@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://curi4fmo2javc" path="res://Scenes/medbox.tscn" id="2_30voj"]
 [ext_resource type="Script" path="res://Scripts/TrainTiles.gd" id="2_aqubq"]
 [ext_resource type="PackedScene" uid="uid://djsl3gdn8xo4c" path="res://Scripts/Global/ladder.tscn" id="4_2ul42"]
-[ext_resource type="PackedScene" path="res://Scenes/Enemies/MangustaMelee.tscn" id="7_g0s2i"]
-[ext_resource type="PackedScene" path="res://Scenes/Enemies/MangustaGunner.tscn" id="8_mn6j8"]
+[ext_resource type="PackedScene" uid="uid://b8i5mb7732elk" path="res://Scenes/Enemies/MangustaMelee.tscn" id="7_g0s2i"]
+[ext_resource type="PackedScene" uid="uid://bh70pimpvjiud" path="res://Scenes/Enemies/MangustaGunner.tscn" id="8_mn6j8"]
 [ext_resource type="PackedScene" uid="uid://d1rxkgas26uuw" path="res://Scenes/Enemies/Drone.tscn" id="9_fi8tp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qo3op"]
