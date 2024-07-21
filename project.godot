@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Godot"
+config/name="Heavy Heart"
 run/main_scene="res://Scenes/UI/gamelaunch_intro.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Assets/Arts/Menu/NAPIS_LOGO_GRY_BANANA.png"
 
 [autoload]
 
@@ -24,8 +24,11 @@ TextboxNarrative="*res://Scenes/textbox_narrative.tscn"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="res://Assets/Arts/Menu/cursor.png"
+mouse_cursor/custom_image_hotspot=Vector2(16, 16)
 
 [input]
 
@@ -112,3 +115,4 @@ Inventory={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+anti_aliasing/quality/msaa_2d=3
