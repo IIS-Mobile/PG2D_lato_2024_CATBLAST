@@ -39,6 +39,10 @@ func _ready():
 
 
 func _physics_process(delta):
+
+	if GlobalVariables.IS_MILITIA_TRIGGERED == true:
+		is_triggered = true
+
 	if health < MAX_HEALTH:
 		trigger()
 
@@ -118,3 +122,4 @@ func _on_animation_tree_animation_finished(anim_name):
 
 func trigger():
 	is_triggered = true
+	GlobalVariables.IS_MILITIA_TRIGGERED = true
