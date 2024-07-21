@@ -18,6 +18,7 @@ func _ready():
 
 func _process(delta):
 	if !is_implant_chest_exhausted and is_player_in_grab_range and Input.is_action_just_pressed("Interact"):
+		$SmokeParticles.emitting = true
 		$Opened.visible = true
 		GlobalVariables.item_pickup_signal.emit(GlobalVariables.IMPLANTS[my_parameter].name)
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.ITEM_PICKUP)
@@ -37,15 +38,9 @@ func show_message(text):
 	var message_label = message_canvas_layer.get_node("MessageLabel")
 	message_label.text = text
 	$CanvasLayer/ImplantSprite.texture = load(GlobalVariables.IMPLANTS[my_parameter].graphic_path)
-	
-	# Play the animation to scale up the CanvasLayer
 	animation_player.play("show_message")
-	
-	message_timer.start(1)  # Start the timer for 1 second
+	message_timer.start(1)  
 
-func _on_message_timer_timeout():
-	# Do nothing on timer timeout
-	pass
 
 func _on_animation_finished(anim_name):
 	if anim_name == "show_message":

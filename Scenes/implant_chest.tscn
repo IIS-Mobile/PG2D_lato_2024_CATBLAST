@@ -1,10 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://d6iy5muhsacy"]
+[gd_scene load_steps=12 format=3 uid="uid://d6iy5muhsacy"]
 
 [ext_resource type="Script" path="res://Scripts/Global/implant_chest.gd" id="1_o1mab"]
 [ext_resource type="Texture2D" uid="uid://d2dmyjshxnf3h" path="res://Assets/Arts/Tiles/Sidescroller Shooter - Central City/Assets/Buildings.png" id="2_xelmb"]
 [ext_resource type="Theme" uid="uid://u4unsqyy6047" path="res://Assets/Arts/Gui/gui_them.tres" id="3_kdye4"]
 [ext_resource type="Texture2D" uid="uid://cmpi4h8fgc4e2" path="res://Assets/Arts/Items/implant_placeholder.png" id="4_gyl6l"]
 [ext_resource type="Shader" path="res://Scenes/glow_implant.gdshader" id="4_ymegq"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2pp4t"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(13.92, 0.5, 1)
+orbit_velocity_min = -0.34
+orbit_velocity_max = 0.971
+gravity = Vector3(0, -100, 0)
+scale_max = 8.35
+color = Color(1, 1, 1, 0.52549)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vraum"]
 size = Vector2(32, 15)
@@ -68,6 +78,12 @@ texture = ExtResource("2_xelmb")
 region_enabled = true
 region_rect = Rect2(176, 192, 32, 32)
 
+[node name="SmokeParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_2pp4t")
+one_shot = true
+
 [node name="GrabTheItemArea" type="Area2D" parent="."]
 collision_mask = 3
 
@@ -79,6 +95,7 @@ shape = SubResource("RectangleShape2D_vraum")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 100
+visible = false
 scale = Vector2(0.1, 0.1)
 transform = Transform2D(0.1, 0, 0, 0.1, 0, 0)
 
