@@ -42,3 +42,4 @@ func kill():
 		is_dead = true
 		$BloodSplatter.emitting = true
 		emit_signal("old_man_killed")
+		GlobalVariables.IS_MILITIA_TRIGGERED = true
