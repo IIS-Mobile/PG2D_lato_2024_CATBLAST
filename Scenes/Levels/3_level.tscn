@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://kb0wprefbp30"]
+[gd_scene load_steps=16 format=3 uid="uid://kb0wprefbp30"]
 
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="1_6315b"]
 [ext_resource type="Script" path="res://Scripts/TrainParallax.gd" id="1_ebwrp"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://b8i5mb7732elk" path="res://Scenes/Enemies/MangustaMelee.tscn" id="7_g0s2i"]
 [ext_resource type="PackedScene" uid="uid://bh70pimpvjiud" path="res://Scenes/Enemies/MangustaGunner.tscn" id="8_mn6j8"]
 [ext_resource type="PackedScene" uid="uid://d1rxkgas26uuw" path="res://Scenes/Enemies/Drone.tscn" id="9_fi8tp"]
+[ext_resource type="Shader" path="res://Shaders/cybermexico.gdshader" id="10_anvka"]
+[ext_resource type="Script" path="res://Scripts/Levels/ChromaticAberration.gd" id="11_avmdp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qo3op"]
 size = Vector2(7509.5, 57)
@@ -18,6 +20,12 @@ size = Vector2(286.31, 2.91666)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pw0od"]
 size = Vector2(3668.5, 259.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y6ww7"]
+shader = ExtResource("10_anvka")
+shader_parameter/r_displacement = Vector2(2, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-3, 0)
 
 [node name="3Level" type="Node2D"]
 script = ExtResource("1_whk44")
@@ -173,6 +181,22 @@ position = Vector2(-1834, 299)
 
 [node name="MangustaGunner12" parent="TrainTiles" instance=ExtResource("8_mn6j8")]
 position = Vector2(-378, 301)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+material = SubResource("ShaderMaterial_y6ww7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 190.0
+offset_top = 95.0
+offset_right = 190.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_avmdp")
 
 [connection signal="body_entered" from="TrainTiles/TrainArea" to="TrainTiles" method="_on_train_area_body_entered"]
 [connection signal="body_exited" from="TrainTiles/TrainArea" to="TrainTiles" method="_on_train_area_body_exited"]

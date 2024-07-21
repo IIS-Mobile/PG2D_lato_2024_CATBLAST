@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://d1rxkgas26uuw" path="res://Scenes/Enemies/Drone.tscn" id="7_1sdqq"]
 [ext_resource type="PackedScene" uid="uid://npyfjv0n7o1j" path="res://Scenes/NPC/old_man_npc.tscn" id="11_do07x"]
 [ext_resource type="PackedScene" uid="uid://c4trkkowqgash" path="res://Scenes/NPC/ratface_npc.tscn" id="12_fh2cr"]
+[ext_resource type="Script" path="res://Scripts/Levels/ChromaticAberration.gd" id="12_nxj7j"]
 [ext_resource type="PackedScene" uid="uid://bh70pimpvjiud" path="res://Scenes/Enemies/MangustaGunner.tscn" id="13_wvglf"]
 [ext_resource type="PackedScene" uid="uid://dpjgpydi161bt" path="res://Scenes/Enemies/Militia.tscn" id="14_nblb5"]
 
@@ -749,6 +750,7 @@ offset_right = 190.0
 offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("12_nxj7j")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 3

@@ -9,6 +9,7 @@ var sound_volume = -20
 @onready var master_scrollbar = $MasterScrollbar
 @onready var music_scrollbar = $MusicScrollbar
 @onready var sound_scrollbar = $SoundScrollbar
+@onready var chromatic_aberration_checkbox = $ChromaticAberrationCheckbox
 
 func _ready() -> void:
 	load_volume_settings()
@@ -68,6 +69,7 @@ func save_volume_settings():
 	config.set_value("audio", "master_volume", master_volume)
 	config.set_value("audio", "music_volume", music_volume)
 	config.set_value("audio", "sound_volume", sound_volume)
+	config.set_value("graphics", "chromatic_aberration", GlobalVariables.CHROMATIC_ABERRATION)
 	config.save("user://settings.cfg")
 
 func load_volume_settings():
@@ -77,6 +79,8 @@ func load_volume_settings():
 		master_volume = config.get_value("audio", "master_volume", -20)
 		music_volume = config.get_value("audio", "music_volume", -20)
 		sound_volume = config.get_value("audio", "sound_volume", -20)
+		chromatic_aberration_checkbox.button_pressed = config.get_value("graphics", "chromatic_aberration", true)
+		GlobalVariables.CHROMATIC_ABERRATION = chromatic_aberration_checkbox.button_pressed
 
 func apply_volume_settings():
 	AudioServer.set_bus_volume_db(SoundtrackPlayer.master_bus, master_volume)
@@ -91,3 +95,6 @@ func update_slider_positions():
 	master_scrollbar.value = master_volume
 	music_scrollbar.value = music_volume
 	sound_scrollbar.value = sound_volume
+
+func _on_chromatic_aberration_checkbox_toggled(button_pressed: bool) -> void:
+	GlobalVariables.CHROMATIC_ABERRATION = button_pressed
