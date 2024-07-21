@@ -8,17 +8,24 @@ var save_path = "user://variable.save"
 var loaded_data = false
 
 
-
 func save():
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	if file:
 		file.store_var(GlobalVariables.CURRENT_HEALTH)
-		print(GlobalVariables.LEVEL_TO_CHANGE)
+		#print(GlobalVariables.LEVEL_TO_CHANGE)
 		file.store_var(GlobalVariables.LEVEL_TO_CHANGE)
+		for implant in GlobalVariables.IMPLANTS:
+			var implant_val = implant.posessed
+			print(implant_val)
+			if implant_val:
+				file.store_var(1)
+			else:
+				file.store_var(0)
 		file.close()
-		#print("Data saved" + CURRENT_LEVEL)
+		print("Data saved successfully.")
 	else:
 		print("Failed to open file for writing")
+
 	
 func _ready():
 	hide()
