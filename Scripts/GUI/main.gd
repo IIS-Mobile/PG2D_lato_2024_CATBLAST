@@ -13,21 +13,31 @@ func load_data():
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		if file:
-			CURRENT_HEALTH = file.get_var()
-			LEVEL_TO_CHANGE = file.get_var()
+			var CURRENT_HEALTH = file.get_var()
+			var LEVEL_TO_CHANGE = file.get_var()
+			print("Loaded Health:", CURRENT_HEALTH)
+			print("Loaded Level:", LEVEL_TO_CHANGE)
+			
+			for implant in GlobalVariables.IMPLANTS:
+				var implant_val = file.get_var()
+				print("Loaded Implant Value:", implant_val)
+				if implant_val == 1:
+					GlobalVariables.item_pickup_signal.emit(implant.name)
+					#implant.posessed = true
+				#else:
+					#implant.posessed = false
+				
 			file.close()
+			
 			GlobalVariables.CURRENT_HEALTH = CURRENT_HEALTH
 			GlobalVariables.LEVEL_TO_CHANGE = LEVEL_TO_CHANGE
 			loaded_data = true
-			print("Data loaded")
-			#print(LEVEL_TO_CHANGE)
-			#print(CURRENT_HEALTH)
+			print("Data loaded successfully.")
 		else:
 			print("Failed to open file for reading")
 	else:
-		print("No save found")
-		CURRENT_HEALTH = 0
-		LEVEL_TO_CHANGE = 0
+		print("Save file does not exist")
+
 
 func _input(event : InputEvent):
 	if(event.is_action_pressed("ui_cancel")):
