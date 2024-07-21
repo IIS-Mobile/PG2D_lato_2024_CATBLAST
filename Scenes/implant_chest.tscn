@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkktklkrmrnjj"]
+[gd_scene load_steps=6 format=3 uid="uid://d6iy5muhsacy"]
 
 [ext_resource type="Script" path="res://Scripts/Global/implant_chest.gd" id="1_o1mab"]
 [ext_resource type="Texture2D" uid="uid://d2dmyjshxnf3h" path="res://Assets/Arts/Tiles/Sidescroller Shooter - Central City/Assets/Buildings.png" id="2_xelmb"]

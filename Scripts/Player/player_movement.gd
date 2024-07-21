@@ -348,6 +348,9 @@ func stand():
 
 
 func _on_weapon_area_2d_body_entered(body):
+
+	print(body.name)
+
 	if body.is_in_group("metal_enemy"):
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_METAL)
 		if body.has_method("take_damage"):
@@ -357,6 +360,14 @@ func _on_weapon_area_2d_body_entered(body):
 		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_FLESH)
 		if body.has_method("take_damage"):
 			body.take_damage(1)
+
+	if body.name == "Old_man_npc":
+		body.kill()
+		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_FLESH)
+	
+	if body.name == "ratface_npc":
+		body.kill()
+		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_FLESH)
 
 
 func _on_ghost_timer_timeout():

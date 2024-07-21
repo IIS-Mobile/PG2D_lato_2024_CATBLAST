@@ -1,1 +1,18 @@
-CAPIBO: 
+VIPER: Y'know I'm busy, right?
+CAPIBO: Right, right, choomie, got a few words for ya.
+VIPER: Okay, but make it quick.
+CAPIBO: I've got a few gifts dropped for ya, scattered around your mission's area.
+VIPER: Gifts? You know damn well it ain't Christmas now.
+CAPIBO: Lemme finish speaking my man. Those gifts are implants. 
+Y'know, cyberstuff that enhances your body and turns you into a killing machine.
+VIPER: I'm positive I'm enough of a killing machine right now.
+CAPIBO: Yeah, right, you're our special, talented boy. You managed to
+survive in your profession without any boosts for long enough.
+It's your choice, but I recommend chroming up.
+VIPER: We'll see. I'll grab'em and think 'bout them at your place.
+CAPIBO: Sweet. Oh, and by the way - I heard a tiny rumour about those
+Trauma Team red medboxes. You come up to them, push a button and that machine
+scans yo ass and provides treatment instantly. Usually enough to keep you alive
+from that one more bullet that could make a diff.
+VIPER: Okay, right, copy that. I really gotta delta. See ya.
+CAPIBO: Yup, bye choomie.

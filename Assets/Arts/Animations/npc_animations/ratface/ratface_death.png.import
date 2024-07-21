@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b00mpaptme3df"
-path="res://.godot/imported/old_man_midle.png-d1cfd0ed20635eb35b04d650c6e112b7.ctex"
+uid="uid://c5qnq3ijqjrvu"
+path="res://.godot/imported/ratface_death.png-7f029dd28d7e509543e370c8f920f611.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Arts/Animations/npc_animations/old_man_midle.png"
-dest_files=["res://.godot/imported/old_man_midle.png-d1cfd0ed20635eb35b04d650c6e112b7.ctex"]
+source_file="res://Assets/Arts/Animations/npc_animations/ratface/ratface_death.png"
+dest_files=["res://.godot/imported/ratface_death.png-7f029dd28d7e509543e370c8f920f611.ctex"]
 
 [params]
 

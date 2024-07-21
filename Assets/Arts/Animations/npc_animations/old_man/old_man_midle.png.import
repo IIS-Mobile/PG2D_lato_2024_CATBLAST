@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ypelofl14tp6"
-path="res://.godot/imported/old_man_death.png-aaa63c581ad673686ee0e6de42af7f54.ctex"
+uid="uid://b00mpaptme3df"
+path="res://.godot/imported/old_man_midle.png-07fd6b7fc11a491467addfd4807e46cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Arts/Animations/npc_animations/old_man_death.png"
-dest_files=["res://.godot/imported/old_man_death.png-aaa63c581ad673686ee0e6de42af7f54.ctex"]
+source_file="res://Assets/Arts/Animations/npc_animations/old_man/old_man_midle.png"
+dest_files=["res://.godot/imported/old_man_midle.png-07fd6b7fc11a491467addfd4807e46cf.ctex"]
 
 [params]
 
