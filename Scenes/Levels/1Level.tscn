@@ -257,6 +257,21 @@ my_parameter = 4
 position = Vector2(8769, 560)
 my_parameter = 5
 
+[node name="Medbox6" parent="WorldTiles/Objects" instance=ExtResource("2_0xqbv")]
+position = Vector2(3922, -352)
+
+[node name="Medbox7" parent="WorldTiles/Objects" instance=ExtResource("2_0xqbv")]
+position = Vector2(3758, -352)
+
+[node name="Medbox8" parent="WorldTiles/Objects" instance=ExtResource("2_0xqbv")]
+position = Vector2(3051, 224)
+
+[node name="Medbox9" parent="WorldTiles/Objects" instance=ExtResource("2_0xqbv")]
+position = Vector2(1746, 240)
+
+[node name="Medbox10" parent="WorldTiles/Objects" instance=ExtResource("2_0xqbv")]
+position = Vector2(343, 192)
+
 [node name="Lights" type="Node2D" parent="WorldTiles"]
 
 [node name="SubstractWorldLight" type="DirectionalLight2D" parent="WorldTiles/Lights"]
@@ -476,7 +491,6 @@ energy = 0.34
 texture = ExtResource("4_wkmkp")
 
 [node name="PointLight2D19" type="PointLight2D" parent="WorldTiles/Lights"]
-visible = false
 position = Vector2(3966, -340.5)
 scale = Vector2(0.953125, 1.32031)
 color = Color(0.760784, 1, 1, 1)
@@ -535,7 +549,6 @@ energy = 2.62
 texture = SubResource("GradientTexture2D_lyalh")
 
 [node name="YellowLight5" type="PointLight2D" parent="WorldTiles/Lights"]
-visible = false
 position = Vector2(3760, -359)
 scale = Vector2(8.78125, 1.75)
 color = Color(0.364706, 0.364706, 0.364706, 1)
@@ -608,7 +621,6 @@ range_z_max = 5
 texture = SubResource("GradientTexture2D_mrmj1")
 
 [node name="LinearWhiteLight9" type="PointLight2D" parent="WorldTiles/Lights"]
-visible = false
 position = Vector2(-80.5, -6)
 scale = Vector2(5.98438, 2.1875)
 energy = 1.16
@@ -738,7 +750,6 @@ position = Vector2(-625, 419)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
 material = SubResource("ShaderMaterial_hgokv")
 anchors_preset = 15
 anchor_right = 1.0
