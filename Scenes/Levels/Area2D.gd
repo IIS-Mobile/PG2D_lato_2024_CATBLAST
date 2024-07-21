@@ -13,5 +13,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
+		GlobalVariables.PLAYER_CONTROLS_ENABLED = false
+		TextboxNarrative.dialogue_begin("res://Assets/Dialogue/2Level/train_leaves_later.txt")
 		GlobalVariables.LEVEL_TO_CHANGE = 0;
 	pass # Replace with function body.
