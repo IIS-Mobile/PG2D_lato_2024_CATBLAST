@@ -49,6 +49,7 @@ var TRAIN_SPEED = 0
 var FIRST_DIALOGUE_FLAG = false
 
 var IS_MILITIA_TRIGGERED = false
+var IS_MANUGSTA_TRIGGERED = false
 
 var MAX_HEALTH: int = 7
 var CURRENT_HEALTH: int = MAX_HEALTH

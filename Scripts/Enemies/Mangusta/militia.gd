@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
-const MAX_HEALTH = 2
-
-var is_triggered = false
-
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
 
+const MAX_HEALTH = 2
+
 var health = MAX_HEALTH
+
+var is_triggered = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -79,23 +79,22 @@ func _physics_process(delta):
 					get_node("AnimatedSprite2D").flip_h = direction.x < 0
 					# velocity.y = direction.y * SPEED
 
-	if is_triggered:
 
-		# if player is in range
-		if player.global_position.distance_to(global_position) < FIRE_RANGE:
+	# if player is in range
+	if is_triggered and player.global_position.distance_to(global_position) < FIRE_RANGE:
 			
-			raycast.target_position = (player.global_position - global_position).normalized() * player.global_position.distance_to(global_position)
+		raycast.target_position = (player.global_position - global_position).normalized() * player.global_position.distance_to(global_position)
 
-			raycast.force_raycast_update()
+		raycast.force_raycast_update()
 
-			if raycast.is_colliding():
-				var collider = raycast.get_collider()
-				if collider.name == "Player":
-					velocity.x = 0
-					# if timer is counting
-					if timer.is_stopped():
-						animation_tree.set("parameters/conditions/shoot", true)
-						timer.start()
+		if raycast.is_colliding():
+			var collider = raycast.get_collider()
+			if collider.name == "Player":
+				velocity.x = 0
+				# if timer is counting
+				if timer.is_stopped():
+					animation_tree.set("parameters/conditions/shoot", true)
+					timer.start()
 
 	if $BloodSplatter.emitting == true:
 		CURRENT_DISPLAY += delta

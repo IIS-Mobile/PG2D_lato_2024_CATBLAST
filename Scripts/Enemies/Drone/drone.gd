@@ -8,7 +8,11 @@ const VIEW_RANGE = 400.0
 
 const COOLDOWN = 3.0 # seconds
 
-var health = 1
+const MAX_HEALTH = 1
+
+var health = MAX_HEALTH
+
+var is_triggered = false
 
 @onready var start_position = global_position
 
@@ -36,12 +40,19 @@ func _ready():
 	
 
 func _physics_process(delta):
+
+	if GlobalVariables.IS_MILITIA_TRIGGERED == true:
+		is_triggered = true
+
+	if health < MAX_HEALTH:
+		trigger()
+
 	var direction = (player.global_position - global_position).normalized()
 		
 	animation_tree.set("parameters/conditions/idle", true)
 	# check current anim playing, if shooting then stop moving
 	var current_animation = animation_tree.get("parameters/playback").get_current_node()
-	if current_animation == "charge" or current_animation == "shoot":
+	if current_animation == "charge" or current_animation == "shoot" or is_triggered == false:
 		velocity.x = 0
 		velocity.y = 0
 	else:
@@ -65,7 +76,7 @@ func _physics_process(delta):
 		
 
 	# if player is in range
-	if player.global_position.distance_to(global_position) < FIRE_RANGE:
+	if is_triggered and player.global_position.distance_to(global_position) < FIRE_RANGE:
 
 		raycast.target_position = (player.global_position - global_position).normalized() * player.global_position.distance_to(global_position)
 
@@ -113,3 +124,8 @@ func explosion_damage():
 	for body in bodies:
 		if body.is_in_group("enemy"):
 			body.take_damage(1)
+
+
+func trigger():
+	is_triggered = true
+	GlobalVariables.IS_MILITIA_TRIGGERED = true

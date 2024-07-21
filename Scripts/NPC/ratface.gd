@@ -42,3 +42,4 @@ func kill():
 		is_dead = true
 		$BloodSplatter.emitting = true
 		emit_signal("ratface_killed")
+		GlobalVariables.IS_MANGUSTA_TRIGGERED = true

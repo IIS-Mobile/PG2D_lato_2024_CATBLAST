@@ -3,7 +3,11 @@ extends CharacterBody2D
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
 
-var health = 1
+const MAX_HEALTH = 1
+
+var health = MAX_HEALTH
+
+var is_triggered = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -38,6 +42,12 @@ func _ready():
 
 func _physics_process(delta):
 
+	if GlobalVariables.IS_MANGUSTA_TRIGGERED == true:
+		is_triggered = true
+
+	if health < MAX_HEALTH:
+		trigger()
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -54,7 +64,7 @@ func _physics_process(delta):
 	
 	var current_animation = animation_tree.get("parameters/playback").get_current_node()
 	# if current anim playing is shooting then velocity.x = 0
-	if current_animation == "shoot" or current_animation == "death" or current_animation == "End":
+	if current_animation == "shoot" or current_animation == "death" or current_animation == "End" or is_triggered == false:
 		velocity.x = 0
 	else:
 		if player.global_position.distance_to(global_position) < VIEW_RANGE:
@@ -70,7 +80,7 @@ func _physics_process(delta):
 					# velocity.y = direction.y * SPEED
 
 	# if player is in range
-	if player.global_position.distance_to(global_position) < FIRE_RANGE:
+	if is_triggered and player.global_position.distance_to(global_position) < FIRE_RANGE:
 		raycast.target_position = (player.global_position - global_position).normalized() * player.global_position.distance_to(global_position)
 
 		raycast.force_raycast_update()
@@ -114,3 +124,7 @@ func _on_animation_tree_animation_finished(anim_name):
 	elif anim_name == "shoot":
 		animation_tree.set("parameters/conditions/shoot", false)
 	
+
+func trigger():
+	is_triggered = true
+	GlobalVariables.IS_MANGUSTA_TRIGGERED = true
