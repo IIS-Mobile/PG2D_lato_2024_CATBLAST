@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bxsw2f5s1pgcr"]
+[gd_scene load_steps=45 format=3 uid="uid://bxsw2f5s1pgcr"]
 
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="1_h6cvy"]
 [ext_resource type="Script" path="res://Scripts/Levels/1Level.gd" id="1_k0t2a"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cr7u0awwr0fhh" path="res://Assets/Arts/Textures/lamp_light_texture.png" id="4_wkmkp"]
 [ext_resource type="PackedScene" uid="uid://djsl3gdn8xo4c" path="res://Scripts/Global/ladder.tscn" id="5_4fuvh"]
 [ext_resource type="Script" path="res://Scenes/Levels/Area2D.gd" id="5_srkl8"]
-[ext_resource type="PackedScene" uid="uid://dkktklkrmrnjj" path="res://Scenes/implant_chest.tscn" id="6_e0nux"]
+[ext_resource type="PackedScene" uid="uid://d6iy5muhsacy" path="res://Scenes/implant_chest.tscn" id="6_e0nux"]
 [ext_resource type="PackedScene" uid="uid://b8i5mb7732elk" path="res://Scenes/Enemies/MangustaMelee.tscn" id="6_sbfoi"]
 [ext_resource type="PackedScene" uid="uid://d1rxkgas26uuw" path="res://Scenes/Enemies/Drone.tscn" id="7_1sdqq"]
 [ext_resource type="PackedScene" uid="uid://npyfjv0n7o1j" path="res://Scenes/NPC/old_man_npc.tscn" id="11_do07x"]
@@ -109,15 +109,21 @@ size = Vector2(234, 133)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xditg"]
 size = Vector2(222, 133)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ek8pe"]
-size = Vector2(39, 21)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7reg"]
 size = Vector2(185.5, 119.75)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sjgxp"]
 radius = 16.0
 height = 62.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8kkn"]
+size = Vector2(157.5, 369.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkrvi"]
+size = Vector2(152, 132)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7hf1"]
+size = Vector2(82, 46)
 
 [node name="1Level" type="Node2D"]
 script = ExtResource("1_k0t2a")
@@ -234,15 +240,26 @@ position = Vector2(8059, 352)
 
 [node name="implant_chest" parent="WorldTiles/Objects" instance=ExtResource("6_e0nux")]
 position = Vector2(240, 48)
-my_parameter = 1
 
 [node name="implant_chest2" parent="WorldTiles/Objects" instance=ExtResource("6_e0nux")]
 position = Vector2(4000, -320)
-my_parameter = 2
+my_parameter = 1
 
 [node name="implant_chest3" parent="WorldTiles/Objects" instance=ExtResource("6_e0nux")]
-position = Vector2(7444, 112)
+position = Vector2(8566, 160)
+my_parameter = 2
+
+[node name="implant_chest4" parent="WorldTiles/Objects" instance=ExtResource("6_e0nux")]
+position = Vector2(8551, 384)
 my_parameter = 3
+
+[node name="implant_chest5" parent="WorldTiles/Objects" instance=ExtResource("6_e0nux")]
+position = Vector2(8672, 576)
+my_parameter = 4
+
+[node name="implant_chest6" parent="WorldTiles/Objects" instance=ExtResource("6_e0nux")]
+position = Vector2(8769, 560)
+my_parameter = 5
 
 [node name="Lights" type="Node2D" parent="WorldTiles"]
 
@@ -682,7 +699,7 @@ position = Vector2(3413, -447)
 scale = Vector2(0.689, 0.508)
 
 [node name="Ladder9" parent="WorldTiles/Ladders" instance=ExtResource("5_4fuvh")]
-position = Vector2(3557, -286.945)
+position = Vector2(3557, -306)
 scale = Vector2(0.689, 0.973)
 
 [node name="Ladder10" parent="WorldTiles/Ladders" instance=ExtResource("5_4fuvh")]
@@ -843,15 +860,6 @@ collision_mask = 3
 position = Vector2(83, -23.5)
 shape = SubResource("RectangleShape2D_xditg")
 
-[node name="PlaceholderImplantChest" type="Area2D" parent="."]
-z_index = 10
-position = Vector2(212, 261)
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlaceholderImplantChest"]
-position = Vector2(23.5, 32.5)
-shape = SubResource("RectangleShape2D_ek8pe")
-
 [node name="KillTheOldManReminder" type="Area2D" parent="."]
 z_index = 10
 position = Vector2(1181, 563)
@@ -870,12 +878,46 @@ collision_mask = 3
 position = Vector2(18, 25)
 shape = SubResource("CapsuleShape2D_sjgxp")
 
+[node name="GrabSecondImplantReminder" type="Area2D" parent="."]
+z_index = 10
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabSecondImplantReminder"]
+position = Vector2(4451, -71.25)
+shape = SubResource("RectangleShape2D_e8kkn")
+
+[node name="GrabThirdImplantReminder" type="Area2D" parent="."]
+z_index = 10
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabThirdImplantReminder"]
+position = Vector2(8369, 363)
+shape = SubResource("RectangleShape2D_jkrvi")
+
+[node name="GrabFourthImplantReminder" type="Area2D" parent="."]
+z_index = 10
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabFourthImplantReminder"]
+position = Vector2(8497, 750)
+shape = SubResource("RectangleShape2D_jkrvi")
+
+[node name="GrabFivesixImplantReminder" type="Area2D" parent="."]
+z_index = 10
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabFivesixImplantReminder"]
+position = Vector2(8889, 794)
+shape = SubResource("RectangleShape2D_l7hf1")
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="placeholde_ratface_death" to="WorldTiles" method="_on_placeholde_ratface_death_body_entered"]
 [connection signal="body_entered" from="FirstCallFromCapibo" to="." method="_on_first_call_from_capibo_body_entered"]
 [connection signal="body_exited" from="FirstCallFromCapibo" to="." method="_on_first_call_from_capibo_body_exited"]
 [connection signal="body_entered" from="GrabTheImplantReminder" to="." method="_on_grab_the_implant_reminder_body_entered"]
-[connection signal="body_entered" from="PlaceholderImplantChest" to="." method="_on_placeholder_implant_chest_body_entered"]
-[connection signal="body_exited" from="PlaceholderImplantChest" to="." method="_on_placeholder_implant_chest_body_exited"]
 [connection signal="body_entered" from="KillTheOldManReminder" to="." method="_on_kill_the_old_man_reminder_body_entered"]
 [connection signal="area_entered" from="OldManPlaceholder" to="." method="_on_old_man_placeholder_area_entered"]
+[connection signal="body_entered" from="GrabSecondImplantReminder" to="." method="_on_grab_second_implant_reminder_body_entered"]
+[connection signal="body_entered" from="GrabThirdImplantReminder" to="." method="_on_grab_third_implant_reminder_body_entered"]
+[connection signal="body_entered" from="GrabFourthImplantReminder" to="." method="_on_grab_fourth_implant_reminder_body_entered"]
+[connection signal="body_entered" from="GrabFivesixImplantReminder" to="." method="_on_grab_fivesix_implant_reminder_body_entered"]
