@@ -14,6 +14,9 @@ const VIEW_RANGE = 400.0
 
 const COOLDOWN = 3.0 # seconds
 
+var BLOOD_DISPLAY_TIME = 0.5
+var CURRENT_DISPLAY = 0.0
+
 @onready var player = get_node("/root/GameManager/Player")
 
 @onready var animation_tree : AnimationTree = $AnimationTree
@@ -29,6 +32,7 @@ const COOLDOWN = 3.0 # seconds
 var timer = Timer.new()
 
 func _ready():
+	$BloodSplatter.emitting = false
 	timer = Timer.new()
 	timer.set_wait_time(COOLDOWN)
 	timer.set_one_shot(true)
@@ -93,6 +97,11 @@ func _physics_process(delta):
 					attack()
 					timer.start()
 
+	if $BloodSplatter.emitting == true:
+		CURRENT_DISPLAY += delta
+		if CURRENT_DISPLAY >= BLOOD_DISPLAY_TIME:
+			$BloodSplatter.emitting = false
+			CURRENT_DISPLAY = 0.0
 	move_and_slide()
 
 
@@ -101,6 +110,8 @@ func attack():
 	# ???
 
 func take_damage(damage):
+	if health > 0:
+		$BloodSplatter.emitting = true
 	health -= damage
 	if health <= 0:
 		killed()

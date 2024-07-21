@@ -10,7 +10,7 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/path = NodePath("CanvasLayer/BlackFade:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +26,7 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/path = NodePath("CanvasLayer/BlackFade:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -41,7 +41,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/path = NodePath("CanvasLayer/BlackFade:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -63,14 +63,15 @@ script = ExtResource("1_1xcya")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+[node name="Background" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+[node name="BigLogo" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -85,21 +86,24 @@ grow_vertical = 2
 scale = Vector2(0.3, 0.3)
 size_flags_horizontal = 4
 texture = ExtResource("2_povxs")
+metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="SmolLogo" type="TextureRect" parent="CanvasLayer"]
 offset_left = 30.0
 offset_top = 419.0
 offset_right = 539.0
 offset_bottom = 645.0
 texture = ExtResource("3_alypp")
+metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="BlackFade" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

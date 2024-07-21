@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://5gbmfb0ugwfm"
+path="res://.godot/imported/prologue music - Panda Beats.mp3-75ec5621bdde4492f07200f02d47abd0.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/music/prologue music - Panda Beats.mp3"
+dest_files=["res://.godot/imported/prologue music - Panda Beats.mp3-75ec5621bdde4492f07200f02d47abd0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

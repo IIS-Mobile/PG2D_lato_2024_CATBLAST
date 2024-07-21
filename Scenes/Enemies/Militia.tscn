@@ -1,10 +1,11 @@
-[gd_scene load_steps=57 format=3 uid="uid://dpjgpydi161bt"]
+[gd_scene load_steps=58 format=3 uid="uid://dpjgpydi161bt"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Mangusta/militia.gd" id="1_ecqj5"]
 [ext_resource type="Texture2D" uid="uid://b6nb6mtdal0rg" path="res://Assets/Arts/Animations/enemy_animations/militia/death.png" id="2_qfwtu"]
 [ext_resource type="Texture2D" uid="uid://bykh6erx5d14d" path="res://Assets/Arts/Animations/enemy_animations/militia/idle.png" id="3_pba2l"]
 [ext_resource type="Texture2D" uid="uid://dtqnevvehlkpq" path="res://Assets/Arts/Animations/enemy_animations/militia/run.png" id="4_3eyll"]
 [ext_resource type="Texture2D" uid="uid://qw8bc2hg7wfm" path="res://Assets/Arts/Animations/enemy_animations/militia/shot.png" id="5_x13ae"]
+[ext_resource type="PackedScene" uid="uid://cw1ix11cernos" path="res://Scenes/blood_splatter.tscn" id="6_g18cb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4circ"]
 radius = 1.73913
@@ -478,6 +479,9 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
+libraries = {
+"": SubResource("AnimationLibrary_ha7mj")
+}
 tree_root = SubResource("AnimationNodeStateMachine_ujxpe")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/death = false
@@ -490,5 +494,7 @@ position = Vector2(1, 0)
 target_position = Vector2(100, 0)
 collision_mask = 3
 hit_from_inside = true
+
+[node name="BloodSplatter" parent="." instance=ExtResource("6_g18cb")]
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]

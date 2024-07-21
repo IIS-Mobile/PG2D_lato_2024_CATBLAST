@@ -4,7 +4,7 @@ var skip_timers = false
 
 func _ready():
 	AudioServer.set_bus_volume_db(SoundtrackPlayer.master_bus, -6)
-	AudioServer.set_bus_volume_db(SoundtrackPlayer.music_bus, -6)
+	AudioServer.set_bus_volume_db(SoundtrackPlayer.music_bus, -12)
 	AudioServer.set_bus_volume_db(SoundEffectPlayer.sfx_bus, -6)
 	
 	SoundtrackPlayer.play_soundtrack(SOUNDTRACKPLAYER_CLASS.THEMES.INTRO)

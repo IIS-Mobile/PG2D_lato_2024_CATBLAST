@@ -1,5 +1,6 @@
 extends Control
 
+
 #var scene_preload
 func _ready():
 	$SettingsMenu.hide()
@@ -13,8 +14,7 @@ func _process(delta):
 
 func _on_play_button_pressed():
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.CONFIRM)
-	get_tree().change_scene_to_file("res://Scenes/main.tscn")
-
+	get_tree().change_scene_to_file("res://Scenes/prologue_section.tscn")
 	#get_node("/root/MainMenu").queue_free()
 	#get_tree().root.add_child(scene_preload)
 
@@ -28,6 +28,7 @@ func _on_credits_pressed():
 
 
 func _on_quit_pressed():
+
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.CONFIRM)
 	get_tree().quit()
 
@@ -46,3 +47,4 @@ func _on_credits_mouse_entered():
 
 func _on_quit_mouse_entered():
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HOVER)
+

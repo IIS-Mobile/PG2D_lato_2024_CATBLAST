@@ -24,10 +24,12 @@ const DOUBLE_JUMP_PATH = "res://Assets/Sounds/player/double jump - Soundmorph.wa
 const JUMP_PATH = "res://Assets/Sounds/player/jump - Soundsnap and Friends.wav"
 const KATANA_SWING_PATH = "res://Assets/Sounds/player/katana sweep - Samuel Manzanero Recio.wav"
 const EXPLOSION_PATH = "res://Assets/Sounds/enemies/explosion - aiko_Changing.wav"
+const BULLET_DEFLECT_PATH = "res://Assets/Sounds/player/bullet deflect - Pixabay.wav"
+const PHONECALL_PATH = "res://Assets/Sounds/player/phonecall - Pixabay.ogg"
 
 enum SOUNDS { SLASH_METAL, SLASH_FLESH, DASH, CONFIRM, HOVER, LETTERS_POP, HEAL, LASER_SHOT, 
 			GUN_SHOT, ITEM_EQUIP, ITEM_PICKUP, ITEM_HOVER, INVENTORY_CLOSE, SHIELD_CHARGED, SHIELD_DISCHARGE,
-			DOUBLE_JUMP, JUMP, KATANA_SWING, EXPLOSION }
+			DOUBLE_JUMP, JUMP, KATANA_SWING, EXPLOSION, BULLET_DEFLECT, PHONECALL }
 
 # Copy -> SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_METAL)
 
@@ -50,7 +52,9 @@ var PLAYSOUND = {
 	SOUNDS.DOUBLE_JUMP: load(DOUBLE_JUMP_PATH),
 	SOUNDS.JUMP: load(JUMP_PATH),
 	SOUNDS.KATANA_SWING: load(KATANA_SWING_PATH),
-	SOUNDS.EXPLOSION: load(EXPLOSION_PATH)
+	SOUNDS.EXPLOSION: load(EXPLOSION_PATH),
+	SOUNDS.BULLET_DEFLECT: load(BULLET_DEFLECT_PATH),
+	SOUNDS.PHONECALL: load(PHONECALL_PATH)
 }
 
 @onready var audio_player

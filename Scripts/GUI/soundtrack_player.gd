@@ -1,7 +1,7 @@
 extends Node2D
 class_name SOUNDTRACKPLAYER_CLASS
 
-enum THEMES { PEACE, BATTLE, UNDERGROUND, MENU, INTRO }
+enum THEMES { PEACE, BATTLE, UNDERGROUND, MENU, INTRO, PROLOGUE }
 
 var TRACKS = {
 	THEMES.INTRO: [preload("res://Assets/Sounds/music/intro sound - moodmode.ogg")],
@@ -16,8 +16,11 @@ var TRACKS = {
 		preload("res://Assets/Sounds/music/levelmusic6 - Panda Beats.ogg"),
 		preload("res://Assets/Sounds/music/safe - Alec Koff.ogg"),
 	],
-	THEMES.UNDERGROUND: [preload("res://Assets/Sounds/music/levelmusic3 underground - Panda Beats.ogg")]
+	THEMES.UNDERGROUND: [preload("res://Assets/Sounds/music/levelmusic3 underground - Panda Beats.ogg")],
+	THEMES.PROLOGUE: [preload("res://Assets/Sounds/music/prologue music - Panda Beats.mp3")]
 }
+
+# Copy -> SoundtrackPlayer.play_soundtrack(SOUNDTRACKPLAYER_CLASS.THEMES.BATTLE)
 
 var current_theme: int = THEMES.PEACE
 var is_repeating: bool = true

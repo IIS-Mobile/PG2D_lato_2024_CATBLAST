@@ -16,7 +16,7 @@ func _ready():
 	rotation = direction.angle()
 
 	timer = Timer.new()
-	timer.wait_time = 3.0
+	timer.wait_time = 10.0
 	timer.one_shot = true
 	var callable = Callable(self, "_on_Timer_timeout")
 	timer.connect("timeout", callable)
@@ -42,4 +42,5 @@ func _on_hitbox_body_entered(body:Node2D):
 
 func _on_hitbox_area_entered(area:Area2D):
 	if area.is_in_group("katana"):
+		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.BULLET_DEFLECT )
 		queue_free()
