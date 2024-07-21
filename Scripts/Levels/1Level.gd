@@ -2,10 +2,22 @@ extends Node2D
 
 var HAS_TALKED_WITH_CAPIBO_FIRST_TIME = false
 var HAS_KILLED_OLD_MAN = false
+var HAS_KILLED_RATFACE = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SoundtrackPlayer.play_soundtrack(SOUNDTRACKPLAYER_CLASS.THEMES.BATTLE)
+
+	# connect signals old man
+	var old_man_npc = get_node("Old_man_npc")
+	var callable_old_man_killed = Callable(self, "_on_old_man_killed")
+	old_man_npc.connect("old_man_killed", callable_old_man_killed)
+
+	# connect signals ratface
+	var ratface_npc = get_node("ratface_npc")
+	var callable_ratface_killed = Callable(self, "_on_ratface_killed")
+	ratface_npc.connect("ratface_killed", callable_ratface_killed)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,12 +58,17 @@ func _on_kill_the_old_man_reminder_body_entered(body):
 			body.velocity.x = -1200
 			body.move_and_slide()
 
-func _on_old_man_placeholder_area_entered(area):
-	if area.name == "Hitbox":
+func _on_old_man_killed():
+	if !HAS_KILLED_OLD_MAN:
 		print("old man killed haha")
-		$Old_man_npc.bloodbath()
-		SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.SLASH_FLESH)
 		HAS_KILLED_OLD_MAN = true
+
+func _on_ratface_killed():
+	if !HAS_KILLED_RATFACE:
+		print("ratface killed haha")
+		var tilemap_node = get_node("WorldTiles")
+		tilemap_node.change_after_ratface_death()
+		HAS_KILLED_RATFACE = true
 
 
 func _on_grab_second_implant_reminder_body_entered(body):

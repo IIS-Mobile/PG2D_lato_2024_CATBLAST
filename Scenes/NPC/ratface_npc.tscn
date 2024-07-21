@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://c4trkkowqgash"]
+[gd_scene load_steps=27 format=3 uid="uid://c4trkkowqgash"]
 
 [ext_resource type="Script" path="res://Scripts/NPC/ratface.gd" id="1_gjio6"]
 [ext_resource type="Texture2D" uid="uid://c5qnq3ijqjrvu" path="res://Assets/Arts/Animations/npc_animations/ratface/ratface_death.png" id="1_qcfp0"]
 [ext_resource type="Texture2D" uid="uid://dh3qp1q1bwltn" path="res://Assets/Arts/Animations/npc_animations/ratface/ratface_idle.png" id="2_v87ub"]
+[ext_resource type="PackedScene" uid="uid://cw1ix11cernos" path="res://Scenes/blood_splatter.tscn" id="4_e8xr6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fe5i2"]
 atlas = ExtResource("1_qcfp0")
@@ -205,7 +206,7 @@ graph_offset = Vector2(117, 24)
 size = Vector2(161.5, 1)
 
 [node name="Ratface" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 16
 script = ExtResource("1_gjio6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -235,3 +236,8 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
 shape = SubResource("RectangleShape2D_fslm8")
+
+[node name="BloodSplatter" parent="." instance=ExtResource("4_e8xr6")]
+lifetime = 0.6
+initial_velocity_min = 100.0
+initial_velocity_max = 250.0
