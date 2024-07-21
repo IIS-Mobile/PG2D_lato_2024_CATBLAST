@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bxsw2f5s1pgcr"]
+[gd_scene load_steps=44 format=3 uid="uid://bxsw2f5s1pgcr"]
 
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="1_h6cvy"]
 [ext_resource type="Script" path="res://Scripts/Levels/1Level.gd" id="1_k0t2a"]
@@ -117,6 +117,9 @@ size = Vector2(152, 132)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7hf1"]
 size = Vector2(82, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwtmg"]
+size = Vector2(47, 365.5)
 
 [node name="1Level" type="Node2D"]
 script = ExtResource("1_k0t2a")
@@ -886,6 +889,14 @@ collision_mask = 3
 position = Vector2(8889, 794)
 shape = SubResource("RectangleShape2D_l7hf1")
 
+[node name="VipersMotive" type="Area2D" parent="."]
+z_index = 10
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VipersMotive"]
+position = Vector2(4051.5, -393.25)
+shape = SubResource("RectangleShape2D_qwtmg")
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="FirstCallFromCapibo" to="." method="_on_first_call_from_capibo_body_entered"]
 [connection signal="body_exited" from="FirstCallFromCapibo" to="." method="_on_first_call_from_capibo_body_exited"]
@@ -895,3 +906,4 @@ shape = SubResource("RectangleShape2D_l7hf1")
 [connection signal="body_entered" from="GrabThirdImplantReminder" to="." method="_on_grab_third_implant_reminder_body_entered"]
 [connection signal="body_entered" from="GrabFourthImplantReminder" to="." method="_on_grab_fourth_implant_reminder_body_entered"]
 [connection signal="body_entered" from="GrabFivesixImplantReminder" to="." method="_on_grab_fivesix_implant_reminder_body_entered"]
+[connection signal="body_entered" from="VipersMotive" to="." method="_on_vipers_motive_body_entered"]

@@ -99,7 +99,6 @@ theme_override_font_sizes/font_size = 36
 text = "Huh, you just discovered what it takes to become a legend... Grab your iron - let's mobilize."
 autowrap_mode = 2
 justification_flags = 227
-clip_text = true
 
 [node name="End" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)

@@ -61,7 +61,6 @@ func _process(delta):
 				GlobalVariables.IS_PLAYER_TALKING = false
 				dialogue_finished.emit()
 			if Input.is_action_just_pressed("Interact"):
-				manage_portraits(-1)
 				change_state(State.READY)
 				hide_textbox()
 
