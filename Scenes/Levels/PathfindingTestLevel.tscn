@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://cmgi15mmxm3d3" path="res://Assets/Arts/Tiles/world.tres" id="1_f77hi"]
 [ext_resource type="Script" path="res://Scenes/WorldTiles.gd" id="2_2ulq3"]
 [ext_resource type="PackedScene" uid="uid://dkfbae7sgq1mv" path="res://Scenes/SimpleEnemy.tscn" id="2_fr1u6"]
-[ext_resource type="PackedScene" uid="uid://dgoam2f5xpmgo" path="res://Scenes/npc.tscn" id="4_8gaxu"]
+[ext_resource type="PackedScene" uid="uid://dgoam2f5xpmgo" path="res://Scenes/NPC/npc.tscn" id="4_8gaxu"]
 
 [node name="Node2D" type="Node2D"]
 
