@@ -1,6 +1,7 @@
 extends Node2D
 
 var HAS_TALKED_WITH_CAPIBO_FIRST_TIME = false
+var HAS_SPOKE_ABOUT_MOTIVE = false
 var HAS_KILLED_OLD_MAN = false
 var HAS_KILLED_RATFACE = false
 
@@ -112,3 +113,11 @@ func _on_grab_fivesix_implant_reminder_body_entered(body):
 			body.get_node("AnimatedSprite2D").flip_h = true
 			body.velocity.x = -1200
 			body.move_and_slide()
+
+
+func _on_vipers_motive_body_entered(body):
+	if body.is_in_group("player"):
+		if HAS_SPOKE_ABOUT_MOTIVE == false:
+			GlobalVariables.PLAYER_CONTROLS_ENABLED = false
+			TextboxNarrative.dialogue_begin("res://Assets/Dialogue/1Level/vipers_motive.txt")
+			HAS_SPOKE_ABOUT_MOTIVE = true
