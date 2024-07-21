@@ -2,6 +2,36 @@ extends Control
 
 
 #var scene_preload
+var CURRENT_HEALTH = 0
+var LEVEL_TO_CHANGE = 0
+var save_path = "user://variable.save"
+var loaded_data = false
+
+func load_data():
+	print("x")
+	if FileAccess.file_exists(save_path):
+		var file = FileAccess.open(save_path, FileAccess.READ)
+		if file:
+			var CURRENT_HEALTH = file.get_var()
+			var LEVEL_TO_CHANGE = file.get_var()
+			print("Loaded Health:", CURRENT_HEALTH)
+			print("Loaded Level:", LEVEL_TO_CHANGE)
+			
+			for implant in GlobalVariables.IMPLANTS:
+				var implant_val = file.get_var()
+				print("Loaded Implant Value:", implant_val)
+				if implant_val == 1:
+					GlobalVariables.item_pickup_signal.emit(implant.name)
+			file.close()
+			GlobalVariables.CURRENT_HEALTH = CURRENT_HEALTH
+			GlobalVariables.LEVEL_TO_CHANGE = LEVEL_TO_CHANGE
+			loaded_data = true
+			print("Data loaded successfully.")
+		else:
+			print("Failed to open file for reading")
+	else:
+		print("Save file does not exist")
+
 func _ready():
 	$SettingsMenu.hide()
 	SoundtrackPlayer.play_soundtrack(SOUNDTRACKPLAYER_CLASS.THEMES.MENU)
@@ -13,6 +43,7 @@ func _process(delta):
 
 
 func _on_play_button_pressed():
+	load_data()
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.CONFIRM)
 	get_tree().change_scene_to_file("res://Scenes/prologue_section.tscn")
 	#get_node("/root/MainMenu").queue_free()
