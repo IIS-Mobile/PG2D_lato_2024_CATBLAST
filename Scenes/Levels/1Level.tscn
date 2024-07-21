@@ -757,12 +757,10 @@ shape = SubResource("RectangleShape2D_qe78s")
 
 [node name="Old_man_npc" parent="." instance=ExtResource("11_do07x")]
 position = Vector2(-737, 658)
-collision_layer = 17
 
 [node name="ratface_npc" parent="." instance=ExtResource("12_fh2cr")]
 position = Vector2(7308, -814)
 scale = Vector2(-1, 1)
-collision_layer = 17
 
 [node name="MangustaGunner" parent="." instance=ExtResource("13_wvglf")]
 position = Vector2(6840, -414)
