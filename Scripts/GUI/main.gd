@@ -20,8 +20,8 @@ func load_data():
 			GlobalVariables.LEVEL_TO_CHANGE = LEVEL_TO_CHANGE
 			loaded_data = true
 			print("Data loaded")
-			print(LEVEL_TO_CHANGE)
-			print(CURRENT_HEALTH)
+			#print(LEVEL_TO_CHANGE)
+			#print(CURRENT_HEALTH)
 		else:
 			print("Failed to open file for reading")
 	else:
@@ -34,8 +34,7 @@ func _input(event : InputEvent):
 		GlobalVariables.GAME_PAUSED = !GlobalVariables.GAME_PAUSED
 
 func _ready():
-	#load_data()
-	GlobalVariables.LEVEL_TO_CHANGE= 3
+	load_data()
 	randomize()
 	SoundtrackPlayer.play_soundtrack(SOUNDTRACKPLAYER_CLASS.THEMES.PEACE)
 
@@ -47,7 +46,7 @@ func _process(delta):
 	pass
 
 func load_lvl():
-	print(GlobalVariables.LEVEL_TO_CHANGE)
+	#load_data()
 	if(GlobalVariables.CURRENT_LEVEL != GlobalVariables.LEVEL_TO_CHANGE or GlobalVariables.RELOAD):
 		GlobalVariables.RELOAD = false
 

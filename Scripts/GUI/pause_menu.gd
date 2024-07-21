@@ -4,6 +4,22 @@ extends Control
 
 var load_menu_scene
 # Called when the node enters the scene tree for the first time.
+var save_path = "user://variable.save"
+var loaded_data = false
+
+
+
+func save():
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	if file:
+		file.store_var(GlobalVariables.CURRENT_HEALTH)
+		print(GlobalVariables.LEVEL_TO_CHANGE)
+		file.store_var(GlobalVariables.LEVEL_TO_CHANGE)
+		file.close()
+		#print("Data saved" + CURRENT_LEVEL)
+	else:
+		print("Failed to open file for writing")
+	
 func _ready():
 	hide()
 	$SettingsMenu.hide()
@@ -38,6 +54,7 @@ func _on_options_button_pressed():
 	$SettingsMenu.show()
 
 func _on_quit_pressed():
+	save()
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.CONFIRM)
 	get_tree().change_scene_to_file("res://Scenes/UI/main_menu.tscn")
 	GlobalVariables.GAME_PAUSED = false

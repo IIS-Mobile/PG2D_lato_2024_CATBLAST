@@ -1,20 +1,6 @@
 extends Control
 
-var save_path = "user://variable.save"
-var loaded_data = false
 
-
-
-func save():
-	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	if file:
-		file.store_var(GlobalVariables.CURRENT_HEALTH)
-		file.store_var(GlobalVariables.LEVEL_TO_CHANGE)
-		file.close()
-		#print("Data saved" + CURRENT_LEVEL)
-	else:
-		print("Failed to open file for writing")
-	
 #var scene_preload
 func _ready():
 	$SettingsMenu.hide()
@@ -42,8 +28,7 @@ func _on_credits_pressed():
 
 
 func _on_quit_pressed():
-	print(GlobalVariables.LEVEL_TO_CHANGE)
-	save()
+
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.CONFIRM)
 	get_tree().quit()
 
