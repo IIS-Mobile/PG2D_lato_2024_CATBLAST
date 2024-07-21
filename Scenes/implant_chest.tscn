@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://d6iy5muhsacy"]
+
+[ext_resource type="Script" path="res://Scripts/Global/implant_chest.gd" id="1_o1mab"]
+[ext_resource type="Texture2D" uid="uid://d2dmyjshxnf3h" path="res://Assets/Arts/Tiles/Sidescroller Shooter - Central City/Assets/Buildings.png" id="2_xelmb"]
+[ext_resource type="Theme" uid="uid://u4unsqyy6047" path="res://Assets/Arts/Gui/gui_them.tres" id="3_kdye4"]
+[ext_resource type="Texture2D" uid="uid://cmpi4h8fgc4e2" path="res://Assets/Arts/Items/implant_placeholder.png" id="4_gyl6l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vraum"]
+size = Vector2(32, 15)
+
+[node name="implant_chest" type="StaticBody2D"]
+z_index = 3
+script = ExtResource("1_o1mab")
+
+[node name="Closed" type="Sprite2D" parent="."]
+texture = ExtResource("2_xelmb")
+region_enabled = true
+region_rect = Rect2(144, 192, 32, 32)
+
+[node name="Opened" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_xelmb")
+region_enabled = true
+region_rect = Rect2(176, 192, 32, 32)
+
+[node name="GrabTheItemArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabTheItemArea"]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_vraum")
+
+[node name="MessageTimer" type="Timer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+visible = false
+
+[node name="MessageLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -473.5
+offset_top = -241.0
+offset_right = 473.5
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme = ExtResource("3_kdye4")
+theme_override_font_sizes/font_size = 36
+text = "Placeholder"
+horizontal_alignment = 1
+
+[node name="ImplantSprite" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(589, 249)
+scale = Vector2(13.875, 13.875)
+texture = ExtResource("4_gyl6l")
+
+[connection signal="body_entered" from="GrabTheItemArea" to="." method="_on_grab_the_item_area_body_entered"]
+[connection signal="body_exited" from="GrabTheItemArea" to="." method="_on_grab_the_item_area_body_exited"]
