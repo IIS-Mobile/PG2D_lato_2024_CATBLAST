@@ -10,6 +10,7 @@ var save_path = "user://variable.save"
 var loaded_data = false
 
 func load_data():
+	print("x")
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		if file:
@@ -23,12 +24,7 @@ func load_data():
 				print("Loaded Implant Value:", implant_val)
 				if implant_val == 1:
 					GlobalVariables.item_pickup_signal.emit(implant.name)
-					#implant.posessed = true
-				#else:
-					#implant.posessed = false
-				
 			file.close()
-			
 			GlobalVariables.CURRENT_HEALTH = CURRENT_HEALTH
 			GlobalVariables.LEVEL_TO_CHANGE = LEVEL_TO_CHANGE
 			loaded_data = true
@@ -44,7 +40,7 @@ func _input(event : InputEvent):
 		GlobalVariables.GAME_PAUSED = !GlobalVariables.GAME_PAUSED
 
 func _ready():
-	load_data()
+	#load_data()
 	randomize()
 	SoundtrackPlayer.play_soundtrack(SOUNDTRACKPLAYER_CLASS.THEMES.PEACE)
 
@@ -56,7 +52,6 @@ func _process(delta):
 	pass
 
 func load_lvl():
-	#load_data()
 	if(GlobalVariables.CURRENT_LEVEL != GlobalVariables.LEVEL_TO_CHANGE or GlobalVariables.RELOAD):
 		GlobalVariables.RELOAD = false
 
@@ -73,7 +68,5 @@ func load_lvl():
 		current_level.add_child(new_scene)
 		var player_node = get_node("Player")
 		player_node.position = GlobalVariables.LEVELS[GlobalVariables.LEVEL_TO_CHANGE].player_start_position
-		
 		GlobalVariables.CURRENT_LEVEL = GlobalVariables.LEVEL_TO_CHANGE
-		
 	pass
