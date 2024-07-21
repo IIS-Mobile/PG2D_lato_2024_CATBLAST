@@ -4,11 +4,38 @@ class_name GameManager
 
 var audio_player: AudioStreamPlayer2D
 	
+var CURRENT_HEALTH = 0
+var LEVEL_TO_CHANGE = 0
+var save_path = "user://variable.save"
+var loaded_data = false
+
+func load_data():
+	if FileAccess.file_exists(save_path):
+		var file = FileAccess.open(save_path, FileAccess.READ)
+		if file:
+			CURRENT_HEALTH = file.get_var()
+			LEVEL_TO_CHANGE = file.get_var()
+			file.close()
+			GlobalVariables.CURRENT_HEALTH = CURRENT_HEALTH
+			GlobalVariables.LEVEL_TO_CHANGE = LEVEL_TO_CHANGE
+			loaded_data = true
+			print("Data loaded")
+			print(LEVEL_TO_CHANGE)
+			print(CURRENT_HEALTH)
+		else:
+			print("Failed to open file for reading")
+	else:
+		print("No save found")
+		CURRENT_HEALTH = 0
+		LEVEL_TO_CHANGE = 0
+
 func _input(event : InputEvent):
 	if(event.is_action_pressed("ui_cancel")):
 		GlobalVariables.GAME_PAUSED = !GlobalVariables.GAME_PAUSED
 
 func _ready():
+	#load_data()
+	GlobalVariables.LEVEL_TO_CHANGE= 3
 	randomize()
 	SoundtrackPlayer.play_soundtrack(SOUNDTRACKPLAYER_CLASS.THEMES.PEACE)
 
@@ -20,6 +47,7 @@ func _process(delta):
 	pass
 
 func load_lvl():
+	print(GlobalVariables.LEVEL_TO_CHANGE)
 	if(GlobalVariables.CURRENT_LEVEL != GlobalVariables.LEVEL_TO_CHANGE or GlobalVariables.RELOAD):
 		GlobalVariables.RELOAD = false
 
