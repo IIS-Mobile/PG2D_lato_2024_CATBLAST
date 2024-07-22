@@ -19,6 +19,8 @@ func _ready():
 	var callable_ratface_killed = Callable(self, "_on_ratface_killed")
 	ratface_npc.connect("ratface_killed", callable_ratface_killed)
 
+	GlobalVariables.IS_MILITIA_TRIGGERED = HAS_KILLED_OLD_MAN
+	GlobalVariables.IS_MANGUSTA_TRIGGERED = HAS_KILLED_OLD_MAN
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
