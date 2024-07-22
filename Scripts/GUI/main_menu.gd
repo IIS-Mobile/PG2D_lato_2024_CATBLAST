@@ -35,6 +35,12 @@ func load_data():
 func _ready():
 	$SettingsMenu.hide()
 	SoundtrackPlayer.play_soundtrack(SOUNDTRACKPLAYER_CLASS.THEMES.MENU)
+	if FileAccess.file_exists(save_path):
+		print("Save found")
+		$ContinueButton.disabled = false
+	else:
+		print("No save found")
+		$ContinueButton.disabled = true
 	#scene_preload = preload("res://Scenes/main.tscn").instantiate()
 
 
@@ -43,6 +49,13 @@ func _process(delta):
 
 
 func _on_play_button_pressed():
+	# load_data()
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.CONFIRM)
+	get_tree().change_scene_to_file("res://Scenes/prologue_section.tscn")
+	#get_node("/root/MainMenu").queue_free()
+	#get_tree().root.add_child(scene_preload)
+
+func _on_continue_button_pressed():
 	load_data()
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.CONFIRM)
 	get_tree().change_scene_to_file("res://Scenes/prologue_section.tscn")
@@ -65,6 +78,9 @@ func _on_quit_pressed():
 
 
 func _on_play_button_mouse_entered():
+	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HOVER)
+
+func _on_continue_button_mouse_entered():
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HOVER)
 
 

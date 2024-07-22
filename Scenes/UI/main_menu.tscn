@@ -124,11 +124,36 @@ offset_bottom = 333.0
 grow_horizontal = 2
 rotation = 0.00265048
 scale = Vector2(0.529, 0.233)
-text = "PLAY"
+text = "NEW GAME"
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="PlayButton"]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="PlayButton"]
 modulate = Color(1, 1, 1, 0.678431)
-position = Vector2(204.57, 571.833)
+position = Vector2(204.061, 136.111)
+rotation = -0.00603269
+scale = Vector2(4.79778, 14.7282)
+skew = 0.00486815
+sprite_frames = SubResource("SpriteFrames_uf4jb")
+animation = &"Glitch"
+
+[node name="ContinueButton" type="Button" parent="."]
+texture_filter = 3
+material = SubResource("ShaderMaterial_03die")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 40.0
+offset_top = 166.0
+offset_right = 448.0
+offset_bottom = 436.0
+grow_horizontal = 2
+rotation = 0.00265048
+scale = Vector2(0.529, 0.233)
+text = "CONTINUE"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ContinueButton"]
+modulate = Color(1, 1, 1, 0.678431)
+position = Vector2(204.061, 136.111)
 rotation = -0.00603269
 scale = Vector2(4.79778, 14.7282)
 skew = 0.00486815
@@ -142,19 +167,19 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 40.0
-offset_top = 167.0
-offset_right = 446.0
-offset_bottom = 437.0
+offset_left = 40.1667
+offset_top = 270.0
+offset_right = 446.167
+offset_bottom = 540.0
 grow_horizontal = 2
 rotation = 0.00265048
 scale = Vector2(0.529, 0.233)
 text = "OPTIONS
 "
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="OptionsButton"]
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="OptionsButton"]
 modulate = Color(1, 1, 1, 0.678431)
-position = Vector2(203.54, -310.239)
+position = Vector2(204.049, 125.483)
 rotation = -0.00603269
 scale = Vector2(4.79778, 14.7282)
 skew = 0.00486815
@@ -169,10 +194,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = 273.0
-offset_right = 448.0
-offset_bottom = 543.0
+offset_left = 40.1667
+offset_top = 376.0
+offset_right = 448.167
+offset_bottom = 646.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.529, 0.233)
@@ -221,6 +246,8 @@ texture = ExtResource("10_k1yxd")
 
 [connection signal="mouse_entered" from="PlayButton" to="." method="_on_play_button_mouse_entered"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="ContinueButton" to="." method="_on_continue_button_mouse_entered"]
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="mouse_entered" from="OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="mouse_entered" from="Credits" to="." method="_on_credits_mouse_entered"]
