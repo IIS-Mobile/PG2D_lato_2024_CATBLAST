@@ -1,17 +1,18 @@
 extends PointLight2D
 
-var time = 0.0
-var blink_interval = 0.1  
-var pause_interval = 7.0  
+@export var time = 0.0
+@export var blink_interval = 0.1  
+@export var pause_interval = 7.0  
 var blink_count = 0
+@export var blink_amount = 3
 var is_fading = false
-var fade_duration = 0.05  
+@export var fade_duration = 0.05  
 var rng = RandomNumberGenerator.new()
 
 func _process(delta):
 	time += delta
 
-	if blink_count < 3:  
+	if blink_count < blink_amount:  
 		if is_fading:
 			if time <= fade_duration:
 				energy = lerp(1.0, 0.0, time / fade_duration)  
