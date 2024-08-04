@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwbb3tdcml255"]
+
+[ext_resource type="Texture2D" uid="uid://d2dmyjshxnf3h" path="res://Assets/Arts/Tiles/Sidescroller Shooter - Central City/Assets/Buildings.png" id="1_etata"]
+
+[sub_resource type="Gradient" id="Gradient_dnyxu"]
+offsets = PackedFloat32Array(0, 0.2, 0.425, 0.828571)
+colors = PackedColorArray(1, 1, 0.486275, 1, 0.963762, 0.963762, 0.634949, 1, 0.394699, 0.394699, 0.260037, 0.949275, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jixt7"]
+gradient = SubResource("Gradient_dnyxu")
+fill = 1
+fill_from = Vector2(0.512821, 0.521368)
+
+[node name="SewerLamp" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(303, 458)
+texture = ExtResource("1_etata")
+region_enabled = true
+region_rect = Rect2(480, 16, 16, 16)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(305, 458)
+scale = Vector2(2.25, 2.25)
+energy = 2.14
+texture = SubResource("GradientTexture2D_jixt7")
