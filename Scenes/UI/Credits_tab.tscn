@@ -1,14 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://jgtcua0t6eah"]
+[gd_scene load_steps=14 format=3 uid="uid://jgtcua0t6eah"]
 
 [ext_resource type="Theme" uid="uid://u4unsqyy6047" path="res://Assets/Arts/Gui/gui_them.tres" id="1_274i0"]
 [ext_resource type="Script" path="res://Scripts/GUI/Credits_tab.gd" id="2_1c07o"]
 [ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="2_l10h0"]
 [ext_resource type="Texture2D" uid="uid://dx5ems6t3ms0p" path="res://Assets/Arts/Gui/crt screens/button crt/button 1 crt sprite.png" id="2_u05gq"]
 [ext_resource type="Texture2D" uid="uid://pgjb0rj1u4fx" path="res://Assets/Arts/Gui/Text ScreenPads/bg_for_scalable_screen.png" id="3_7yjpd"]
+[ext_resource type="Shader" path="res://Shaders/main_menu_background.gdshader" id="5_2ebf3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_osjq0"]
 shader = ExtResource("2_l10h0")
 shader_parameter/amount = 1.471
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6hgc"]
+shader = ExtResource("5_2ebf3")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 6.0
+shader_parameter/shine_size = 0.003
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vlma0"]
 atlas = ExtResource("2_u05gq")
@@ -96,6 +103,7 @@ texture = ExtResource("3_7yjpd")
 
 [node name="Quit" type="Button" parent="."]
 z_index = 10
+material = SubResource("ShaderMaterial_k6hgc")
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -111,13 +119,13 @@ grow_vertical = 0
 rotation = 0.00265048
 scale = Vector2(0.529, 0.233)
 tooltip_text = "This is quit"
-text = "QUIT"
+text = "BACK"
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Quit"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Quit"]
 modulate = Color(1, 1, 1, 0.678431)
 z_index = 10
 position = Vector2(204.285, 124.226)
-scale = Vector2(4.79, 11.218)
+scale = Vector2(4.79, 14.047)
 sprite_frames = SubResource("SpriteFrames_sf3ut")
 animation = &"Glitch"
 
@@ -128,6 +136,7 @@ offset_left = 320.0
 offset_top = 15.0
 offset_right = 1136.0
 offset_bottom = 614.0
+theme = ExtResource("1_274i0")
 theme_override_colors/default_color = Color(0.525271, 0.963797, 1, 1)
 theme_override_font_sizes/normal_font_size = 23
 theme_override_font_sizes/bold_font_size = 23

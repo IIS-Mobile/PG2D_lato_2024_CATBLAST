@@ -2,11 +2,7 @@ extends Control
 signal tab_closed
 
 func _ready():
-	pass # Replace with function body.
-
-func _process(delta):
-	pass
-
+	$Quit.get_node("AnimatedSprite2D").play("Glitch")
 
 func _on_quit_pressed():
 	tab_closed.emit()
