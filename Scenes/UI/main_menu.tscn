@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://craiq1cusqsxg"]
+[gd_scene load_steps=22 format=3 uid="uid://craiq1cusqsxg"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/main_menu.gd" id="1_2weg3"]
 [ext_resource type="Shader" path="res://Shaders/main_menu_background.gdshader" id="1_21v8t"]
@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://u4unsqyy6047" path="res://Assets/Arts/Gui/gui_them.tres" id="7_cislv"]
 [ext_resource type="PackedScene" uid="uid://h5l5g4auvpll" path="res://Scenes/UI/settings_menu.tscn" id="9_l1up5"]
 [ext_resource type="Texture2D" uid="uid://bbx2tn5yq0qk" path="res://Assets/Arts/Menu/NAPIS_LOGO_GRY_BANANA.png" id="10_k1yxd"]
+[ext_resource type="PackedScene" uid="uid://jgtcua0t6eah" path="res://Scenes/UI/Credits_tab.tscn" id="10_l1iky"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_papu1"]
 shader = ExtResource("1_21v8t")
@@ -79,7 +80,13 @@ animations = [{
 [node name="MainMenu" type="Control"]
 z_index = 10
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("7_cislv")
 script = ExtResource("1_2weg3")
 metadata/_edit_horizontal_guides_ = [63.0, 584.0]
@@ -238,6 +245,8 @@ animation = &"Glitch"
 [node name="SettingsMenu" parent="." instance=ExtResource("9_l1up5")]
 visible = false
 layout_mode = 1
+
+[node name="CreditsTab" parent="." instance=ExtResource("10_l1iky")]
 
 [node name="Logo" type="Sprite2D" parent="."]
 position = Vector2(842.011, 471.469)
