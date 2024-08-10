@@ -74,6 +74,11 @@ func _on_options_button_pressed():
 
 
 func _on_credits_pressed():
+	$PlayButton.hide()
+	$ContinueButton.hide()
+	$OptionsButton.hide()
+	$Credits.hide()
+	$Quit.hide()
 	$CreditsTab.show()
 
 
@@ -101,3 +106,10 @@ func _on_credits_mouse_entered():
 func _on_quit_mouse_entered():
 	SoundEffectPlayer.playsound(SFX_CLASS.SOUNDS.HOVER)
 
+
+func _on_credits_tab_tab_closed():
+	$PlayButton.show()
+	$ContinueButton.show()
+	$OptionsButton.show()
+	$Credits.show()
+	$Quit.show()

@@ -1,5 +1,5 @@
 extends Control
-
+signal tab_closed
 
 func _ready():
 	pass # Replace with function body.
@@ -9,6 +9,7 @@ func _process(delta):
 
 
 func _on_quit_pressed():
+	tab_closed.emit()
 	hide()
 
 

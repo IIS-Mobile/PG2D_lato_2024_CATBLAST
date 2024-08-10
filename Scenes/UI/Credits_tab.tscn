@@ -121,137 +121,6 @@ scale = Vector2(4.79, 11.218)
 sprite_frames = SubResource("SpriteFrames_sf3ut")
 animation = &"Glitch"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-visible = false
-z_index = 10
-layout_mode = 0
-offset_left = 357.0
-offset_top = 16.0
-offset_right = 1133.0
-offset_bottom = 630.0
-horizontal_scroll_mode = 3
-vertical_scroll_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-visible = false
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
-visible = false
-z_index = 10
-layout_mode = 2
-text = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-"
-tab_size = 5
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "			DEVELOPMENT TEAM 
-
-			LEAD GAME DESIGNER: 
-
-ARTUR TRĘBSKI 
-
-
-			PROGRAMMERS: 
-
-ŁUKASZ LEDZION 
-
-MATEUSZ WALKIEWICZ  
-
-JAN KOZŁOWSKI 
-
-ARTUR TRĘBSKI 
-
-
-			ARTIST: 
-
-JAN KOZŁOWSKI  
-
-
-			SOUND DESIGNER: 
-
-ARTUR TRĘBSKI 
-
-
-			NARRATIVE DESIGNER: 
-
-ARTUR TRĘBSKI 
-
-
-			LEAD LEVEL DESIGNER: 
-
-JAN KOZŁOWSKI 
-
-
-			LEVEL DESIGNERS: 
-
-JAN KOZŁOWSKI 
-
-ŁUKASZ LEDZION 
-
-
-			TESTER: 
-
-MIŁOSZ DZIERŻAWSKI  
-
-
-
-
-			SPECIAL THANKS 
-
-			ADDITIONAL THANKS 
-
-			TUTOR: 
-
-DR. INŻ. PAWEŁ KAPUSTA 
-
-			MUSIC CREATOR: 
-
-IMIE NAWISKO 
-
-			EXTERNAL ASSETS: 
-
-			GRAPHICS: 
-
-CENTRAL CITY TILESET BY ANOKOLISA (ITCH.IO)   
-HTTPS://ANOKOLISA.ITCH.IO/SIDESCROLLER-SHOOTER-CENTRAL-CITY 
-
-ULTIMATE PIXEL SCI-FI UI SET BY FINNMERCURY (ITCH.IO)    
-HTTPS://FINNMERCURY.ITCH.IO/SCI-FI-UI-ELEMENTS   
-
-2D PIXEL ART CHARACTER TEMPLATE ASSET PACK BY ZEGGYGAMES (ITCH.IO)   
-HTTPS://ZEGLEY.ITCH.IO/2D-PLATFORMERMETROIDVANIA-ASSET-PACK   
-
-SIMPLE PIXEL EXPLOSION BY SOGOMN (OPENGAMEART) 
-HTTPS://OPENGAMEART.ORG/CONTENT/EXPLOSION-3 
-
-CYBERPUNK TRAIN BY EVILEAGLES (PIXELJOINT)   
-HTTPS://PIXELJOINT.COM/PIXELART/89387.HT 
-
-
-		SOUNDS 
-
-NAZWA BY AUTOR (STRONA) 
-LINK 
-
-
-TOOLS AND LIBRARIES 
-
-  	 
-
-
-
-
-
-
-"
-
-[node name="Sprite2D2" type="Sprite2D" parent="ScrollContainer/VBoxContainer"]
-visible = false
-
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 z_index = 10
 layout_mode = 0
@@ -262,7 +131,7 @@ offset_bottom = 614.0
 theme_override_colors/default_color = Color(0.525271, 0.963797, 1, 1)
 theme_override_font_sizes/normal_font_size = 23
 theme_override_font_sizes/bold_font_size = 23
-theme_override_font_sizes/italics_font_size = 23
+theme_override_font_sizes/italics_font_size = 18
 theme_override_font_sizes/bold_italics_font_size = 23
 theme_override_font_sizes/mono_font_size = 23
 bbcode_enabled = true
@@ -302,18 +171,18 @@ MILOSZ DZIERZAWSKI
 DR. INZ. PAWEL KAPUSTA
 
 [center]MUSIC CREATOR:[/center]  
-IMIE NAWISKO
+YURIKA
 
 [color=#ffffff] [center]EXTERNAL ASSETS[/center][/color]
 
 [center]GRAPHICS:[/center]  
-CENTRAL CITY TILESET BY ANOKOLISA (ITCH.IO) 
+[i]CENTRAL CITY TILESET BY ANOKOLISA (ITCH.IO)
 [url=https://anokolisa.itch.io/sidescroller-shooter-central-city]https://anokolisa.itch.io/sidescroller-shooter-central-city[/url]  
 
 ULTIMATE PIXEL SCI-FI UI SET BY FINNMERCURY (ITCH.IO) 
 [url=https://finnmercury.itch.io/sci-fi-ui-elements]https://finnmercury.itch.io/sci-fi-ui-elements[/url]  
 
-2D PIXEL ART CHARACTER TEMPLATE ASSET PACK BY ZEGGYGAMES (ITCH.IO) 
+CHARACTER TEMPLATE ASSET PACK BY ZEGGYGAMES (ITCH.IO) 
 [url=https://zegley.itch.io/2d-platformermetroidvania-asset-pack]https://zegley.itch.io/2d-platformermetroidvania-asset-pack[/url]  
 
 SIMPLE PIXEL EXPLOSION BY SOGOMN (OPENGAMEART) 
@@ -321,7 +190,7 @@ SIMPLE PIXEL EXPLOSION BY SOGOMN (OPENGAMEART)
 
 CYBERPUNK TRAIN BY EVILEAGLES (PIXELJOINT)
  [url=https://pixeljoint.com/pixelart/89387.htm]https://pixeljoint.com/pixelart/89387.htm[/url]
-
+[/i]
 [center]SOUNDS[/center]  
 NAZWA BY AUTOR (STRONA) 
 [url=LINK]LINK[/url]

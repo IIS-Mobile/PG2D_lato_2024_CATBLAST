@@ -247,6 +247,7 @@ visible = false
 layout_mode = 1
 
 [node name="CreditsTab" parent="." instance=ExtResource("10_l1iky")]
+visible = false
 
 [node name="Logo" type="Sprite2D" parent="."]
 position = Vector2(842.011, 471.469)
@@ -263,3 +264,4 @@ texture = ExtResource("10_k1yxd")
 [connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
 [connection signal="mouse_entered" from="Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="tab_closed" from="CreditsTab" to="." method="_on_credits_tab_tab_closed"]
