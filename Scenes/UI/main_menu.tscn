@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://craiq1cusqsxg"]
+[gd_scene load_steps=22 format=3 uid="uid://craiq1cusqsxg"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/main_menu.gd" id="1_2weg3"]
 [ext_resource type="Shader" path="res://Shaders/main_menu_background.gdshader" id="1_21v8t"]
@@ -8,8 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bbqqce1yc7gks" path="res://Assets/Arts/Menu/characters.png" id="6_4mbku"]
 [ext_resource type="Texture2D" uid="uid://dx5ems6t3ms0p" path="res://Assets/Arts/Gui/crt screens/button crt/button 1 crt sprite.png" id="7_3jdrn"]
 [ext_resource type="Theme" uid="uid://u4unsqyy6047" path="res://Assets/Arts/Gui/gui_them.tres" id="7_cislv"]
-[ext_resource type="PackedScene" uid="uid://h5l5g4auvpll" path="res://Scenes/UI/settings_menu.tscn" id="9_l1up5"]
+[ext_resource type="PackedScene" uid="uid://b8pweoiukjb0u" path="res://Scenes/UI/settings_tab.tscn" id="10_8ry3u"]
 [ext_resource type="Texture2D" uid="uid://bbx2tn5yq0qk" path="res://Assets/Arts/Menu/NAPIS_LOGO_GRY_BANANA.png" id="10_k1yxd"]
+[ext_resource type="PackedScene" uid="uid://jgtcua0t6eah" path="res://Scenes/UI/Credits_tab.tscn" id="10_l1iky"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_papu1"]
 shader = ExtResource("1_21v8t")
@@ -79,7 +80,13 @@ animations = [{
 [node name="MainMenu" type="Control"]
 z_index = 10
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("7_cislv")
 script = ExtResource("1_2weg3")
 metadata/_edit_horizontal_guides_ = [63.0, 584.0]
@@ -126,7 +133,7 @@ rotation = 0.00265048
 scale = Vector2(0.529, 0.233)
 text = "NEW GAME"
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="PlayButton"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayButton"]
 modulate = Color(1, 1, 1, 0.678431)
 position = Vector2(204.061, 136.111)
 rotation = -0.00603269
@@ -151,7 +158,7 @@ rotation = 0.00265048
 scale = Vector2(0.529, 0.233)
 text = "CONTINUE"
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ContinueButton"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ContinueButton"]
 modulate = Color(1, 1, 1, 0.678431)
 position = Vector2(204.061, 136.111)
 rotation = -0.00603269
@@ -177,7 +184,7 @@ scale = Vector2(0.529, 0.233)
 text = "OPTIONS
 "
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="OptionsButton"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="OptionsButton"]
 modulate = Color(1, 1, 1, 0.678431)
 position = Vector2(204.049, 125.483)
 rotation = -0.00603269
@@ -203,7 +210,7 @@ grow_vertical = 0
 scale = Vector2(0.529, 0.233)
 text = "CREDITS"
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Credits"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Credits"]
 modulate = Color(1, 1, 1, 0.678431)
 position = Vector2(203.576, 124.226)
 scale = Vector2(4.77297, 14.0471)
@@ -228,16 +235,18 @@ rotation = 0.00265048
 scale = Vector2(0.529, 0.233)
 text = "QUIT"
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Quit"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Quit"]
 modulate = Color(1, 1, 1, 0.678431)
 position = Vector2(204.285, 124.226)
 scale = Vector2(4.78964, 14.0471)
 sprite_frames = SubResource("SpriteFrames_uf4jb")
 animation = &"Glitch"
 
-[node name="SettingsMenu" parent="." instance=ExtResource("9_l1up5")]
+[node name="CreditsTab" parent="." instance=ExtResource("10_l1iky")]
 visible = false
-layout_mode = 1
+
+[node name="SettingsTab" parent="." instance=ExtResource("10_8ry3u")]
+visible = false
 
 [node name="Logo" type="Sprite2D" parent="."]
 position = Vector2(842.011, 471.469)
@@ -254,3 +263,5 @@ texture = ExtResource("10_k1yxd")
 [connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
 [connection signal="mouse_entered" from="Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="tab_closed" from="CreditsTab" to="." method="_on_credits_tab_tab_closed"]
+[connection signal="tab_closed" from="SettingsTab" to="." method="_on_settings_tab_tab_closed"]

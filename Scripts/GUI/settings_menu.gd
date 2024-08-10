@@ -1,4 +1,5 @@
 extends Control
+signal tab_closed
 
 # Declare volume levels
 var master_volume = -20
@@ -15,11 +16,13 @@ func _ready() -> void:
 	load_volume_settings()
 	apply_volume_settings()
 	update_slider_positions()
+	$Quit.get_node("AnimatedSprite2D").play("Glitch")
 
 func _process(delta):
 	pass
 
 func _on_quit_pressed():
+	tab_closed.emit()
 	hide()
 
 func _on_quit_mouse_entered():

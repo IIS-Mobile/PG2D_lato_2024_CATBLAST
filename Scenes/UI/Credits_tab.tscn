@@ -1,0 +1,216 @@
+[gd_scene load_steps=14 format=3 uid="uid://jgtcua0t6eah"]
+
+[ext_resource type="Theme" uid="uid://u4unsqyy6047" path="res://Assets/Arts/Gui/gui_them.tres" id="1_274i0"]
+[ext_resource type="Script" path="res://Scripts/GUI/Credits_tab.gd" id="2_1c07o"]
+[ext_resource type="Shader" path="res://Shaders/pause_menu.gdshader" id="2_l10h0"]
+[ext_resource type="Texture2D" uid="uid://dx5ems6t3ms0p" path="res://Assets/Arts/Gui/crt screens/button crt/button 1 crt sprite.png" id="2_u05gq"]
+[ext_resource type="Texture2D" uid="uid://pgjb0rj1u4fx" path="res://Assets/Arts/Gui/Text ScreenPads/bg_for_scalable_screen.png" id="3_7yjpd"]
+[ext_resource type="Shader" path="res://Shaders/main_menu_background.gdshader" id="5_2ebf3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_osjq0"]
+shader = ExtResource("2_l10h0")
+shader_parameter/amount = 1.471
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6hgc"]
+shader = ExtResource("5_2ebf3")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 6.0
+shader_parameter/shine_size = 0.003
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlma0"]
+atlas = ExtResource("2_u05gq")
+region = Rect2(0, 0, 85, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ed52"]
+atlas = ExtResource("2_u05gq")
+region = Rect2(85, 0, 85, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6g5l"]
+atlas = ExtResource("2_u05gq")
+region = Rect2(170, 0, 85, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb6bw"]
+atlas = ExtResource("2_u05gq")
+region = Rect2(255, 0, 85, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sf3ut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlma0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ed52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6g5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pb6bw")
+}],
+"loop": true,
+"name": &"Glitch",
+"speed": 5.0
+}]
+
+[node name="CreditsTab" type="Control"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1158.0
+offset_bottom = 648.0
+theme = ExtResource("1_274i0")
+script = ExtResource("2_1c07o")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 10
+material = SubResource("ShaderMaterial_osjq0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = 1.0
+offset_right = -1137.0
+offset_bottom = -609.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(29.6821, 17.0937)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 299.0
+offset_right = -830.0
+offset_bottom = -610.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(29.6821, 17.0937)
+color = Color(0, 0, 0, 0.615686)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7yjpd")
+
+[node name="Quit" type="Button" parent="."]
+z_index = 10
+material = SubResource("ShaderMaterial_k6hgc")
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -539.0
+offset_top = -117.0
+offset_right = -130.0
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.00265048
+scale = Vector2(0.529, 0.233)
+tooltip_text = "This is quit"
+text = "BACK"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Quit"]
+modulate = Color(1, 1, 1, 0.678431)
+z_index = 10
+position = Vector2(204.285, 124.226)
+scale = Vector2(4.79, 14.047)
+sprite_frames = SubResource("SpriteFrames_sf3ut")
+animation = &"Glitch"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 320.0
+offset_top = 15.0
+offset_right = 1136.0
+offset_bottom = 614.0
+theme = ExtResource("1_274i0")
+theme_override_colors/default_color = Color(0.525271, 0.963797, 1, 1)
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 23
+theme_override_font_sizes/italics_font_size = 18
+theme_override_font_sizes/bold_italics_font_size = 23
+theme_override_font_sizes/mono_font_size = 23
+bbcode_enabled = true
+text = "[color=#ffffff] [center]DEVELOPMENT TEAM[/center][/color]
+
+[center]LEAD GAME DESIGNER:[/center]  
+ARTUR TREBSKI
+
+[center]PROGRAMMERS:[/center]  
+LUKASZ LEDZION  
+MATEUSZ WALKIEWICZ  
+JAN KOZLOWSKI  
+ARTUR TREBSKI
+
+[center]ARTIST:[/center]  
+JAN KOZLOWSKI
+
+[center]SOUND DESIGNER:[/center]  
+ARTUR TREBSKI
+
+[center]NARRATIVE DESIGNER:[/center]  
+ARTUR TREBSKI
+
+[center]LEAD LEVEL DESIGNER:[/center]  
+JAN KOZLOWSKI
+
+[center]LEVEL DESIGNERS:[/center]  
+JAN KOZLOWSKI  
+LUKASZ LEDZION
+
+[center]TESTER:[/center]  
+MILOSZ DZIERZAWSKI
+
+[color=#ffffff] [center]SPECIAL THANKS[/center][/color]
+
+[center]TUTOR:[/center]  
+DR. INZ. PAWEL KAPUSTA
+
+[center]MUSIC CREATOR:[/center]  
+YURIKA
+
+[color=#ffffff] [center]EXTERNAL ASSETS[/center][/color]
+
+[center]GRAPHICS:[/center]  
+[i]CENTRAL CITY TILESET BY ANOKOLISA (ITCH.IO)
+[url=https://anokolisa.itch.io/sidescroller-shooter-central-city]https://anokolisa.itch.io/sidescroller-shooter-central-city[/url]  
+
+ULTIMATE PIXEL SCI-FI UI SET BY FINNMERCURY (ITCH.IO) 
+[url=https://finnmercury.itch.io/sci-fi-ui-elements]https://finnmercury.itch.io/sci-fi-ui-elements[/url]  
+
+CHARACTER TEMPLATE ASSET PACK BY ZEGGYGAMES (ITCH.IO) 
+[url=https://zegley.itch.io/2d-platformermetroidvania-asset-pack]https://zegley.itch.io/2d-platformermetroidvania-asset-pack[/url]  
+
+SIMPLE PIXEL EXPLOSION BY SOGOMN (OPENGAMEART) 
+[url=https://opengameart.org/content/explosion-3]https://opengameart.org/content/explosion-3[/url]  
+
+CYBERPUNK TRAIN BY EVILEAGLES (PIXELJOINT)
+ [url=https://pixeljoint.com/pixelart/89387.htm]https://pixeljoint.com/pixelart/89387.htm[/url]
+[/i]
+[center]SOUNDS[/center]  
+NAZWA BY AUTOR (STRONA) 
+[url=LINK]LINK[/url]
+
+[color=#ffffff] [center]TOOLS AND LIBRARIES[/center] [/color]
+[center]
+[img=9,9]res://Assets/Arts/Gui/Others/Godot.png[/img]   [img=9,9]res://Assets/Arts/Gui/Others/Photoshop.png[/img]   [img=9,9]res://Assets/Arts/Gui/Others/Audacity.png[/img]
+[/center]
+
+"
+autowrap_mode = 0
+
+[connection signal="mouse_entered" from="Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
